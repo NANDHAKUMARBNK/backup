@@ -1,0 +1,8 @@
+{
+	"Media_BaseLocation_SECNML": null, // Use Default
+	"Media_BaseLocation_SECSCR": null, // Use Default
+	"DB_ConStr_Identity": null, // No effect
+	"DB_ConStr_Data": null, // No effect
+	"UseMockAD": false, // No effect
+	"RMSApiUrl": "http://10.10.1.241:8080" // Use api hosted at office
+}
