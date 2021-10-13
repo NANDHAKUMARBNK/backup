@@ -1,0 +1,132 @@
+<div class="card banner mb-3">
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Upload Your Video</h1>
+          <p>
+            Your 2-3 minutes video to support this people movement to represent
+            siddha <strong>@WHO to fight COVID-19</strong>
+          </p>
+          <div class="form-group">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="uploadname"
+                id="youtube"
+                (change)="changeLinkRadio($event)"
+                required
+              />
+              <span><label>Youtube Link</label></span>
+              <div *ngIf="showYoutube && !showFileUpload">
+                <form ngNativeValidate>
+                  <div class="form-group">
+                    <label for="title">Title *</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="title"
+                      (change)="changeTitle($event)"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea
+                      class="form-control"
+                      id="description"
+                      rows="3"
+                      (change)="changeDescription($event)"
+                      maxlength="150"
+                    ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="link">Link*</label>
+                    <input
+                      class="form-control"
+                      type="url"
+                      name="linkname"
+                      id="link"
+                      (change)="changeYoutube($event)"
+                      oninvalid="this.setCustomValidity('Please enter the link in the following format: https://www.youtube.com/....')"
+                      oninput="setCustomValidity('')"
+                      required=""
+                    />
+                  </div>
+                  <hr />
+                  <button
+                    type="submit"
+                    class="btn btn-outline-success"
+                    (click)="upload()"
+                  >
+                    Submit
+                  </button>
+                  &nbsp; &nbsp; &nbsp;
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    (click)="noInterest()"
+                  >
+                    Cancel
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="uploadname"
+                id="upload"
+                (change)="changeUploadRadio($event)"
+                required
+              />
+              <span><label>Raw Video Upload</label></span>
+              <div *ngIf="showFileUpload && !showYoutube">
+                <p>
+                  <i
+                    class="fa fa-whatsapp fa-2x animated flash"
+                    style="color: chartreuse;"
+                    aria-hidden="true"
+                  >
+                  </i>
+                  &nbsp;
+                  <span style="color: black; font-size: x-large;">
+                    WhatsApp your video file to
+                    <strong class="animated flash" style="color: red;"
+                      >+91 98803-44332</strong
+                    ></span
+                  >
+                </p>
+                <button
+                  type="button"
+                  class="btn btn-outline-success"
+                  (click)="noInterest()"
+                >
+                  Done
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div *ngIf="!showFileUpload && !showYoutube">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  (click)="noInterest()"
+                >
+                  Not Interested to upload now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

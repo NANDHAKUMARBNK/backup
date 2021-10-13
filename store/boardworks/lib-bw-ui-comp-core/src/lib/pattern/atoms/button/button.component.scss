@@ -1,0 +1,212 @@
+/*
+=============== Button base ==============*/
+.btn-base {
+  line-height: 1.75;
+  border-radius: 4px;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+
+  // ripple effect
+  position: relative;
+  overflow: hidden;
+
+  i {
+    font-size: 20px;
+  }
+
+  &:before {
+    border-radius: 50%;
+    background-color: var(--bw-clr-white, 0.6);
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+  }
+  &:focus {
+    outline: 0;
+    &:before {
+      transition: all 0.5s ease-out;
+      opacity: 0;
+      width: 160px;
+      height: 160px;
+      margin-top: -80px;
+      margin-left: -80px;
+    }
+  }
+  &.btn-disabled {
+    cursor: default;
+    pointer-events: none;
+    color: rgba(0, 0, 0, 0.26);
+    box-shadow: none;
+  }
+}
+
+/*
+=============== Button variant ==============*/
+.btn-contained {
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  &.btn-disabled {
+    color: rgba(0, 0, 0, 0.26);
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+}
+.primary-btn-contained {
+  background-color: var(--bw-prm-clr-bse);
+  color: var(--bw-clr-white);
+  border: 1px solid transparent;
+  &:hover {
+    background-color: var(--bw-prm-clr-bse-hvr);
+  }
+  &:disabled {
+    color: rgba(0, 0, 0, 0.26);
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+}
+.primary-btn-outlined {
+  color: var(--bw-prm-clr-bse);
+  border: 1px solid rgba(147, 24, 108, 0.5);
+  &:hover {
+    background-color: rgba(147, 24, 108, 0.08);
+  }
+  &:disabled {
+    color: rgba(0, 0, 0, 0.26);
+    box-shadow: none;
+    cursor: default;
+    pointer-events: none;
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+.primary-btn-text {
+  color: var(--bw-prm-clr-bse);
+  border: 1px solid transparent;
+  &:hover {
+    background-color: rgba(147, 24, 108, 0.08);
+  }
+  &:disabled {
+    color: rgba(0, 0, 0, 0.26);
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.12);
+    cursor: default;
+    pointer-events: none;
+  }
+}
+.secondary-btn-contained {
+  background-color: var(--bw-sec-clr-drk);
+  border: 1px solid transparent;
+  color: var(--bw-clr-white);
+  &:hover {
+    background-color: var(--bw-sec-clr-bse-hvr);
+  }
+  &:disabled {
+    color: rgba(0, 0, 0, 0.26);
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.12);
+    cursor: default;
+    pointer-events: none;
+  }
+}
+.secondary-btn-outlined {
+  color: var(--bw-sec-clr-drk);
+  border: 1px solid rgba(22, 102, 111, 0.5);
+  &:hover {
+    background-color: rgba(22, 102, 111, 0.08);
+  }
+  &:disabled {
+    color: rgba(0, 0, 0, 0.26);
+    box-shadow: none;
+    cursor: default;
+    pointer-events: none;
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+.secondary-btn-text {
+  color: var(--bw-sec-clr-drk);
+  border: 1px solid transparent;
+  &:hover {
+    background-color: rgba(22, 102, 111, 0.08);
+  }
+  &:disabled {
+    color: rgba(0, 0, 0, 0.26);
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.12);
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+.secondary-btn-light {
+  background: var(--bw-bay-leaf-clr-ext-lgt);
+  color: var(--bw-sec-clr-drk);
+  border: 1px solid transparent;
+  &:disabled {
+    color: rgba(0, 0, 0, 0.26);
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.12);
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+/*
+=============== Button sizes ==============*/
+.btn-lg {
+  padding: 8px 22px;
+  font-size: 0.9375rem;
+}
+.btn-md {
+  padding: 6px 16px;
+  font-size: 0.875rem;
+}
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 0.8125rem;
+}
+
+.border-secondary {
+  border: 1px solid var(--bw-sec-clr-drk);
+}
+
+.pl-35 {
+  padding-left: 35px;
+}
+.pr-35 {
+  padding-right: 35px;
+}
+.bw-confirm {
+  display: none;
+}
+
+.browsebtn {
+  background-color: lightgray;
+  border: 1px solid lightgray;
+  text-transform: inherit;
+}
+.btn-size {
+  width: 100px !important;
+  line-height: 1 !important;
+}
+
+.btn-tab {
+  border-radius: 0px !important;
+  width: 230px !important;
+}
+.archive {
+  border-radius: 20px;
+}

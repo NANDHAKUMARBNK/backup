@@ -1,0 +1,7 @@
+<bw-card [cards]="cards" [width]="width"  [cardBodyClassName]="cardBodyClassName" >
+    <bw-grid [isEnableSelectAll]="isEnableSelectAll" [isShowCheckbox]="isShowCheckbox" [onCellClicked]="onCellClicked"
+        [columnOptions]="columnOptions" [columnsData]="columnsData" [gridData]="gridData" [actions]="actions"
+        [isCommitteeGrid]="isCommitteeGrid"(onClickLink)="onClickTextLink($event)"
+        (onClickAction)="onClickActionGrid($event)" [isEnablePagination]="isEnablePagination">
+    </bw-grid>
+</bw-card>

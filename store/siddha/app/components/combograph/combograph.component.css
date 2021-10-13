@@ -1,0 +1,31 @@
+.graphcontent{
+    display: flex;
+}
+.secongGraph{
+    display: flex;
+}
+.chart2{
+    margin-top: 9px;
+}
+
+@media (min-width: 1022px) and (max-width: 1199px) {
+
+    .graphcontent{
+        overflow-x: scroll;
+    }
+}
+
+.loader-backdrop img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -40px;
+    margin-top: -40px;
+     width: 10%;
+    z-index: 999;
+  }
+  .refreshContainer{
+    position: absolute;
+    top: 39%;
+  
+}

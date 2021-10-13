@@ -1,0 +1,60 @@
+<!-- {{item.childQuestions[0]?.expectedAnswer.length }} {{ item.childQuestions[0]?.expectedAnswer.includes(questionForm.value[item.formGroupValueName])}} {{questionForm.value[item.formGroupValueName]}} -->
+<div [ngClass]="{'ms-4' : className == 'ms-4'}">
+    <bw-input *ngIf="item.type === 'Text'" [label]="item.question" [labelClass]="'bw-font-prm-medium fs-6 fw-500'"
+        [control]="questionForm.get('content')" [classNameControl]="'bw-font-sec-medium'" (change)="onInputChange(item)"
+        (focusout)="onInputChange(item)">
+    </bw-input>
+</div>
+<div *ngIf="item.type === 'Choice' &&
+        item.data.subType !== 'Combo' &&
+        item.data.subType !== 'Radio'" [ngClass]="{'ms-4' : className == 'ms-4'}">
+    <bw-label [className]="'bw-font-sec-bold'" [labelName]="item.question"></bw-label>
+    <bw-checkbox [checkBoxses]="item.data.choices" [inRow]="true" [inRowInputRows]="12"
+        [classCheckboxLabel]="'col-md-12 col-lg-12'" [control]="questionForm.get('checkbox')"
+        [classNameControl]="'bw-font-sec-medium m-3'" (getselectedArray)="onChangeCheckbox($event, item)">
+    </bw-checkbox>
+</div>
+<div *ngIf="item.type === 'Opinion'" [ngClass]="{'ms-4' : className == 'ms-4'}">
+    <bw-label [className]="'bw-font-sec-bold'" [labelName]="item.question"></bw-label>
+    <bw-radio [radios]="item.data.choices" [control]="questionForm.get('opinion')"
+        [classNameControl]="'bw-font-sec-medium m-3'" [inRow]="true" [inRowInputRows]="12"
+        [classRadioLabel]="'col-md-12 col-lg-12'" (getselectedArray)="onChangeRadio($event, item)"></bw-radio>
+</div>
+<div *ngIf="item.type === 'Boolean'" [ngClass]="{'ms-4' : className == 'ms-4'}">
+    <bw-label [className]="'bw-font-sec-bold'" [labelName]="item.question"></bw-label>
+    <bw-radio [radios]="booleanRadios" [control]="questionForm.get('yesOrNo')"
+        [classNameControl]="'bw-font-sec-medium m-3'" [inRow]="true" [inRowInputRows]="12"
+        [classRadioLabel]="'col-md-12 col-lg-12'" (getselectedArray)="onChangeRadio($event, item)"></bw-radio>
+</div>
+<div *ngIf="item.type === 'Note'" [ngClass]="{'ms-4' : className == 'ms-4'}">
+    <bw-textarea [label]="item.question" [labelClass]="'bw-font-prm-medium fs-6 fw-500'"
+        [control]="questionForm.get('textarea')" [className]="'bw-font-sec-medium'" (change)="onNoteChange(item)"
+        (focusout)="onNoteChange(item)">
+    </bw-textarea>
+</div>
+<div [ngClass]="{'ms-4' : className == 'ms-4'}">
+    <bw-date *ngIf="item.type === 'DateTime'" [label]="item.question" [labelClass]="'bw-font-sec-bold'"
+        [control]="questionForm.get('pickDateTime')" [classNameControl]="'bw-font-sec-medium'"
+        [calendarType]="'classic'" [placeholder]="'DD/MM/YYYY'" (change)="onDateChange(item)"
+        (focusout)="onDateChange(item)">
+    </bw-date>
+</div>
+<div [ngClass]="{'ms-4' : className == 'ms-4'}">
+    <bw-input *ngIf="item.type === 'Number'" [type]="'number'" [label]="item.question"
+        [labelClass]="'bw-font-prm-medium fs-6 fw-500'" [control]="questionForm.get('integer')"
+        [classNameControl]="'bw-font-sec-medium'" (change)="onNumberChange(item)" (focusout)="onNumberChange(item)">
+    </bw-input>
+</div>
+<div [ngClass]="{'ms-4' : className == 'ms-4'}">
+    <bw-select *ngIf="item.type === 'Choice' && item.data.subType === 'Combo'" [labelClass]="'bw-font-sec-bold '"
+        [control]="questionForm.get('combo')" [data]="item.data.choices" [isKey]="true" [label]="item.question"
+        [inRow]="true" [inRowInputRows]="7" [inRowLabelRows]="3" [searchable]="false" [selectName]="'name'"
+        [selectValue]="'value'" (selectChangeEvent)="onComboChange($event, item)" [multiple]="false">
+    </bw-select>
+</div>
+<div *ngIf="item.type === 'Choice' && item.data.subType === 'Radio'" [ngClass]="{'ms-4' : className == 'ms-4'}">
+    <bw-label [className]="'bw-font-sec-bold'" [labelName]="item.question"></bw-label>
+    <bw-radio [radios]="item.data.choices" [control]="questionForm.get('radioSub')"
+        [classNameControl]="'bw-font-sec-medium m-3'" [inRow]="true" [inRowInputRows]="12"
+        [classRadioLabel]="'col-md-12 col-lg-12'" (getselectedArray)="onChangeRadioSub($event, item)"></bw-radio>
+</div>

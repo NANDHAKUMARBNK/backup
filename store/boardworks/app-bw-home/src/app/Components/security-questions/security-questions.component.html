@@ -1,0 +1,103 @@
+<div class="row align-items-center ">
+
+    <div class="col-md-4">
+        <p class="primary-fre-clr-bse bw-font-prm-medium"> Change Security Question </p>
+    </div>
+    <div class="col-md-8 text-end" *ngIf="!sqaSucess">
+        <bw-button *ngIf="!newUser"
+            className=" btn-base  secondary-btn-text border-secondary bw-font-prm-regular btn-sm  me-md-4 px-4 "
+            buttonName="CANCEL" (onClick)="cancelClick($event)">
+        </bw-button>
+        <bw-button
+            className=" pl-35 pr-35 btn-base btn-containe bw-font-prm-regular secondary-btn-contained btn-sm me-md-4"
+            buttonName="Change Security Question" (onClick)="changeQuestion($event)">
+        </bw-button>
+
+    </div>
+</div>
+
+<div class="row m-0 mt-3" *ngIf="!sqaSucess">
+    <div class="col-9 border p-3">
+
+        <!-- <div class="col-10 row align-items-center  info m-0">
+            <div class="col-1">
+             
+             <img src="assets/u1238.png" alt="">
+            </div>
+            <div class="col-9 p-0">
+                <ul>
+                    <li class="" >
+                        Your security answer must be at least 8 characters long.
+                    </li>
+                    <li class=" ">
+                        The security answer cannot be part of the security question
+                    </li>
+                    <li class="">
+                        The question and answer can't be the same..
+                    </li>
+                </ul>
+            </div>
+        </div> -->
+        <div class="col-11 islist">
+            <bw-toastr [isListOrder]="true" [lists]="lists">
+            </bw-toastr>
+        </div>
+
+        <div class="form-group h-170 mt-4 col-9 ">
+            <bw-input [label]="'Security Question'" [customErrorReq]="'You must provide a Security Question.'"
+                [labelClass]="'bw-font-prm-medium fs-6'" [control]="securityForm.get('question')"
+                [placeholder]="'Enter Security Question'" (focusout)="seterror('question')"
+                [classNameControl]="'bw-font-sec-medium'" [inRow]="true" [inRowLabelRows]="4" [inRowInputRows]="8">
+            </bw-input>
+            <!-- <p class="alert alert-danger" *ngIf="securityForm.controls['question'].hasError('minlength')">
+                Your phone must be at least 5 characters long.
+            </p> -->
+
+
+            <bw-input [label]="'Answer'" [customErrorReq]="'You must enter an Answer.'"
+                [customErrorMinLength]=" 'Your security answer must be at least 8 characters long.' "
+                [labelClass]="'bw-font-prm-medium fs-6'" [control]="securityForm.get('answer')"
+                [placeholder]="'Enter Answer'" (focusout)="seterror('answer')" [classNameControl]="'bw-font-sec-medium'"
+                [inRow]="true" [inRowLabelRows]="4" [inRowInputRows]="8">
+            </bw-input>
+            <div class="row">
+
+
+                <div class="col-4">
+
+                </div>
+                <div class="col-8">
+
+
+                    <div *ngIf="questionAnswerSame" class="error-msg">
+                        <div>
+
+                        </div> The question and answer can't be the same.
+                    </div>
+
+                    <div *ngIf="questionAnswernotPart" class="error-msg">
+                        <div>
+
+                            The security answer cannot be part of the security question.
+                        </div>
+                    </div>
+
+                    <p *ngIf="isError" class="text-danger mb-1">
+                        <ng-container *ngFor="let msg of errMessage">
+                            {{msg}}
+                        </ng-container>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="sqaSucess">
+    <div class="sqaSucessText">
+        Your Security Question has been changed.
+
+    </div>
+
+</div>

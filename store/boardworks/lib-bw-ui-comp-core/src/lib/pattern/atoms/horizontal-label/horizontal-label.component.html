@@ -1,0 +1,43 @@
+<!-- Horizantal -->
+<div class="form-group" *ngIf="isHorizontal && !isVertical">
+  <div class="row">
+    <div class="{{ colClass }} {{ labelPositionClass }}">
+      <bw-label [labelName]="labelName" [className]="labelClassName">
+      </bw-label>
+    </div>
+    <div [class]="textClass" *ngIf="!isTextLink">
+      <bw-text
+        [textName]="textName"
+        [className]="textClassName"
+        [isEllipse]="isEllipse"
+        [isEnableClick]="isEllipse"
+        [ellipseText]="ellipseText"
+      >
+      </bw-text>
+    </div>
+    <div [class]="textClass" *ngIf="isTextLink && !isViewAlertDocument">
+      <bw-link
+        [linkText]="textName"
+        (onClickLink)="onClickLink($event)"
+        [className]="linkClassName"
+      >
+      </bw-link>
+    </div>
+    <div [class]="textClass" *ngIf="isTextLink && isViewAlertDocument">
+      <span *ngFor="let text of textName.value; let last = last">
+        <bw-link
+          [linkText]="text.fileName"
+          (onClickLink)="onClickLink(text)"
+          [className]="linkClassName"
+        >
+        </bw-link>
+        <span [class]="linkClassName">{{ last ? "" : ", " }}</span>
+      </span>
+    </div>
+  </div>
+</div>
+<!-- Vertical -->
+<div *ngIf="!isHorizontal && isVertical">
+  <bw-label [labelName]="labelName" [className]="labelClassName"> </bw-label>
+  <bw-text [textName]="textName" [className]="textClassName"> </bw-text>
+</div>

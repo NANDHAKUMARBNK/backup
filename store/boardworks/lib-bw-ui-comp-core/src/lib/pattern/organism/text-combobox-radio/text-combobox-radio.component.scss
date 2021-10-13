@@ -1,0 +1,38 @@
+.attendanceStatus {
+  position: relative;
+  white-space: nowrap;
+  font-size: 12px;
+  .arrow {
+    color: var(--bw-sec-clr-bse-hvr);
+    position: absolute;
+    top: -6px;
+    left: 90px;
+    font-size: 20px;
+  }
+}
+.dropdown {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  .dropdown-menu {
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--bw-extra-light-gray-xx);
+    border-radius: 3px;
+    min-width: 10rem;
+    position: relative;
+    box-shadow: rgb(100 100 111 / 13%) 0px 7px 15px 0px;
+    background: var(--bw-clr-white);
+    z-index: 9;
+    a {
+      padding: 6px 10px;
+      color: var(--bw-extra-dark-gray);
+      font-size: 15px;
+      text-decoration: none;
+      display: block;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

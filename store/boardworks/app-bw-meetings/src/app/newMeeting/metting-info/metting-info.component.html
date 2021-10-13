@@ -1,0 +1,133 @@
+<div class="border p-3">
+    <div class=" col-md-12 text-end">
+        <bw-button  className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+            buttonName="Cancel" (onClick)="clickButton('cancel')">
+        </bw-button>
+        <bw-button [buttonDisabled]="meetingDetails?.isPublished || meetingDetails?.isArchived" className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+            buttonName="Save" (onClick)="clickButton('save')">
+        </bw-button>
+        <bw-button [buttonDisabled]="meetingDetails?.isPublished || meetingDetails?.isArchived" className="btn-base btn-containe bw-font-prm-medium secondary-btn-contained btn-sm me-md-4 px-4"
+            buttonName="Add Attendees" (onClick)="clickButton('add')">
+        </bw-button>
+        <!-- <bw-combo-button [buttonProperties]="buttonProperties" [width]="'100%'" [buttonColClass]="'6'"
+            (onClick)="clickButton($event)">
+        </bw-combo-button> -->
+    </div>
+
+
+    <div class="form-group col-9 addWorkspace mt-4">
+        <form [formGroup]="mettingInfoForm">
+            <bw-select [labelClass]="'bw-font-sec-bold '" [control]="mettingInfoForm?.get('committee')"
+                [data]="committeeData" [isKey]="true" [label]="'Select Committee'" [inRow]="true" [inRowInputRows]="7"
+                [inRowLabelRows]="3" [searchable]="false" [selectName]="'name'" [selectValue]="'committeeId'">
+            </bw-select>
+
+            <bw-input [label]="'Title'" [labelClass]="'bw-font-sec-bold'" [control]="mettingInfoForm?.get('title')"
+                [placeholder]="'Enter Title'" [classNameControl]="'bw-font-sec-medium'" [inRow]="true"
+                [inRowLabelRows]="3" [inRowInputRows]="7">
+            </bw-input>
+
+            <bw-date [timePicker]="timePicker" [label]="'Start'" [labelClass]="'bw-font-sec-bold'"
+                [control]="mettingInfoForm?.get('startDate')" [classNameControl]="'bw-font-sec-medium'" [inRow]="true"
+                [inRowLabelRows]="3" [inRowInputRows]="7" [timeValue]="startDateTime" [timeControl]="mettingInfoForm?.get('startTime')" [calendarType]="'classic'" [placeholder]="'DD/MM/YYYY'">
+            </bw-date>
+
+            <bw-date [minDate]="minDate" [timePicker]="timePicker" [label]="'End'" [timeValue]="endDateTime" [timeControl]="mettingInfoForm?.get('endTime')" [labelClass]="'bw-font-sec-bold'"
+                [control]="mettingInfoForm?.get('endDate')" [classNameControl]="'bw-font-sec-medium'" [inRow]="true"
+                [inRowLabelRows]="3" [inRowInputRows]="7"  [calendarType]="'classic'" [placeholder]="'DD/MM/YYYY'">
+            </bw-date>
+
+            <!-- <div class="row">
+                <div class="col-md-3">
+                    <label class="bw-font-sec-bold" for="">Start</label>
+                    <span class="text-danger">*</span>
+                </div>
+                <div class="col-md-3">
+                    <kendo-datepicker calendarType="classic" [format]="format" placeholder="DD/MM/YYYY"
+                        formControlName="startDate"></kendo-datepicker>
+
+                </div>
+                <div class="col-md-3" *ngIf="timePicker">
+                    <kendo-timepicker [(value)]="startDateTime" placeholder="HH:MM AM" formControlName="startTime">
+                    </kendo-timepicker>
+                </div>
+                <div *ngIf="submitted && f.startDate.errors" >
+                    <div *ngIf="f.startDate.errors.required">StartDate is required</div>
+                </div>
+            </div>
+            <div class="row mt-3 mb-4">
+                <div class="col-md-3">
+                    <label class="bw-font-sec-bold" for="">End</label>
+                    <span class="text-danger">*</span>
+
+                </div>
+                <div class="col-md-3">
+                    <kendo-datepicker [min]="minDate" calendarType="classic" [format]="format" placeholder="DD/MM/YYYY"
+                        formControlName="endDate"></kendo-datepicker>
+
+                </div>
+                <div class="col-md-3" *ngIf="timePicker">
+                    <kendo-timepicker [value]="endDateTime" formControlName="endTime">
+                    </kendo-timepicker>
+                </div>
+                <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
+                    <div *ngIf="f.endDate.errors.required">EndDate is required</div>
+                </div>
+            </div> -->
+            <bw-checkbox [checkBoxses]="allDayCheckBox" [inRow]="true" [inRowLabelRows]="3" [inRowInputRows]="7"
+                [classCheckboxLabel]="'row   m-0 align-items-center'" [control]="mettingInfoForm?.get('allDay')"
+                [classNameControl]="'bw-font-sec-medium  p-0 '" [label]="'All Day Event'"
+                [checkBoxTextClass]="'col-xl-11 col-lg-11 col-md-10 ml-10'" [spanrowClass]="'row col-1'"
+                (getselectedArray)="changeAllDayCheckbox($event)">
+
+            </bw-checkbox>
+
+
+            <bw-select [labelClass]="'bw-font-sec-bold '" [defaultItem]="timeZonePlaceholder"
+                [label]="'TimeZone'" [inRow]="true" [control]="mettingInfoForm?.get('timeZoneId')"
+                [data]="timezones" [inRowLabelRows]="3" [isKey]="true" [inRowInputRows]="7" [searchable]="false"
+                [selectName]="'displayName'" [selectValue]="'id'">
+            </bw-select>
+
+            <!-- <bw-radio [radios]="attendanceRadio" [name]="'workSpace'" [label]="'Attendance'" [inRow]="true"
+            [inRowLabelRows]="3" [inRowInputRows]="7" [classRadioLabel]="'col-md-4 col-lg-4 p-0'"
+            [control]="mettingInfoForm?.get('attendance')" [classNameControl]="'bw-font-sec-medium m-3'">
+        </bw-radio> -->
+
+            <bw-checkbox [checkBoxses]="attendanceCheckBox" [inRow]="true" [inRowLabelRows]="3" [inRowInputRows]="7"
+                [classCheckboxLabel]="'row col-md-6 col-lg-6 align-items-center  m-0'"
+                [control]="mettingInfoForm?.get('attendance')" [classNameControl]="'bw-font-sec-medium  p-0 '"
+                [label]="'Attendance'" [checkBoxTextClass]="'col-xl-6 col-lg-6 col-md-6 ml-10'"
+                [spanrowClass]="'row col-2'" (getselectedArray)="changeAttendaceCheckbox($event)">
+            </bw-checkbox>
+
+            <bw-input *ngIf="inPerson" [label]="'Location'" [labelClass]="'bw-font-sec-bold'"
+                [control]="mettingInfoForm?.get('location')" [placeholder]="'Enter Location'"
+                [classNameControl]="'bw-font-sec-medium'" [inRow]="true" [inRowLabelRows]="3" [inRowInputRows]="7">
+            </bw-input>
+
+            <bw-input *ngIf="inPerson" [label]="'Map Url'" [labelClass]="'bw-font-sec-bold'"
+                [control]="mettingInfoForm?.get('mapurl')" [placeholder]="'Enter Map Url'"
+                [classNameControl]="'bw-font-sec-medium'" [inRow]="true" [inRowLabelRows]="3" [inRowInputRows]="7">
+            </bw-input>
+
+
+            <bw-input *ngIf="onlineSelect" [label]="'Online Meeting Url'" [labelClass]="'bw-font-sec-bold'"
+                [control]="mettingInfoForm?.get('onlinemettingurl')" [placeholder]="'Enter Online Meeting Url'"
+                [classNameControl]="'bw-font-sec-medium'" [inRow]="true" [inRowLabelRows]="3" [inRowInputRows]="7">
+            </bw-input>
+
+            <bw-textarea [label]="'Notes'" [control]="mettingInfoForm?.get('notes')" [inRow]="true" [inRowLabelRows]="3"
+                [inRowInputRows]="7" [rows]="3" [placeholder]="'Enter Notes'" (focusout)="seterror('Notes')"
+                [className]="'bw-font-sec-medium'">
+            </bw-textarea>
+
+        </form>
+
+        <p *ngIf="isError" class="text-danger mb-1">
+            <ng-container *ngFor="let msg of errMessage">
+                {{ msg }}
+            </ng-container>
+        </p>
+
+    </div>

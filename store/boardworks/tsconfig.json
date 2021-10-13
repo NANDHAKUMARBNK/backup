@@ -1,0 +1,49 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "paths": {
+      "lib-bw-svc-apis": [
+        "dist/lib-bw-svc-apis/lib-bw-svc-apis",
+        "dist/lib-bw-svc-apis"
+      ],
+      "lib-bw-ui-comp-bus": [
+        "dist/lib-bw-ui-comp-bus/lib-bw-ui-comp-bus",
+        "dist/lib-bw-ui-comp-bus"
+      ],
+      "lib-bw-ui-comp-core": [
+        "dist/lib-bw-ui-comp-core/lib-bw-ui-comp-core",
+        "dist/lib-bw-ui-comp-core"
+      ],
+      "lib-bw-ui-theme": [
+        "dist/lib-bw-ui-theme/lib-bw-ui-theme",
+        "dist/lib-bw-ui-theme"
+      ]
+    },
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    // "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

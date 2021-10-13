@@ -1,0 +1,14 @@
+<div style="">
+    <span [class]="className" [attr.data-tooltip]="title">
+        <ng-container *ngIf="hoverText; else elseBlock">
+            {{ hoverText }}
+        </ng-container>
+        <ng-template #elseBlock>
+            <i [class]="iconClass"></i>
+        </ng-template>
+    </span>
+    <!-- <span class="tooltip-top" data-tooltip="I'm in top"><i class="mdi mdi-information icon"></i></span><br><br>
+        <span class="tooltip-bottom" data-tooltip="I'm in bottom">tooltip bottom</span><br><br>
+        <span class="tooltip-right" data-tooltip="I'm in right">tooltip right</span><br><br>
+        <span class="tooltip-left" data-tooltip="I'm in left">tooltip left</span> -->
+</div>

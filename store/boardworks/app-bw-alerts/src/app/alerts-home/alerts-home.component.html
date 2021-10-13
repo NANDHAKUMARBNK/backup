@@ -1,0 +1,63 @@
+<div class="row align-items-center m-3">
+  <div class="col-md-8 p-0">
+    <bw-bread-crumb
+      *ngIf="defaultItems.length > 0"
+      [defaultItems]="defaultItems"
+      (onClick)="navigateInto($event)"
+    ></bw-bread-crumb>
+  </div>
+  <div class="col-md-8 col-lg-7">
+    <bw-label
+      [width]="'10%'"
+      [className]="'bw-font-sec-bold label'"
+      [labelName]="'Alerts'"
+    >
+    </bw-label>
+  </div>
+  <div class="col-md-4 col-lg-5 text-end">
+    <bw-button
+      *ngIf="isShowAddTemplate"
+      className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+      buttonName="NEW ALERT TEMPLATE"
+      (onClick)="clickButton('template')"
+    >
+    </bw-button>
+    <bw-button
+      *ngIf="isShowAddAlert"
+      className="btn-base btn-containe bw-font-prm-medium secondary-btn-contained btn-sm me-md-4 px-4"
+      buttonName="NEW ALERT"
+      (onClick)="clickButton('alert')"
+    >
+    </bw-button>
+    <!-- <bw-combo-button [buttonProperties]="buttonProperties" [width]="'100%'" [buttonColClass]="'6'"
+            (onClick)="clickButton($event)">
+        </bw-combo-button> -->
+  </div>
+</div>
+
+<div class="m-3" *ngIf="isShowViewAlert">
+  <bw-tab [tabs]="tabsData" (tabChange)="tabChange($event)">
+    <div class="mt-2">
+      <div
+        class="offset-9 text-end"
+        *ngIf="isShowViewAlert && isShowArchiveAlerts"
+      >
+        <bw-toggle-switch
+          [checked]="archiveToggle"
+          (valueChange)="changeArchived($event)"
+          [disabled]="tab == 'TEMPLATES' ? true : false"
+        ></bw-toggle-switch>
+        <!--   [disabled]="isShowArchiveAlerts ? false : true"   -->
+        <span class="m-3">{{ toggleLabel }}</span>
+      </div>
+      <app-published-list
+        *ngIf="tab == 'PUBLISHED' && isShowViewAlert"
+      ></app-published-list>
+      <app-unpublished-list
+        *ngIf="tab == 'UNPUBLISHED' && isShowViewAlert"
+      ></app-unpublished-list>
+      <app-templates-list *ngIf="tab == 'TEMPLATES' && isShowViewAlert">
+      </app-templates-list>
+    </div>
+  </bw-tab>
+</div>

@@ -1,0 +1,44 @@
+<div class="dropdown">
+  <div class="attendanceStatus">
+    <bw-text
+      [className]="'secondary-fre-clr-bse bw-font-sec-bold'"
+      [textName]="field"
+      [isEnableClick]="true"
+      (onClick)="handleClick()"
+    >
+    </bw-text>
+    <i *ngIf="!isShowModal" class="mdi mdi-menu-down arrow"></i>
+    <i *ngIf="isShowModal" class="mdi mdi-menu-up arrow"></i>
+  </div>
+  <div class="row dropdown-menu" *ngIf="isShowModal">
+    <div class="col-md-12">
+      <bw-radio
+        [radios]="radios"
+        [inRow]="true"
+        [inRowInputRows]="12"
+        [classRadioLabel]="'col-md-12 col-lg-12 radioCustom'"
+        [control]="radioForm.get('radioId')"
+        [classNameControl]="'bw-font-sec-medium m-3'"
+        (getselectedArray)="changeRadios($event)"
+      ></bw-radio>
+    </div>
+    <div class="col-md-6">
+      <bw-button
+        [className]="
+          'btn-base  secondary-btn-text border-secondary bw-font-prm-medium btn-sm  me-md-4 px-4'
+        "
+        [buttonName]="'CANCEL'"
+        (onClick)="edit($event, 'cancel')"
+      ></bw-button>
+    </div>
+    <div class="col-md-6">
+      <bw-button
+        [className]="
+          'btn-base btn-containe bw-font-prm-medium secondary-btn-contained btn-sm me-md-4 px-4'
+        "
+        [buttonName]="'SAVE'"
+        (onClick)="edit($event, 'save')"
+      ></bw-button>
+    </div>
+  </div>
+</div>

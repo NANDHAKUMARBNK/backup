@@ -1,0 +1,25 @@
+.blockInfo p{
+    text-transform: capitalize;
+}
+.blockInfo p a{
+    font-size: 18px;
+    text-transform: capitalize;
+
+}
+
+.yellowButton{
+    height: 60px;
+    width: 60px;
+    background: linear-gradient(225deg, #FFE221 0%, #FFFB00 100%);
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+    border-radius: 50%;
+    position: absolute;
+    margin-top: -70px;
+    right: 4%;
+    cursor: pointer;
+}
+.fa-angle-up{
+    margin-top: 8px;
+    font-size: 32px;
+    margin-left: 20px;
+}

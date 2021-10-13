@@ -1,0 +1,437 @@
+<div>
+  <svg class="maptn" width="500" height="650"></svg>
+  <div id="tooltip">
+    <div style="font-size: 22px;">
+      <b><span id="name" class="info"></span></b>
+    </div>
+    <div>
+      <div style="font-size: 17px;">Stock</div>
+      <div style="font-size: 13px;">
+        <i class="fa fa-square" id="colorbox1"></i> Issued :
+        <span id="stockissued" class="info"></span>
+      </div>
+      <div style="font-size: 13px;">
+        <i class="fa fa-square" id="colorbox2"></i> Required :
+        <span id="totalrequired" class="info"></span>
+      </div>
+    </div>
+    <div>
+      <div style="font-size: 17px;">People</div>
+      <div style="font-size: 13px;">
+        <i class="fa fa-square" id="colorbox3"></i> Enrolled :
+        <span id="patient" class="info"></span>
+      </div>
+      <div style="font-size: 13px;">
+        <i class="fa fa-square" id="colorbox4"></i> Population :
+        <span id="population" class="info"></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="titleLegend" style="margin-left: 10px;"></div>
+<div id="legend"></div>
+<div *ngIf="loaderMap" class="loader-backdrop">
+  <img src="../../../assets/images/loader.gif" alt="loader.gif" />
+</div>
+<div class="refreshContainer" *ngIf="refreshApi">
+  <button class="btn btn-primary" (click)="EnrolledPatientDetails()">
+    Refresh
+  </button>
+</div>
+<div class="servicesBlock ml-4 mb-3 serviceRelative">
+  <button
+    style="width: 100%;"
+    class="services yellowGrad"
+    type="button"
+    data-toggle="modal"
+    data-target=".bd-example-modal-lg"
+  >
+    Click here for more details
+  </button>
+</div>
+
+<!-- Modal Starts -->
+<div
+  class="modal fade bd-example-modal-lg popupMore"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myLargeModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="dialogTable">
+        <div class="tableRight">
+          <table class="viralOutbreaksTable mb20">
+            <thead>
+              <tr>
+                <th>Actual Tracking</th>
+                <th class="firstHeaderBlue">Demand</th>
+                <th class="firstHeaderBlue">Supply</th>
+                <th class="firstHeaderBlue">Supply</th>
+
+                <th class="firstHeaderBlue">Duration</th>
+                <th class="firstHeaderBlue">Frequency</th>
+                <th class="firstHeaderBlue">Doctors</th>
+              </tr>
+              <tr>
+                <th>Cure-Plan</th>
+                <th class="subHeaderPurple">Population</th>
+                <th class="subHeaderPurple">in units</th>
+                <th class="subHeaderPurple">in Kg</th>
+
+                <th class="subHeaderPurple"># of Days</th>
+                <th class="subHeaderPurple"># of Times</th>
+                <th class="subHeaderPurple">Dr.'s Workforce</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr class="planRowYellow">
+                <td>Stage 3</td>
+                <td>1,000</td>
+                <td>1,000</td>
+                <td>50</td>
+
+                <td>28</td>
+                <td>2</td>
+                <td>40</td>
+              </tr>
+              <tr>
+                <td class="actualsRow">Actuals</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr class="planRowYellow">
+                <td>Stage 2</td>
+                <td>10,000</td>
+                <td>10,000</td>
+                <td>500</td>
+
+                <td>21</td>
+                <td>2</td>
+                <td>400</td>
+              </tr>
+              <tr>
+                <td class="actualsRow">Actuals</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr class="planRowYellow">
+                <td>Stage 1</td>
+                <td>100,000</td>
+                <td>100,000</td>
+                <td>5,000</td>
+
+                <td>14</td>
+                <td>2</td>
+                <td>4,000</td>
+              </tr>
+              <tr>
+                <td class="actualsRow">Actuals</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr class="planRowYellow">
+                <td>Preventive</td>
+                <td>50,000,000</td>
+                <td>150,000,000</td>
+                <td>7,500,000</td>
+
+                <td>21</td>
+                <td>2</td>
+                <td>2,000,000</td>
+              </tr>
+              <tr>
+                <td class="actualsRow">Actuals</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <table class="viralOutbreaksTable">
+          <thead>
+            <tr>
+              <th>Deciders</th>
+              <th class="colRed">IAS Officers</th>
+              <th class="colOrange">IMPCOPS</th>
+              <th class="colOrange">TAMPCOL</th>
+              <th colspan="2" class="colRed">CCRS/NIS</th>
+              <th class="colRed">IAS Officer</th>
+            </tr>
+            <tr>
+              <th></th>
+              <th class="headerBlue">Demand</th>
+              <th class="headerBlue">Supply (units)</th>
+              <th class="headerBlue">Supply (kg)</th>
+              <th class="headerBlue">Duration</th>
+              <th class="headerBlue">Frequency</th>
+              <th class="headerBlue">Doctors</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td></td>
+              <td class="colGreen">1</td>
+              <td class="colGreen">1</td>
+              <td>0.05</td>
+              <td>7</td>
+              <td>2</td>
+              <td>0.04</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>20</td>
+              <td>20</td>
+              <td class="colGreen">1</td>
+              <td>7</td>
+              <td>2</td>
+              <td>0.8</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>25</td>
+              <td>25</td>
+              <td>1.25</td>
+              <td>7</td>
+              <td>2</td>
+              <td class="colGreen">1</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>25000</td>
+              <td>25000</td>
+              <td>1250000</td>
+              <td>7</td>
+              <td>2</td>
+              <td>1,000</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>250000</td>
+              <td>250000</td>
+              <td>12500000</td>
+              <td>7</td>
+              <td>2</td>
+              <td>10,000</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="colYellowPale">2,500,000</td>
+              <td>2,500,000</td>
+              <td>125,000,000</td>
+              <td>7</td>
+              <td>2</td>
+              <td class="colYellowPale">100,000</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="colOrange">25,000,000</td>
+              <td class="colYellowPale">25,000,000</td>
+              <td>1,250,000,000</td>
+              <td>7</td>
+              <td>2</td>
+              <td class="colOrange">1,000,000</td>
+            </tr>
+            <tr>
+              <td>Preventive Week1</td>
+              <td class="colRed">50,000,000</td>
+              <td class="colOrange">50,000,000</td>
+              <td class="colYellowPale">2,500,000,000</td>
+              <td>7</td>
+              <td>2</td>
+              <td class="colRed">2,000,000</td>
+            </tr>
+            <tr>
+              <td>Preventive Week2</td>
+              <td class="colRed">50,000,000</td>
+              <td class="colOrange">50,000,000</td>
+              <td class="colYellowPale">2,500,000,000</td>
+              <td>7</td>
+              <td>2</td>
+              <td class="colRed">2,000,000</td>
+            </tr>
+            <tr>
+              <td>Preventive Week3</td>
+              <td class="colRed">50,000,000</td>
+              <td class="colOrange">50,000,000</td>
+              <td class="colYellowPale">2,500,000,000</td>
+              <td>7</td>
+              <td>2</td>
+              <td class="colRed">2,000,000</td>
+            </tr>
+            <!--  -->
+            <tr>
+              <td>CureStage 1</td>
+              <td>100,000</td>
+              <td>100,000</td>
+              <td>5,000,000</td>
+              <td class="colYellowPale">14</td>
+              <td>2</td>
+              <td class="colRed">4,000</td>
+            </tr>
+            <tr>
+              <td>CureStage 2</td>
+              <td>10,000</td>
+              <td>10,000</td>
+              <td>500,000</td>
+              <td class="colOrange">21</td>
+              <td>2</td>
+              <td>400</td>
+            </tr>
+            <tr>
+              <td>CureStage 3</td>
+              <td>1,000</td>
+              <td>1,000</td>
+              <td>50,000</td>
+              <td class="colRed">28</td>
+              <td>7</td>
+              <td>40</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row">
+          <div class="col-md-8">
+            <h6><strong>Notes :</strong></h6>
+            <ol>
+              <li>
+                Request all volunteer siddha doctors to register in the mobile
+                app. SiddhaforCovid19
+              </li>
+              <li>
+                Results to be updated by the individual users twice a day by his
+                mobile App
+              </li>
+              <li>
+                Raw Material Procurement ownership - TamilNadu Government
+              </li>
+              <li>1 Unit = 50 gms of medicine, 1 tonne = 20,000 units</li>
+              <li>
+                Mfg. Capacity (3 shifts per day) in units - IMPCOPS (45000),
+                Tampcol (15000), 345 Licensed Private Vendors (2.5 Crore units)
+              </li>
+              <li>
+                Medicine(Kabasura kudineer) manufacuring/100% quality testing is
+                max 48 hours
+              </li>
+              <li>
+                distribution with 2500 TN vehicles of Tamil Nadu State Health
+                Transport Department in this 144 rule scenario without traffic
+                is max 2 horus to all PHCs
+              </li>
+              <li>
+                Largest capacity by IMPCOPS & TAMPCOL is in Chennai to cater the
+                huge population. Logistic issue for max population is solved
+                already
+              </li>
+              <li>
+                345 Private Siddha medicine License holders are speard across in
+                TN so Supply chain management to all the 33 districts becomes
+                easy
+              </li>
+              <li>
+                TN CM sir/Health Minister/Other Ministers/MP/MLA can come in TV
+                and wish all people good health and emphasis the timely intake
+                of Kabasura kudineer in morning and evening
+              </li>
+              <li>
+                Individual users with the care of their elected representatives
+                compulsary drink the medicines
+              </li>
+              <li>
+                After drinking the medince thanks our TN CM sir/Health
+                Minister/Other Ministers/MP/MLA pressing Taken my medine for
+                today time stamp
+              </li>
+              <li>
+                Public can check the statistics at www.siddhaforcovid19.in
+              </li>
+              <li>
+                Give respect and priority for Above 60 age to avail the medicine
+                first >> followed by 40 - 60 >> follwed by 20 - 40 and last 0-20
+              </li>
+              <li>Take the Functional food listed regularly</li>
+              <li>
+                Siddha's priciple is "Food is medicine and Medicine is Food" and
+                Siddhars will take care of us. Jai Hind !!!
+              </li>
+            </ol>
+          </div>
+          <div class="col-md-4">
+            <div class="row justify-content-center">
+              <div class="greenInfo">
+                <p>
+                  UOM Conversion
+                </p>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="yellowInfo">
+                <p>
+                  Work/Rest balance
+                </p>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="orangeInfo">
+                <p>
+                  No Rest/ Need other govt staffs
+                </p>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="redInfo">
+                <p>
+                  Capacity Constraint
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-secondary .btnColor align-center"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Ends -->

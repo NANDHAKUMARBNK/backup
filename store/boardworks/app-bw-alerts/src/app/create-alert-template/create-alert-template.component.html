@@ -1,0 +1,285 @@
+<form class="mt-3" [formGroup]="templateDataForm">
+  <div class="row align-items-center">
+    <div class="col-md-8">
+      <bw-bread-crumb
+        [defaultItems]="defaultNavs"
+        (onClick)="navigateInto($event)"
+      ></bw-bread-crumb>
+    </div>
+    <div class="col-md-4 text-end">
+      <bw-button
+        className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+        buttonName="CANCEL"
+        (onClick)="clickButton('Cancel')"
+      >
+      </bw-button>
+      <bw-button
+        *ngIf="templateMode == 'delete'"
+        className="btn-base btn-containe bw-font-prm-medium secondary-btn-contained btn-sm me-md-4 px-4"
+        buttonName="DELETE"
+        (onClick)="clickButton('Delete')"
+      >
+      </bw-button>
+      <bw-button
+        *ngIf="templateMode !== 'delete' && templateMode !== 'view'"
+        className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+        buttonName="SAVE"
+        (onClick)="
+          clickButton(
+            templateMode == 'edit' || templateMode == 'use' ? 'Update' : 'Save'
+          )
+        "
+      >
+      </bw-button>
+      <bw-button
+        *ngIf="templateMode == 'view'"
+        className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+        buttonName="EDIT"
+        (onClick)="clickButton('Edit')"
+      >
+      </bw-button>
+      <bw-button
+        *ngIf="templateMode == 'use'"
+        className="btn-base btn-containe bw-font-prm-medium secondary-btn-contained btn-sm me-md-4 px-4"
+        buttonName="PUBLISH"
+        (onClick)="clickButton('Publish')"
+      >
+      </bw-button>
+      <!-- <bw-combo-button [buttonProperties]="buttonProperties" [width]="'100%'" (onClick)="clickButton($event)">
+            </bw-combo-button> -->
+    </div>
+  </div>
+  <div class="mt-4">
+    <bw-label
+      [width]="'10%'"
+      [className]="'primary-fre-clr-bse bw-font-sec-bold m-3'"
+      [labelName]="'Alert Template'"
+    >
+    </bw-label>
+  </div>
+
+  <div class="row m-3 mt-4">
+    <div class="form-group col-8 border p-3">
+      <div class="m-1">
+        <div class="label-margin">
+          <bw-label
+            [width]="'10%'"
+            [className]="'primary-fre-clr-bse'"
+            [labelName]="'Alert Details'"
+          >
+          </bw-label>
+        </div>
+        <div *ngIf="!viewScreen">
+          <bw-input
+            [label]="'Alert Title'"
+            [labelClass]="'bw-font-prm-medium fs-6'"
+            [control]="templateDataForm.get('title')"
+            [placeholder]="'Enter Alert Title'"
+            (focusout)="seterror('title')"
+            [classNameControl]="'bw-font-sec-medium'"
+            [inRow]="true"
+            [inRowLabelRows]="3"
+            [inRowInputRows]="7"
+          >
+          </bw-input>
+          <bw-textarea
+            [label]="'Alert Description'"
+            [labelClass]="'bw-font-prm-medium fs-6'"
+            [control]="templateDataForm.get('description')"
+            [inRow]="true"
+            [inRowLabelRows]="3"
+            [inRowInputRows]="7"
+            [rows]="3"
+            [placeholder]="'Enter Alert Description'"
+            (focusout)="seterror('bio')"
+            [className]="'bw-font-prm-medium fs-6 fw-500'"
+          >
+          </bw-textarea>
+          <bw-input
+            [label]="'Email Subject'"
+            [labelClass]="'bw-font-prm-medium fs-6'"
+            [control]="templateDataForm.get('emailSubject')"
+            [placeholder]="'Enter Email Subject'"
+            (focusout)="seterror('appointment')"
+            [classNameControl]="'bw-font-sec-medium'"
+            [inRow]="true"
+            [inRowLabelRows]="3"
+            [inRowInputRows]="7"
+          >
+          </bw-input>
+          <bw-textarea
+            [label]="'Email Body'"
+            [labelClass]="'bw-font-prm-medium fs-6'"
+            [control]="templateDataForm.get('emailBody')"
+            [inRow]="true"
+            [inRowLabelRows]="3"
+            [inRowInputRows]="7"
+            [rows]="3"
+            [placeholder]="'Enter Email Body'"
+            (focusout)="seterror('bio')"
+            [className]="'bw-font-prm-medium fs-6 fw-500'"
+          >
+          </bw-textarea>
+          <div
+            *ngIf="
+              templateMode == 'edit' &&
+              templateDataForm?.value?.alertDocuments?.length > 0
+            "
+          >
+            <bw-horizontal-label
+              [labelClassName]="'bw-font-prm-medium fs-6'"
+              [labelName]="'Document'"
+              [textClassName]="'bw-font-sec-medium'"
+              [textName]="templateDataForm?.value?.alertDocuments[0]?.fileName"
+              [isHorizontal]="true"
+              [isVertical]="false"
+              [colClass]="3"
+              [textClass]="9"
+              [isTextLink]="true"
+            >
+            </bw-horizontal-label>
+          </div>
+        </div>
+        <div *ngIf="viewScreen">
+          <bw-horizontal-label
+            [labelClassName]="'bw-font-prm-medium fs-6'"
+            [labelName]="'Alert Title'"
+            [textClassName]="'bw-font-sec-medium'"
+            [textName]="templateDataForm.get('title')?.value"
+            [isHorizontal]="true"
+            [isVertical]="false"
+            [colClass]="4"
+            [textClass]="8"
+          >
+          </bw-horizontal-label>
+          <bw-horizontal-label
+            [labelClassName]="'bw-font-prm-medium fs-6'"
+            [labelName]="'Alert Description'"
+            [textClassName]="'bw-font-sec-medium ellipse'"
+            [textName]="templateDataForm.get('description')?.value"
+            [isHorizontal]="true"
+            [isVertical]="false"
+            [colClass]="4"
+            [textClass]="8"
+            [isEllipse]="true"
+            [ellipseText]="descriptionEllipse"
+          >
+          </bw-horizontal-label>
+          <bw-horizontal-label
+            [labelClassName]="'bw-font-prm-medium fs-6'"
+            [labelName]="'Email Subject'"
+            [textClassName]="'bw-font-sec-medium'"
+            [textName]="templateDataForm.get('emailSubject')?.value"
+            [isHorizontal]="true"
+            [isVertical]="false"
+            [colClass]="4"
+            [textClass]="8"
+          >
+          </bw-horizontal-label>
+          <bw-horizontal-label
+            [labelClassName]="'bw-font-prm-medium fs-6'"
+            [labelName]="'Email Body'"
+            [textClassName]="'bw-font-sec-medium'"
+            [textName]="templateDataForm.get('emailBody')?.value"
+            [isHorizontal]="true"
+            [isVertical]="false"
+            [colClass]="4"
+            [textClass]="8"
+          >
+          </bw-horizontal-label>
+          <div
+            *ngIf="
+              templateMode == 'edit' &&
+              templateDataForm?.value?.alertDocuments?.length > 0
+            "
+          >
+            <bw-horizontal-label
+              [labelClassName]="'bw-font-prm-medium fs-6'"
+              [labelName]="'Document'"
+              [textClassName]="'bw-font-sec-medium'"
+              [textName]="templateDataForm?.value?.alertDocuments[0]?.fileName"
+              [isHorizontal]="true"
+              [isVertical]="false"
+              [colClass]="3"
+              [textClass]="9"
+              [isTextLink]="true"
+            >
+            </bw-horizontal-label>
+          </div>
+        </div>
+        <div class="row" *ngIf="templateMode == 'use'">
+          <div class="col-md-9">
+            <span>
+              <div
+                class="k-notification-info"
+                *ngFor="let item of documents; let i = index"
+                style="margin: 5px"
+              >
+                <div class="alert row align-items-center">
+                  <div class="col-9 names">
+                    {{ item.fileName }}
+                  </div>
+                  <div class="col-3 text-end">
+                    <i
+                      (click)="deleteIcon(i, item)"
+                      aria-hidden="true"
+                      class="cursor-pointer mdi mdi-delete icon"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+            </span>
+          </div>
+          <div class="col-md-9">
+            <span *ngIf="noTitle" class="text-danger mb-1"
+              >You must provide a title for the item.</span
+            >
+          </div>
+          <div class="col-md-3 text-end">
+            <bw-button
+              className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+              buttonName="ADD DOCUMENT"
+              (onClick)="addDocument($event)"
+            ></bw-button>
+          </div>
+        </div>
+        <bw-divider></bw-divider>
+        <div class="label-margin">
+          <bw-label
+            [width]="'10%'"
+            [className]="'primary-fre-clr-bse'"
+            [labelName]="'Recipients'"
+          >
+          </bw-label>
+        </div>
+        <bw-grid
+          [isEnableSelectAll]="false"
+          [isShowCheckbox]="false"
+          [onCellClicked]="onCellClicked"
+          [columnOptions]="columnOptions"
+          [columnsData]="columnsData"
+          [gridData]="gridData"
+          [isEnableButton]="true"
+          (onClickActionAccordion)="insideAccordion($event)"
+          (accrodianClick)="accrodianClick($event)"
+          [accesControlFlagForAlerts]="true"
+          (writeAccessClick)="writeAccessClick($event)"
+          (writeChildAccessClick)="writeChildAccessClick($event)"
+        >
+        </bw-grid>
+      </div>
+    </div>
+  </div>
+</form>
+<div *ngIf="showAddDocument">
+  <bw-alert-add-document-modal
+    [headerTitle]="'Add Document'"
+    [isEnableHeader]="true"
+    [isEnableBody]="true"
+    [isEnableFooter]="true"
+    [bodyMessage]="documents && documents"
+    (onConfirmClick)="linksModalAction($event)"
+    (onCancelClick)="linksModalAction($event)"
+  >
+  </bw-alert-add-document-modal>
+</div>

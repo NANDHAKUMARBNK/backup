@@ -1,0 +1,75 @@
+<div class="form-group {{class}}" [style.width]="width" *ngIf="!inRow">
+  <label *ngIf="label" for="" class="">
+    <bw-label [labelName]="label" [className]="labelClass"></bw-label>
+    <span class="text-danger" *ngIf="validator(control)">*</span>
+    <bw-tooltip *ngIf="toolTip" [title]="toolTip" [iconClass]="toolTipClass"></bw-tooltip>
+  </label>
+  <ng-container>
+    <div class="input-group m-input-group {{inputClass}}" *ngIf="!multiple" (click)="onClickAction()">
+
+      <kendo-dropdownlist *ngIf="isKey" [formControl]="control" [data]="filterdDetails" [defaultItem]="defaultItem"
+        [textField]="selectName || 'value'" [valueField]="selectValue || 'id'" [valuePrimitive]="true"
+        (valueChange)="selectChange(control.value)" [filterable]="searchable" (filterChange)="filterChange($event)">
+      </kendo-dropdownlist>
+      <kendo-dropdownlist *ngIf="!isKey" [formControl]="control" [data]="filterdDetails" [valuePrimitive]="true"
+        (valueChange)="selectChange(control.value)" [filterable]="searchable" (filterChange)="filterChange($event)">
+      </kendo-dropdownlist>
+    </div>
+    <div class="input-group m-input-group m-dropdown {{inputClass}}" *ngIf="multiple" (click)="onClickAction()">
+      <kendo-multiselecttree (close)="onClose($event)" *ngIf="isKey" kendoMultiSelectTreeExpandable 
+        [kendoMultiSelectTreeHierarchyBinding]="filterdDetails" [placeholder]="multiSelectPlaceholder"
+        [formControl]="control" [value]="valueKey" [valuePrimitive]="true" (valueChange)="selectChange(control.value)"
+        (filterChange)="filterChange($event)" [textField]="selectName || 'value'" [valueField]="selectValue || 'id'"
+        [childrenField]="'items'" [kendoMultiSelectTreeSummaryTag]="1" [clearButton]="true">
+      </kendo-multiselecttree>
+      <kendo-multiselecttree (close)="onClose($event)" *ngIf="!isKey" kendoMultiSelectTreeExpandable
+        [kendoMultiSelectTreeHierarchyBinding]="filterdDetails" [placeholder]="multiSelectPlaceholder"
+        [formControl]="control" [valuePrimitive]="true" (valueChange)="selectChange(control.value)"
+        (filterChange)="filterChange($event)" [childrenField]="'items'">
+      </kendo-multiselecttree>
+    </div>
+  </ng-container>
+  <bw-control-error-message [control]="control"
+    [fieldName]="errorMessageName ? errorMessageName : label || optionalLabel">
+  </bw-control-error-message>
+</div>
+
+<div class="form-group row {{ class }}" *ngIf="inRow">
+  <label *ngIf="label" for="" class="col-xl-{{ inRowLabelRows }} col-lg-{{inRowLabelRows}}">
+    <bw-label [labelName]="label" [className]="labelClass"></bw-label>
+    <span class="text-danger" *ngIf="validator(control)">*</span>
+    <bw-tooltip *ngIf="toolTip" [title]="toolTip" [iconClass]="toolTipClass"></bw-tooltip>
+  </label>
+  <div class="col-xl-{{ inRowInputRows }} col-lg-{{ inRowInputRows }}">
+    <div class="input-group m-input-group {{inputClass}}" (click)="onClickAction()" *ngIf="!multiple">
+      <kendo-dropdownlist *ngIf="isKey" [formControl]="control" [data]="filterdDetails" [defaultItem]="defaultItem"
+        [textField]="selectName || 'value'" [valueField]="selectValue || 'id'" [valuePrimitive]="true"
+        (valueChange)="selectChange(control.value)" [filterable]="searchable" (filterChange)="filterChange($event)">
+      </kendo-dropdownlist>
+      <kendo-dropdownlist *ngIf="!isKey" [formControl]="control" [data]="filterdDetails" [valuePrimitive]="true"
+        (valueChange)="selectChange(control.value)" [filterable]="searchable" (filterChange)="filterChange($event)">
+      </kendo-dropdownlist>
+    </div>
+    <div class="input-group m-input-group m-dropdown-gray {{inputClass}}" (click)="onClickAction()" *ngIf="multiple">
+      <kendo-multiselecttree (close)="onClose($event)" *ngIf="isKey" kendoMultiSelectTreeExpandable
+        [kendoMultiSelectTreeHierarchyBinding]="filterdDetails" [formControl]="control" [value]="valueKey" [dataItems]="dataItems"
+        [placeholder]="multiSelectPlaceholder" [valuePrimitive]="true" (valueChange)="selectChange(control.value)"
+        (filterChange)="filterChange($event)" [textField]="selectName || 'value'" [valueField]="selectValue || 'id'"
+        [childrenField]="'items'">
+      </kendo-multiselecttree>
+      <kendo-multiselecttree (close)="onClose($event)" *ngIf="!isKey" kendoMultiSelectTreeExpandable [dataItems]="dataItems"
+        [kendoMultiSelectTreeHierarchyBinding]="filterdDetails" [formControl]="control" [value]="valueKey" [valuePrimitive]="true"
+        [placeholder]="multiSelectPlaceholder" (valueChange)="selectChange(control.value)"
+        (filterChange)="filterChange($event)" [childrenField]="'items'">
+      </kendo-multiselecttree>
+    </div>
+    <bw-control-error-message [control]="control"
+      [fieldName]="errorMessageName ? errorMessageName : label || optionalLabel">
+    </bw-control-error-message>
+  </div>
+</div>
+
+<!-- usage -->
+<!-- <bw-select [label]="'Choose District'" [control]="formgroup.controls.controlname"
+  [isKey ? selectValue : '']="'id'" [isKey ? selectName : '']="'name'" [data]="data" (change)="onchangeEvent($event)"
+   [errorNamr]="'District'"></bw-select> -->

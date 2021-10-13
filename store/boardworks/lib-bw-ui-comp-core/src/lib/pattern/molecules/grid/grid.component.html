@@ -1,0 +1,820 @@
+<!-- <kendo-grid
+  [kendoGridBinding]="gridData"
+  kendoGridSelectBy="id"
+  [selectedKeys]="onCellClicked"
+  [height]="200"
+  [columnMenu]="columnOptions ? columnOptions : false"
+  [sortable]="true"
+  [reorderable]="true"
+  [resizable]="true"
+  class="bw-grid"
+>
+  <kendo-grid-checkbox-column
+    *ngIf="isShowCheckbox"
+    [width]="45"
+    [headerClass]="{ 'text-center': true }"
+    [class]="{ 'text-center': true }"
+    [resizable]="false"
+    [columnMenu]="false"
+    [showSelectAll]="isEnableSelectAll"
+  ></kendo-grid-checkbox-column>
+  <kendo-grid-column
+    *ngFor="let column of columnsData"
+    [field]="column.field"
+    [title]="column.title"
+    [filter]="column.filterType"
+    [columnMenu]="column.isEnableColumnOptions"
+    [style]="isCommitteeGrid ? isCommitteeGridStyle : {}"
+  >
+    <ng-template
+      *ngIf="column.title === 'Actions'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-split-button
+        [actions]="actions"
+        [className]="'btn-base secondary-btn-text btn-lg'"
+        [buttonName]="'Actions'"
+        (onClickAction)="clickSplitButton($event)"
+      ></bw-split-button>
+    </ng-template>
+    <ng-template
+      *ngIf="column.title === 'MY COMMITTEE'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-link
+        [linkText]="dataItem.committee_name"
+        (onClickLink)="onClick(dataItem.committee_name)"
+      ></bw-link>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid> -->
+<kendo-grid
+  #grid="kendoGrid"
+  [data]="isEnablePagination ? gridView : gridData"
+  [pageSize]="isEnablePagination ? pageSize : null"
+  [skip]="isEnablePagination ? skip : null"
+  [pageable]="isEnablePagination ? pagable : false"
+  (pageChange)="isEnablePagination && pageChange($event)"
+  kendoGridSelectBy="id"
+  [selectedKeys]="onCellClicked"
+  [columnMenu]="columnOptions ? columnOptions : false"
+  [resizable]="true"
+  class="bw-grid"
+  kendoGridSelectBy="{{ SelectedId }}"
+  [selectable]="true"
+  [style.height.%]="autoHeight || (isCommitteeGrid && 100)"
+  [style.maxHeight.px]="!autoHeight && 540"
+  [scrollable]="'scrollable'"
+  (selectionChange)="selectionChange($event)"
+  [sortable]="{
+    allowUnsort: allowUnsort,
+    mode: multiple ? 'multiple' : 'single'
+  }"
+  [sort]="sort"
+  (sortChange)="sortChange($event)"
+  (dataStateChange)="dataStateChange($event)"
+>
+  <kendo-grid-checkbox-column
+    *ngIf="isShowCheckbox"
+    [width]="45"
+    [headerClass]="{ 'text-center': true }"
+    [class]="{ 'text-center': true }"
+    [resizable]="false"
+    [columnMenu]="false"
+    [showSelectAll]="isEnableSelectAll"
+  >
+  </kendo-grid-checkbox-column>
+  <kendo-grid-column
+    *ngFor="let column of columnsData; let i = index"
+    [field]="column.field"
+    [title]="column.title"
+    [width]="column.width"
+    [filter]="column.filterType"
+    [columnMenu]="column.isEnableColumnOptions"
+    [style]="isCommitteeGrid ? isCommitteeGridStyle : {}"
+  >
+    <ng-template
+      *ngIf="column.component === 'highlightedText'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-label
+        *ngIf="dataItem.title == 'Administrator'"
+        [labelName]="dataItem.title"
+        [className]="'link-fre-clr-lgt'"
+      >
+      </bw-label>
+      <bw-label
+        *ngIf="dataItem.title !== 'Administrator'"
+        [labelName]="dataItem.title"
+      >
+      </bw-label>
+    </ng-template>
+    <!-- attendanceReportsStatus -->
+    <ng-template
+      *ngIf="column.component === 'attendanceReportsStatus'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-text-combobox-radio
+        [field]="dataItem.status"
+        [formControlValue]="dataItem.attendanceType"
+        [radios]="statusCombo"
+        (getselectedArray)="handleChangeRadios($event)"
+        (onClick)="handleUpdateStatus($event)"
+        [cellData]="dataItem"
+      ></bw-text-combobox-radio>
+    </ng-template>
+    <!-- attendanceReportsComments -->
+    <ng-template
+      *ngIf="column.component === 'attendanceReportsComments'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-icon-popup
+        *ngIf="dataItem.comment"
+        [iconClass]="'mdi mdi-note-outline icon icon-lg'"
+        (onClick)="onClickHandler(dataItem, dataItem.comment)"
+        [className]="column.linkClassName"
+      >
+        <ng-content></ng-content>
+        <bw-text [textName]="dataItem.comment"> </bw-text>
+      </bw-icon-popup>
+      <!-- <bw-tooltip
+        [iconClass]="'mdi mdi-note-outline'"
+        [title]="dataItem.comment"
+      ></bw-tooltip> -->
+    </ng-template>
+
+    <ng-template
+      *ngIf="column.field === 'status'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <div class="position-relative">
+        <bw-text [textName]="dataItem.status"> </bw-text>
+        <span [ngClass]="getStatusClass(dataItem.status)"></span>
+      </div>
+    </ng-template>
+    <ng-template
+      *ngIf="column.component === 'isArchiveAlert'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <div class="position-relative">
+        <span
+          *ngIf="dataItem.isArchive"
+          [ngClass]="getArchiveClass(dataItem.isArchive)"
+        ></span>
+      </div>
+    </ng-template>
+    <!--  -->
+    <ng-template
+      *ngIf="column.component === 'action'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-split-button
+        *ngIf="dataItem.actions || actions"
+        [actions]="dataItem.actions || actions"
+        [className]="'btn-base secondary-btn-text bw-font-prm-medium pl-0 bw-font-sec-bold'"
+        [buttonName]="column?.buttonName || 'Actions'"
+        (onClickAction)="clickSplitButton($event, dataItem)"
+      >
+      </bw-split-button>
+    </ng-template>
+    <ng-template
+      *ngIf="column.component === 'link'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-link
+        [linkText]="dataItem.linkTextName"
+        (onClickLink)="onClickHandler(dataItem, column.component)"
+        [isEnableIcons]="isEnableIcons"
+        [className]="column.linkClassName || dataItem.linkClassName"
+      >
+      </bw-link>
+    </ng-template>
+    <ng-template
+      *ngIf="column.component === 'deletelink'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-link
+        [linkText]="dataItem.deleteTextName"
+        (onClickLink)="onClickHandler(dataItem, column.component)"
+        [isEnableIcons]="isEnableIcons"
+        [className]="column.linkClassName"
+      >
+      </bw-link>
+    </ng-template>
+
+    <ng-template
+      *ngIf="column.component === 'linkMeetingDoc'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-link
+        [linkText]="dataItem.document.linkTextName"
+        (onClickLink)="onClickHandler(dataItem, column.component)"
+        [isEnableIcons]="isEnableIcons"
+        [className]="column.linkClassName"
+      >
+      </bw-link>
+    </ng-template>
+
+    <ng-template
+      *ngIf="column.component === 'TwolinkTextName'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-link
+        *ngIf="dataItem.linkText"
+        [linkText]="dataItem.TwolinkTextName"
+        (onClickLink)="onClickHandler(dataItem, column.component)"
+        [isEnableIcons]="isEnableIcons"
+        [className]="column.linkClassName"
+      >
+      </bw-link>
+      <p *ngIf="!dataItem.linkText">
+        {{ dataItem.TwolinkTextName }}
+      </p>
+      <!-- <div style="float: right">
+        <i
+          *ngIf="dataItem.archiveTag"
+          [class]="'icon-color mdi mdi-star-three-points'"
+        ></i>
+      </div> -->
+    </ng-template>
+    <!-- IP Reference -->
+    <ng-template
+      *ngIf="column.component === 'ip'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-tooltip
+        [className]="'tooltip-top ip'"
+        [title]="dataItem.ip"
+        [hoverText]="'IP'"
+      >
+      </bw-tooltip>
+    </ng-template>
+    <!--  -->
+    <ng-template
+      *ngIf="column.component === 'useTemplate'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-link
+        [linkText]="dataItem.useTemplate"
+        (onClickLink)="onClickHandler(dataItem, dataItem.useTemplate)"
+        [isEnableIcons]="isEnableIcons"
+        [className]="column.linkClassName"
+      >
+      </bw-link>
+    </ng-template>
+    <ng-template
+      *ngIf="column.component === 'useArchive'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-button
+        *ngIf="dataItem.useArchive"
+        className="btn-base primary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4 archive"
+        buttonName="ARCHIVED"
+        (onClick)="clickButton(dataItem)"
+      >
+      </bw-button>
+    </ng-template>
+    <ng-template
+      *ngIf="column.component === 'linkPopup'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-popup
+        [linkText]="dataItem.linkPopup"
+        (onClick)="onClickHandler(dataItem, dataItem.linkPopup)"
+        [className]="column.linkClassName"
+      >
+        <ng-content></ng-content>
+        <div *ngFor="let content of dataItem.linkPopupContent">
+          <bw-link
+            [linkText]="content.fileName"
+            (onClickLink)="onClickHandler(content, 'linkPopupContent')"
+            [isEnableIcons]="isEnableIcons"
+            [className]="column.linkClassName"
+          >
+          </bw-link>
+        </div>
+      </bw-popup>
+    </ng-template>
+
+    <ng-template
+      *ngIf="column.checkBoxComponent === 'readAccess'"
+      kendoGridCellTemplate
+      let-dataItem
+      let-rowIndex="rowIndex"
+    >
+      <input
+        kendoCheckBox
+        type="checkbox"
+        [disabled]="dataItem.parentReadDisable"
+        [checked]="dataItem.parentReadselected"
+        (change)="readAccesChanged($event, rowIndex, dataItem)"
+      />
+    </ng-template>
+
+    <ng-template
+      *ngIf="column.checkBoxComponent === 'writeAccess'"
+      kendoGridCellTemplate
+      let-dataItem
+      let-rowIndex="rowIndex"
+    >
+      <input
+        kendoCheckBox
+        type="checkbox"
+        [class]="dataItem.checkboxClass || ''"
+        [disabled]="dataItem.parentWriteDisable"
+        [checked]="dataItem.parentWriteselected"
+        (change)="writeAccesChanged($event, rowIndex, dataItem)"
+      />
+    </ng-template>
+    <!-- Recent Updates Settings -->
+    <ng-template
+      *ngIf="column.settingComponent === 'follow'"
+      kendoGridCellTemplate
+      let-dataItem
+      let-rowIndex="rowIndex"
+    >
+      <!--  [disabled]="dataItem.parentReadDisable" -->
+      <input
+        kendoCheckBox
+        type="checkbox"
+        [checked]="dataItem.follow"
+        (change)="followChanged($event, rowIndex, dataItem)"
+      />
+    </ng-template>
+    <ng-template
+      *ngIf="column.settingComponent === 'flagImportant'"
+      kendoGridCellTemplate
+      let-dataItem
+      let-rowIndex="rowIndex"
+    >
+      <input
+        kendoCheckBox
+        type="checkbox"
+        [checked]="dataItem.flagImportant"
+        (change)="flagImportantChanged($event, rowIndex, dataItem)"
+      />
+    </ng-template>
+    <!--  -->
+    <ng-template
+      *ngIf="
+        column.component === 'committee_names' ||
+        column.component === 'admin_users'
+      "
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-accordion
+        [accordions]="
+          dataItem.committeeNames
+            ? dataItem.committeeNames
+            : dataItem.adminUsers
+        "
+        [isEnableButton]="isEnableButton ? isEnableButton : false"
+        [buttonName]="buttonName && buttonName"
+        (onClickActionAccordion)="
+          column.component === 'admin_users' && onClickAccordion($event)
+        "
+        [classBodyName]="
+          column.component === 'admin_users' &&
+          'btn-base secondary-btn-text btn-sm'
+        "
+        [isEnableExpand]="isEnableExpand"
+        [savePdfFlag]="savePdfFlag"
+      >
+      </bw-accordion>
+    </ng-template>
+
+    <ng-template
+      *ngIf="column.component === 'collaboration'"
+      kendoGridCellTemplate
+      let-dataItem
+    >
+      <bw-accordion
+        [accordions]="dataItem.collaboration"
+        [isEnableButton]="isEnableButton ? isEnableButton : false"
+        [buttonName]="buttonName && buttonName"
+        (onClickActionAccordion)="onClickAccordion($event)"
+        [classBodyName]="
+          column.component === 'collaboration' &&
+          'btn-base secondary-btn-text btn-sm'
+        "
+      >
+      </bw-accordion>
+    </ng-template>
+    <ng-template
+      *ngIf="column.component === 'icon'"
+      kendoGridCellTemplate
+      let-dataItem
+      let-rowIndex="rowIndex"
+    >
+      <i
+        [ngClass]="
+          dataItem.isUpDown ? dataItem.isDowniconClass : dataItem.isUpiconClass
+        "
+        style="margin-top: -20px; color: #ced4da"
+        (click)="iconClick(rowIndex, dataItem)"
+        aria-hidden="true"
+        class="cursor-pointer"
+      ></i>
+    </ng-template>
+    <!-- <ng-template
+      *ngIf="column.component === 'inputText'"
+      kendoGridCellTemplate
+      let-dataItem
+      let-rowIndex="rowIndex"
+    >
+      <bw-input
+        [control]="dataItem.controls"
+        [classNameControl]="'bw-font-sec-medium mt-3'"
+        [inRow]="true"
+        [inRowInputRows]="8"
+      >
+      </bw-input>
+    </ng-template> -->
+    <ng-template
+      *ngIf="column.component === 'iconAction'"
+      kendoGridCellTemplate
+      let-dataItem
+      let-rowIndex="rowIndex"
+    >
+      <div class="mb-5" *ngIf="dataItem.showIcon">
+        <bw-icon-text
+          [width]="'30%'"
+          [isLink]="false"
+          [colClass]="'2'"
+          (onIconClick)="onClickHandler(dataItem, column.component)"
+          [iconClassName]="
+            column.iconClass ? column.iconClass : iconActionClass
+          "
+          [className]="'bw-font-prm-medium edit cursor-pointer'"
+        >
+        </bw-icon-text>
+      </div>
+    </ng-template>
+    <!--  -->
+    <ng-template
+      *ngIf="column.component === 'TotalFileSize'"
+      kendoGridHeaderTemplate
+      let-dataItem
+      let-rowIndex="rowIndex"
+    >
+      SIZE ({{ totalSize }})
+    </ng-template>
+  </kendo-grid-column>
+
+  <div
+    *kendoGridDetailTemplate="let dataItem; let rowIndex = rowIndex"
+    class="inside-grid"
+  >
+    <kendo-grid [data]="dataItem.documents" *ngIf="insideGridComponent">
+      <!-- [style.max-width] = "'220px'" -->
+      <kendo-grid-column
+        [width]="250"
+        [resizable]="false"
+        field=""
+        title="Meeting Collaboration Workspace"
+      >
+      </kendo-grid-column>
+      <kendo-grid-column field="title" [width]="140" title="Meeting title">
+      </kendo-grid-column>
+      <kendo-grid-column field="fileName" title="file Name">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <bw-link
+            [linkText]="dataItem.fileName"
+            (onClickLink)="onClickHandler(dataItem, 'file')"
+            [isEnableIcons]="isEnableIcons"
+          >
+          </bw-link>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column field="fileSize" title="file Size">
+      </kendo-grid-column>
+      <kendo-grid-column [width]="120" field="modifiedDate" title="Modified">
+      </kendo-grid-column>
+      <kendo-grid-column field="modifiedBy" title="Modified by">
+      </kendo-grid-column>
+      <kendo-grid-column field="">
+        <ng-template kendoGridCellTemplate let-data>
+          <input
+            *ngIf="data.feildText == 'checkbox'"
+            kendoCheckBox
+            type="checkbox"
+            [disabled]="dataItem.parentWriteDisable"
+            [checked]="dataItem.docChecked"
+            (change)="onClickChildDelete(dataItem, data, 'checkbox')"
+          />
+
+          <bw-link
+            *ngIf="
+              data.feildText != 'Select' &&
+              data.feildText != 'checkbox' &&
+              data.feildText != 'empty'
+            "
+            [linkText]="'DELETE'"
+            (onClickLink)="onClickChildDelete(dataItem, data, 'delete')"
+            [isEnableIcons]="isEnableIcons"
+          >
+          </bw-link>
+          <bw-link
+            *ngIf="data.feildText == 'Select'"
+            [linkText]="'Select'"
+            (onClickLink)="onClickChildDelete(dataItem, data, 'Select')"
+            [isEnableIcons]="isEnableIcons"
+          >
+          </bw-link>
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column field="" title=""> </kendo-grid-column>
+      <kendo-grid-column field="" title=""> </kendo-grid-column>
+      <kendo-grid-column field="" title=""> </kendo-grid-column>
+      <!-- <kendo-grid-column field="ProductName" title="Product Name">
+    </kendo-grid-column>
+    <kendo-grid-column field="UnitPrice" title="Unit Price" format="{0:c}">
+    </kendo-grid-column> -->
+    </kendo-grid>
+
+    <kendo-grid [data]="dataItem.users" *ngIf="accesControlFlag">
+      <kendo-grid-column [width]="40"> </kendo-grid-column>
+
+      <kendo-grid-column [width]="60" field="name" title="">
+      </kendo-grid-column>
+
+      <kendo-grid-column [width]="50" title="">
+        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+          <input
+            type="checkbox"
+            [disabled]="dataItem.disable"
+            [checked]="dataItem.childReadselected"
+            (change)="readChildAccesChanged($event, rowIndex, dataItem)"
+            kendoCheckBox
+          />
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column [width]="50" title="">
+        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+          <input
+            kendoCheckBox
+            type="checkbox"
+            [disabled]="dataItem.disable"
+            [checked]="dataItem.childWriteselected"
+            (change)="writeChildAccesChanged($event, rowIndex, dataItem)"
+          />
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column [width]="50" title=""> </kendo-grid-column>
+    </kendo-grid>
+    <kendo-grid [data]="dataItem.users" *ngIf="accesControlFlagForAlerts">
+      <kendo-grid-column [width]="50"></kendo-grid-column>
+
+      <kendo-grid-column [width]="50" field="name" title=""></kendo-grid-column>
+
+      <kendo-grid-column [width]="50" title="">
+        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+          <input
+            kendoCheckBox
+            type="checkbox"
+            class=""
+            [disabled]="dataItem.disable"
+            [checked]="dataItem.childWriteselected"
+            (change)="writeChildAccesChanged($event, rowIndex, dataItem)"
+          />
+        </ng-template>
+      </kendo-grid-column>
+      <!--  *ngIf="dataItem.component === 'inputText'" -->
+      <kendo-grid-column [width]="50" title="">
+        <ng-template
+          *ngIf="dataItem.component === 'inputText'"
+          kendoGridCellTemplate
+          let-dataItem
+          let-rowIndex="rowIndex"
+        >
+          <bw-input
+            [control]="dataItem.controls"
+            [classNameControl]="'bw-font-sec-medium mt-3'"
+            [inRow]="true"
+            [inRowInputRows]="8"
+          >
+          </bw-input>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column [width]="50" title=""></kendo-grid-column>
+    </kendo-grid>
+
+    <kendo-grid
+      [data]="dataItem.documents"
+      *ngIf="accesControlFlagForDocuments"
+    >
+      <kendo-grid-column [width]="20" title="">
+        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+          <input
+            kendoCheckBox
+            type="checkbox"
+            class="ms-5"
+            [disabled]="dataItem.disable"
+            [checked]="dataItem.childWriteselected"
+            (change)="writeChildAccesChanged($event, rowIndex, dataItem)"
+          />
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column [width]="70" field="fileName" title="">
+        <ng-template kendoGridCellTemplate let-data>
+          <bw-link
+            [linkText]="data.fileName"
+            (onClickLink)="onClickChildLink(dataItem, data, 'name')"
+            [isEnableIcons]="isEnableIcons"
+          >
+          </bw-link>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column [width]="20" field="">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <bw-link
+            [linkText]="dataItem?.editLinkText"
+            (onClickLink)="
+              onClickChildLink(dataItem, data, dataItem?.editLinkText)
+            "
+            [isEnableIcons]="isEnableIcons"
+            [className]="'bw-font-sec-bold'"
+          >
+          </bw-link>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column [width]="40" field="">
+        <ng-template kendoGridCellTemplate let-data>
+          <bw-link
+            [linkText]="dataItem?.deleteLinkText"
+            (onClickLink)="
+              onClickChildDelete(dataItem, data, dataItem?.deleteLinkText)
+            "
+            [isEnableIcons]="isEnableIcons"
+            [className]="'bw-font-sec-bold'"
+          >
+          </bw-link>
+        </ng-template>
+      </kendo-grid-column>
+    </kendo-grid>
+
+    <kendo-grid
+      [data]="dataItem?.childQuestions"
+      *ngIf="evaluationQuestionChildren"
+      class="evaluationQuestionChildren"
+    >
+      <kendo-grid-column [width]="20" field="question" title="">
+        <ng-template kendoGridCellTemplate let-data>
+          <bw-link
+            [className]="'mx-4'"
+            [linkText]="data.question"
+            (onClickLink)="onClickChildLink(dataItem, data, 'name')"
+            [isEnableIcons]="isEnableIcons"
+          >
+          </bw-link>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column [width]="18" field="type"> </kendo-grid-column>
+      <kendo-grid-column [width]="19" field="">
+        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+          <input
+            kendoCheckBox
+            type="checkbox"
+            class="ms-3"
+            [checked]="dataItem.isRestrictedQuestion"
+          />
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column [width]="40" field="">
+        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+          <input
+            kendoCheckBox
+            type="checkbox"
+            class="ms-3"
+            [checked]="dataItem.isRequired"
+          />
+        </ng-template>
+      </kendo-grid-column>
+    </kendo-grid>
+    <kendo-grid
+      [data]="dataItem.discussions"
+      *ngIf="accesControlFlagForDiscussion"
+    >
+      <kendo-grid-column [width]="5" title=""></kendo-grid-column>
+      <kendo-grid-column>
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <bw-link
+            [linkText]="dataItem.linkTextName"
+            (onClickLink)="onClickHandler(dataItem, 'link')"
+            [isEnableIcons]="isEnableIcons"
+            [className]="dataItem.childLinkClassName || ''"
+          >
+          </bw-link>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column
+        [width]="80"
+        field="replyCount"
+        title=""
+      ></kendo-grid-column>
+      <kendo-grid-column
+        [width]="80"
+        field="createdBy"
+        title=""
+      ></kendo-grid-column>
+      <kendo-grid-column
+        [width]="80"
+        field="modifiedDate"
+        title=""
+      ></kendo-grid-column>
+      <kendo-grid-column>
+        <ng-template
+          *ngIf="dataItem.showIcon"
+          kendoGridCellTemplate
+          let-dataItem
+          let-rowIndex="rowIndex"
+        >
+          <div class="mb-5">
+            <bw-icon-text
+              [isLink]="false"
+              [colClass]="'2'"
+              (onIconClick)="onClickHandler(dataItem, 'childIcon')"
+              [iconClassName]="
+                dataItem.iconClass ? dataItem.iconClass : iconActionClass
+              "
+              [className]="'bw-font-prm-medium edit cursor-pointer'"
+            >
+            </bw-icon-text>
+          </div>
+        </ng-template>
+      </kendo-grid-column>
+    </kendo-grid>
+    <div *ngIf="dataItem.subInfoSites && dataItem.subInfoSites.length">
+      <!-- {{dataItem.subInfoSites}} -->
+      <bw-grid
+        [isEnableSelectAll]="false"
+        [isShowCheckbox]="false"
+        [onCellClicked]="onCellClicked"
+        [columnOptions]="columnOptions"
+        [columnsData]="columnsData"
+        [gridData]="dataItem.subInfoSites"
+        [isEnableButton]="true"
+        [actions]="actions"
+        [isEnablePagination]="false"
+        (expandAndCollapseGrid)="expandAndCollapseGrid($event)"
+        (accrodianClick)="accrodianClickSubinfosites($event)"
+        (onClickLink)="onClickHandler($event, 'childIcon')"
+        (ChildDeleteClick)="onClickChildDelete($event, data, 'checkbox')"
+        (ChildLinkClick)="onClickChildLink($event, data, 'name')"
+        [accesControlFlagForDocuments]="true"
+        (writeAccessClick)="writeAccesChanged($event, rowIndex, dataItem)"
+        (writeChildAccessClick)="
+          writeChildAccesChanged($event, rowIndex, dataItem)
+        "
+        (onClickAction)="clickSplitButton($event, dataItem)"
+      >
+      </bw-grid>
+    </div>
+  </div>
+  <kendo-grid-pdf
+    *ngIf="isExportPdf"
+    fileName="reports.pdf"
+    [allPages]="true"
+    paperSize="A4"
+    [repeatHeaders]="true"
+    [landscape]="true"
+    [scale]="1"
+    [margin]="{ top: '1cm', left: '1cm', right: '1cm', bottom: '1cm' }"
+  >
+  </kendo-grid-pdf>
+  <!-- Custom Pagination -->
+  <ng-template kendoPagerTemplate let-totalPages="totalPages">
+    <div class="info">
+      {{ gridView?.total }} items in {{ totalPages }} pages
+    </div>
+    <kendo-grid-spacer></kendo-grid-spacer>
+    <kendo-pager-prev-buttons class="backward"></kendo-pager-prev-buttons>
+    <kendo-pager-numeric-buttons
+      [buttonCount]="3"
+      class="numeric"
+    ></kendo-pager-numeric-buttons>
+    <kendo-pager-next-buttons class="forward"></kendo-pager-next-buttons>
+  </ng-template>
+</kendo-grid>
+
+<div class="bw-confirm" kendoDialogContainer></div>

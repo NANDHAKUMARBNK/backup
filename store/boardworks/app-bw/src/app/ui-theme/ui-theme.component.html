@@ -1,0 +1,380 @@
+<!-- <h3>Primary Button</h3>
+<button class="btn-base btn-contained primary-btn-contained btn-lg me-md-4">
+  button
+</button>
+<button class="btn-base btn-contained secondary-btn-contained btn-lg">
+  button
+</button>
+
+<h3>Secondary Button</h3>
+<button class="btn-base primary-btn-outlined btn-lg me-md-4">button</button>
+<button class="btn-base secondary-btn-outlined btn-lg">button</button>
+
+<h3>Text Button</h3>
+<button class="btn-base primary-btn-text btn-lg me-md-4">button</button>
+<button class="btn-base secondary-btn-text btn-lg">button</button>
+
+<h3>Icon + Button</h3>
+<button class="btn-base btn-contained primary-btn-contained btn-lg me-md-4">
+  <i class="mdi mdi-home"></i> button
+</button>
+<button class="btn-base btn-contained secondary-btn-contained btn-lg">
+  <i class="mdi mdi-home"></i> button
+</button>
+
+<h3>Primary background color</h3>
+<p class="primary-bg-clr-bse white-clr p-3">This is test</p>
+
+<h3>Secondary fore color</h3>
+<p class="secondary-fre-clr-bse">This is test</p>
+
+<h3>Form Elements</h3>
+<div class="container-fluid">
+  <form>
+    <h5>Input field without label & icon</h5>
+    <div class="form-group">
+      <input type="text" placeholder="Lorem ipsum" />
+      <span>Error message goes here...</span>
+    </div>
+
+    <h5>Input field without label</h5>
+    <div class="form-group without-label">
+      <i class="mdi mdi-account left"></i>
+      <input type="text" placeholder="Lorem ipsum" />
+    </div>
+
+    <h5>Input field with label + icon</h5>
+    <div class="form-group with-label">
+      <label>Username</label>
+      <i class="mdi mdi-account left"></i>
+      <input type="text" placeholder="Lorem ipsum" />
+    </div>
+
+    <h5>Horizontal input field</h5>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-2">
+          <label>Username</label>
+        </div>
+        <div class="col-sm-10">
+          <input type="text" placeholder="Lorem ipsum" />
+        </div>
+      </div>
+    </div>
+
+    <h5>Textarea</h5>
+    <div class="form-group">
+      <textarea placeholder="Lorem ipsum"></textarea>
+    </div>
+  </form>
+</div>
+
+<h5>Animated Label</h5>
+<div class="form-group-animated">
+  <input type="text" id="text" autocomplete="off" required />
+  <label for="text">Username</label>
+</div>
+
+<h3>Checkbox</h3>
+<form>
+  <div class="form-check">
+    <input type="checkbox" id="html" />
+    <label for="html">HTML</label>
+  </div>
+  <div class="form-check">
+    <input type="checkbox" id="angular" checked />
+    <label for="angular">Angular</label>
+  </div>
+  <div class="form-check">
+    <input type="checkbox" id="css" disabled />
+    <label for="css">CSS</label>
+  </div>
+  <div class="form-check">
+    <input type="checkbox" id="javascript" checked disabled />
+    <label for="javascript">Javascript</label>
+  </div>
+</form>
+
+<h3>Radio Button</h3>
+<form>
+  <div class="form-radio">
+    <input type="radio" id="radio1" name="radiogroup" value="1" />
+    <label for="radio1">You can check me</label>
+  </div>
+
+  <div class="form-radio">
+    <input type="radio" id="radio2" name="radiogroup" value="2" checked />
+    <label for="radio2">You can also check me</label>
+  </div>
+
+  <div class="form-radio">
+    <input type="radio" id="radio3" name="radiogroup" value="3" disabled />
+    <label for="radio3">Unless you'd rather check me</label>
+  </div>
+
+  <div class="form-radio">
+    <input
+      type="radio"
+      id="radio4"
+      name="radiogroup"
+      value="4"
+      checked
+      disabled
+    />
+    <label for="radio4">checking</label>
+  </div>
+</form>
+
+<h3>Breadcrumb</h3>
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Library</a></li>
+  <li class="active">Data</li>
+</ol>
+
+<h3>Profile Picture</h3>
+<div class="profile-picture lg">
+  <img src="../assets/images/no-image.png" alt="profile picture" />
+</div>
+
+<h3>Logo</h3>
+<div class="logo lg">
+  <img src="../assets/images/no-image.png" alt="logo" />
+</div>
+
+<h3>Card</h3>
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Card Title</div>
+  </div>
+  <div class="card-body">Card body</div>
+  <div class="card-footer">Card footer</div>
+</div>
+
+<div class="dropdown">
+  <button class="btn-base secondary-btn-light dropdown-toggle">Dropdown</button>
+  <div class="dropdown-menu">
+    <a href="javascript:;">Action</a>
+    <a href="javascript:;">Another action</a>
+    <a href="javascript:;">Something else here</a>
+  </div>
+</div>
+
+<h2 style="margin-bottom: 15px">Buttons</h2>
+<bw-button
+  className="btn-base btn-disabled bw-font-sec-bold me-md-4"
+  buttonName="Disabled Button"
+  [buttonDisabled]="isDisabled"
+>
+</bw-button>
+
+<bw-button
+  className="btn-base btn-contained secondary-btn-contained btn-lg bw-font-sec-bold me-md-4"
+  buttonName="Save"
+  (onClick)="save($event)"
+>
+</bw-button>
+<bw-button
+  className="btn-base btn-contained primary-btn-outlined btn-lg bw-font-sec-bold"
+  buttonName="Update"
+  (onClick)="update($event)"
+>
+</bw-button>
+<form [formGroup]="testForm">
+  <bw-input
+    [prefix]=""
+    [label]="'Test'"
+    [control]="testForm.get('testControl')"
+    [placeholder]="'Enter'"
+    (focusout)="seterror()"
+    [classNameControl]="'bw-font-sec-medium'"
+  >
+  </bw-input>
+
+  <bw-textarea
+    [label]="'textArea'"
+    [toolTip]="'ndkjdkjd jkdkjkjd'"
+    [control]="testForm.get('textArea')"
+    [placeholder]="'Enter'"
+    (focusout)="seterror()"
+    [className]="'bw-font-sec-medium'"
+  >
+  </bw-textarea>
+
+  <h2 style="margin-bottom: 15px">Inout</h2>
+  <bw-input
+    [label]="'Test'"
+    [control]="testForm.get('testControl')"
+    [placeholder]="'Enter'"
+    (focusout)="seterror()"
+    [classNameControl]="'bw-font-sec-medium'"
+  >
+  </bw-input>
+
+  <h2 style="margin-bottom: 15px">Textarea</h2>
+  <bw-textarea
+    [rows]="10"
+    [label]="'textArea'"
+    [control]="testForm.get('textArea')"
+    [placeholder]="'Enter'"
+    [classNameControl]="'bw-font-sec-medium'"
+  >
+  </bw-textarea>
+
+  <h2 style="margin-bottom: 15px">Checkbox</h2>
+  <bw-checkbox
+    [label]="'Checkbox'"
+    [checkBoxses]="checkBoxses"
+    [control]="testForm.get('checkbox')"
+    [classNameControl]="'bw-font-sec-medium'"
+    (getselectedArray)="changeCheckbox($event)"
+    (getSelectedValue)="changeCheckbox($event)"
+    (getselectedName)="changeCheckbox($event)"
+  ></bw-checkbox>
+
+  <h2 style="margin-bottom: 15px">Select</h2>
+  <bw-select
+    [control]="testForm.get('select')"
+    [label]="'Select'"
+    [data]="checkBoxses"
+    [isKey]="true"
+    [selectName]="'name'"
+    [selectValue]="'value'"
+    [classNameControl]="'bw-font-sec-medium'"
+    (selectChangeEvent)="changeCheckbox($event)"
+  >
+  </bw-select>
+</form>
+
+<h2 style="margin-bottom: 15px">Text</h2>
+<bw-text
+  [className]="'primary-bg-clr-bse white-clr p-3 bw-font-sec-medium'"
+  [textName]="'This is test'"
+></bw-text>
+
+<h2 style="margin-bottom: 15px">Card</h2>
+<bw-card [cards]="cardData" (cardClick)="cardClickFn($event)"></bw-card>
+
+<h2 style="margin-bottom: 15px">Toggle Switch</h2>
+<bw-toggle-switch
+  [checked]="true"
+  [onLabel]="'List'"
+  [offLabel]="'Calendar'"
+  (valueChange)="change($event)"
+>
+</bw-toggle-switch>
+
+<h2 style="margin-bottom: 15px">Divider</h2>
+<bw-divider></bw-divider>
+
+<h2 style="margin-bottom: 15px">Toastr</h2>
+<bw-toastr
+  [position]="'top'"
+  [buttonText]="'Show Toastr'"
+  [type]="'success'"
+  [message]="'Successfully Done!'"
+></bw-toastr>
+
+<h2 style="margin-bottom: 15px">Tooltip</h2>
+<bw-tooltip
+  [className]="'tooltip-top'"
+  [title]="'Tooltip Text'"
+  [iconClass]="'mdi mdi-information icon'"
+></bw-tooltip>
+
+<h2 style="margin-bottom: 15px">Alphabetical Search</h2>
+<bw-alpha-search (onClick)="searchData($event)"></bw-alpha-search>
+<h2 style="margin-bottom: 15px">Logo</h2>
+<bw-text [textName]="'Logo'"></bw-text>
+
+<h2 style="margin-bottom: 15px">Avatar</h2>
+<bw-avatar
+  [className]="'logo lg'"
+  [src]="'../assets/images/no-image.png'"
+  [alt]="'logo'"
+  [title]="'logo'"
+  (clickAvatar)="clickAvatarFn($event)"
+></bw-avatar>
+<bw-image-text
+  [classNameImg]="'profile-picture lg'"
+  [classNameText]="'secondary-fre-clr-bse'"
+  [src]="'../assets/images/no-image.png'"
+  [alt]="'profile'"
+  [title]="'profile'"
+  [textName]="'Nandha Kumar'"
+  (clickAvatar)="clickAvatarFn($event)"
+></bw-image-text>
+<bw-pagination [height]="'300'" [pageSize]="'1'">
+</bw-pagination>
+
+<h2 style="margin-bottom: 15px">Split Button</h2>
+<bw-split-button
+  [actions]="actions"
+  [className]="'btn-base secondary-btn-light dropdown-toggle btn-lg'"
+  [buttonName]="'Actions'"
+  (onClickAction)="clickSplitButton($event)"
+></bw-split-button>
+
+<h2 style="margin-bottom: 15px">Tabs</h2>
+<bw-tab [tabs]="tabsData"></bw-tab>
+
+<h2 style="margin-bottom: 15px">Acoordion</h2>
+<bw-accordion></bw-accordion>
+
+<h2 style="margin-bottom: 15px">Grid</h2>
+<bw-grid
+  [isEnableSelectAll]="isEnableSelectAll"
+  [isShowCheckbox]="isShowCheckbox"
+  [onCellClicked]="onCellClicked"
+  [columnOptions]="columnOptions"
+  [columnsData]="columnsData"
+  [gridData]="gridData"
+  [actions]="actions"
+  (onClickAction)="onClickActionGrid($event)"
+></bw-grid>
+<h2 style="margin-bottom: 15px">Small Grid</h2>
+<bw-grid
+  [isEnableSelectAll]="isEnableSelectAll2"
+  [isShowCheckbox]="isShowCheckbox2"
+  [onCellClicked]="onCellClicked2"
+  [columnOptions]="columnOptions2"
+  [columnsData]="columnsData2"
+  [gridData]="gridData2"
+  (onClickLink)="onClickCommitte($event)"
+  [isCommitteeGrid]="isCommitteeGrid"
+  [isEnableIcons]="false"
+></bw-grid>
+<h2 style="margin-bottom: 15px">Icon Text</h2>
+<bw-icon-text
+  [iconClassName]="'cellphone'"
+  [className]="'bw-font-sec-medium'"
+  [textName]="'+91 89898-67654'"
+></bw-icon-text>
+<bw-icon-text
+  [iconClassName]="'email-open-outline'"
+  [isLink]="true"
+  (onClickLink)="onClickLink($event)"
+  [linkTextName]="'nandhak907@gmail.com'"
+  [isEnableIcons]="false"
+></bw-icon-text>
+<h2 style="margin-bottom: 15px">Horizontal Label</h2>
+<bw-horizontal-label
+  [labelClassName]="'bw-font-sec-bold'"
+  [labelName]="'Title'"
+  [textClassName]="'bw-font-sec-medium'"
+  [textName]="'Artificial Intelligence'"
+  [isHorizontal]="true"
+  [isVertical]="false"
+>
+</bw-horizontal-label>
+<h2 style="margin-bottom: 15px">Vertical Label</h2>
+<bw-horizontal-label
+  [labelClassName]="'bw-font-sec-bold'"
+  [labelName]="'Company'"
+  [textClassName]="'bw-font-sec-medium'"
+  [textName]="'Spurtree Technology'"
+  [isHorizontal]="false"
+  [isVertical]="true"
+>
+</bw-horizontal-label>
+<bw-side-nav [navItems]="navItems" (onClick)="navigateTo($event)"></bw-side-nav> -->

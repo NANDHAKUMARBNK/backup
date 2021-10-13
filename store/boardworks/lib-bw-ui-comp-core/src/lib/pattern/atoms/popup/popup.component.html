@@ -1,0 +1,11 @@
+<div class="example-config">
+    <a #anchor (click)="onClickLink()" [class]="className">{{ linkText }}</a>
+    <!-- <button #anchor (click)="onToggle()" class="k-button">
+        {{ toggleText }} Popup
+    </button> -->
+</div>
+<kendo-popup [anchor]="$any(anchor)" (anchorViewportLeave)="show = false" *ngIf="show">
+    <div class="content">
+        <ng-content></ng-content>
+    </div>
+</kendo-popup>

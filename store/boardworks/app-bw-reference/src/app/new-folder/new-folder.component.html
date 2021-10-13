@@ -1,0 +1,96 @@
+<form class="m-3" [formGroup]="newFolderForm">
+  <div class="row">
+    <div class="col-md-12">
+      <bw-bread-crumb
+        [defaultItems]="defaultNavs"
+        (onClick)="navigateInto($event)"
+      ></bw-bread-crumb>
+    </div>
+    <div class="row m-3 align-items-center">
+      <div class="col-md-6 col-lg-8">
+        <bw-label
+          [className]="'bw-font-sec-bold label'"
+          [labelName]="'New Folder'"
+        ></bw-label>
+      </div>
+      <div class="col-md-6 col-lg-4 text-end">
+        <bw-button
+          className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+          buttonName="CANCEL"
+          (onClick)="clickButton('Cancel')"
+        >
+        </bw-button>
+        <bw-button
+          className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+          buttonName="SAVE"
+          (onClick)="clickButton('Save')"
+        >
+        </bw-button>
+        <bw-button
+          *ngIf="type === 'edit'"
+          [className]="archiveClass"
+          buttonName="ARCHIVE"
+          (onClick)="clickButton('archive')"
+        >
+        </bw-button>
+      </div>
+    </div>
+    <div class="form-group m-3 col-md-9 col-lg-9 p-3">
+      <!-- <p *ngIf="isError" class="text-danger mb-1">
+                <ng-container *ngFor="let msg of errMessage">
+                    {{ msg }}
+                </ng-container>
+            </p> -->
+      <div class="m-3">
+        <bw-input
+          [label]="'Folder Name'"
+          [control]="newFolderForm.get('folderName')"
+          [placeholder]="'Enter Folder Name'"
+          (focusout)="seterror('folderName')"
+          [classNameControl]="'bw-font-sec-medium'"
+          [inRow]="true"
+          [inRowLabelRows]="3"
+          [inRowInputRows]="7"
+        >
+        </bw-input>
+      </div>
+      <bw-label
+        [className]="'bw-font-sec-bold mt-3 m-3'"
+        [labelName]="'Attendees'"
+      ></bw-label>
+      <div class="mt-3">
+        <bw-grid
+          [isEnableSelectAll]="false"
+          [isShowCheckbox]="false"
+          [onCellClicked]="onCellClicked"
+          [columnOptions]="columnOptions"
+          [columnsData]="columnsData"
+          [gridData]="gridData"
+          [isEnableButton]="true"
+          (onClickActionAccordion)="insideAccordion($event)"
+          (accrodianClick)="accrodianClick($event)"
+          [accesControlFlagForAlerts]="true"
+          (writeAccessClick)="writeAccessClick($event)"
+          (writeChildAccessClick)="writeChildAccessClick($event)"
+          (readAccessClick)="readAccessClick($event)"
+        >
+        </bw-grid>
+      </div>
+      <div class="row mt-5">
+        <div class="co-md-12">
+          <bw-checkbox
+            [checkBoxses]="selectAll"
+            [inRow]="true"
+            [inRowLabelRows]="3"
+            [inRowInputRows]="12"
+            [classCheckboxLabel]="'col-md-6 col-lg-6'"
+            [control]="newFolderForm.get('sendAlert')"
+            [classNameControl]="'bw-font-sec-medium m-3'"
+            (getselectedArray)="changeCheckbox($event)"
+          >
+          </bw-checkbox>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

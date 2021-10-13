@@ -1,0 +1,19 @@
+ul li {
+    margin: 0;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+.heightFooter{
+    height: 43px;
+}
+@media (max-width: 767px) and (max-width: 821px){
+    .heightFooter{
+        height: 60px;
+    }
+}

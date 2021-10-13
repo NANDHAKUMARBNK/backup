@@ -1,0 +1,49 @@
+// @import "./adminAgGrid.scss";
+.adminManageJobPosition {
+  p {
+    color: #4a4946;
+    font-family: "Ikano Sans";
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 30px;
+  }
+}
+.adminManageJobPosition__pagination {
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+// .ag-theme-balham .ag-icon {
+// color: black !important;
+// font-size: 30px;
+// font-weight: bold;
+// }
+.adminManageJobPosition__title {
+  display: flex;
+}
+
+.addNewJobBtn {
+  width: 250px;
+  box-sizing: border-box;
+  height: 100%;
+  border: 0.5px solid #ec0f00;
+  color: #ec0f00;
+  font-family: "Ikano Sans";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 20px;
+  padding: 0 40px;
+  text-align: center;
+  position: relative;
+  background: transparent;
+  img {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 18px;
+  }
+}

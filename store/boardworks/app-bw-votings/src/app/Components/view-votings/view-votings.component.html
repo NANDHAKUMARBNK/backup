@@ -1,0 +1,197 @@
+<div class="row align-items-center my-3">
+  <bw-bread-crumb
+    [defaultItems]="defaultItems"
+    (onClick)="navigateInto($event)"
+  ></bw-bread-crumb>
+  <div class="row">
+    <div class="col-md-12 text-end my-3">
+      <bw-button
+        className="btn-base  secondary-btn-text border-secondary bw-font-prm-medium btn-sm  me-md-4 px-4 "
+        buttonName="CANCEL"
+        (onClick)="handleClick('cancel')"
+      >
+      </bw-button>
+      <bw-button
+        className="btn-base  secondary-btn-text border-secondary bw-font-prm-medium btn-sm  me-md-4 px-4"
+        buttonName="SAVE"
+        (onClick)="handleClick('save')"
+      >
+      </bw-button>
+    </div>
+  </div>
+  <div class="col-md-10 mx-2">
+    <p class="primary-fre-clr-bse bw-font-prm-medium">{{ headerName }}</p>
+  </div>
+</div>
+<p *ngIf="isError" class="text-danger mb-1">
+  <ng-container *ngFor="let msg of errMessage">
+    {{ msg }}
+  </ng-container>
+</p>
+<div class="row m-2">
+  <div class="form-group col-8 p-3">
+    <div class="m-1">
+      <div class="row" *ngFor="let item of items; index as j">
+        <div class="col-md-1">
+          <bw-label
+            [className]="'bw-font-sec-bold'"
+            [labelName]="order(j + 1)"
+          ></bw-label>
+        </div>
+        <div class="col-md-11">
+          <!-- <bw-input
+            *ngIf="item.type === 'Text'"
+            [label]="item.question"
+            [labelClass]="'primary-fre-clr-bse bw-font-prm-medium fs-6 fw-500'"
+            [control]="questionForm.get('content')"
+            [classNameControl]="'bw-font-sec-medium'"
+            (change)="inputChange(item)"
+            (focusout)="inputChange(item)"
+          >
+          </bw-input>
+          <div
+            *ngIf="
+              item.type === 'Choice' &&
+              item.data.subType !== 'Combo' &&
+              item.data.subType !== 'Radio'
+            "
+          >
+            <bw-label
+              [className]="'primary-fre-clr-bse bw-font-sec-bold'"
+              [labelName]="item.question"
+            ></bw-label>
+            <bw-checkbox
+              [checkBoxses]="item.data.choices"
+              [inRow]="true"
+              [inRowInputRows]="12"
+              [classCheckboxLabel]="'col-md-12 col-lg-12'"
+              [control]="questionForm.get('checkbox')"
+              [classNameControl]="'bw-font-sec-medium m-3'"
+              (getselectedArray)="changeCheckbox($event, item)"
+            ></bw-checkbox>
+          </div>
+          <div *ngIf="item.type === 'Opinion'">
+            <bw-label
+              [className]="'primary-fre-clr-bse bw-font-sec-bold'"
+              [labelName]="item.question"
+            ></bw-label>
+            <bw-radio
+              [radios]="item.data.choices"
+              [control]="questionForm.get('opinion')"
+              [classNameControl]="'bw-font-sec-medium m-3'"
+              [inRow]="true"
+              [inRowInputRows]="12"
+              [classRadioLabel]="'col-md-12 col-lg-12'"
+              (getselectedArray)="changeRadio($event, item)"
+            ></bw-radio>
+          </div>
+          <div *ngIf="item.type === 'Boolean'">
+            <bw-label
+              [className]="'primary-fre-clr-bse bw-font-sec-bold'"
+              [labelName]="item.question"
+            ></bw-label>
+            <bw-radio
+              [radios]="booleanRadios"
+              [control]="questionForm.get('yesOrNo')"
+              [classNameControl]="'bw-font-sec-medium m-3'"
+              [inRow]="true"
+              [inRowInputRows]="12"
+              [classRadioLabel]="'col-md-12 col-lg-12'"
+              (getselectedArray)="changeRadio($event, item)"
+            ></bw-radio>
+          </div>
+          <div *ngIf="item.type === 'Note'">
+            <bw-textarea
+              [label]="item.question"
+              [labelClass]="
+                'primary-fre-clr-bse bw-font-prm-medium fs-6 fw-500'
+              "
+              [control]="questionForm.get('textarea')"
+              [className]="'bw-font-sec-medium'"
+              (change)="noteChange(item)"
+              (focusout)="noteChange(item)"
+            >
+            </bw-textarea>
+          </div>
+          <bw-date
+            *ngIf="item.type === 'DateTime'"
+            [label]="item.question"
+            [labelClass]="'primary-fre-clr-bse bw-font-sec-bold'"
+            [control]="questionForm.get('pickDateTime')"
+            [classNameControl]="'bw-font-sec-medium'"
+            [calendarType]="'classic'"
+            [placeholder]="'DD/MM/YYYY'"
+            (change)="dateChange(item)"
+            (focusout)="dateChange(item)"
+          >
+          </bw-date>
+          <bw-input
+            *ngIf="item.type === 'Number'"
+            [type]="'number'"
+            [label]="item.question"
+            [labelClass]="'primary-fre-clr-bse bw-font-prm-medium fs-6 fw-500'"
+            [control]="questionForm.get('integer')"
+            [classNameControl]="'bw-font-sec-medium'"
+            (change)="numberChange(item)"
+            (focusout)="numberChange(item)"
+          >
+          </bw-input> -->
+          <bw-select
+            [labelClass]="'primary-fre-clr-bse bw-font-sec-bold '"
+            [control]="questionForm.get('combo')"
+            [data]="item.choices"
+            [isKey]="true"
+            [label]="item.question"
+            [inRow]="true"
+            [inRowInputRows]="7"
+            [inRowLabelRows]="3"
+            [searchable]="false"
+            [selectName]="'name'"
+            [selectValue]="'value'"
+            (selectChangeEvent)="comboChange($event, item)"
+            [multiple]="false"
+          >
+          </bw-select>
+
+          <!-- <div *ngIf="item.type === 'Choice' && item.data.subType === 'Radio'">
+            <bw-label
+              [className]="'primary-fre-clr-bse bw-font-sec-bold'"
+              [labelName]="item.question"
+            ></bw-label>
+            <bw-radio
+              [radios]="item.data.choices"
+              [control]="questionForm.get('radioSub')"
+              [classNameControl]="'bw-font-sec-medium m-3'"
+              [inRow]="true"
+              [inRowInputRows]="12"
+              [classRadioLabel]="'col-md-12 col-lg-12'"
+              (getselectedArray)="changeRadioSub($event, item)"
+            ></bw-radio>
+          </div> -->
+          <bw-divider></bw-divider>
+        </div>
+      </div>
+      <bw-label
+        [className]="'primary-fre-clr-bse bw-font-prm-medium'"
+        [labelName]="'Supporting Documents'"
+      ></bw-label>
+      <div class="row my-3" *ngFor="let docItem of docItems; index as j">
+        <div class="col-md-1">
+          <bw-label
+            [className]="'bw-font-sec-bold'"
+            [labelName]="order(j + 1)"
+          ></bw-label>
+        </div>
+        <div class="col-md-11">
+          <bw-link
+            [linkText]="docItem.title"
+            (onClickLink)="clickOnDocument(docItem)"
+            [isEnableIcons]="false"
+            [className]="''"
+          >
+          </bw-link>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

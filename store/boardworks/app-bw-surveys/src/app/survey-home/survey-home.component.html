@@ -1,0 +1,25 @@
+<div class="row align-items-center">
+    <div class="col-md-8 col-lg-7">
+        <bw-text [className]="'bw-font-sec-bold  primary-fre-clr-bse f-17'" [textName]="'Surveys'"></bw-text>
+    </div>
+    <div class="col-md-4 col-lg-5 text-end">
+        <bw-button *ngIf="canCreateSurvey" className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+            buttonName="NEW TEMPLATE" (onClick)="clickButton('template')">
+        </bw-button>
+        <bw-button *ngIf="canCreateSurvey" className="btn-base btn-containe bw-font-prm-medium secondary-btn-contained btn-sm me-md-4 px-4"
+            buttonName="NEW SURVEY" (onClick)="clickButton('survey')">
+        </bw-button>
+    </div>
+</div>
+
+<div class="m-3">
+    <bw-tab [tabs]="tabsData" (tabChange)="tabChange($event)">
+        <div class="mt-4">
+            <app-published-survey-list *ngIf="tab == 'PUBLISHED'"></app-published-survey-list>
+            <app-unpublished-survey-list *ngIf="tab=='UNPUBLISHED'">
+            </app-unpublished-survey-list>
+            <app-templates-survey-list *ngIf="tab == 'TEMPLATES'">
+            </app-templates-survey-list>
+        </div>
+    </bw-tab>
+</div>

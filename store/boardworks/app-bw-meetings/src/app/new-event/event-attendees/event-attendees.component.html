@@ -1,0 +1,78 @@
+<div class="border p-3">
+    <div class=" col-md-12 text-end">
+        <bw-button className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+            buttonName="Cancel" (onClick)="clickButton('cancel')">
+        </bw-button>
+        <bw-button className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+            buttonName="Save" (onClick)="clickButton('save')">
+        </bw-button>
+        <bw-button className="btn-base btn-containe bw-font-prm-medium secondary-btn-contained btn-sm me-md-4 px-4"
+            buttonName="Add Attachments" (onClick)="clickButton('add')">
+        </bw-button>
+    </div>
+
+    <div class="col-9 mt-4">
+        <kendo-panelbar [style.height]="'320px'" class="bw-accordion">
+            <kendo-panelbar-item title="security & Permissions">
+                <ng-template kendoPanelBarContent>
+                    <div class="panelBody">
+                        <div class="col-8">
+                            <bw-checkbox [checkBoxses]="security" [inRow]="true" [inRowLabelRows]="3"
+                                [inRowInputRows]="9" [classCheckboxLabel]="'row align-items-center m-0'"
+                                [control]="securityControl" [classNameControl]="'bw-font-sec-medium  p-0 '"
+                                [label]="'Group Access'" [checkBoxTextClass]="'col-xl-11 col-lg-11 col-md-10 ml-10'"
+                                [spanrowClass]="'row col-1'" (getselectedArray)="changeCheckbox($event, 'allDay')">
+                            </bw-checkbox>
+                        </div>
+                    </div>
+                </ng-template>
+            </kendo-panelbar-item>
+            <kendo-panelbar-item title="Attendees">
+                <ng-template kendoPanelBarContent>
+                    <div class="panelBody">
+                        <bw-grid [isEnableSelectAll]="false" [isShowCheckbox]="false" [onCellClicked]="onCellClicked"
+                            [columnOptions]="columnOptions" [columnsData]="columnsData" [gridData]="gridData"
+                            [isEnableButton]="true" (onClickActionAccordion)="insideAccordion($event)"
+                            (accrodianClick)="accrodianClick($event)" [accesControlFlagForAlerts]="true"
+                            (writeAccessClick)="writeAccessClick($event)"
+                            (writeChildAccessClick)="writeChildAccessClick($event)">
+                        </bw-grid>
+                    </div>
+                </ng-template>
+            </kendo-panelbar-item>
+            <kendo-panelbar-item title="email">
+                <ng-template kendoPanelBarContent>
+                    <div class="panelBody">
+                        <div class="col-6">
+                            <bw-checkbox [checkBoxses]="sendEmail" [inRow]="true" [inRowInputRows]="10"
+                                [classCheckboxLabel]="'row m-0 align-items-center'"
+                                [control]="eventAttendeesForm?.get('sendEmail')"
+                                [classNameControl]="'bw-font-sec-medium p-0'"
+                                [checkBoxTextClass]="'col-xl-9 col-lg-9 col-md-8 ml-8'" [spanrowClass]="'row col-1'"
+                                (getselectedArray)="changeCheckbox($event, 'sendEmail')">
+                            </bw-checkbox>
+                        </div>
+                        <bw-input [label]="'Email Subject'" [labelClass]="'bw-font-sec-bold'"
+                            [control]="eventAttendeesForm?.get('emailSubject')" [placeholder]="'Enter Email Subject'"
+                            [classNameControl]="'bw-font-sec-medium'" [inRow]="true" [inRowLabelRows]="3"
+                            [inRowInputRows]="7">
+                        </bw-input>
+                        <bw-textarea [labelClass]="'bw-font-prm-medium fs-6'" [label]="'Email Body'"
+                            [control]="eventAttendeesForm.get('emailBody')" [placeholder]="'Enter Email Body'"
+                            [className]="'bw-font-sec-medium mt-1'" [inRow]="true" [inRowLabelRows]="3"
+                            [inRowInputRows]="7">
+                        </bw-textarea>
+                    </div>
+                </ng-template>
+            </kendo-panelbar-item>
+
+        </kendo-panelbar>
+    </div>
+
+    <p *ngIf="isError" class="text-danger mb-1">
+        <ng-container *ngFor="let msg of errMessage">
+            {{ msg }}
+        </ng-container>
+    </p>
+
+</div>

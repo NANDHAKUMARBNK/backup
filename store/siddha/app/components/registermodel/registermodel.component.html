@@ -1,0 +1,374 @@
+<br />
+<div class="container">
+  <div class="row">
+  <div class="col-md-8">
+    <h3 class="registerHeading">
+      Volunteer (Self-Motivated Individual) Siddha Doctors Registration
+    </h3>
+    <p>Please fill the form below for Volunteer Registration</p>
+
+    <form ngNativeValidate>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleInput">First Name *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="a"
+              (change)="changeFn($event)"
+              required
+            />
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleInput">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="b"
+              (change)="changeLn($event)"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>About Me *</label>
+        <div class="form-check">
+          <div *ngFor="let qua of qualification">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="about"
+              id="{{ qua.name }}"
+              value="{{ qua.id }}"
+              (change)="changeHeQ($event)"
+              required
+            />
+            <p class="form-check-label" for="exampleRadios">
+              {{ qua.display_name }}
+            </p>
+            <div *ngIf="showInputGuru && showNameGuru === qua.display_name">
+              <label>Guru Name</label>
+              <input
+                class="form-control"
+                type="text"
+                name="guru"
+                id="guru"
+                (change)="changeGuru($event)"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>COVID-19 Cure Specialization (self declaration) *</label>
+        <div class="form-check">
+          <div *ngFor="let special of specialization">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="specialname"
+              id="{{ special.name }}"
+              value="{{ special.id }}"
+              (change)="changeSpecial($event)"
+              required
+            />
+            <p class="form-check-label" for="exampleRadios2">
+              {{ special.display_name }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInput">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          id="d"
+          (change)="changeEmail($event)"
+        />
+      </div>
+      <div class="form-group">
+        <label>
+          Mobile No*
+        </label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <select
+              class="form-control"
+              id="birno"
+              (change)="changeCountryCode($event)"
+              required
+            >
+              <!-- <option value="" selected>+91</option> -->
+              <option value="{{ coun.id }}" *ngFor="let coun of countries">{{
+                coun.phone_code
+              }}</option>
+            </select>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            (keypress)="isNumber($event)"
+            onkeydown="return event.keyCode !== 69 && event.keyCode !== 190"
+            (change)="changeMobileNumber($event)"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="birplace">Birth Place *</label>
+        <select
+          class="form-control"
+          id="birplace"
+          (change)="changeBirthPlace($event)"
+          required
+        >
+          <option value="" selected>Select Birth Place</option>
+          <option
+            value="{{ dist.id }}"
+            *ngFor="let dist of districts | orderBy: order"
+            >{{ dist.name }}</option
+          >
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="cur">Current Location *</label>
+        <select
+          class="form-control"
+          id="cur"
+          (change)="changeCurrentLocation($event)"
+          required
+        >
+          <option value="" selected>Select Current Location</option>
+          <option
+            value="{{ dist.id }}"
+            *ngFor="let dist of districts | orderBy: order"
+            >{{ dist.name }}</option
+          >
+        </select>
+      </div>
+      <hr />
+      <div class="form-group">
+        <label for="exampleInputEmail1">Village/Ward Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="h"
+          (change)="changeVillage($event)"
+        />
+      </div>
+      <!-- <div class="form-group">
+        <p>
+          <small
+            >Fund will be credited to this account for your voluntary services
+            on receipt of feedback from people you have served</small
+          >
+        </p>
+        <label for="exampleInputEmail1">Bank Account Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="i"
+          (change)="changeBankAccountName($event)"
+        />
+      </div> -->
+      <!-- <div class="form-group">
+        <label for="exampleInputEmail1">Account No</label>
+        <input
+          type="text"
+          class="form-control"
+          id="j"
+          (change)="changeAccountNo($event)"
+        />
+      </div> -->
+      <!-- <div class="form-group">
+        <label for="exampleInputEmail1">IFSC Code / Branch Code</label>
+        <input
+          type="text"
+          class="form-control"
+          id="k"
+          (change)="changeIfscBranchCode($event)"
+        />
+      </div> -->
+      <!-- <div class="form-group">
+        <label for="exampleInputEmail1">UPI Id</label>
+        <input
+          type="text"
+          class="form-control"
+          id="l"
+          (change)="changeUpiId($event)"
+        />
+      </div> -->
+      <div class="form-group">
+        <label for="exampleInputEmail1">Aadhar Number *</label>
+        <input
+          type="text"
+          class="form-control"
+          id="z"
+          (keypress)="isNumber($event)"
+          onkeydown="return event.keyCode !== 69 && event.keyCode !== 190"
+          (change)="changeAadharNumber($event)"
+          required
+        />
+      </div>
+      <hr />
+
+      <div class="form-check1">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          [(ngModel)]="theCheckbox"
+          [ngModelOptions]="{ standalone: true }"
+          data-md-icheck
+          (change)="changeChecked($event)"
+        />
+        <label class="form-check-label"
+          >Click here if you own a clinic/hospital
+        </label>
+      </div>
+      <br />
+
+      <div *ngIf="marked">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Hospital Name *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="oo"
+            (change)="changeHospitalName($event)"
+            required
+          />
+        </div>
+
+        <div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">No. of employees *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="o"
+              (keypress)="isNumber($event)"
+              onkeydown="return event.keyCode !== 69 && event.keyCode !== 190"
+              (change)="changeNoOfEmployess($event)"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Address</label>
+            <textarea
+              class="form-control"
+              id="p"
+              rows="3"
+              (change)="changeAddress($event)"
+            ></textarea>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="cou">Country *</label>
+                <select
+                  class="form-control"
+                  id="cou"
+                  (change)="changeCountry($event)"
+                  required
+                >
+                  <option value="" selected>Select Country Name</option>
+                  <option
+                    value="{{ country.id }}"
+                    *ngFor="let country of countries | orderBy: order"
+                    >{{ country.name }}</option
+                  >
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="dis">District *</label>
+                <select
+                  class="form-control"
+                  id="dis"
+                  (change)="changeDistrict($event)"
+                  required
+                >
+                  <option value="" selected>Select District Name</option>
+                  <option
+                    value="{{ dist.id }}"
+                    *ngFor="let dist of districts | orderBy: order"
+                    >{{ dist.name }}</option
+                  >
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-check1">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          [(ngModel)]="theCheckboxAgree"
+          [ngModelOptions]="{ standalone: true }"
+          data-md-icheck
+          (change)="changeAgree($event)"
+        />
+        <label class="form-check-label">
+          I agree to all the privacy policy & terms & conditions regulated by 
+        </label>
+      </div>
+      <hr />
+      
+
+        <!-- <div
+            class="col-md-6"
+            *ngIf="
+              firstName &&
+              birthPlace &&
+              currentLocation &&
+              countryCode &&
+              special &&
+              hEq &&
+              aadharNo
+            "
+          >
+            <button
+              type="submit"
+              class="btn btn-outline-info"
+              (click)="register(true)"
+            >
+              Upload My Video
+            </button>
+          </div> -->
+    </form>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <button
+        type="submit"
+        class="btn btn-primary m-2"
+        (click)="register(false)"
+      >
+        Register
+      </button>
+    </div>
+    <div class="col-md-4 m-2">
+      <button
+        type="submit"
+        class="btn btn-success"
+        (click)="register(true)"
+      >
+        Register & Upload My Video
+      </button>
+    </div>
+    <div class="col-md-2 m-2" >
+      <button type="button" class="btn btn-dark" (click)="cancel()">
+        Cancel
+      </button>
+    </div>
+    </div>
+</div>
+<br />

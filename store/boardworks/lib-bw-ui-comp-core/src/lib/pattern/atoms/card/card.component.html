@@ -1,0 +1,88 @@
+<div
+  [class]="className ? className : 'card {{ cardClass }}'"
+  *ngFor="let card of cards"
+  [style.width]="width"
+>
+  <div class="{{ classheaderName }} {{ classBorderName }}" [ngClass]="isRecentUpdates ? 'card-header-recent' : 'card-header'">
+    <div class="row">
+      <div class="col-md-10">
+        <div class="card-title primary-fre-clr-bse bw-font-prm-medium">
+          {{ card.title }}
+        </div>
+      </div>
+      <div class="col-md-2 icon" *ngIf="isEnableIcons">
+        <bw-avatar
+          [src]="settingIcon"
+          [title]="'settings'"
+          (clickAvatar)="settings($event)"
+        ></bw-avatar>
+      </div>
+    </div>
+  </div>
+  <div class="card-body {{ classBorderName }}" [style.padding.px]="padding">
+    <span *ngIf="card.showTableOrList">
+      <ng-content></ng-content>
+    </span>
+    <span *ngIf="card.showText && card.body.length > 0">
+      <div
+        *ngFor="let item of card.body"
+        [class]="cardBodyClassName || 'recentUpdates'"
+      >
+        <div class="row">
+          <div class="col-md-10">
+            <p
+              (click)="onClickCard(card)"
+              class="bw-font-sec-medium"
+              *ngIf="!isRecentUpdates"
+            >
+              {{ item.bodyName }}
+            </p>
+            <p *ngIf="isRecentUpdates">
+              {{ item.moduleName }}
+              <bw-link
+                (onClickLink)="onClickUpdates(item)"
+                [linkText]="item.bodyName"
+              ></bw-link>
+              <!--  [className]="'bw-font-sec-bold'" -->
+              {{ item.text }}
+            </p>
+          </div>
+          <div class="col-md-2">
+            <div *ngIf="item.showFlag" class="flag">
+              <bw-avatar [src]="flagIcon" [title]="'Important'"></bw-avatar>
+            </div>
+          </div>
+          <bw-divider></bw-divider>
+        </div>
+      </div>
+    </span>
+    <span *ngIf="card.showText">
+      <div
+        *ngIf="card.body.length === 0"
+        [class]="cardBodyClassName || 'recentUpdates'"
+      >
+        <div class="row">
+          <div class="col-md-10">
+            <p class="bw-font-sec-medium" *ngIf="isRecentUpdates">
+              No Recent Updates Found
+            </p>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div
+    class="card-footer bw-font-sec-bold bw-font-prm-medium text-end {{ classfooterName }}"
+    *ngIf="card.showFooter && card.body.length > 0"
+    (click)="cardFooter(card.body)"
+    style="cursor: pointer"
+  >
+  <!-- bw-font-sec-regular -->
+    {{ card.footer }}
+  </div>
+</div>
+<div *ngIf="isSettings">
+  <bw-settings-recent-updates
+    (onCancelClick)="closeSettings($event)"
+  ></bw-settings-recent-updates>
+</div>

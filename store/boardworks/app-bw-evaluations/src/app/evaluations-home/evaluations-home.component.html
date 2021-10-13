@@ -1,0 +1,28 @@
+<div class="row align-items-center">
+    <div class="col-3">
+        <bw-text [className]="'bw-font-sec-bold  primary-fre-clr-bse f-17'" [textName]="'Evaluations'"></bw-text>
+    </div>
+    <div class="col-9 text-end pr-0">
+        <bw-button 
+        *ngIf="createEvaluations"
+        className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular btn-sm  me-md-4 px-4"
+            buttonName="New Evaluation Template" (onClick)="newTemplate($event)">
+        </bw-button>
+
+        <bw-button
+            *ngIf="createEvaluations"
+            className="btn-base px-4 bw-font-prm-regular btn-contained  secondary-btn-contained   btn-sm  me-md-4"
+            [buttonName]="'New Evaluation'" (onClick)="evaluation($event)">
+        </bw-button>
+    </div>
+</div>
+
+<div class="m-3">
+    <bw-tab [tabs]="tabsData" (tabChange)="tabChange($event)">
+        <div class="mt-2">
+            <app-eva-publish *ngIf="tab == 'PUBLISHED'"></app-eva-publish>
+            <app-eva-unpublish *ngIf="tab == 'UNPUBLISHED'"> </app-eva-unpublish>
+            <app-eva-templates *ngIf="tab == 'TEMPLATES'"></app-eva-templates>
+        </div>
+    </bw-tab>
+</div>

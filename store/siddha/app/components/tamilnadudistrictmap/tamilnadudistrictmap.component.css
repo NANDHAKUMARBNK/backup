@@ -1,0 +1,48 @@
+.Dot{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 12px;
+}
+.align-center p{
+    text-align: center;
+}
+.red{
+    background-color: red;
+}
+.yellow{
+    background-color: yellow;
+}
+.orange{
+    background-color: orange;
+}
+.green{
+    background-color: green;
+}
+.clickButton{
+    padding: 15px 15px 15px 15px!important;
+    border: none;
+}
+/* .clickButtonContainer{
+    text-align: center;
+    position: relative;
+    top: -50px;
+   
+} */
+
+.loader-backdrop img{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    margin-left: -40px;
+    margin-top: -40px;
+     width: 10%;
+    z-index: 999;
+  }
+
+  .refreshContainer{
+      position: absolute;
+      top: 60%;
+    left: 50%;
+  }

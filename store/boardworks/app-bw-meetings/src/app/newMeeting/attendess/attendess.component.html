@@ -1,0 +1,93 @@
+<div class="border p-3">
+  <div class="col-md-12 text-end">
+    <bw-button
+      className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+      buttonName="Cancel"
+      (onClick)="clickButton('cancel')"
+    >
+    </bw-button>
+    <bw-button
+      className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+      buttonName="Save"
+      (onClick)="clickButton('save')"
+    >
+    </bw-button>
+    <bw-button
+      className="btn-base btn-containe bw-font-prm-medium secondary-btn-contained btn-sm me-md-4 px-4"
+      buttonName="Add Documents"
+      (onClick)="clickButton('save')"
+    >
+    </bw-button>
+    <!-- <bw-combo-button [buttonProperties]="buttonProperties" [width]="'100%'" [buttonColClass]="'6'"
+            (onClick)="clickButton($event)">
+        </bw-combo-button> -->
+  </div>
+  <div class="col-9 mt-4">
+    <kendo-panelbar [style.height]="'320px'" class="bw-accordion">
+      <kendo-panelbar-item>
+        <ng-template kendoPanelBarItemTitle>
+          <b>Security & Permissions</b>
+        </ng-template>
+        <ng-template kendoPanelBarContent>
+          <div class="panelBody">
+            <bw-checkbox
+              [checkBoxses]="security"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="7"
+              [classCheckboxLabel]="'row  align-items-center  m-0'"
+              [control]="securityControl"
+              [classNameControl]="'bw-font-sec-medium  p-0 '"
+              [label]="'Group Access'"
+              [checkBoxTextClass]="'col-xl-11 col-lg-11 col-md-10 ml-10'"
+              [spanrowClass]="'row col-1'"
+              (getselectedArray)="changeAllDayCheckbox($event)"
+            >
+            </bw-checkbox>
+            <div class="row m-0">
+              <div class="col-md-3"></div>
+              <div class="col-md-7">
+                <span class="note">Note: </span>
+                <span
+                  >You can override this within documents if you'd like only
+                  certain attendees to see certain documents.</span
+                >
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </kendo-panelbar-item>
+      <kendo-panelbar-item>
+        <ng-template kendoPanelBarItemTitle>
+          <b>Attendees</b>
+        </ng-template>
+        <ng-template kendoPanelBarContent>
+          <div class="panelBody">
+            <bw-grid
+              [isEnableSelectAll]="false"
+              [isShowCheckbox]="false"
+              [onCellClicked]="onCellClicked"
+              [columnOptions]="columnOptions"
+              [columnsData]="columnsData"
+              [gridData]="gridData"
+              [changeTextColor]="changeTextColor"
+              [isEnableButton]="true"
+              (onClickActionAccordion)="insideAccordion($event)"
+              (accrodianClick)="accrodianClick($event)"
+              [accesControlFlagForAlerts]="true"
+              (writeAccessClick)="writeAccessClick($event)"
+              (writeChildAccessClick)="writeChildAccessClick($event)"
+            >
+            </bw-grid>
+          </div>
+        </ng-template>
+      </kendo-panelbar-item>
+    </kendo-panelbar>
+  </div>
+
+  <p *ngIf="isError" class="text-danger mb-1">
+    <ng-container *ngFor="let msg of errMessage">
+      {{ msg }}
+    </ng-container>
+  </p>
+</div>

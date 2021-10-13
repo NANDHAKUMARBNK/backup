@@ -1,0 +1,26 @@
+<div class="announcementWrapper">
+  <h1>
+    Announcements <span class="count">{{ announcementscount }}</span>
+  </h1>
+  <div class="announcementBox">
+    <div *ngIf="loader" class="loader-backdrop">
+      <img src="../../../assets/images/loader.gif" alt="loader.gif">
+    </div>
+    <div class="refreshContainer" *ngIf="refreshApi">
+        <button class="btn btn-primary" (click)="getAnnouncements()">Refresh</button>
+    </div>
+    <div class="announcementList">
+     
+      <ul>
+        <li *ngFor="let announcement of announcements">
+          {{ announcement.description }}
+          <span class="externalLink" *ngIf="announcement.external_link">
+            <a href="{{ announcement.external_link }}" target="_blank"></a></span>
+          <span class="Download" *ngIf="announcement.attachement_link">
+            <a class="Download" href="{{ announcement.attachement_link }}" target="_blank">Download here</a>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

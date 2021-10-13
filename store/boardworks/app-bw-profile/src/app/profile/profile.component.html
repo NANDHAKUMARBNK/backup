@@ -1,0 +1,80 @@
+<bw-text [className]="'primary-fre-clr-bse mt-3 bw-font-prm-medium'" [textName]="'Profiles'"></bw-text>
+
+<div class="mt-3">
+    <bw-alpha-search (onClick)="alphaSerch($event)"></bw-alpha-search>
+    <div class="mt-4 col-3 profiledropdown">
+        <bw-select  [control]="committeeId" [data]="userBoards" [isKey]="true"
+            [searchable]="false" [selectName]="'name'" [selectValue]="'committeeId'"
+            (selectChangeEvent)="changecomitee($event)" >
+        </bw-select>
+    </div>
+
+    <div class="row " *ngIf=" profileUsersData && profileUsersData.length>0;else other_content">
+        <div class="col-md-6" [ngClass]="{'scroll ': profileUsersData.length>8}">
+            <div class="profileUser  border" >
+                <ul>
+                    <li [ngClass]="{'active-class': i==activeClass}" (click)="profileClick(i,profile)"
+                        class="border-bottom cursor-pointer" *ngFor="let profile of profileImageData; let i=index">
+                        <bw-image-text [classNameText]="'bw-font-prm-regular bw-extra-light-gray-xxx  fs-14'" [classNameImg]="'profile-picture sm'"
+                            [src]="profile.thumbnail" [alt]="'profile'" [title]="'profile'" [textName]="profile.name">
+                        </bw-image-text>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-md-5">
+            <div class="border p-2">
+                <div class="row">
+                    <div class="col-md-6">
+                        <bw-label [labelName]="profileData?.name" [className]="'bw-font-prm-medium'"></bw-label>
+
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <bw-button className="btn-base btn-contained secondary-btn-contained btn-sm fs-11  me-md-4"
+                            buttonName="View Full Profile" (onClick)="viewProfile($event, profileData)">
+                        </bw-button>
+
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <bw-label [labelName]="'Title'" className='bw-font-prm-medium d-block '></bw-label>
+
+                    <bw-label [labelName]="profileData?.companyTitle"
+                        className=' bw-font-prm-regular bw-extra-light-gray-xxx fs-14 d-block mt-1 '></bw-label>
+                </div>
+                <div class="mt-2">
+                    <bw-label [labelName]="'Company'" className='bw-font-prm-medium d-block '></bw-label>
+
+                    <bw-label [labelName]="profileData?.company" className='bw-font-prm-regular bw-extra-light-gray-xxx fs-14 d-block mt-1'>
+                    </bw-label>
+                </div>
+                <div class="mt-3">
+                    <bw-icon-text (onClickLink)="mailLink($event)" [className]="'bw-font-prm-regular fs-14'" [textClass]="'11 p-0'"
+                        [iconClassName]="'email-open-outline'" [isLink]="true" [linkTextName]="profileData?.email">
+                    </bw-icon-text>
+                </div>
+                <div class="mt-2">
+                    <bw-icon-text [className]="'bw-font-prm-regular bw-extra-light-gray-xxx fs-14'" [textClass]="'11 p-0'"
+                        [iconClassName]="'phone '" [isLink]="false" [textName]="profileData?.mobilePhone">
+                    </bw-icon-text>
+                </div>
+                <div class="mt-2">
+                    <bw-icon-text [className]="'bw-font-prm-regular bw-extra-light-gray-xxx fs-14'" [textClass]="'11 p-0'"
+                        [iconClassName]="'cellphone'" [isLink]="false" [textName]="profileData?.mobilePhone">
+                    </bw-icon-text>
+                </div>
+
+                <div class="mt-4 commitees">
+                    <bw-label [labelName]="'Commitee MemeberShip'" className='bw-font-prm-medium d-block '></bw-label>
+                    <ul class="mt-2 commitees">
+                        <li class="bw-font-prm-regular bw-extra-light-gray-xxx fs-14" *ngFor="let profile of profileData?.commitees">
+                            {{profile.name}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #other_content>No Records Found</ng-template>
+</div>

@@ -1,0 +1,10 @@
+<ul class="alphabets-search">
+    <!-- <span (click)="ClickEventAll('ALL')" [ngClass]="searchedAllLetter == 'ALL' ? 'allactive' : 'all'">
+        ALL
+    </span> -->
+    <li *ngFor="let letter of alphabets">
+        <span [ngClass]="letter == searchedLetter ? 'active' : ''"
+            class="{{letter == 'ALL' ? 'all-font' : ''}}"
+            (click)="clickEvent(letter)"> {{ letter }}&nbsp;</span>
+    </li>
+</ul>

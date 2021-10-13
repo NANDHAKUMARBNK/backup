@@ -1,0 +1,49 @@
+<div class="form-group {{ divClass }}" *ngIf="!inRow">
+  <label *ngIf="label" for="" class="">
+    <bw-label [labelName]="label" [className]="labelClass"></bw-label>
+    <span class="text-danger" *ngIf="validator(control)">*</span>
+    <bw-tooltip *ngIf="toolTip" [title]="toolTip" [iconClass]="toolTipClass"></bw-tooltip>
+  </label>
+  <div *ngIf="radios.length">
+    <label class="{{ classRadioLabel }}" *ngFor="let c of radios; let i = index" (change)="getSelectedRadio(c.value)"
+      for="{{ c.name }}">
+      <input type="radio" [value]="c.value" id="{{ c.name }}" class="{{ classNameControl }}" kendoRadioButton
+        [formControl]="control" name="common" />
+      {{ c.name }}
+    </label>
+    <small id="textHelp" class="form-text text-muted bb-font-info" *ngIf="helpText">{{ helpText }}</small>
+  </div>
+  <bw-control-error-message [control]="control"
+    [fieldName]="errorMessageName ? errorMessageName : label || optionalLabel">
+  </bw-control-error-message>
+</div>
+
+<div class="form-group row {{ divClass }}" *ngIf="inRow && radios.length">
+  <label *ngIf="label" for="" class="col-xl-{{ inRowLabelRows }} col-lg-{{ inRowLabelRows }}">
+    <bw-label [labelName]="label" [className]="labelClass"></bw-label>
+    <span class="text-danger" *ngIf="validator(control)">*</span>
+    <bw-tooltip *ngIf="toolTip" [title]="toolTip" [iconClass]="toolTipClass"></bw-tooltip>
+  </label>
+  <div class="col-xl-{{ inRowInputRows }} col-lg-{{ inRowInputRows }} row">
+    <label class="{{ classRadioLabel }}" *ngFor="let c of radios; let i = index" (change)="getSelectedRadio(c.value)"
+      for="{{ c.value }}">
+      <!-- {{radioForm.controls.radios.value | json}} -->
+      <input type="radio" [value]="c.value" class="{{ classNameControl }}" kendoRadioButton id="{{ c.value }}"
+        name="{{name}}" [formControl]="control" />
+      {{ c.name }}
+
+      <span *ngIf="radioDate && c.value =='Other'">
+        <bw-date [label]="''" [labelClass]="'bw-font-sec-bold'"
+          [control]="controlDate" [classNameControl]="'bw-font-sec-medium'" [inRow]="true"
+          [inRowLabelRows]="3" [minDate]="minDate" [inRowInputRows]="7" [calendarType]="'classic'"
+          [placeholder]="'DD/MM/YYYY'">
+        </bw-date>
+      </span>
+    </label>
+    <bw-tooltip *ngIf="toolTipInput" [title]="toolTipInput" [iconClass]="toolTipClass"></bw-tooltip>
+    <small id="textHelp" class="form-text text-muted bb-font-info" *ngIf="helpText">{{ helpText }}</small>
+    <bw-control-error-message [control]="control"
+      [fieldName]="errorMessageName ? errorMessageName : label || optionalLabel">
+    </bw-control-error-message>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<bw-grid [isEnableSelectAll]="false" [isShowCheckbox]="false" [onCellClicked]="onCellClicked"
+    [columnOptions]="columnOptions" [columnsData]="columnsData" [gridData]="gridData" [actions]="actions"
+    (onClickAction)="onClickAction($event)" (onClickLink)="onClickLink($event)"></bw-grid>
+
+<div *ngIf="showdeleteFloder">
+    <bw-confirm-modal [width]="700" [headerTitle]="'Delete Confirmation'" [isEnableHeader]="true" [isDeleteBody]="false"
+        [isEnableFooter]="true" [isCustomBody]="true" (onConfirmClick)="floderModalAction('save')"
+        (onCancelClick)="floderModalAction('cancel')">
+        <bw-text [className]="'fw-500 fs-6'" [textName]="'Are you sure you want to delete this folder?'"></bw-text>
+
+    </bw-confirm-modal>
+</div>

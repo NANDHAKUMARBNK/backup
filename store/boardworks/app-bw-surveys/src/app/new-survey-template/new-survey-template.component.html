@@ -1,0 +1,109 @@
+<!-- Create survey component -->
+
+<div class="mt-4">
+  <div>
+    <span (click)="backNavigation()"
+      ><a class="cursor-pointer"> Survey</a> >
+    </span>
+    <span>{{ breadCrumb }}</span>
+  </div>
+
+  <div class="col-12 text-end">
+    <bw-button
+      className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular btn-sm  me-md-4 px-4"
+      (onClick)="backNavigation()"
+      buttonName="CANCEL"
+    >
+    </bw-button>
+    <bw-button
+      className="btn-base   secondary-btn-contained bw-font-prm-regular btn-sm  me-md-4 px-4"
+      buttonName="CREATE SURVEY TEMPLATE"
+      (onClick)="submitSurvey($event)"
+      [buttonDisabled]="SurveyDataForm.invalid"
+    >
+    </bw-button>
+  </div>
+  <div class="mt-3">
+    <bw-text
+      [className]="'bw-font-sec-bold  primary-fre-clr-bse f-17'"
+      [textName]="'Survey'"
+    ></bw-text>
+  </div>
+
+  <div class="col-9">
+    <p *ngIf="isError" class="text-danger mb-1 mt-1">
+      <ng-container *ngFor="let msg of errMessage">
+        {{ msg }}
+      </ng-container>
+    </p>
+    <div class="border p-3 mt-4">
+      <div class="">
+        <bw-text
+          [className]="'bw-font-sec-medium  primary-fre-clr-bse f-17'"
+          [textName]="'Survey Details'"
+        ></bw-text>
+      </div>
+
+      <div class="form-group addWorkspace mt-4 mb-4">
+        <bw-input
+          [label]="'Survey Title'"
+          [labelClass]="'bw-font-sec-bold'"
+          [control]="SurveyDataForm.get('title')"
+          [placeholder]="'Enter Title'"
+          [classNameControl]="'bw-font-sec-medium'"
+          [inRow]="true"
+          [inRowLabelRows]="3"
+          [inRowInputRows]="7"
+        >
+        </bw-input>
+
+        <bw-textarea
+          [label]="'Survey Description'"
+          [control]="SurveyDataForm.get('description')"
+          [inRow]="true"
+          [inRowLabelRows]="3"
+          [inRowInputRows]="7"
+          [rows]="3"
+          [placeholder]="'Enter Description'"
+          [className]="'bw-font-sec-medium'"
+        >
+        </bw-textarea>
+
+        <bw-date
+          [label]="'Closing Date'"
+          [labelClass]="'bw-font-sec-bold'"
+          [control]="SurveyDataForm?.get('closingDate')"
+          [classNameControl]="'bw-font-sec-medium'"
+          [inRow]="true"
+          [inRowLabelRows]="3"
+          [inRowInputRows]="7"
+          [calendarType]="'classic'"
+          [placeholder]="'DD/MM/YYYY'"
+        >
+        </bw-date>
+      </div>
+
+      <bw-divider></bw-divider>
+
+      <bw-text
+        [className]="'bw-font-sec-medium mb-3  primary-fre-clr-bse f-17'"
+        [textName]="'Recipients'"
+      ></bw-text>
+
+      <bw-grid
+        [isEnableSelectAll]="false"
+        [isShowCheckbox]="false"
+        [onCellClicked]="onCellClicked"
+        [columnOptions]="columnOptions"
+        [columnsData]="columnsData"
+        [gridData]="gridData"
+        [isEnableButton]="true"
+        (accrodianClick)="accrodianClick($event)"
+        [accesControlFlagForAlerts]="true"
+        (writeAccessClick)="writeAccessClick($event)"
+        (writeChildAccessClick)="writeChildAccessClick($event)"
+      >
+      </bw-grid>
+    </div>
+  </div>
+</div>

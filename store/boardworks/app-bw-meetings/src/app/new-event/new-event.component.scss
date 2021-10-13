@@ -1,0 +1,40 @@
+.steeper {
+  height: 50px;
+  background: #f7f7f7;
+  align-items: center;
+  div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .round {
+    padding: 7px 14px;
+    background-color: var(--bw-prm-clr-bse);
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 17px;
+    color: var(--bw-clr-white);
+  }
+  .label-text {
+    margin-left: 10px;
+  }
+
+  .divider {
+    flex-grow: 1;
+    border-bottom: 1px solid black;
+    margin: 5px;
+  }
+  hr {
+    position: absolute;
+    width: 50%;
+    right: -27%;
+  }
+  .active {
+    color: var(--bw-prm-clr-bse);
+    font-weight: 500;
+  }
+}

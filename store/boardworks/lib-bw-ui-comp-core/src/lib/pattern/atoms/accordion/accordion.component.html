@@ -1,0 +1,48 @@
+<kendo-panelbar
+  [expandMode]="expandMode"
+  [height]="height + 'px'"
+  (stateChange)="onPanelChange($event)"
+  class="bw-accordion"
+  *ngIf="isEnableButton"
+>
+  <kendo-panelbar-item
+    [title]="accordion.header"
+    [expanded]="isEnableExpand"
+    *ngFor="let accordion of accordions"
+  >
+    <kendo-panelbar-item [title]="''" *ngFor="let body of accordion.body">
+      <ng-template kendoPanelBarItemTitle let-dataItem>
+        <span
+          style="flex: 1; cursor: pointer"
+          (click)="body.canEdit && action(accordion, body)"
+          ><bw-text [textName]="body.name" [className]="classBodyName"></bw-text
+        ></span>
+        <bw-button
+          *ngIf="body.canEdit"
+          [className]="'btn-base secondary-btn-text btn-sm'"
+          [buttonName]="buttonName"
+          (onClick)="action(accordion, body)"
+        ></bw-button>
+      </ng-template>
+    </kendo-panelbar-item>
+  </kendo-panelbar-item>
+</kendo-panelbar>
+<!-- Basic Accordion -->
+<kendo-panelbar
+  [expandMode]="expandMode"
+  [height]="height + 'px'"
+  (stateChange)="onPanelChange($event)"
+  class="bw-accordion"
+  *ngIf="!isEnableButton"
+>
+  <kendo-panelbar-item
+    [title]="committeesAccordionTitle"
+    [expanded]="isEnableExpand"
+  >
+    <kendo-panelbar-item [title]="''" *ngFor="let accordion of accordions">
+      <ng-template kendoPanelBarItemTitle let-dataItem>
+        <span style="flex: 1">{{ accordion }}</span>
+      </ng-template>
+    </kendo-panelbar-item>
+  </kendo-panelbar-item>
+</kendo-panelbar>

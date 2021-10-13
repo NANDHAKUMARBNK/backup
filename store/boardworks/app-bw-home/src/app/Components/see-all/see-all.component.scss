@@ -1,0 +1,12 @@
+.recentUpdates {
+  position: relative;
+  p {
+    padding-left: 8px;
+  }
+  .flag {
+    color: var(--bw-burnt-orange-clr-drk);
+    position: absolute;
+    right: 30px;
+    padding-top: 17px;
+  }
+}

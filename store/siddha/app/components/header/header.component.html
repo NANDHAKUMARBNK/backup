@@ -1,0 +1,40 @@
+<header class="header ">
+  <div class="header-container">
+    <div class="row m-0" >
+      <div class="col-lg-1 col-md-2 col-3 p-0"  data-toggle="modal" data-target="#logoModal">
+        <img class="logo" src="../../../assets/images/Asset 3@3x.png" />
+      </div>
+      <div class="col-lg-8 col-md-8 col-6" (click)="redirectToHome()">
+        <div class="logoOut" >
+          <h6>{{ proverb }}</h6>
+          <h1>{{ titleName }}</h1>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-2 col-3 languageRow " data-toggle="modal"
+      data-target="logoModal modal-logo">
+        <div class="languageOut dropdown">
+          <label class="pr-1" >Language:  </label>
+          <select class = "animated bounce" (change)="updateChanges($event)">
+            <option class = "container"*ngFor="let lang of languages" [value]="lang">
+              &nbsp; {{lang }}</option
+            >
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="modal fade" id="logoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content logoContent">
+      <div class="modal-body">
+        <button type="button" class="close buttonClose" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img class="starLogo" src="../../../assets/images/star.png">
+      </div>
+    </div>
+  </div>
+</div>
+

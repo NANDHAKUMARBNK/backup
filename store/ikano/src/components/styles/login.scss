@@ -1,0 +1,103 @@
+.login__appLogo {
+  text-align: center;
+}
+.login__appLogo img {
+  width: 140px;
+}
+.login__appLogoTeam img {
+  height: 465px;
+  width: 100%;
+}
+.login__form {
+  height: 465px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 26px 0 rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.form-control {
+  width: 100% !important;
+}
+.login__form form {
+  width: 50%;
+}
+.login__form p {
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 30px;
+}
+.login__form input {
+  box-sizing: border-box;
+  height: 49px;
+  width: fit-content;
+  border: 1px solid #cdc8be;
+  border-radius: 5px;
+  background-color: #ffffff;
+  margin: auto;
+}
+.login__formButton button {
+  position: relative;
+  height: 47px;
+  //   width: 268px;
+  width: 60%;
+  font-family: "Ikano Sans";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 20px;
+  background-color: #ec0f00;
+  border: none;
+  border-radius: 0;
+}
+.login__formButton img {
+  height: 19px;
+  width: 12px;
+  position: absolute;
+  right: 6%;
+}
+.login__formButton button:hover {
+  background-color: #ec0f00;
+}
+.login__formButton button:active {
+  box-shadow: none;
+  background-color: #ec0f00;
+}
+.login__formPasswordWrapper {
+  position: relative;
+  display: flex;
+}
+.login__formPasswordWrapper img {
+  position: absolute;
+  top: 38%;
+  right: 5%;
+  height: 13px;
+  width: 22px;
+}
+.login__formPasswordWrapper img:hover {
+  cursor: pointer;
+}
+.login__form input:focus {
+  border: 1px solid black;
+  box-shadow: 0 0 3px black;
+  outline-offset: 0px;
+  outline: none;
+}
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: #ec0f00 !important;
+  box-shadow: none !important;
+}
+.error {
+  font-size: 16px !important;
+  color: red !important;
+  letter-spacing: 1px !important;
+  word-spacing: 0.5px;
+}

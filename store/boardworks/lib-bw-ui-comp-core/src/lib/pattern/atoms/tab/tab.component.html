@@ -1,0 +1,17 @@
+<kendo-tabstrip class="bw-tab" (tabSelect)="onTabSelect($event)">
+  <kendo-tabstrip-tab
+    [title]="tab.title"
+    *ngFor="let tab of tabs let i = index;"
+    [selected]="tab.isSelected"
+    
+    [disabled]="tab.disabled"
+
+    
+  >
+    <ng-template kendoTabContent >
+      <!-- <p>{{ tab.content }}</p> -->
+      <ng-content ></ng-content>
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+<!--[disabled]="tab.isDisabled"-->

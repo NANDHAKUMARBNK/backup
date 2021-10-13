@@ -1,0 +1,42 @@
+<div class="cursor-pointer mt-3" *ngIf="floderName">
+    <span (click)="folderClick()"><a class="cursor-pointer"> Links</a> </span> <span> > {{floderName}}</span>
+</div>
+<div class="row  align-items-center ">
+
+    <div class="col-md-2">
+        <p class="primary-fre-clr-bse bw-font-prm-medium">Links</p>
+    </div>
+    <div class="col-md-10 text-end">
+        <bw-button *ngIf="addFloder" className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular btn-sm  me-md-4 px-4"
+            buttonName="New Link" (onClick)="newLink($event)">
+        </bw-button>
+        <bw-button *ngIf="addLink" className="btn-base bw-font-prm-regular btn-contained  secondary-btn-contained   btn-sm  me-md-4"
+            buttonName="New Link Folder" (onClick)="newFloder($event)">
+        </bw-button>
+
+    </div>
+</div>
+
+<div class="col-md-10 links">
+    <bw-tab [tabs]="tabsData" (tabChange)="tabChange($event)">
+        <div class="mt-2">
+            <app-links-floder *ngIf="tab"></app-links-floder>
+            <app-links *ngIf="!tab"></app-links>
+        </div>
+
+    </bw-tab>
+
+    <!-- <kendo-tabstrip class="bw-tab">
+        <kendo-tabstrip-tab [title]="'LINK FLODERS'" [selected]="true">
+            <ng-template kendoTabContent>
+                <app-links-floder></app-links-floder>
+            </ng-template>
+        </kendo-tabstrip-tab>
+        <kendo-tabstrip-tab [title]="'LINK'">
+            <ng-template kendoTabContent>
+             <app-links></app-links>
+            </ng-template>
+        </kendo-tabstrip-tab>
+
+    </kendo-tabstrip> -->
+</div>

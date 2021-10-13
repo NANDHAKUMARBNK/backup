@@ -1,0 +1,12 @@
+.bw-toggle-switch {
+    // width: 100px !important;
+    .k-switch-handle{
+        &:after{
+            content: 'test';
+            position: absolute;
+        }
+    }
+    .k-switch-container{
+        background-color: var(--bw-sec-clr-bse);
+    }
+}

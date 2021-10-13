@@ -1,0 +1,70 @@
+<div class="form-group {{ class }}" *ngIf="!inRow">
+  <label *ngIf="label" for="" class="">
+    <bw-label [labelName]="label" [className]="labelClass"></bw-label>
+    <span class="text-danger" *ngIf="validator(control) && isStar">*</span>
+    <span class="text-danger" *ngIf="requiredField">*</span>
+    <bw-tooltip [className]="toolTipClass" *ngIf="toolTip" [title]="toolTip" [iconClass]="toolTipIconClass">
+    </bw-tooltip>
+  </label>
+  <ng-container>
+    <div class="form-group m-input-group file-relative {{
+        prefix ? 'prefix' : ''
+      }}">
+      <div class="input-group-prepend" [style.height]="height" *ngIf="prefix">
+        <em class="{{ prefix }}">{{ prefix }}</em>
+      </div>
+      <input [style.height]="height" [disabled]="!control?.disabled" class="form-control {{ classNameControl }}"
+        [type]="type" [formControl]="control" readonly="isUploadFile" />
+      <div class="browse">
+        <bw-button (onClick)="OnClickUplaod($event)" [className]="btnClass" buttonName="Browse">
+          <input [accept]="accept" type="file" #fileupload id="file" style="display: none"
+            (change)="uploadFile($event)" />
+        </bw-button>
+      </div>
+    </div>
+    <small id="textHelp" class="form-text text-muted bb-font-info" *ngIf="helpText">{{ helpText }}</small>
+  </ng-container>
+  <bw-control-error-message [control]="control"
+    [fieldName]="errorMessageName ? errorMessageName : label || optionalLabel">
+  </bw-control-error-message>
+</div>
+
+<div class="form-group row {{ class }}" *ngIf="inRow">
+  <label *ngIf="label" for="" class="col-xl-{{ inRowLabelRows }} col-lg-{{ inRowLabelRows }}">
+    <bw-label [labelName]="label" [className]="labelClass"></bw-label>
+    <span class="text-danger" *ngIf="validator(control) && isStar">*</span>
+    <span class="text-danger" *ngIf="requiredField">*</span>
+    <bw-tooltip *ngIf="toolTip" [title]="toolTip" [iconClass]="toolTipClass"></bw-tooltip>
+  </label>
+  <div class="col-xl-{{ inRowInputRows }} col-lg-{{ inRowInputRows }}">
+    <div class="input-group m-input-group file-relative {{
+        prefix ? 'prefix' : ''
+      }}" (click)="OnClickUplaod($event)">
+      <div class="input-group-prepend" [style.height]="height" *ngIf="prefix">
+        <span class="input-group-text textColor">{{ prefix }}</span>
+      </div>
+      <input type="file" *ngIf="mutiple" multiple #fileupload id="file" style="display: none" (change)="uploadFile($event)" />
+      <input type="file" *ngIf="!mutiple" #fileupload id="file" style="display: none" (change)="uploadFile($event)" />
+      
+      <input [style.height]="height" [disabled]="!control?.disabled" class="form-control {{ classNameControl }}"
+        [type]="type" [formControl]="control"  readonly="isUploadFile" />
+      
+        <div class="browse">
+        <bw-button *ngIf="mutiple" [className]="btnClass" buttonName="Browse">
+          <input [accept]="accept" type="file" #fileupload id="file" style="display: none"
+            (change)="uploadFile($event)" multiple />
+        </bw-button>
+
+        <bw-button *ngIf="!mutiple" [className]="btnClass" buttonName="Browse">
+          <input [accept]="accept" type="file" #fileupload id="file" style="display: none"
+            (change)="uploadFile($event)" />
+        </bw-button>
+      </div>
+
+    </div>
+    <small id="textHelp" class="form-text text-muted bb-font-info" *ngIf="helpText">{{ helpText }}</small>
+    <bw-control-error-message [control]="control"
+      [fieldName]="errorMessageName ? errorMessageName : label || optionalLabel">
+    </bw-control-error-message>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+.Factors {
+  padding: 20px;
+  margin-top: 50px;
+  margin-left: -31px;
+  p {
+    color: #4a4946;
+    // font-family: "Ikano Sans";
+    font-size: 16px;
+    font-weight: normal;
+  }
+}
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 1px;
+  background: #dad8d3;
+  outline: none;
+  // opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  // border: 1px solid #dad8d3;
+  margin-top: 20px;
+}
+.headerSlider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 1px;
+  background: #dad8d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  // border: 1px solid #dad8d3;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background-color: #887f6f;
+  // cursor: pointer;
+  border-radius: 50%;
+}
+.headerSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+}
+// .slider::-moz-range-thumb {
+//   width: 25px;
+//   height: 25px;
+//   background: #4caf50;
+//   cursor: pointer;
+// }
+.sliderticks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sliderticks p {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 0px;
+  background: #d3d3d3;
+  height: 20px;
+  line-height: 40px;
+  margin: 0 0 20px 0;
+  // height: 17px;
+  color: #4a4946;
+  // font-family: "Ikano Sans";
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  // line-height: 17px;
+}
+.sliderticks2 {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.sliderticks2 p {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 1px;
+  background: #d3d3d3;
+  height: 10px;
+  line-height: 40px;
+  margin: -9px 0 20px 0;
+}
+.lastChild {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.lastChild p {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 1px;
+  background: #d3d3d3;
+  height: 10px;
+  line-height: 40px;
+  margin: -9px 0 20px 0;
+}
+.slider-parent {
+  position: relative;
+}

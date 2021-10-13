@@ -1,0 +1,246 @@
+<header class="border-bottom">
+  <div class="d-flex">
+    <div class="bwlogo">
+      <bw-avatar
+        [className]="'logo'"
+        [src]="'../assets/images/logo-new.png'"
+        [alt]="'logo'"
+        [title]="'logo'"
+        (clickAvatar)="clickImg($event)"
+      >
+      </bw-avatar>
+    </div>
+    <div class="text-end w-100">
+      <div class="accountDetails">
+        <ul>
+          <li>
+            <div class="dropdownQA" *ngIf="isShowButton">
+              <bw-button
+                [className]="'btn-base btn-contained primary-btn-contained bw-font-sec-bold btn-sm me-md-4'"
+                [withIcon]="true"
+                (click)="quickAdd()"
+              >
+                <i class="mdi mdi-plus-circle bw-font-sec-bold icon-md"></i>
+                &nbsp;&nbsp; Quick Add&nbsp;
+              </bw-button>
+              <div class="dropdown-menu" *ngIf="isShowQuickAdd">
+                <div
+                  class="dropdown-menu-child-active"
+                  *ngIf="permissions.Alerts && permissions.Alerts.length !== 0"
+                >
+                  <bw-text
+                    *ngIf="!isShowOptions"
+                    [className]="'text-start'"
+                    [textName]="'Alert'"
+                    [isEnableClick]="true"
+                    (onClick)="actionClick('alert')"
+                  ></bw-text>
+                </div>
+                <div
+                  class="dropdown-menu-child-active"
+                  *ngIf="
+                    (permissions.Collaboration &&
+                      permissions.Collaboration.length !== 0) ||
+                    !isShowOptions
+                  "
+                >
+                  <bw-text
+                    [className]="'text-start'"
+                    [textName]="'Collaboration'"
+                    [isEnableClick]="true"
+                    (onClick)="actionClick('collaboration')"
+                  ></bw-text>
+                </div>
+                <div
+                  class="dropdown-menu-child-active"
+                  *ngIf="
+                    permissions.CorporateInformation &&
+                    permissions.CorporateInformation.length !== 0
+                  "
+                >
+                  <bw-text
+                    [className]="'text-start'"
+                    [textName]="'Document'"
+                    [isEnableClick]="true"
+                    (onClick)="actionClick('document')"
+                  ></bw-text>
+                </div>
+                <div
+                  class="dropdown-menu-child-active"
+                  *ngIf="
+                    permissions.Evaluations &&
+                    permissions.Evaluations.length !== 0
+                  "
+                >
+                  <bw-text
+                    [className]="'text-start'"
+                    [textName]="'Evaluation'"
+                    [isEnableClick]="true"
+                    (onClick)="actionClick('evaluation')"
+                  ></bw-text>
+                </div>
+                <div
+                  class="dropdown-menu-child-active"
+                  *ngIf="permissions.Links && permissions.Links.length !== 0"
+                >
+                  <bw-text
+                    [className]="'text-start'"
+                    [textName]="'Link'"
+                    [isEnableClick]="true"
+                    (onClick)="actionClick('link')"
+                  ></bw-text>
+                </div>
+                <div
+                  class="dropdown-menu-child-active"
+                  *ngIf="
+                    (permissions.MeetingsEvents &&
+                      permissions.MeetingsEvents.length !== 0) ||
+                    !isShowOptions
+                  "
+                >
+                  <bw-text
+                    [className]="'text-start'"
+                    [textName]="'Event'"
+                    [isEnableClick]="true"
+                    (onClick)="actionClick('event')"
+                  ></bw-text>
+                </div>
+                <div
+                  class="dropdown-menu-child-active"
+                  *ngIf="
+                    (permissions.MeetingsEvents &&
+                      permissions.MeetingsEvents.length !== 0) ||
+                    !isShowOptions
+                  "
+                >
+                  <bw-text
+                    [className]="'text-start'"
+                    [textName]="'Meeting'"
+                    [isEnableClick]="true"
+                    (onClick)="actionClick('meeting')"
+                  ></bw-text>
+                </div>
+                <div
+                  class="dropdown-menu-child-active"
+                  *ngIf="
+                    permissions.Profiles && permissions.Profiles.length !== 0
+                  "
+                >
+                  <bw-text
+                    [className]="'text-start'"
+                    [textName]="'Profile'"
+                    [isEnableClick]="true"
+                    (onClick)="actionClick('profile')"
+                  ></bw-text>
+                </div>
+                <div
+                  class="dropdown-menu-child-active"
+                  *ngIf="
+                    permissions.Surveys && permissions.Surveys.length !== 0
+                  "
+                >
+                  <bw-text
+                    [className]="'text-start'"
+                    [textName]="'Survey'"
+                    [isEnableClick]="true"
+                    (onClick)="actionClick('survey')"
+                  ></bw-text>
+                </div>
+                <div
+                  class="dropdown-menu-child-active"
+                  *ngIf="
+                    permissions.Votings && permissions.Votings.length !== 0
+                  "
+                >
+                  <bw-text
+                    [className]="'text-start'"
+                    [textName]="'Vote'"
+                    [isEnableClick]="true"
+                    (onClick)="actionClick('vote')"
+                  ></bw-text>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="dropdown">
+              <bw-avatar
+                [className]="'header-profile-picture'"
+                [src]="image ? image : imageUrl"
+                (clickAvatar)="clickToggle($event)"
+                [title]="'Profile'"
+              ></bw-avatar>
+              <!-- <i class="mdi mdi-account-circle" (click)="clickToggle($event)"></i> -->
+              <div class="dropdown-menu" *ngIf="isShowToggle">
+                <bw-text
+                  [className]="
+                    'text-start bw-extra-light-gray-xxx  px-3 bw-font-prm-regular'
+                  "
+                  [textName]="userDetails.name"
+                ></bw-text>
+                <bw-divider></bw-divider>
+                <div
+                  class="dropdown-menu-child-active"
+                  *ngFor="let option of aboutUser.userOptions"
+                >
+                  <bw-text
+                    [className]="'text-start'"
+                    [textName]="option.content"
+                    [isEnableClick]="true"
+                    (onClick)="clickUserOptions(option)"
+                  ></bw-text>
+                </div>
+                <bw-divider></bw-divider>
+                <bw-text
+                  [className]="
+                    'text-start px-3 primary-fre-clr-bse bw-font-sec-bold'
+                  "
+                  [textName]="aboutUser.supportTitle"
+                ></bw-text>
+                <div
+                  class="dropdown-menu-child"
+                  *ngFor="let support of aboutUser.support"
+                >
+                  <bw-text
+                    [className]="'text-start'"
+                    [textName]="support.location"
+                  ></bw-text>
+                  <bw-text
+                    [className]="'text-start'"
+                    [textName]="support.contact"
+                  ></bw-text>
+                </div>
+                <bw-text
+                  [className]="
+                    'text-start px-3 primary-fre-clr-bse mt-2 bw-font-sec-bold'
+                  "
+                  [textName]="aboutUser.assistTitile"
+                ></bw-text>
+
+                <div
+                  class="dropdown-menu-child"
+                  *ngFor="let assist of aboutUser.assist"
+                >
+                  <bw-text
+                    [className]="'text-start mt-2'"
+                    [textName]="assist.contact"
+                  ></bw-text>
+                </div>
+                <bw-divider></bw-divider>
+                <bw-text
+                  [className]="'text-start bw-font-prm-medium   px-3 '"
+                  [textName]="'LOGOUT'"
+                  [isEnableClick]="true"
+                  (onClick)="logout($event)"
+                ></bw-text>
+              </div>
+            </div>
+          </li>
+          <li>
+            <bw-avatar [src]="menuUrl" [title]="'Menu'"></bw-avatar>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

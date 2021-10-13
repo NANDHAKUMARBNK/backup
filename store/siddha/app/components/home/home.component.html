@@ -1,0 +1,1976 @@
+<app-carousal></app-carousal>
+<div class="container-fluid">
+  <div class="row registerBanner containerRegister greenDiv">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <p class="registerTextmain">Passionate Siddha Followers</p>
+          <p class="registerText">
+            Register your support to represent Siddha @WHO
+          </p>
+        </div>
+        <div class="col-md-5">
+          <div class="servicesBlock">
+            <button
+              class="services black"
+              type="button "
+              (click)="redirecttoVideo()"
+            >
+              Click here to upload your 2-3 mins video
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row registerBanner containerRegister blue">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <p class="registerTextmain">Volunteer Siddha Doctors</p>
+          <p class="registerText">
+            Register as volunteer to join the war against COVID-19
+          </p>
+        </div>
+        <div class="col-md-5">
+          <div class="servicesBlock">
+            <button
+              class="services yellowGrad"
+              type="button "
+              (click)="doctorForm()"
+            >
+              Click here for Registration
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div
+        class="modal fade"
+        id="exampleModalLong"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content downHeaderInfo">
+            <div class="modal-body">
+              <div *ngFor="let title of flytextTitle">
+                <h1>{{ title.value }}</h1>
+              </div>
+              <ul *ngFor="let desc of flytextDescription">
+                <li>
+                  <p>{{ desc.value }}</p>
+                </li>
+              </ul>
+              <ul *ngFor="let html of htmlContent">
+                <li>
+                  <p [innerHTML]="html.value"></p>
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <input type="checkbox" data-dismiss="modal" /><span
+                >I have read and understood
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="announcementWrapper">
+        <h1>
+          Announcements <span class="count">{{ announcementscount }}</span>
+        </h1>
+        <div class="announcementBox">
+          <div class="announcementList">
+            <ul>
+              <li *ngFor="let announcement of announcements">
+                {{ announcement.description }}
+                <span class="externalLink" *ngIf="announcement.external_link">
+                  <a href="{{ announcement.external_link }}" target="_blank"></a
+                ></span>
+                <span class="Download" *ngIf="announcement.attachement_link">
+                  <a
+                    class="Download"
+                    href="{{ announcement.attachement_link }}"
+                    target="_blank"
+                    >Download here</a
+                  >
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="announcementWrapper">
+        <h1 style="font-size: 18px !important;">
+          India &nbsp; >> &nbsp; Tamil Nadu &nbsp; > &nbsp; District wise:
+        </h1>
+        <h1>
+          Population Vs Doctors
+          <span
+            style="margin-left: 10px; font-size: 15px;"
+            class="fa fa-info count"
+            data-toggle="modal"
+            data-target="#myModal"
+          ></span>
+        </h1>
+        <div class="announcementBox-table">
+          <div class="announcementList-table">
+            <app-combograph></app-combograph>
+            <!-- <app-doctorgraphdivergent></app-doctorgraphdivergent> -->
+            <!-- <app-customgraph></app-customgraph> -->
+            <!-- <app-graphpopulation></app-graphpopulation> -->
+            <!-- <div style="display: block;">
+              <canvas
+                baseChart
+                height="250"
+                width="130"
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [legend]="barChartLegend"
+                [colors]="barChartColors"
+                [chartType]="barChartType"
+              >
+              </canvas>
+            </div> -->
+            <!-- <button type="button" class="btn btn-warning" (click)="randomize()">
+              Elaborate
+            </button> -->
+            <!-- <table class="announcementtable table table-bordered" width="100%">
+              <thead>
+                <tr>
+                  <th>
+                    Districts
+                  </th>
+                  <th>
+                    Villages/Wards
+                  </th>
+                  <th>
+                    Doctors
+                  </th>
+                  <th>
+                    Population
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let dist of districts" [style.color]="getColorVal(dist)">
+                  <td>{{ dist.name }}</td>
+                  <td *ngIf="dist.wards">
+                    {{ dist.villages }}/{{ dist.wards }}
+                  </td>
+                  <td *ngIf="!dist.wards">{{ dist.villages }}(0)</td>
+                  <td *ngIf="dist.doctors">{{ dist.doctors }}</td>
+                  <td *ngIf="!dist.doctors">0</td>
+                  <td>{{ dist.population.toLocaleString("en-IN") }}</td>
+                </tr>
+              </tbody>
+            </table> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="viralOutbreaksBlock">
+        <h1>Siddha in earlier viral outbreaks</h1>
+        <p>
+          Much before modern medicine become popular, all
+          <strong>epidemic outbreaks</strong> in Tamil Nadu were treated with
+          Siddha system of medicines only.
+        </p>
+        <ul>
+          <li>
+            During 1529-30, famous
+            <strong>Swiss physician Paracelsus</strong> used Siddha approach
+            that he had learnt from Tanjore, Tamil Nadu and cured outbreak in
+            Europe - Many Europeans are aware of this & respect Siddha system of
+            medicine (Ref: Saraswathi Mahal Library)
+          </li>
+          <li>
+            In 2007, a viral disease <strong>Chikungunya</strong> was treated
+            using Siddha - Scientific evidence and references available
+          </li>
+          <li>
+            In recent times, an epidemic outbreak of
+            <strong>Dengue</strong> was treated using Siddha successfully from
+            preventive to all stages of cure (statistics below)
+          </li>
+        </ul>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="viralOutbreaksTableOut">
+              <table class="viralOutbreaksTable tableLeft" width="355px">
+                <thead>
+                  <tr>
+                    <th class="topHead" colspan="3">
+                      Facts - Siddha treatment of Dengue
+                    </th>
+                  </tr>
+                  <tr class="subHead">
+                    <th>
+                      Year
+                    </th>
+                    <th>
+                      # diseased persons
+                    </th>
+                    <th>
+                      # deaths
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      2017
+                    </td>
+                    <td>
+                      23294
+                    </td>
+                    <td>
+                      63
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      2018
+                    </td>
+                    <td>
+                      4486
+                    </td>
+                    <td>
+                      13
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      2019
+                    </td>
+                    <td>
+                      3223
+                    </td>
+                    <td>
+                      3
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              Siddha system of medicine considers the challenging Corona Virus
+              (COVID-19) disease to be manageable and curable, irrespective of
+              the stage of the disease
+            </p>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <h1 class="mb-2" style="font-size: 18px !important;">
+        India &nbsp; >> &nbsp; Tamil Nadu &nbsp; > &nbsp; District wise:
+      </h1>
+      <h1>
+        Stock View for Kabasura Kudineer
+      </h1>
+      <hr />
+      <div class="tableRight mapRight">
+        <app-tamilnadudistrictmap></app-tamilnadudistrictmap>
+        <!-- <app-tamilnadumedicinemap></app-tamilnadumedicinemap> -->
+        <!-- <table class="viralOutbreaksTable">
+          <thead>
+            <tr>
+              <th>Actual Tracking</th>
+              <th class="firstHeaderBlue">Demand</th>
+              <th class="firstHeaderBlue">Supply</th>
+              <th class="firstHeaderBlue">Supply</th>
+
+              <th class="firstHeaderBlue">Duration</th>
+              <th class="firstHeaderBlue">Frequency</th>
+              <th class="firstHeaderBlue">Doctors</th>
+            </tr>
+            <tr>
+              <th>Cure-Plan</th>
+              <th class="subHeaderPurple">Population</th>
+              <th class="subHeaderPurple">in units</th>
+              <th class="subHeaderPurple">in Kg</th>
+
+              <th class="subHeaderPurple"># of Days</th>
+              <th class="subHeaderPurple"># of Times</th>
+              <th class="subHeaderPurple">Dr.'s Workforce</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr class="planRowYellow">
+              <td>Stage 3</td>
+              <td>1,000</td>
+              <td>1,000</td>
+              <td>50</td>
+
+              <td>28</td>
+              <td>2</td>
+              <td>40</td>
+            </tr>
+            <tr>
+              <td class="actualsRow">Actuals</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr class="planRowYellow">
+              <td>Stage 2</td>
+              <td>10,000</td>
+              <td>10,000</td>
+              <td>500</td>
+
+              <td>21</td>
+              <td>2</td>
+              <td>400</td>
+            </tr>
+            <tr>
+              <td class="actualsRow">Actuals</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr class="planRowYellow">
+              <td>Stage 1</td>
+              <td>100,000</td>
+              <td>100,000</td>
+              <td>5,000</td>
+
+              <td>14</td>
+              <td>2</td>
+              <td>4,000</td>
+            </tr>
+            <tr>
+              <td class="actualsRow">Actuals</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr class="planRowYellow">
+              <td>Preventive</td>
+              <td>50,000,000</td>
+              <td>150,000,000</td>
+              <td>7,500,000</td>
+
+              <td>21</td>
+              <td>2</td>
+              <td>2,000,000</td>
+            </tr>
+            <tr>
+              <td class="actualsRow">Actuals</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+          </tbody>
+        </table> -->
+      </div>
+      <!-- <div class="row">
+        <div class="col-md-12">
+          <button
+            class="clickButton"
+            type="button"
+            data-toggle="modal"
+            data-target=".bd-example-modal-lg"
+          >
+            Click here for more details
+          </button>
+        </div>
+      </div> -->
+
+      <div
+        class="modal fade bd-example-modal-lg popupMore"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myLargeModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="dialogTable">
+              <div class="tableRight">
+                <!-- <app-tamilnadumedicinemap></app-tamilnadumedicinemap> -->
+                <table class="viralOutbreaksTable mb20">
+                  <thead>
+                    <tr>
+                      <th>Actual Tracking</th>
+                      <th class="firstHeaderBlue">Demand</th>
+                      <th class="firstHeaderBlue">Supply</th>
+                      <th class="firstHeaderBlue">Supply</th>
+
+                      <th class="firstHeaderBlue">Duration</th>
+                      <th class="firstHeaderBlue">Frequency</th>
+                      <th class="firstHeaderBlue">Doctors</th>
+                    </tr>
+                    <tr>
+                      <th>Cure-Plan</th>
+                      <th class="subHeaderPurple">Population</th>
+                      <th class="subHeaderPurple">in units</th>
+                      <th class="subHeaderPurple">in Kg</th>
+
+                      <th class="subHeaderPurple"># of Days</th>
+                      <th class="subHeaderPurple"># of Times</th>
+                      <th class="subHeaderPurple">Dr.'s Workforce</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr class="planRowYellow">
+                      <td>Stage 3</td>
+                      <td>1,000</td>
+                      <td>1,000</td>
+                      <td>50</td>
+
+                      <td>28</td>
+                      <td>2</td>
+                      <td>40</td>
+                    </tr>
+                    <tr>
+                      <td class="actualsRow">Actuals</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+                    <tr class="planRowYellow">
+                      <td>Stage 2</td>
+                      <td>10,000</td>
+                      <td>10,000</td>
+                      <td>500</td>
+
+                      <td>21</td>
+                      <td>2</td>
+                      <td>400</td>
+                    </tr>
+                    <tr>
+                      <td class="actualsRow">Actuals</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+                    <tr class="planRowYellow">
+                      <td>Stage 1</td>
+                      <td>100,000</td>
+                      <td>100,000</td>
+                      <td>5,000</td>
+
+                      <td>14</td>
+                      <td>2</td>
+                      <td>4,000</td>
+                    </tr>
+                    <tr>
+                      <td class="actualsRow">Actuals</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+                    <tr class="planRowYellow">
+                      <td>Preventive</td>
+                      <td>50,000,000</td>
+                      <td>150,000,000</td>
+                      <td>7,500,000</td>
+
+                      <td>21</td>
+                      <td>2</td>
+                      <td>2,000,000</td>
+                    </tr>
+                    <tr>
+                      <td class="actualsRow">Actuals</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <table class="viralOutbreaksTable">
+                <thead>
+                  <tr>
+                    <th>Deciders</th>
+                    <th class="colRed">IAS Officers</th>
+                    <th class="colOrange">IMPCOPS</th>
+                    <th class="colOrange">TAMPCOL</th>
+                    <th class="colYellow">TN Government</th>
+                    <th colspan="2" class="colRed">CCRS/NIS</th>
+                    <th class="colRed">IAS Officer</th>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th class="headerBlue">Demand</th>
+                    <th class="headerBlue">Supply (units)</th>
+                    <th class="headerBlue">Supply (kg)</th>
+                    <th class="headerBlue">Duration</th>
+                    <th class="headerBlue">Frequency</th>
+                    <th class="headerBlue">Doctors</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td class="colGreen">1</td>
+                    <td class="colGreen">1</td>
+                    <td>0.05</td>
+                    <td>7</td>
+                    <td>2</td>
+                    <td>0.04</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>20</td>
+                    <td>20</td>
+                    <td class="colGreen">1</td>
+                    <td>7</td>
+                    <td>2</td>
+                    <td>0.8</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>25</td>
+                    <td>25</td>
+                    <td>1.25</td>
+                    <td>7</td>
+                    <td>2</td>
+                    <td class="colGreen">1</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>25000</td>
+                    <td>25000</td>
+                    <td>1250000</td>
+                    <td>7</td>
+                    <td>2</td>
+                    <td>1,000</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>250000</td>
+                    <td>250000</td>
+                    <td>12500000</td>
+                    <td>7</td>
+                    <td>2</td>
+                    <td>10,000</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td class="colYellowPale">2,500,000</td>
+                    <td>2,500,000</td>
+                    <td>125,000,000</td>
+                    <td>7</td>
+                    <td>2</td>
+                    <td class="colYellowPale">100,000</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td class="colOrange">25,000,000</td>
+                    <td class="colYellowPale">25,000,000</td>
+                    <td>1,250,000,000</td>
+                    <td>7</td>
+                    <td>2</td>
+                    <td class="colOrange">1,000,000</td>
+                  </tr>
+                  <tr>
+                    <td>Preventive Week1</td>
+                    <td class="colRed">50,000,000</td>
+                    <td class="colOrange">50,000,000</td>
+                    <td class="colYellowPale">2,500,000,000</td>
+                    <td>7</td>
+                    <td>2</td>
+                    <td class="colRed">2,000,000</td>
+                  </tr>
+                  <tr>
+                    <td>Preventive Week2</td>
+                    <td class="colRed">50,000,000</td>
+                    <td class="colOrange">50,000,000</td>
+                    <td class="colYellowPale">2,500,000,000</td>
+                    <td>7</td>
+                    <td>2</td>
+                    <td class="colRed">2,000,000</td>
+                  </tr>
+                  <tr>
+                    <td>Preventive Week3</td>
+                    <td class="colRed">50,000,000</td>
+                    <td class="colOrange">50,000,000</td>
+                    <td class="colYellowPale">2,500,000,000</td>
+                    <td>7</td>
+                    <td>2</td>
+                    <td class="colRed">2,000,000</td>
+                  </tr>
+                  <!--  -->
+                  <tr>
+                    <td>CureStage 1</td>
+                    <td>100,000</td>
+                    <td>100,000</td>
+                    <td>5,000</td>
+                    <td>5,000,000</td>
+                    <td class="colYellowPale">14</td>
+                    <td>2</td>
+                    <td class="colRed">4,000</td>
+                  </tr>
+                  <tr>
+                    <td>CureStage 2</td>
+                    <td>10,000</td>
+                    <td>10,000</td>
+                    <td>500</td>
+                    <td>500,000</td>
+                    <td class="colOrange">21</td>
+                    <td>2</td>
+                    <td>400</td>
+                  </tr>
+                  <tr>
+                    <td>CureStage 3</td>
+                    <td>1,000</td>
+                    <td>1,000</td>
+                    <td>50</td>
+                    <td>50,000</td>
+                    <td class="colRed">28</td>
+                    <td>7</td>
+                    <td>40</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="row">
+                <div class="col-md-8">
+                  <h6><strong>Notes :</strong></h6>
+                  <ol>
+                    <li>
+                      Request all volunteer siddha doctors to register in the
+                      mobile app. SiddhaforCovid19
+                    </li>
+                    <li>
+                      Results to be updated by the individual users twice a day
+                      by his mobile App
+                    </li>
+                    <li>
+                      Raw Material Procurement ownership - TamilNadu Government
+                    </li>
+                    <li>1 Unit = 50 gms of medicine, 1 tonne = 20,000 units</li>
+                    <li>
+                      Mfg. Capacity (3 shifts per day) in units - IMPCOPS
+                      (45000), Tampcol (15000), 345 Licensed Private Vendors
+                      (2.5 Crore units)
+                    </li>
+                    <li>
+                      Medicine(Kabasura kudineer) manufacuring/100% quality
+                      testing is max 48 hours
+                    </li>
+                    <li>
+                      distribution with 2500 TN vehicles of Tamil Nadu State
+                      Health Transport Department in this 144 rule scenario
+                      without traffic is max 2 horus to all PHCs
+                    </li>
+                    <li>
+                      Largest capacity by IMPCOPS & TAMPCOL is in Chennai to
+                      cater the huge population. Logistic issue for max
+                      population is solved already
+                    </li>
+                    <li>
+                      345 Private Siddha medicine License holders are speard
+                      across in TN so Supply chain management to all the 33
+                      districts becomes easy
+                    </li>
+                    <li>
+                      TN CM sir/Health Minister/Other Ministers/MP/MLA can come
+                      in TV and wish all people good health and emphasis the
+                      timely intake of Kabasura kudineer in morning and evening
+                    </li>
+                    <li>
+                      Individual users with the care of their elected
+                      representatives compulsary drink the medicines
+                    </li>
+                    <li>
+                      After drinking the medince thanks our TN CM sir/Health
+                      Minister/Other Ministers/MP/MLA pressing Taken my medine
+                      for today time stamp
+                    </li>
+                    <li>
+                      Public can check the statistics at www.siddhaforcovid19.in
+                    </li>
+                    <li>
+                      Give respect and priority for Above 60 age to avail the
+                      medicine first >> followed by 40 - 60 >> follwed by 20 -
+                      40 and last 0-20
+                    </li>
+                    <li>Take the Functional food listed regularly</li>
+                    <li>
+                      Siddha's priciple is "Food is medicine and Medicine is
+                      Food" and Siddhars will take care of us. Jai Hind !!!
+                    </li>
+                  </ol>
+                </div>
+                <div class="col-md-4">
+                  <div class="row justify-content-center">
+                    <div class="greenInfo">
+                      <p>
+                        UOM Conversion
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row justify-content-center">
+                    <div class="yellowInfo">
+                      <p>
+                        Work/Rest balance
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row justify-content-center">
+                    <div class="orangeInfo">
+                      <p>
+                        No Rest/ Need other govt staffs
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row justify-content-center">
+                    <div class="redInfo">
+                      <p>
+                        Capacity Constraint
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button
+                  type="button"
+                  class="btn btn-secondary .btnColor align-center"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+    </div>
+  </div>
+  <!-- Modal content-->
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-md">
+      <!-- Modal content-->
+      <div class="modal-content downHeaderInfo">
+        <div class="modal-header">
+          <h1 class="modal-title">
+            Doctors Vs Population
+          </h1>
+        </div>
+        <div class="modal-body">
+          <p style="font-size: 17.5px;">
+            In a district for the given population, for a
+            <strong>2</strong> weeks duration,
+          </p>
+          <div class="ml-4">
+            <p>
+              <i
+                class="fa fa-square"
+                style="color: #008000; margin-right: 10px;"
+              ></i
+              >One Doctor can comfortably attend < less than
+              <strong>350</strong> patients
+            </p>
+            <p>
+              <i
+                class="fa fa-square"
+                style="color: #f7b500; margin-right: 10px;"
+              ></i
+              >One Doctor can sparingly attend from <strong>351</strong> to
+              <strong>700</strong> patients
+            </p>
+            <p>
+              <i
+                class="fa fa-square"
+                style="color: #fa6400; margin-right: 10px;"
+              ></i
+              >One Doctor with constraint attend from <strong>701</strong> to
+              <strong>1100</strong> patients
+            </p>
+            <p>
+              <i
+                class="fa fa-square"
+                style="color: #ff0000; margin-right: 10px;"
+              ></i
+              >One Doctor cannot attend more than <strong>1101</strong> patients
+            </p>
+          </div>
+          <br />
+          <div>
+            <p style="font-size: 12px;">
+              * On an average, Doctors see <strong>25</strong> patients in a day
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary .btnColor align-center"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <div class="servicesBlock">
+        <div class="services greenBar">
+          <h3>Siddha cure at Primary Health Centres</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="protectiveMeasuresBlock">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>COVID-19: Protective Measures</h1>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row" *ngFor="let items of protectiveMeasures">
+              <div
+                class="col-md-4 block"
+                *ngFor="let item of items.review_params"
+              >
+                <div
+                  class="blockInfo"
+                  [ngStyle]="{ backgroundColor: item.bgColor }"
+                >
+                  <p>{{ item.percentage }}% {{ item.name }}</p>
+                </div>
+              </div>
+              <!-- <div class="col-md-4 block">
+                <div class=" yellowBlock blockInfo">
+                  <p>
+                    30% Unsatisfied
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4 block">
+                <div class="orangeBlock blockInfo">
+                  <p>
+                    20% Don't care
+                  </p>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <h6>Padikaara Neer (Alum Water)</h6>
+        <ul>
+          <li>
+            According to Li Hong(2011), padikaraam acts against HSV-2
+            effectively
+          </li>
+          <li>
+            Padikaara Neer Mixed with 30ml hot water can be used to wash hands,
+            face, mouth, nose.
+          </li>
+        </ul>
+        <h6>Minsaara Thylam (Electric Balm)</h6>
+        <ul>
+          <li>
+            Omam uppu (Thymol), Puthinaa uppu(Metnlol), Patchai Karpooram & Soda
+            uppu are mixed to prepare Minsaara Thylam.
+          </li>
+          <li>
+            According to Wen-Li Lai et al. (2012), Monoterpenes of thymol
+            directly destroys the HSV-1 virion.
+          </li>
+          <li>
+            According to V Primo et al. , menthol controls the spread of
+            pseudorabies virus &HSV-1 to a great extent in VITRO cell line
+          </li>
+          <li>
+            This oil can be used in small quantities in handkerchiefs & facial
+            masks to provide protection against diseases causing microorganisms.
+          </li>
+        </ul>
+        <h6>Vaelvi Pugai (Herbal Fumigation)</h6>
+        <ul>
+          <li>
+            In olden days, fumigation techniques were used in and around siddha
+            vaidhya salai & even homes to prevent the spread of microorganisms
+            via air
+          </li>
+          <li>
+            COVID-19 Virus spread can be controlled by fumigation using 108
+            herbs (available in IMPCOPS) in and around hospital entrance
+            toilets, public gathering areas.
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h1>Functional Foods for COVID-19</h1>
+        <div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row" *ngFor="let items of functionalFood">
+                <div
+                  class="col-md-4 block"
+                  *ngFor="let item of items.review_params"
+                >
+                  <div
+                    class="blockInfo"
+                    [ngStyle]="{ backgroundColor: item.bgColor }"
+                  >
+                    <p>{{ item.percentage }}% {{ item.name }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <table class="functionalFoodstable" width="100%">
+          <thead>
+            <tr>
+              <th>
+                Disease Conditions
+              </th>
+              <th>
+                Foods to be included
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ACE inhibitory peptides</td>
+              <td>
+                Dairy products, fish, Soy, Wheat, Egg, Yogurt, Oat, Garlic, Pea,
+                Fig
+              </td>
+            </tr>
+            <tr>
+              <td>Leukocyte</td>
+              <td>
+                Garlic, Papaya leaves, Omega-3 fatty acids, Citrus fruits
+              </td>
+            </tr>
+            <tr>
+              <td>Pneumonia</td>
+              <td>
+                Wholegrains, Nuts, Beans, Green Leafy Vegetables, Citrus fruits,
+                Probiotics, Fenugreek, Turmeric, ginger
+              </td>
+            </tr>
+            <tr>
+              <td>RNAaemia</td>
+              <td>
+                Spinach, Kidney beans, Soybeans, Pumpkin seeds, Cashews,
+                Sunflower seeds, Pomegranate, Liver, Salmon fish
+              </td>
+            </tr>
+            <tr>
+              <td>Acute Cardiac Injury</td>
+              <td>
+                Fish, Wholegrains, Skimmed Milk, Egg-white, Hibiscus flower
+              </td>
+            </tr>
+            <tr>
+              <td>KCV Rice</td>
+              <td>
+                Equal quantities of Kandankathiri leaves (Solanum Surattense),
+                Chukku (dried ginger), Vilwa oodu (Shell of Aegle Marmelos) are
+                taken and boiled with 2600 ml of water until it reduces to 336
+                ml. Rice prepared out of this decoction and can be given as
+                diet.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row mt20">
+          <div class="col-md-4 block">
+            <div class="blockInfo black">
+              <p>
+                <a [routerLink]="['/']"> View Live Data</a>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-8"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="liveTrackerBlock">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="white-fore-color">COVID-19 Live Tracker</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">Map goes here</div>
+          <div class="col-md-4">
+            <div class="statisticsTableOut">
+              <table width="100%" class="statisticsTable">
+                <tbody>
+                  <tr>
+                    <td>
+                      Ariyalur
+                    </td>
+                    <td>
+                      1
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Chengalpattu
+                    </td>
+                    <td>
+                      2
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Chennai
+                    </td>
+                    <td>
+                      10
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Coimbatore
+                    </td>
+                    <td>
+                      2
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Cuddalore
+                    </td>
+                    <td>
+                      0
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Dharmapuri
+                    </td>
+                    <td>
+                      8
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Dindigul
+                    </td>
+                    <td>
+                      3
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Erode
+                    </td>
+                    <td>
+                      1
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Kallakurichi
+                    </td>
+                    <td>
+                      4
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Kanchipuram
+                    </td>
+                    <td>
+                      4
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Kanniyakumari
+                    </td>
+                    <td>
+                      2
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Karur
+                    </td>
+                    <td>
+                      1
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Krishnagiri
+                    </td>
+                    <td>
+                      5
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Madurai
+                    </td>
+                    <td>
+                      1
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+<div class="covid19StageBlock">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row mb10">
+          <div class="col-md-12">
+            <h1 class="blockText">
+              COVID-19 Stage 1 - <span class="stage">Fever</span>
+            </h1>
+          </div>
+          <div class="col-md-8">
+            <div class="row" *ngFor="let items of stageOne">
+              <div
+                class="col-md-3 block"
+                *ngFor="let item of items.review_params"
+              >
+                <div
+                  class="blockInfo"
+                  [ngStyle]="{ backgroundColor: item.bgColor }"
+                >
+                  <p>{{ item.percentage }}% {{ item.name }}</p>
+                </div>
+              </div>
+
+              <div class="col-md-3 block">
+                <div class="blockInfo black">
+                  <p>
+                    <a [routerLink]="['/']"> View Live Data</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+        <div class="stageTableOut">
+          <table class="stageTable" width="100%">
+            <thead>
+              <tr>
+                <th class="w-20">
+                  Medicines
+                </th>
+                <th class="w-10">
+                  Dosage
+                </th>
+                <th>
+                  Adjuvent
+                </th>
+                <th class="w-15">
+                  #Days / Time
+                </th>
+                <th>
+                  Indications
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="w-20">
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Nilavembu+Kudineer+Fever"
+                    target="_blank"
+                    >Nila Vembu Kudineer</a
+                  >
+                </td>
+                <td class="w-10">
+                  30 - 60 ml
+                </td>
+                <td>
+                  -
+                </td>
+                <td class="w-15">
+                  3 Days 6 time (2 bd)
+                </td>
+                <td>
+                  Pitha suram, kullir suram (Intermittent fever)
+                </td>
+              </tr>
+              <!--  -->
+              <tr>
+                <td class="w-20">
+                  <a
+                    href="https://link.springer.com/article/10.1007%2Fs13337-018-0421-0"
+                    target="_blank"
+                    >Bramanandha Bairavam</a
+                  >
+                </td>
+                <td class="w-10">
+                  100 mg
+                </td>
+                <td>
+                  Honey or Ginger Juice
+                </td>
+                <td class="w-15">
+                  2 times per day<br />(30 minutes after food)
+                </td>
+                <td>
+                  Kaba suram (Fever with cough dyspnea)
+                </td>
+              </tr>
+              <!--  -->
+              <tr>
+                <td>
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Kabasura+Kudineer+Fever"
+                    target="_blank"
+                  >
+                    Kabasura Kudineer</a
+                  >
+                </td>
+                <td>
+                  30 - 60 ml
+                </td>
+                <td>
+                  Santha Chanthrotha Yam pills - 1
+                </td>
+                <td>
+                  3 Days 6 time (2 bd)
+                </td>
+                <td>
+                  Kaba suram (Fever with cough dyspnea)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a target="_blank"> Ginger, garlic, honey</a>
+                </td>
+                <td>
+                  15 ml
+                </td>
+                <td>
+                  30 ml hot water
+                </td>
+                <td>
+                  3 times per Day
+                </td>
+                <td>
+                  Prevents throat infections and tonsillitis
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=Siddha+Nellikaai+legium+Fever&btnG="
+                    target="_blank"
+                    >Nellikaai Legium</a
+                  >
+                </td>
+                <td>
+                  5 - 10 gm
+                </td>
+                <td>
+                  Milk
+                </td>
+                <td>
+                  2 times per Day
+                </td>
+                <td>
+                  Immuno booster for bronchitis, fever in the bones
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=Siddha+Seenthil+chooranam+Fever&btnG="
+                    target="_blank"
+                    >Seenthil Chooranam</a
+                  >
+                </td>
+                <td>
+                  1 - 2 gm
+                </td>
+                <td>
+                  Honey
+                </td>
+                <td>
+                  3 times per Day
+                </td>
+                <td>
+                  For fever, cough, sinusitis
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.sciencedirect.com/science/article/abs/pii/S0378874114001561"
+                    target="_blank"
+                    >Minsaara Thylam (for internal use)</a
+                  >
+                </td>
+                <td>
+                  2 drops
+                </td>
+                <td>
+                  10 ml hot water
+                </td>
+                <td>
+                  3 times per Day
+                </td>
+                <td>
+                  Prevents upper respiratory tract and throat infection, dyspnea
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    href="https://www.sciencedirect.com/science/article/abs/pii/S0378874114001561"
+                    target="_blank"
+                    >Minsaara Thylam (for external use - steam)</a
+                  >
+                </td>
+                <td>
+                  5 drops
+                </td>
+                <td>
+                  500 ml water
+                </td>
+                <td>
+                  2 times per Day
+                </td>
+                <td>
+                  Steam of this electric balm will immediately release the nasal
+                  block, sinusitis, dyspnoea.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="covid19StageBlock">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row mb10">
+          <div class="col-md-12">
+            <h1 class="blockText">
+              COVID-19 Stage 2 - <span class="stage"> Respiratory Illness</span>
+            </h1>
+          </div>
+          <div class="col-md-8">
+            <div class="row" *ngFor="let items of stageTwo">
+              <div
+                class="col-md-3 block"
+                *ngFor="let item of items.review_params"
+              >
+                <div
+                  class="blockInfo"
+                  [ngStyle]="{ backgroundColor: item.bgColor }"
+                >
+                  <p>{{ item.percentage }}% {{ item.name }}</p>
+                </div>
+              </div>
+
+              <div class="col-md-3 block">
+                <div class="blockInfo black">
+                  <p>
+                    <a [routerLink]="['/']"> View Live Data</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+        <div class="stageTableOut">
+          <table class="stageTable" width="100%">
+            <thead>
+              <tr>
+                <th class="w-20">
+                  Medicines
+                </th>
+                <th class="w-10">
+                  Dosage
+                </th>
+                <th>
+                  Adjuvent
+                </th>
+                <th class="w-15">
+                  #Days / Time
+                </th>
+                <th>
+                  Indications
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="w-20">
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Thalisathi+Choornam+Respiratory+Illness"
+                    target="_blank"
+                    >Thalisathy Chooranam</a
+                  >
+                </td>
+                <td class="w-10">
+                  1 - 2 gms
+                </td>
+                <td>Honey</td>
+                <td class="w-15">3 times per day</td>
+                <td>64 types of fever, cough, thorat infections</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a target="_blank">Kabha Hara Chooranam</a>
+                </td>
+                <td>
+                  1 - 2 gms
+                </td>
+                <td>Honey</td>
+                <td>3 times per day</td>
+                <td>All types of thorat infection, cough, dyspnea</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Swasa+Kudori+Chooranam+Respiratory+Illness"
+                    target="_blank"
+                    >Swasa Kudoori Chooranam</a
+                  >
+                </td>
+                <td>
+                  1 - 2 gms
+                </td>
+                <td>Honey, Ginger Juice, Ghee</td>
+                <td>3 times per day</td>
+                <td>Dyspnea, wheezing, bronchitis, cough</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Adathodai+Manapagu+Respiratory+Illness"
+                    target="_blank"
+                    >Adathoodai Manapagu</a
+                  >
+                </td>
+                <td>
+                  5 - 10 ml
+                </td>
+                <td>Hot Water</td>
+                <td>3 times per day</td>
+                <td>64 types of fever, cough, dyspnea</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Thippili+Rasayanam+Respiratory+Illness"
+                    target="_blank"
+                    >Thipili Rashayanam</a
+                  >
+                </td>
+                <td>
+                  5 - 10 ml
+                </td>
+                <td>Hot Water</td>
+                <td>3 times per day</td>
+                <td>Dyspnea, wheezing, cough, eosinophilia</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Kandankathiri+Legiyam"
+                    target="_blank"
+                    >Kandan Kathiree Legium</a
+                  >
+                </td>
+                <td>
+                  5 - 10 ml
+                </td>
+                <td>Phavazha Parpam - 30 mg Kasthoori Karuppu - 30 mg</td>
+                <td>3 times per day</td>
+                <td>Asthma, wheezing, cough, fever</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a
+                    href="https://www.hindutamil.in/news/supplements/nalam-vazha/155155-41.html"
+                    target="_blank"
+                    >Imbuural Legium</a
+                  >
+                </td>
+                <td>
+                  5 - 10 ml
+                </td>
+                <td>Hot Water</td>
+                <td>3 times per day</td>
+                <td>Cough, Hympotysis, all types of bleeding</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Athimathuram+Respiratory+Illness"
+                    target="_blank"
+                    >Adimathuram Tablets</a
+                  >
+                </td>
+                <td>
+                  1 - 2 tablets
+                </td>
+                <td>Hot Water</td>
+                <td>3 times per day</td>
+                <td>
+                  All types of cough, Upper respiratory tract infections
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a target="_blank">Vasantha Kusumaahara Tablets</a>
+                </td>
+                <td>
+                  1 - 2 tablets
+                </td>
+                <td>Honey, Ginger Juice, Mother's Milk</td>
+                <td>3 times per day</td>
+                <td>
+                  All types of fever, Intermittent fever, All types of cough
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=Siddha+Vasntha+Kusumaahara+Respiratory+Illness&btnG="
+                    target="_blank"
+                  >
+                    Linga Chendooram-1</a
+                  >
+                </td>
+                <td>
+                  50 - 10 mgms
+                </td>
+                <td>Thaalisathy Chooranam - 1 gm with honey</td>
+                <td>3 times per day</td>
+                <td>All types of fever and cough</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=Kasthoori+Karuppu&btnG="
+                    target="_blank"
+                  >
+                    Kasthoori Karuppu</a
+                  >
+                </td>
+                <td>
+                  60 - 130 gms
+                </td>
+                <td>Honey, Mother's Milk, Ginger Juice</td>
+                <td>3 times 2 day</td>
+                <td>
+                  Fever, cough, wheezing, it enhances the strength of vital
+                  organs & increases the body temperature when body experiences
+                  chillness
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="covid19StageBlock">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row mb10">
+          <div class="col-md-12">
+            <h1 class="blockText">
+              COVID-19 Stage 3 - <span class="stage">Viral Pneumonia</span>
+            </h1>
+          </div>
+          <div class="col-md-8">
+            <div class="row" *ngFor="let items of stageThree">
+              <div
+                class="col-md-3 block"
+                *ngFor="let item of items.review_params"
+              >
+                <div
+                  class="blockInfo"
+                  [ngStyle]="{ backgroundColor: item.bgColor }"
+                >
+                  <p>{{ item.percentage }}% {{ item.name }}</p>
+                </div>
+              </div>
+
+              <div class="col-md-3 block">
+                <div class="blockInfo black">
+                  <p>
+                    <a [routerLink]="['/']"> View Live Data</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stageTableOut">
+          <table class="stageTable" width="100%">
+            <thead>
+              <tr>
+                <th class="w-20">
+                  Medicines
+                </th>
+                <th class="w-10">
+                  Dosage
+                </th>
+                <th>
+                  Adjuvent
+                </th>
+                <th class="w-15">
+                  #Days / Time
+                </th>
+                <th>
+                  Indications
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="w-20">
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=siddha+Gowri+Chinthamani+Viral+Pneumonia&btnG="
+                    target="_blank"
+                  >
+                    Gowri Chinthamani</a
+                  >
+                </td>
+                <td class="w-10">
+                  130 mg
+                </td>
+                <td>TKC (OR) TSC – 1 gm with honey</td>
+                <td class="w-15">3 Days 6 time (bd)</td>
+                <td>
+                  64 types of fever (Theeraa suram- incurable fevers), 13 types
+                  of delirium, all types of cough, dyspnea, tuberculosis
+                </td>
+              </tr>
+              <!-- -->
+              <tr>
+                <td>
+                  <a target="_blank">Vajra Gandi Tablet (Pathanjalli)</a>
+                </td>
+                <td>
+                  130 mg
+                </td>
+                <td>Annabaedhi – 30 mg, TKC – 1gm with honey</td>
+                <td>3 times per day</td>
+                <td>
+                  64 types of fevers and 13 types of delirium
+                </td>
+              </tr>
+              <!-- -->
+              <tr>
+                <td>
+                  <a target="_blank">Thiridhood Tablet</a>
+                </td>
+                <td>
+                  60 mg
+                </td>
+                <td>Pepper Decoction</td>
+                <td>3 times per day</td>
+                <td>
+                  Vadha, pitha, kabha suram, intermittent fevers
+                </td>
+              </tr>
+              <!-- -->
+              <tr>
+                <td>
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=Linga+Mezhughu+viral+pneumonia&btnG=&oq=Linga+Mezhughu+viral+pne"
+                    target="_blank"
+                    >Linga Mezhughu</a
+                  >
+                </td>
+                <td>
+                  30 mg
+                </td>
+                <td>TKC – 1 gm</td>
+                <td>3 times per day</td>
+                <td>
+                  Pneumonia fever, poisonous fever (infectious)
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a
+                    href="https://www.ayurmedinfo.com/2019/11/28/sarva-sura-kudineer-chooranam/"
+                    target="_blank"
+                    >Sarva Jura Kuligai</a
+                  >
+                </td>
+                <td>
+                  65 mg
+                </td>
+                <td>Pepper or Dry Ginger Decoction</td>
+                <td>3 days 6 times</td>
+                <td>
+                  All 64 types of fever
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a target="_blank">Pancha Karpha Chendooram</a>
+                </td>
+                <td>
+                  30 mg
+                </td>
+                <td>Cow Milk, Palm Jaggery</td>
+                <td>3 days 6 times</td>
+                <td>
+                  All 64 types of fever, 13 types of delirium, All types of
+                  poisons (sarva visam), Cough, Dyspnea, Wheezing, Asthma and
+                  Tuberculosis
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a
+                    href="https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=Kasthoori+Karuppu&btnG="
+                    target="_blank"
+                    >Kasthoori Karuppu</a
+                  >
+                </td>
+                <td>
+                  60 - 130 mg
+                </td>
+                <td>Honey, Mothers’ Milk, Ginger Juice</td>
+                <td>3 days 2 times</td>
+                <td>
+                  Fever, cough, Wheezing, it enhances the strength of vital
+                  organs & it increases the body temperature when the body
+                  becomes chillness
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="healthWelfareBlock">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row ml-1">
+          <h1>
+            Health & Welfare Department Government of Tamil Nadu
+          </h1>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              The following Directorates and Corporations are functioning under
+              the control of Health and Family Welfare Department:
+            </p>
+            <ul>
+              <li>
+                <a href="http://www.nrhmtn.gov.in/ " target="_blank">
+                  National Rural Health Mission Tamil Nadu
+                </a>
+              </li>
+              <li>
+                <a href="https://tnhsp.org/" target="_blank"
+                  >TamilNadu Health System Project(TNHSP)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="http://www.tnhealth.org/dme/medicaleducation.php"
+                  target="_blank"
+                  >Directorate of Medical Education</a
+                >
+              </li>
+              <li>
+                <a href="http://www.tnhealth.org/dms/mrhs.php" target="_blank"
+                  >Directorate of Medical and Rural Health Services</a
+                >
+              </li>
+              <li>
+                <a href="http://www.tnhealth.org/dph/dphpm.php" target="_blank"
+                  >Directorate of Public Health and Preventive Medicine</a
+                >
+              </li>
+              <li>
+                <a href="http://www.tnhealth.org/imh/im.htm" target="_blank"
+                  >Directorate of Indian Medicine and Homeopathy</a
+                >
+              </li>
+              <li>
+                <a href="http://www.tnhealth.org/dfw/dfw.php" target="_blank"
+                  >Directorate of Family Welfare</a
+                >
+              </li>
+              <li>
+                <a href="http://www.drugscontrol.tn.gov.in/ " target="_blank"
+                  >Directorate of Drugs Control
+                </a>
+              </li>
+              <li>
+                <a
+                  href="http://www.tnmsc.com/tnmsc/new/login.php"
+                  target="_blank"
+                  >Tamil Nadu Medical Services Corporation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="http://www.tnhealth.org/healthtransport/tshtd.htm"
+                  target="_blank"
+                  >Tamil Nadu State Health Transport Department</a
+                >
+              </li>
+              <li>
+                <a href="http://www.tnsacs.in/" target="_blank"
+                  >Tamil Nadu State AIDS Control Society
+                </a>
+              </li>
+              <li>
+                <a
+                  href="http://www.tnhealth.org/blindcontrol/tsbcs.htm"
+                  target="_blank"
+                  >Tamil Nadu State Blindness Control Society</a
+                >
+              </li>
+              <li>
+                <a
+                  href="http://www.tnhealth.org/danida/danida.php"
+                  target="_blank"
+                  >DANIDA Health Care Project</a
+                >
+              </li>
+              <li>
+                <a
+                  href="http://www.tnhealth.org/foodsafety/FoodSafety.htm"
+                  target="_blank"
+                  >Department of Food Safety & Drug Administration (Food Safety
+                  Division)</a
+                >
+              </li>
+              <li>
+                <a href="http://www.mrb.tn.gov.in/"
+                  >Medical Services Recruitment Board (MRB)
+                </a>
+              </li>
+              <li>
+                <a href="https://www.tnos.org/default.aspx"
+                  >Tamil Nadu Network for Organ Sharing
+                </a>
+              </li>
+              <li>
+                <a href="http://www.dmrhs.org/tnos/"
+                  >Transplant Authority of Tamil Nadu
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <img class="starImage" src="../../../assets/images/star.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div (click)="navigateTop()" class="yellowButton">
+    <i class="fa fa-angle-up"></i>
+  </div>
+</div>

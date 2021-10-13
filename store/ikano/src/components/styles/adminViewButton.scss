@@ -1,0 +1,33 @@
+.primary-btn {
+  height: 30px;
+  border: 0.5px solid #f01300;
+  line-height: 30px;
+  // padding: 0 25px;
+  padding: 0 14px;
+  background: transparent;
+  &.withBg {
+    background: #f01300;
+    color: white;
+  }
+  span {
+    color: #f01300;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  img {
+    width: 9px;
+    // height: 17px;
+    margin-left: 25px;
+    margin-top: -3px;
+  }
+}
+.btn-outline-danger:hover {
+  background-color: #fff !important;
+  color: #dc3545 !important;
+}
+.btn-outline-danger:focus {
+  box-shadow: none !important;
+}
+.rectangle {
+  min-width: 93px;
+}

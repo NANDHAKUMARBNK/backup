@@ -1,0 +1,40 @@
+.k-dialog-titlebar {
+  background-color: white !important;
+}
+.k-dialog-buttongroup {
+  justify-content: space-between !important;
+}
+
+.bodyContent {
+  padding: 16px 16px !important;
+}
+.boards {
+  cursor: pointer;
+  border: 1px solid var(--bw-extra-dark-gray);
+  border-radius: 8px;
+}
+.card {
+  border: 1px solid var(--bw-extra-light-gray-xxxx) !important;
+  box-shadow: 10px 10px 5px var(--bw-extra-light-gray-xxxx) !important;
+}
+// toaster
+.k-notification-info {
+  background-color: var(--bw-extra-light-blue-x) !important;
+  color: black;
+  border: 1px solid var(--bw-dark-aqua-clr-drk) !important;
+  padding: 7px 15px;
+}
+.icon {
+  color: var(--bw-dark-aqua-clr-drk);
+  font-weight: bolder;
+  font-size: 1.3em;
+  position: relative;
+}
+.alert {
+  .names {
+    white-space: nowrap;
+  }
+}
+.k-dialog-titlebar {
+  background-color: var(--bw-silver-chalice-clr-bse) !important;
+}

@@ -1,0 +1,80 @@
+<div class="login-section" *ngIf="!isMfa">
+  <bw-avatar [className]="'logo lg center mt-5'" [src]="'../assets/images/logo-new.png'" [alt]="'logo'"
+    [title]="'logo'">
+  </bw-avatar>
+  <div class="login-bg mt-5">
+    <form [formGroup]="loginForm" class="width-30 m-auto login-panel p-4">
+      <div class="m-auto" style="width: 90">
+        <bw-input [isStar]="false" [label]="'Username'" [control]="loginForm.get('username')" [placeholder]="''"
+          [classNameControl]="'bw-font-sec-medium'">
+        </bw-input>
+        <bw-input [isStar]="false" [type]="'password'" [label]="'Password'" [control]="loginForm.get('password')"
+          [placeholder]="''" [classNameControl]="'bw-font-sec-medium'">
+        </bw-input>
+
+        <p *ngIf="isError" class="text-danger mb-1">
+          <ng-container *ngFor="let msg of errMessage">
+            {{ msg }}
+          </ng-container>
+        </p>
+        <bw-button className="btn-base btn-contained secondary-btn-contained btn-lg bw-font-sec-bold width-100"
+          buttonName="Login" (onClick)="loginFunc()">
+        </bw-button>
+        <p class="
+            secondary-fre-clr-bse
+            text-center
+            mb-1
+            cursor-pointer
+            focus-outline-none
+          " routerLink="./reset-password">
+          Forgot Password?
+        </p>
+        <p class="
+            secondary-fre-clr-bse
+            text-center
+            m-0
+            cursor-pointer
+            focus-outline-none
+          " routerLink="./reset-username">
+          Forgot Username?
+        </p>
+      </div>
+    </form>
+  </div>
+  <bw-footer></bw-footer>
+</div>
+
+<form *ngIf="isMfa" [formGroup]="mfaForm" class="width-30 m-auto">
+  <bw-avatar [className]="'logo lg center mt-5'" [src]="'../assets/images/logo-new.png'" [alt]="'logo'"
+    [title]="'logo'">
+  </bw-avatar>
+  <p class="primary-fre-clr-bse bw-font-sec-bold text-center">
+    Verify OTP
+  </p>
+  <bw-input [type]="'number'" [isStar]="false" [label]="'OTP'" [control]="mfaForm.get('code')" [placeholder]="''"
+    [classNameControl]="'bw-font-sec-medium'">
+  </bw-input>
+
+  <p *ngIf="successUsername">
+    Your email and last name match! An OTP has been sent to you with your
+    username.
+  </p>
+  <p *ngIf="isError" class="text-danger mb-1">
+    <ng-container *ngFor="let msg of errMessage">
+      {{ msg }}
+    </ng-container>
+  </p>
+  <bw-button className="btn-base btn-contained secondary-btn-contained btn-lg bw-font-sec-bold width-100"
+    buttonName="Verify OTP" (onClick)="verifyOTP()">
+  </bw-button>
+  <p class="
+              secondary-fre-clr-bse
+              text-center
+              cursor-pointer
+              mt-4
+              focus-outline-none
+            " (click)="isMfa = false; loginForm.reset(); mfaForm.reset(); setError('')">
+    Return Home
+  </p>
+  <bw-footer></bw-footer>
+</form>

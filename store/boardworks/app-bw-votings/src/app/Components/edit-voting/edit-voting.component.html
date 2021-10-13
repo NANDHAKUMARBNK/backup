@@ -1,0 +1,239 @@
+<div class="row mt-4">
+  <div>
+    <bw-bread-crumb
+      [defaultItems]="defaultItems"
+      (onClick)="navigateInto($event)"
+    ></bw-bread-crumb>
+  </div>
+  <div class="col-12 text-end">
+    <bw-button
+      className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular btn-sm  me-md-4 px-4"
+      buttonName="Delete"
+      (onClick)="buttonClick($event, 'delete')"
+    >
+    </bw-button>
+    <bw-button
+      *ngIf="!templateScreen"
+      className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular  me-md-4 px-4"
+      [buttonName]="buttonName"
+      (onClick)="buttonClick($event, buttonName)"
+    >
+    </bw-button>
+
+    <bw-button
+      className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular  me-md-4 px-4"
+      [buttonName]="'Settings'"
+      (onClick)="buttonClick($event, 'seetings')"
+    >
+    </bw-button>
+  </div>
+
+  <div class="mt-4">
+    <bw-text
+      [className]="'bw-font-sec-bold  primary-fre-clr-bse f-17'"
+      [textName]="'Votings'"
+    ></bw-text>
+    <p *ngIf="isError" class="text-danger mb-1">
+      <ng-container *ngFor="let msg of errMessage">
+        {{ msg }}
+      </ng-container>
+    </p>
+  </div>
+
+  <div class="mt-3">
+    <bw-grid
+      [isEnableSelectAll]="false"
+      [isShowCheckbox]="false"
+      [onCellClicked]="onCellClicked"
+      [columnOptions]="columnOptions"
+      [columnsData]="columnsData"
+      [gridData]="gridData"
+      [isEnableButton]="true"
+      [accesControlFlag]="true"
+      (readAccessClick)="readAccessClick($event)"
+      (writeAccessClick)="writeAccessClick($event)"
+      (onClickLink)="onClickLink($event, 'questions')"
+      [actions]="actions2"
+      (onClickAction)="onClickAction2($event)"
+    >
+    </bw-grid>
+  </div>
+
+  <bw-text
+    [className]="'bw-font-sec-bold  primary-fre-clr-bse f-17'"
+    [textName]="'Supporting Documents'"
+  ></bw-text>
+  <div class="mt-3">
+    <bw-grid
+      [isEnableSelectAll]="false"
+      [isShowCheckbox]="false"
+      [onCellClicked]="onCellClicked"
+      [columnOptions]="columnOptions"
+      [columnsData]="docColumnsData"
+      [gridData]="docGridData"
+      [isEnableButton]="true"
+      [accesControlFlag]="true"
+      (onClickLink)="onClickLink($event, 'doc')"
+      [actions]="actions"
+      (onClickAction)="onClickAction($event)"
+    >
+    </bw-grid>
+  </div>
+
+  <div *ngIf="unPublishScreen" class="mt-4">
+    <bw-checkbox
+      [checkBoxses]="emailCheckBox"
+      [inRow]="true"
+      [inRowLabelRows]="5"
+      [inRowInputRows]="7"
+      [classCheckboxLabel]="'row  m-0'"
+      [control]="emailalertControl"
+      [classNameControl]="'bw-font-sec-medium  p-0 '"
+      [label]="''"
+      (getSelectedValue)="changeCheckbox($event)"
+      [checkBoxTextClass]="'col-xl-11 col-lg-11 col-md-10 ml-10'"
+      [spanrowClass]="' col-1'"
+    >
+    </bw-checkbox>
+  </div>
+
+  <div class="mt-4">
+    <bw-button
+      className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular btn-sm  me-md-4 px-4"
+      buttonName="New Question"
+      (onClick)="buttonClick($event, 'newQuestion')"
+    >
+    </bw-button>
+    <bw-button
+      *ngIf="!unPublishScreen && !templateScreen"
+      className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular  me-md-4 px-4"
+      [buttonName]="'DELETE RESPONSE'"
+      (onClick)="buttonClick($event, 'deleteResponse')"
+    >
+    </bw-button>
+    <!-- <bw-button className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular  me-md-4 px-4"
+      [buttonName]="'ADD DOCUMENT'" (onClick)="buttonClick($event, 'addDocument')">
+    </bw-button> -->
+  </div>
+</div>
+
+<!-- <div *ngIf="showReorderModal">
+    <bw-confirm-modal [width]="700" [headerTitle]="'Re-Order Confirmation'" [isEnableHeader]="true" [isDeleteBody]="false"
+        [isEnableFooter]="true" [isCustomBody]="true" (onConfirmClick)="reOrderEvalution('save')"
+        (onCancelClick)="reOrderEvalution('cancel')">
+        <bw-grid [isEnableSelectAll]="false" [isShowCheckbox]="false" [onCellClicked]="onCellClicked"
+            [columnOptions]="columnOptions" [columnsData]="columnsData" [gridData]="gridData" [isEnableButton]="true"
+            [accesControlFlag]="true" (readAccessClick)="readAccessClick($event)"
+            (writeAccessClick)="writeAccessClick($event)"
+            (dragAndDropGrid)="dragAndDropGrid($event)"
+            [dragAndDrop]="true"
+            >
+        </bw-grid>
+
+    </bw-confirm-modal>
+</div> -->
+
+<div *ngIf="showdeleteVoting">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'Delete Confirmation'"
+    [isEnableHeader]="true"
+    [isDeleteBody]="false"
+    [isEnableFooter]="true"
+    [isCustomBody]="true"
+    (onConfirmClick)="deleteVoting('save')"
+    (onCancelClick)="deleteVoting('cancel')"
+  >
+    <bw-text
+      [className]="'fw-500 fs-6'"
+      [textName]="'Are you sure you want to delete this Votings'"
+    ></bw-text>
+  </bw-confirm-modal>
+</div>
+
+<div *ngIf="newQuestionModal">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'ADD Questions to ' + votingData.result.votingName"
+    [isEnableHeader]="true"
+    [isDeleteBody]="false"
+    [isEnableFooter]="true"
+    [isCustomBody]="true"
+    (onConfirmClick)="newQuestionVoting('save')"
+    (onCancelClick)="newQuestionVoting('cancel')"
+  >
+    <div class="form-group addWorkspace mt-4">
+      <bw-input
+        [label]="'Question'"
+        [labelClass]="'bw-font-sec-bold'"
+        [control]="questionControl"
+        [placeholder]="'Enter Title'"
+        [classNameControl]="'bw-font-sec-medium'"
+        [inRow]="true"
+        [inRowLabelRows]="3"
+        [inRowInputRows]="7"
+      >
+      </bw-input>
+      <bw-radio
+        [radios]="votersRadio"
+        [name]="'workSpace'"
+        [label]="'Do you want allow voters to abstain'"
+        [inRow]="true"
+        [inRowLabelRows]="3"
+        [inRowInputRows]="7"
+        [classRadioLabel]="'col-md-6 col-lg-6 p-0'"
+        [control]="votersControl"
+        [classNameControl]="'bw-font-sec-medium m-3'"
+      >
+      </bw-radio>
+    </div>
+  </bw-confirm-modal>
+</div>
+
+<div *ngIf="showdeleteResponse">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'Delete Confirmation'"
+    [isEnableHeader]="true"
+    [isDeleteBody]="false"
+    [isEnableFooter]="true"
+    [isCustomBody]="true"
+    (onConfirmClick)="deleteResponse('save')"
+    (onCancelClick)="deleteResponse('cancel')"
+  >
+    <bw-text
+      [className]="'fw-500 fs-6'"
+      [textName]="'Are you sure you want to delete this Responses ?'"
+    ></bw-text>
+  </bw-confirm-modal>
+</div>
+<div *ngIf="deleteDocument">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'Delete Confirmation'"
+    [isEnableHeader]="true"
+    [isDeleteBody]="true"
+    [isEnableFooter]="true"
+    [isCustomBody]="true"
+    [customMessage]="'Are you sure you want to delete?'"
+    (onConfirmClick)="linksModalAction($event)"
+    (onCancelClick)="linksModalAction($event)"
+    [bodyMessage]="deleteMsg"
+  >
+  </bw-confirm-modal>
+</div>
+<div *ngIf="deleteQuestion">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'Delete Confirmation'"
+    [isEnableHeader]="true"
+    [isDeleteBody]="true"
+    [isEnableFooter]="true"
+    [isCustomBody]="true"
+    [customMessage]="'Are you sure you want to Question?'"
+    (onConfirmClick)="linksModalActionQuestion($event)"
+    (onCancelClick)="linksModalActionQuestion($event)"
+    [bodyMessage]="deleteMsgQuestion"
+  >
+  </bw-confirm-modal>
+</div>

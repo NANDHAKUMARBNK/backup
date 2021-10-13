@@ -1,0 +1,27 @@
+<div class="form-group" [style.width]="width">
+  <div class="row">
+    <div [class]="divColClass">
+      <i [class]="iconClass" (click)="iconClickEvent($event)"></i>
+    </div>
+    <div [class]="textClass" *ngIf="!isTextarea">
+      <bw-input
+        [control]="control"
+        [type]="type"
+        [placeholder]="placeholder"
+        (focusout)="seterror()"
+        [classNameControl]="'bw-font-sec-medium'"
+      >
+      </bw-input>
+    </div>
+    <div [class]="textClass" *ngIf="isTextarea">
+      <bw-textarea
+        [control]="control"
+        [rows]="rows"
+        [placeholder]="'Enter'"
+        (focusout)="seterror()"
+        [className]="'bw-font-sec-medium'"
+      >
+      </bw-textarea>
+    </div>
+  </div>
+</div>

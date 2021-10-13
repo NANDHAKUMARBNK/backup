@@ -1,0 +1,304 @@
+<kendo-dialog (close)="onCancelAction()" [width]="900">
+  <kendo-dialog-titlebar>
+    <bw-text
+      [className]="'primary-fre-clr-bse'"
+      [textName]="'
+        Add Question To Survey'"
+    ></bw-text>
+  </kendo-dialog-titlebar>
+
+  <div class="new-question">
+    <div class="mt-1">
+      <p *ngIf="isError" class="text-danger mb-1">
+        <ng-container *ngFor="let msg of errMessage">
+          {{ msg }}
+        </ng-container>
+      </p>
+
+      <div class="col-10">
+        <div class="mt-1">
+          <div class="form-group addWorkspace mt-4">
+            <bw-input
+              [label]="'Question'"
+              [labelClass]="'bw-font-sec-bold'"
+              [control]="questionDataForm.get('question')"
+              [placeholder]="'Enter Title'"
+              [classNameControl]="'bw-font-sec-medium'"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="7"
+            >
+            </bw-input>
+
+            <bw-textarea
+              [label]="'Description'"
+              [control]="questionDataForm.get('description')"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="7"
+              [rows]="3"
+              [placeholder]="'Enter Description'"
+              [className]="'bw-font-sec-medium'"
+            >
+            </bw-textarea>
+
+            <bw-select
+              [inputClass]="'select-width'"
+              [labelClass]="'bw-font-sec-bold '"
+              [control]="questionDataForm.get('answerType')"
+              [data]="answersData"
+              [isKey]="true"
+              [label]="'The type of answer to this question is'"
+              [inRow]="true"
+              [inRowInputRows]="7"
+              [inRowLabelRows]="3"
+              [searchable]="false"
+              [selectName]="'name'"
+              [selectValue]="'type'"
+              (selectChangeEvent)="onChange($event, 'answerType')"
+            >
+            </bw-select>
+
+            <bw-radio
+              [radios]="agendaRadio"
+              [name]="'workSpace'"
+              [label]="'Require a response to this question'"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="8"
+              [classRadioLabel]="'col-md-6 col-lg-6 p-0'"
+              [control]="questionDataForm.get('required')"
+              [classNameControl]="'bw-font-sec-medium m-3'"
+            >
+            </bw-radio>
+            <bw-input
+              *ngIf="textSingleLine"
+              [label]="'Maximum number of characters'"
+              [labelClass]="'bw-font-sec-bold'"
+              [control]="questionDataForm.get('noofchar')"
+              [placeholder]="'Enter Title'"
+              [classNameControl]="'bw-font-sec-medium'"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="7"
+            >
+            </bw-input>
+            <bw-input
+              *ngIf="textSingleLine"
+              [label]="'Default Value'"
+              [labelClass]="'bw-font-sec-bold'"
+              [control]="questionDataForm.get('defaultValue')"
+              [placeholder]="'Enter Title'"
+              [classNameControl]="'bw-font-sec-medium'"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="7"
+            >
+            </bw-input>
+            <bw-input
+              *ngIf="textMultiLine"
+              [label]="'Number of Lines to Display'"
+              [labelClass]="'bw-font-sec-bold'"
+              [control]="questionDataForm.get('noofLines')"
+              [placeholder]="'Enter Title'"
+              [classNameControl]="'bw-font-sec-medium'"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="7"
+            >
+            </bw-input>
+
+            <bw-textarea
+              *ngIf="choice"
+              [label]="'Type each choice on a separate line'"
+              [control]="questionDataForm.get('separateLine')"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="7"
+              [rows]="3"
+              [placeholder]="'Enter separateLine'"
+              [className]="'bw-font-sec-medium'"
+            >
+            </bw-textarea>
+
+            <bw-radio
+              *ngIf="choice"
+              [radios]="ChoiceMenu"
+              [name]="'choice'"
+              [label]="'Display choices using'"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="8"
+              [classRadioLabel]="'col-md-6 col-lg-6 p-0'"
+              [control]="questionDataForm.get('choiceMenu')"
+              [classNameControl]="'bw-font-sec-medium m-3'"
+            >
+            </bw-radio>
+
+            <bw-radio
+              *ngIf="boolean"
+              [radios]="defaultBoolRadio"
+              [name]="'defaultBool'"
+              [label]="'Default Value'"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="8"
+              [classRadioLabel]="'col-md-6 col-lg-6 p-0'"
+              [control]="questionDataForm.get('defaultBool')"
+              [classNameControl]="'bw-font-sec-medium m-3'"
+            >
+            </bw-radio>
+
+            <!-- <bw-checkbox
+              *ngIf="opinion"
+              [checkBoxses]="choiceOpinion"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="7"
+              [classCheckboxLabel]="'row   m-0 align-items-center'"
+              [control]="questionDataForm?.get('choiceOpinion')"
+              [classNameControl]="'bw-font-sec-medium  p-0 '"
+              [label]="'Allow Neutral Answer'"
+              [checkBoxTextClass]="'col-xl-11 col-lg-11 col-md-10 ml-10'"
+              [spanrowClass]="'row col-2'"
+              (getselectedArray)="changeAllDayCheckbox($event, 'neutral')"
+            >
+            </bw-checkbox> -->
+
+            <bw-radio
+              *ngIf="date"
+              [radios]="dateRadio"
+              [name]="'date'"
+              [label]="'Default Value'"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="8"
+              [classRadioLabel]="'col-md-6 col-lg-6 p-0'"
+              [control]="questionDataForm.get('defaultDate')"
+              [classNameControl]="'bw-font-sec-medium m-3'"
+              [radioDate]="true"
+              [controlDate]="questionDataForm.get('otherDate')"
+            >
+            </bw-radio>
+
+            <div *ngIf="number">
+              <p>You can specify a minimum and maximum allowed value</p>
+              <bw-input
+                [label]="'Default'"
+                [labelClass]="'bw-font-sec-bold'"
+                [control]="questionDataForm.get('default')"
+                [placeholder]="'Enter Title'"
+                [classNameControl]="'bw-font-sec-medium'"
+                [type]="'number'"
+                [inRow]="true"
+                [inRowLabelRows]="3"
+                [inRowInputRows]="7"
+              >
+              </bw-input>
+              <bw-input
+                [label]="'Min'"
+                [type]="'number'"
+                [labelClass]="'bw-font-sec-bold'"
+                [control]="questionDataForm.get('minValues')"
+                [placeholder]="'Enter Min'"
+                [classNameControl]="'bw-font-sec-medium'"
+                [inRow]="true"
+                [inRowLabelRows]="3"
+                [inRowInputRows]="7"
+              >
+              </bw-input>
+              <bw-input
+                [label]="'Max'"
+                [labelClass]="'bw-font-sec-bold'"
+                [control]="questionDataForm.get('maxValue')"
+                [placeholder]="'Enter Max'"
+                [classNameControl]="'bw-font-sec-medium'"
+                [inRow]="true"
+                [inRowLabelRows]="3"
+                [type]="'number'"
+                [inRowInputRows]="7"
+              >
+              </bw-input>
+            </div>
+
+            <bw-input
+              *ngIf="answerFilterNumber"
+              [label]="' '"
+              [labelClass]="'bw-font-sec-bold'"
+              [control]="questionDataForm.get('answerFilterNumber')"
+              [placeholder]="'Enter Title'"
+              [classNameControl]="'bw-font-sec-medium'"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="7"
+            >
+            </bw-input>
+
+            <bw-select
+              *ngIf="answerFilterOpinion"
+              [labelClass]="'bw-font-sec-bold '"
+              [control]="questionDataForm.get('answerFilterOpinionChoice')"
+              [data]="filterDataListAnswer"
+              [isKey]="true"
+              [label]="' '"
+              [inRow]="true"
+              [inRowInputRows]="7"
+              [inRowLabelRows]="3"
+              [searchable]="false"
+              [selectName]="'name'"
+              [selectValue]="'name'"
+              (selectChangeEvent)="onChange($event, ' ')"
+              [multiple]="true"
+            >
+            </bw-select>
+            <bw-radio
+              *ngIf="answerFilterBoolean"
+              [radios]="answerBooleanRadio"
+              [name]="'workSpace'"
+              [label]="' '"
+              [inRow]="true"
+              [inRowLabelRows]="3"
+              [inRowInputRows]="8"
+              [classRadioLabel]="'col-md-6 col-lg-6 p-0'"
+              [control]="questionDataForm.get('answerBoolean')"
+              [classNameControl]="'bw-font-sec-medium m-3'"
+              [radioDate]="true"
+              [controlDate]="questionDataForm.get('otherDate')"
+            >
+            </bw-radio>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <kendo-dialog-actions>
+    <div class="col-12 mt-1 mb-1">
+      <div class="col-6 d-inline-block">
+        <bw-button
+          className="btn-base secondary-btn-text border-secondary bw-font-prm-regular btn-sm me-md-4 px-4"
+          buttonName="Cancel"
+          (onClick)="onCancelAction()"
+        >
+        </bw-button>
+      </div>
+      <div class="col-6 text-end d-inline-block">
+        <bw-button
+          className="btn-base secondary-btn-text border-secondary bw-font-prm-regular btn-sm me-md-4 px-4"
+          buttonName="Save"
+          (onClick)="createQuestion($event, 'create')"
+          [buttonDisabled]="questionDataForm.invalid"
+        >
+        </bw-button>
+
+        <bw-button
+          className="btn-base secondary-btn-contained bw-font-prm-regular btn-sm me-md-4 px-4"
+          [buttonName]="'Add Another Question'"
+          [buttonDisabled]="questionDataForm.invalid"
+          (onClick)="createQuestion($event, 'newQuestion')"
+        >
+        </bw-button>
+      </div>
+    </div>
+  </kendo-dialog-actions>
+</kendo-dialog>

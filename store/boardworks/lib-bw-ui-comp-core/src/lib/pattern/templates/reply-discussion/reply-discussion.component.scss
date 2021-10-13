@@ -1,0 +1,91 @@
+.k-dialog-titlebar {
+  background-color: white !important;
+}
+.k-dialog-buttongroup {
+  justify-content: space-between !important;
+}
+
+.bodyContent {
+  padding: 16px 16px !important;
+}
+.boards {
+  cursor: pointer;
+  border: 1px solid var(--bw-extra-dark-gray);
+  border-radius: 8px;
+}
+.card {
+  border: 1px solid var(--bw-extra-light-gray-xxxx) !important;
+  box-shadow: 10px 10px 5px var(--bw-extra-light-gray-xxxx) !important;
+}
+// toaster
+.k-notification-info {
+  background-color: var(--bw-extra-light-blue-x) !important;
+  color: black;
+  border: 1px solid var(--bw-dark-aqua-clr-drk) !important;
+  padding: 7px 15px;
+}
+.icon {
+  color: var(--bw-dark-aqua-clr-drk);
+  font-weight: bolder;
+  font-size: 1.3em;
+  position: relative;
+}
+.alert {
+  .names {
+    white-space: nowrap;
+  }
+}
+
+.dropdown {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 8px;
+
+  .dropdown-menu {
+    padding: 25px 5px;
+    margin-top: 7px;
+    border: 1px solid var(--bw-extra-light-gray-xx);
+    border-radius: 3px;
+    min-width: 10rem;
+    position: absolute;
+    box-shadow: rgb(100 100 111 / 13%) 0px 7px 15px 0px;
+    background: var(--bw-clr-white);
+    z-index: 9;
+    right: 0;
+
+    .dropdown-menu-child {
+      padding: 6px 15px;
+      color: var(--bw-extra-light-gray-xxx);
+      font-size: 13px;
+      text-decoration: none;
+      display: block;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    .dropdown-menu-child-active {
+      padding: 6px 15px;
+      color: var(--bw-extra-light-gray-xxx);
+      font-size: 13px;
+      text-decoration: none;
+      display: block;
+
+      &:hover {
+        text-decoration: none;
+        background-color: rgba(247, 247, 247, 1) !important;
+      }
+      &:active {
+        background-color: rgba(247, 247, 247, 1) !important;
+      }
+    }
+  }
+}
+.k-dialog-titlebar {
+  background-color: var(--bw-silver-chalice-clr-bse) !important;
+}
+
+.mh-65{
+  max-height: 65vh !important;
+}

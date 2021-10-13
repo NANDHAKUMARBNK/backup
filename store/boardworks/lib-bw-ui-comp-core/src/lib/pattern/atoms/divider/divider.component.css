@@ -1,0 +1,9 @@
+hr {
+  height: 1px;
+  background: #dee2e6;
+  margin: 10px 0;
+  border: none;
+}
+/* ::ng-deep .dropdown hr {
+  margin: 10px 10px;
+} */

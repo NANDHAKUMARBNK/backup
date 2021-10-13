@@ -1,0 +1,227 @@
+.meeting {
+  position: relative;
+  color: #00a1e8;
+}
+
+.meeting:after {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 3px;
+  height: 3px;
+  margin-left: -1.5px;
+  content: "";
+  border-radius: 50%;
+  background-color: #00a1e8;
+}
+
+.k-state-selected .meeting {
+  color: #fff;
+}
+
+.k-state-selected .meeting:after {
+  background-color: #fff;
+}
+
+.weeknumber-cell {
+  color: red;
+}
+
+.scheduler_size {
+  height: 550px !important;
+  // width: 80% !important;
+}
+
+.scheduler_size_4month {
+  width: 100% !important;
+
+  .month-name {
+    color: white !important;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.scheduler-header {
+  height: 55px;
+  background-color: var(--bw-extra-light-gray-xxxxx);
+  border: 1px solid var(--bw-extra-light-gray-xxxx);
+
+  .arrow-navs {
+    cursor: pointer !important;
+  }
+}
+
+.scheduler-header-text {
+  float: left;
+  color: var(--bw-extra-light-gray-xxx);
+}
+
+.calender-select-months {
+  position: absolute;
+  z-index: 99999;
+  right: 25px;
+}
+
+.dot {
+  display: inline-block;
+  border: 2px solid var(--bw-extra-light-gray);
+  border-radius: 50%;
+  width: 50%;
+  background-color: white;
+  height: 15px;
+  width: 15px;
+  margin: -4px 2px;
+
+  &.dot-success {
+    background-color: var(--bw-sec-clr-drk);
+  }
+  &.dot-warning {
+    background-color: var(--bw-dark-peach-clr-bse);
+  }
+  &.dot-achieved {
+    background-color: var(--bw-medium-gray-x);
+  }
+  &.dot-small {
+    height: 15px;
+    width: 15px;
+  }
+}
+
+::ng-deep.event-holder {
+  .k-icon {
+    &.success {
+      color: var(--bw-sec-clr-drk) !important;
+    }
+  }
+}
+
+::ng-deep.k-event-actions {
+  .k-i-arrow-60-left {
+    display: none !important;
+  }
+}
+::ng-deep.k-nav-current {
+  color: var(--bw-clr-white) !important;
+  .k-icon {
+    color: var(--bw-clr-white) !important;
+  }
+}
+
+.legend-holder {
+  font-size: 12px;
+  color: var(--bw-medium-gray-x);
+}
+
+::ng-deep .custom-sch {
+  &.k-scheduler{overflow-y: visible !important;}
+
+  // TODO comment to show toolbar on 1 month view
+  &.toolbar-d-none {
+    .k-scheduler-toolbar {
+      display: none !important;
+    }
+  }
+  .k-event {
+    color: var(--bw-sec-clr-drk) !important;
+    background-color: var(--bw-sec-clr-drk) !important;
+    border: 1px solid var(--bw-sec-clr-drk) !important;
+    width: 30px !important;
+    height: 30px !important;
+    right: 0;
+    margin: 10px;
+    padding: 4px;
+    border-radius: 50% !important;
+    color: #fff !important;
+
+    .popover__wrapper {
+      position: relative;
+      display: inline-block;
+      z-index: 99 !important;
+    }
+
+    .popover__content {
+      opacity: 1;
+      visibility: hidden;
+      position: absolute;
+      left: -96px;
+      bottom: 8px;
+      transform: translate(0, 10px);
+      background-color: #fff;
+      padding: 0.5rem 0.3rem;
+      box-shadow: 0 2px 5px 0 rgb(0 0 0 / 26%);
+      width: 200px;
+      z-index: 999 !important;
+    }
+    .popover__content:before {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      right: calc(50% - 10px);
+      bottom: -8px;
+      border-style: solid;
+      border-width: 0px 10px 10px 10px;
+      transform: rotate(180deg);
+      border-color: transparent transparent #fff transparent;
+      transition-duration: 0.3s;
+      transition-property: transform;
+    }
+
+    .popover_holder {
+      max-height: 250px;
+      overflow: scroll;
+    }
+
+    .popover__message {
+      // font-weight: 600;
+      // color: black;
+    }
+  }
+  .k-event:hover .popover__content {
+    z-index: 999 !important;
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, -20px);
+    transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+    color: black;
+  }
+}
+::ng-deep kendo-scheduler .k-event,
+.k-event {
+  overflow: visible !important;
+  border-radius: 5px;
+}
+
+.fs-10 {
+  font-size: 10px;
+}
+
+.custom-toolbar-1 {
+  display: none;
+}
+
+// FOR tooltip issue  please set
+::ng-deep kendo-scheduler.k-scheduler {
+  overflow: visible !important;
+  overflow-y: clip !important;
+}
+
+::ng-deep .k-scheduler-monthview.k-scheduler-flex-layout .k-scheduler-content {
+  overflow: visible !important;
+}
+
+
+::ng-deep
+  .custom-month{
+     .k-event > div {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }  
+    &.toolbar-d-none {
+      .k-scheduler-toolbar {
+        display: none !important;
+      }
+    
+  }
+}

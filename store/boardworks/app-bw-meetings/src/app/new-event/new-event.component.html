@@ -1,0 +1,41 @@
+<div class="mt-3">
+    <div>
+        <span (click)="backNavigation()"><a class="cursor-pointer">{{fromPage == 'home' ? 'Home' : 'Meetings & Events'}}</a> > </span>
+        <span>New Event - {{breadCrumb}}</span>
+    </div>
+
+    <div class="mt-4">
+        <bw-text [className]="'bw-font-sec-bold  primary-fre-clr-bse f-17'" [textName]="'New Event'"></bw-text>
+    </div>
+
+    <div class="row steeper m-0 mt-5">
+        <div class="col-md-4 text-center pr" (click)="navigation('info')">
+            <span class="round" *ngIf="!eventId "> 1 </span>
+            <img *ngIf="eventId " src="assets/images/tick.png" alt="">
+            <span class="label-text bw-font-prm-regular" [ngClass]="{'active': pageSelection =='info'}">
+                Event Information
+            </span>
+            <hr>
+        </div>
+
+        <div class="col-md-4 text-center pr" (click)="navigation('attendees')">
+            <span class="round" *ngIf="status !='attendeesSuccess' "> 2 </span>
+            <img *ngIf="status == 'attendeesSuccess' " src="assets/images/tick.png" alt="">
+            <span class="label-text  bw-font-prm-regular" [ngClass]="{'active': pageSelection =='attendee'}">
+                Attendees
+            </span>
+            <hr>
+        </div>
+
+        <div class="col-md-4 text-center" (click)="navigation('doc')">
+            <span class="round"> 3 </span>
+            <span class="label-text bw-font-prm-regular" [ngClass]="{'active': pageSelection =='doc'}">
+                Attachments
+            </span>
+        </div>
+
+    </div>
+    <div class="mt-3">
+        <router-outlet> </router-outlet>
+    </div>
+</div>

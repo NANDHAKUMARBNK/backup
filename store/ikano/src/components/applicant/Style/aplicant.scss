@@ -1,0 +1,1246 @@
+.aplicantHomeCard {
+  padding: 27px 27px 40px 27px !important;
+  margin-bottom: 71px;
+}
+
+//-------------- Steps Css-------- Start-----
+.MuiStepIcon-root.MuiStepIcon-completed {
+  color: rgb(236, 8, 1) !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.MuiStepIcon-root {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.MuiStepIcon-text {
+  display: none !important;
+}
+
+.MuiStepLabel-iconContainer,
+.MuiStep-horizontal {
+  padding: 0px !important;
+}
+
+.MuiStepIcon-root.MuiStepIcon-active {
+  color: rgb(236, 8, 1) !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.MuiStepper-root {
+  display: flex;
+  padding-top: 18px;
+}
+
+// -------End------------
+
+.aplicantHeading {
+  color: #4a4946;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 27px;
+  margin-bottom: 17px;
+}
+
+.applicantHeadingInfo {
+  color: #4a4946;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  text-align: center;
+  margin-bottom: 21px;
+}
+
+.aplicantFormBody {
+  margin-top: 36px !important;
+}
+
+.aplicantHome_Heading {
+  min-height: 50px !important;
+  border-bottom: 1px solid #cdc8be;
+  // padding: 28px 0px 20px 0px;
+}
+
+.heading {
+  font-family: "Ikano Sans";
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: normal;
+  text-align: left;
+  color: #4a4946;
+  font-weight: bold;
+}
+
+.aplicant_Input:focus,
+.aplicant_Input,
+.aplicant_Input:hover {
+  min-height: 49px;
+  // min-width: 490px;
+  padding: 14px 16px 17px;
+  font-size: 16px;
+  line-height: 17px;
+  border: 1px solid #cdc8be;
+  border-radius: 5px;
+  background-color: #ffffff;
+  outline-style: none;
+}
+
+.gender {
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 17px;
+}
+
+.address {
+  height: 17px;
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 17px;
+  margin-bottom: 22px;
+}
+
+.oval-copy-6 {
+  box-sizing: border-box;
+  height: 18px;
+  width: 18px;
+  border: 1px solid #979797;
+  margin-right: 6px;
+  background-color: #ffffff;
+}
+
+.female {
+  height: 17px;
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 17px;
+}
+
+.edit {
+  box-sizing: border-box;
+  max-height: 47px;
+  // min-width: 160px;
+  width: 100%;
+  border: 0.5px solid #f01300;
+  background-color: white;
+}
+
+.form-btn {
+  box-sizing: border-box;
+  min-height: 47px;
+  min-width: 268px;
+  color: #f01300;
+  // font-family: "Ikano Sans";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  border: 0.5px solid #f01300;
+  background-color: white;
+
+  .bg-red {
+    background: #ec0f00;
+    color: #ffffff;
+  }
+}
+
+.form-btn.bg-red {
+  background: #ec0f00;
+  color: #ffffff;
+}
+
+.bg-red {
+  background: #ec0f00 !important;
+  color: #ffffff !important;
+}
+
+.edit > label {
+  color: #f01300;
+  font-family: "Ikano Sans";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 20px;
+  padding: 8px;
+}
+
+.m-b-32 {
+  margin-bottom: 25px;
+}
+
+.btn {
+  margin-bottom: 49px;
+  margin-top: 40px;
+}
+
+.org-details {
+  // height: 27px;
+  /* width: 47px; */
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 27px;
+}
+
+.thank {
+  // width: 440px;
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  text-align: center;
+}
+
+.application-form {
+  height: 45px;
+  width: 280px;
+  color: #ffffff;
+  // font-family: "Ikano Sans";
+  font-size: 35px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 45px;
+  text-align: center;
+  width: 100%;
+  padding-top: 130px;
+}
+
+.bg-img {
+  background-image: url("../../../assets/Images/bannernew.png");
+
+  /* Full height */
+  height: 300px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.rectangle-1 {
+  border: 1px solid #cdc8be;
+  padding: 28px 19px;
+}
+
+.model {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  // opacity: 0.7;
+  // background-color: #000000;
+  // background-color: rgb(0, 0, 0);
+  // background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding-top: 60px;
+}
+
+.module-btn {
+  height: 36px;
+  width: 39px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: #f01300;
+  border: none;
+}
+
+.form-btn:focus,
+.module-btn:focus {
+  outline: none;
+}
+
+.p-10 {
+  padding: 10px;
+}
+
+.card {
+  border-radius: 8px i !important;
+  box-shadow: 0 2px 26px 0 rgba(0, 0, 0, 0.12);
+}
+
+.submitArrow-modals-left {
+  margin-left: 10px;
+  width: 15px;
+}
+
+.submitArrow-modals {
+  float: right;
+  width: 15px;
+  margin-right: 10px;
+}
+
+.submitArrow-modals-delete {
+  width: 12px;
+}
+
+.submitArrow-modals-delete.p4 {
+  padding-top: 4px;
+}
+
+.dialog-box {
+  padding: 51px !important;
+  border-radius: 8px;
+}
+
+button {
+  cursor: pointer;
+
+  label {
+    cursor: pointer;
+  }
+}
+
+.module-btn label {
+  color: white;
+  font-family: "Ikano Sans";
+  font-size: 23px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 20px;
+  margin-bottom: 2%;
+}
+
+.detelemodule {
+  min-height: 332px;
+}
+
+.error {
+  font-size: 16px;
+  color: red;
+  letter-spacing: 1px;
+  word-spacing: 0.5px;
+}
+
+.sed-ut-perspiciat {
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 22px;
+}
+
+.consequuntur-magni-d {
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.skils-right {
+  box-sizing: border-box;
+  height: 561px;
+  border: 1px solid #cdc8be;
+  background-color: #ffffff;
+}
+
+.skils-list {
+  height: 448px;
+  color: #4a4946;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 56px;
+  overflow: auto;
+  cursor: pointer;
+}
+
+.liststyle {
+  list-style: none;
+}
+
+.sectedSkills {
+  max-height: 67px;
+  border: 1px solid #cdc8be;
+  background-color: #f8f7f5;
+  padding: 5%;
+  list-style: none;
+  position: relative;
+  img {
+    color: grey !important;
+    cursor: pointer !important;
+    position: absolute !important;
+    right: 3%;
+    height: 15px;
+    width: 15px;
+    top: 40%;
+  }
+}
+
+.eachRow {
+  border-bottom: 0.75px solid #dcd8d1;
+  padding: 20px;
+  align-items: center;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.ikanoIcons {
+  img {
+    height: 100px;
+    margin-top: 10%;
+  }
+}
+
+.ikanovalueslable {
+  color: #4a4946;
+  // font-family: "Ikano Sans";
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.custom-file {
+  margin-bottom: 15px !important;
+}
+
+.custom-file > .cvFile::-webkit-file-upload-button {
+  border: 1px solid #d3cfc5;
+  border-radius: 5px;
+  background-color: #cdc8be;
+  margin-top: -2%;
+  padding: 2%;
+  color: #4a4946;
+  font-size: 14px;
+  width: 30%;
+  outline: none;
+}
+.mask {
+  display: flex;
+  height: 50px;
+  width: 30%;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 26px 0 rgba(0, 0, 0, 0.12);
+  z-index: 1;
+  right: 38%;
+  bottom: -15px;
+  position: absolute;
+  align-items: center;
+  justify-content: space-around;
+  color: red;
+}
+
+.headingLeadership {
+  height: 26px;
+  color: #4a4946;
+  // font-family: "Ikano Sans";
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.leadershipWords {
+  position: relative;
+  top: 30px;
+  // font-family: "Ikano Sans";
+  font-size: 18px;
+  letter-spacing: 0;
+  padding: 0 20px;
+  padding-bottom: 8%;
+
+  li {
+    display: inline-block;
+    margin-bottom: 30px;
+    padding: 1px;
+  }
+
+  li:nth-child(1) {
+    position: relative;
+  }
+
+  li:nth-child(2) {
+    position: relative;
+    top: 10px;
+    margin-left: 9%;
+    left: 18%;
+  }
+
+  li:nth-child(3) {
+    margin-left: 9%;
+    position: relative;
+    left: 30%;
+  }
+
+  li:nth-child(4) {
+    margin-left: 18%;
+    position: relative;
+    right: 16%;
+  }
+
+  li:nth-child(5) {
+    position: relative;
+    right: 11%;
+    top: 12px;
+    margin-left: 9%;
+  }
+
+  li:nth-child(6) {
+    position: relative;
+    right: 4%;
+  }
+
+  li:nth-child(7) {
+    left: 0px;
+    top: 6%;
+  }
+
+  li:nth-child(8) {
+    position: relative;
+    left: 5%;
+  }
+
+  li:nth-child(9) {
+    position: relative;
+    margin-left: 9%;
+    left: 9%;
+  }
+
+  li:nth-child(10) {
+    position: relative;
+    margin-left: 9%;
+    left: 4%;
+    bottom: 10px;
+  }
+
+  li:nth-child(11) {
+    position: relative;
+    margin-left: 9%;
+    // top: 16%; //17
+    // left: 36%; //61
+  }
+
+  li:nth-child(12) {
+    margin-left: 9%;
+    position: relative;
+  }
+
+  li:nth-child(13) {
+    margin-left: 9%;
+    position: relative;
+    left: 12%;
+    bottom: 9px;
+  }
+
+  li:nth-child(14) {
+    margin-left: 9%;
+    // left: 16%;
+    position: relative;
+    bottom: 37px;
+  }
+
+  li:nth-child(15) {
+    margin-left: 9%;
+    position: relative;
+    right: 6%;
+  }
+
+  li:nth-child(16) {
+    margin-left: 9%;
+    bottom: 20px;
+    position: relative;
+    right: 9%;
+  }
+
+  li:nth-child(17) {
+    margin-left: 9%;
+    position: relative;
+    right: 3%;
+  }
+
+  li:nth-child(18) {
+    margin-left: 9%;
+    position: relative;
+    top: 10%;
+    left: 14%;
+  }
+
+  li:nth-child(19) {
+    margin-left: 9%;
+    position: relative;
+    // right: 14%; //22
+  }
+
+  li:nth-child(20) {
+    margin-left: 9%;
+    position: relative;
+    right: 16%;
+    bottom: 25px;
+  }
+
+  li:nth-child(21) {
+    margin-left: 9%;
+    position: relative;
+    right: 6%;
+  }
+
+  li:nth-child(22) {
+    margin-left: 9%;
+    position: relative;
+    top: 27px;
+    right: 0%;
+    left: 10%;
+  }
+
+  li:nth-child(23) {
+    margin-left: 9%;
+    position: relative;
+    top: 0px;
+    left: 11%;
+  }
+
+  li:nth-child(24) {
+    left: 12%;
+    margin-left: 9%;
+    position: relative;
+    bottom: 21%; //18
+  }
+}
+
+// Motivation Factors
+.app_Factors {
+  padding: 0px; //20
+  margin-top: 48px; //50
+  // margin-left: -20px;
+  border-right: 1px solid black;
+  p {
+    color: #4a4946;
+    // font-family: "Ikano Sans";
+    font-size: 14px;
+    font-weight: normal;
+    margin-top: 20px;
+    position: relative;
+    right: 20px;
+    white-space: nowrap;
+  }
+}
+
+.app_slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 1px;
+  background: #dad8d3;
+  outline: none;
+  // opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  // border: 1px solid #dad8d3;
+  // margin-top: 17px;
+}
+
+.app_headerSlider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 1.5px; //1
+  background: #dad8d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  // border: 1px solid #dad8d3;
+}
+
+.app_slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: red;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.app_headerSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+// .slider::-moz-range-thumb {
+//   width: 25px;
+//   height: 25px;
+//   background: #4caf50;
+//   cursor: pointer;
+// }
+.app_sliderticks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.app_sliderticks p {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 0px;
+  background: #d3d3d3;
+  height: 20px;
+  line-height: 40px;
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.app_sliderticks2 {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.app_sliderticks2 p {
+  position: relative;
+  display: flex;
+  text-align: center;
+  width: 1px;
+  background: #d3d3d3;
+  height: 10px;
+  margin: -12px 0 20px 0;
+  span {
+    position: relative;
+    top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+.app_sliderticks2 p:nth-child(1) {
+  span {
+    position: relative;
+    right: 0;
+  }
+}
+.app_sliderticks2 p:nth-child(2) {
+  span {
+    position: relative;
+    right: 7px;
+  }
+}
+.app_sliderticks2 p:nth-child(3) {
+  span {
+    position: relative;
+    right: 7px;
+  }
+}
+.app_lastChild {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.app_lastChild p {
+  position: relative;
+  display: flex;
+  text-align: center;
+  width: 1px;
+  background: #d3d3d3;
+  height: 10px;
+  margin: -12px 0 20px 0;
+}
+
+.valuesFitAssessment {
+  color: #4a4946;
+  // font-family: "Ikano Sans";
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 32px;
+
+  li {
+    margin-bottom: 20px;
+  }
+}
+
+.app-slider-parent {
+  position: relative;
+  padding: 1px;
+  top: 20%;
+}
+
+.buble {
+  position: absolute;
+}
+
+.Tooltip {
+  // margin-top: 60%;
+  position: relative;
+  right: 50%;
+  top: 25%;
+  box-sizing: border-box;
+  height: 148px;
+  width: 199px;
+  border: 1px solid #d1d1d1;
+  background-color: #ffffff;
+  box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.12);
+
+  .message {
+    height: 108px;
+    color: #4a4946;
+    // font-family: "Ikano Sans";
+    font-size: 16px;
+    letter-spacing: 0;
+    text-align: center;
+    margin-top: 8%;
+    padding: 10px;
+  }
+}
+
+.headerMessage {
+  height: 26px;
+  color: #4a4946;
+  // font-family: "Ikano Sans";
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  text-align: center;
+}
+
+.rightCorner {
+  font-size: 12px;
+  // margin-left: 59%;
+  font-weight: bold;
+  color: black;
+  position: absolute;
+  left: 129%;
+  top: 8px;
+  // font-family: "Ikano Sans";
+  // position: relative;
+  // left: 85%;
+  /* left: -262%; */
+  // left: 135%;
+  /* bottom: 6%; */
+  // top: -25px;
+  white-space: nowrap;
+}
+
+.leftCorner {
+  font-size: 12px;
+  // margin-left: -40%; //-17
+  position: relative;
+  right: 30%;
+  font-weight: bold;
+  color: black;
+  // font-family: "Ikano Sans";
+  white-space: nowrap;
+}
+.noFileChosen {
+  left: 38% !important;
+  bottom: 37px !important;
+  // font-family: "Ikano Sans";
+}
+// radio
+.radio-item {
+  display: inline-block;
+  position: relative;
+  // padding: 0 6px;
+  margin: 6px 0 0;
+}
+
+// .radioSecondary {
+//    right: 50px;
+// }
+
+.radio-item input[type="radio"] {
+  display: none;
+}
+
+.radio-item .radioIkanoValues {
+  height: 17px;
+  // width: 63px;
+  color: #4a4946;
+  // font-family: "Ikano Sans";
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 17px;
+  // white-space: nowrap;
+}
+.radio-item .radioPersonalInfo {
+  height: 17px;
+  // width: 63px;
+  color: #4a4946;
+  // font-family: "Ikano Sans";
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 17px;
+  white-space: nowrap;
+}
+.radio-item .radioIkanoValues:before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  margin: 0 20px 0 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 11px;
+  border: 1px solid #979797;
+  background-color: transparent;
+}
+.radio-item .radioPersonalInfo:before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  margin: 0 10px 0 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 11px;
+  border: 1px solid #979797;
+  background-color: transparent;
+}
+.radio-item input[type="radio"]:checked + label:after {
+  border-radius: 11px;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 9px;
+  left: 4px;
+  content: " ";
+  display: block;
+  background: red;
+}
+
+.radio-item input[type="radio"]:disabled + label:after {
+  background-color: #979797;
+  cursor: auto;
+}
+
+.submitArrow-modals-left-submit {
+  width: 15px;
+  margin-left: 10px;
+  float: left;
+  transform: rotate(180deg);
+}
+
+.submitmessageHeading {
+  color: #4a4946;
+  // font-family: "Ikano Sans";
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 30px;
+  margin-bottom: 17px;
+}
+// input[type="file"] {
+//   color: #fff;
+// }
+.tooltipMotivation {
+  position: relative;
+  right: 14%;
+  bottom: 5px;
+}
+// IPad pro
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .leadershipWords li:nth-child(19) {
+    margin-left: 9%;
+    position: relative;
+    right: 14%;
+  }
+  .leadershipWords li:nth-child(11) {
+    position: relative;
+    margin-left: 9%;
+    top: 20%;
+    left: 42%;
+  }
+  .backtohome {
+    padding: 10px;
+    position: relative;
+    left: -22px !important;
+  }
+}
+// IPad
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  .radio-item .radioIkanoValues {
+    white-space: normal;
+  }
+  .ikanoIcons img {
+    height: 100%;
+    margin-top: 0%;
+  }
+  .leadershipWords li:nth-child(3) {
+    margin-left: 9%;
+    position: relative;
+    left: 13% !important;
+  }
+  .leadershipWords li:nth-child(24) {
+    left: 12%;
+    margin-left: 9%;
+    position: relative;
+    bottom: 21%;
+  }
+  .leadershipWords li:nth-child(21) {
+    margin-left: 9%;
+    position: relative;
+    right: 6%;
+    bottom: 5px;
+  }
+  .leadershipWords li:nth-child(20) {
+    margin-left: 9%;
+    position: relative;
+    right: 20%;
+    bottom: 25px;
+  }
+  .backtohome {
+    padding: 10px;
+    position: relative;
+    right: 50% !important;
+  }
+  .newCustomFile {
+    width: 100% !important;
+    label {
+      margin-left: 20px !important;
+    }
+  }
+}
+@media (max-width: 767px) {
+  html {
+    overflow-x: scroll;
+  }
+  .nextButton {
+    width: 100%;
+  }
+  .newCustomFile {
+    width: unset !important;
+    label {
+      display: none;
+    }
+  }
+  .submitButton {
+    width: 100%;
+  }
+  .cancelButton {
+    width: 100%;
+  }
+  .previousButton {
+    width: 100%;
+  }
+  .form-btn {
+    min-width: 0;
+  }
+  .radio-item .radioIkanoValues {
+    white-space: normal !important;
+  }
+  .piegraph {
+    overflow-x: scroll !important;
+  }
+  .addNewJobBtn {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  // .radioSecondary {
+  //   right: 0 !important;
+  // }
+  .closeButton {
+    margin-top: 0 !important;
+  }
+  .closeIcon {
+    position: relative;
+    bottom: 50px;
+  }
+  .ikanovalue p {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .tableQs,
+  .qsTableContainer,
+  .tableLw,
+  .lwTableContainer {
+    width: 100% !important;
+    height: 100% !important;
+    overflow-x: scroll !important;
+  }
+  .downloadCVButton button {
+    width: 100% !important;
+  }
+
+  //
+  .ikanoIcons img {
+    position: relative;
+    left: 20%;
+  }
+  .edit {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  .radio-item {
+    width: 100% !important;
+  }
+  .mask {
+    width: 60%;
+    right: 20%;
+  }
+  .skils-list {
+    ul {
+      overflow-x: scroll;
+      white-space: nowrap;
+    }
+  }
+  .leadershipWords li:nth-child(11) {
+    top: 13%;
+    position: relative;
+    left: 1%;
+  }
+  .leadershipWords li:nth-child(24) {
+    left: 56%;
+    position: relative;
+  }
+  // .rightCorner {
+  //   left: 60%;
+  //   bottom: 50px;
+  // }
+  // .leftCorner {
+  //   right: 55%;
+  // }
+  .noFileChosen {
+    left: 0% !important;
+    bottom: 0px !important;
+  }
+  .backtohome {
+    padding: 10px;
+    position: relative;
+    left: 46px;
+  }
+  .sectedSkills img {
+    right: 5%;
+    top: 35%;
+  }
+  .app-slider-parent {
+    overflow-x: scroll;
+    padding: 22px;
+    .rightCorner {
+      bottom: 25px;
+      display: flex;
+      white-space: normal;
+      left: 81%;
+      // top: -54px;
+      top: 0px;
+    }
+    .leftCorner {
+      right: 18%;
+      display: flex;
+      white-space: normal;
+    }
+  }
+  .factorsMoti {
+    // right: 18% !important;
+    left: 2%;
+  }
+}
+@media (max-width: 375px) {
+  html {
+    overflow-x: scroll;
+  }
+  .form-btn {
+    min-width: 0;
+  }
+  .newCustomFile {
+    width: unset !important;
+    label {
+      display: none;
+    }
+  }
+  .addNewJobBtn {
+    width: 100%;
+    height: 100%;
+  }
+  // .radioSecondary {
+  //   right: 0;
+  // }
+  .closeButton {
+    margin-top: 0;
+  }
+  .closeIcon {
+    position: relative;
+    right: 68%;
+    bottom: 0px;
+  }
+  .ikanovalue p {
+    width: 100%;
+    height: 100%;
+  }
+  .tableQs,
+  .qsTableContainer,
+  .tableLw,
+  .lwTableContainer {
+    width: 100%;
+    height: 100%;
+  }
+  .downloadCVButton button {
+    width: 100%;
+  }
+  .tableQs {
+    left: 0% !important;
+  }
+  .sectedSkills {
+    max-height: 100%;
+  }
+  .app-slider-parent {
+    overflow-x: scroll;
+    .leftCorner {
+      right: 29%;
+    }
+    .rightCorner {
+      bottom: 25px;
+      display: flex;
+      white-space: normal;
+      left: 81%;
+      // top: -54px;
+      top: 0px;
+    }
+  }
+  .factorsMoti {
+    // right: 18% !important;
+    left: 2%;
+  }
+  .ikanoIcons img {
+    position: relative !important;
+    left: 0% !important;
+  }
+  .backtohome {
+    padding: 10px;
+    position: relative;
+    left: 24px !important;
+  }
+}
+.newCustomFile {
+  display: flex;
+  border: 1px solid #cdc8be;
+  width: 475px;
+  padding: 10px;
+  border-radius: 5px;
+  input {
+    width: 120px !important;
+    background: #cdc8be;
+  }
+  input[type="file"] {
+    display: none;
+  }
+  label {
+    white-space: nowrap;
+    margin-top: 5px;
+    margin-left: 33px;
+  }
+}
+.availablePositionsPage {
+  background: #fff;
+  li {
+    text-decoration: underline;
+  }
+}

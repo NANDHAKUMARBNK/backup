@@ -1,0 +1,265 @@
+<div class="row align-items-center my-3">
+  <bw-bread-crumb
+    [defaultItems]="defaultItems"
+    (onClick)="navigateInto($event)"
+  ></bw-bread-crumb>
+  <div class="col-md-2 headerName">
+    <p class="primary-fre-clr-bse bw-font-prm-medium">{{ headerName }}</p>
+  </div>
+  <div class="col-md-7">
+    <p *ngIf="isError" class="text-danger mb-1">
+      <ng-container *ngFor="let msg of errMessage">
+        {{ msg }}
+      </ng-container>
+    </p>
+  </div>
+  <div class="col-md-3 text-end dropdown">
+    <bw-button
+      [className]="
+        'btn-base  secondary-btn-text border-secondary bw-font-prm-medium btn-sm  me-md-4 px-4'
+      "
+      [buttonName]="'Meetings Actions'"
+      (onClick)="meetingActions($event)"
+      [withIcon]="true"
+    >
+      Meeting Actions<i class="mdi mdi-menu-down arrow"></i>
+    </bw-button>
+    <div class="dropdown-menu" *ngIf="isShowToggle">
+      <bw-text
+        *ngIf="role.type == rolesList.administrators || role.type == rolesList.committeeAdmins || 
+          role.type == rolesList.documentAdmins || role.type == rolesList.userAdmins"
+        [className]="'text-start px-3 primary-fre-clr-bse bw-font-sec-bold'"
+        [textName]="'ADMINISTRATION'"
+      >
+      </bw-text>
+      <div class="dropdown-menu-child-active" *ngIf="role.type == rolesList.administrators || role.type == rolesList.committeeAdmins || 
+        role.type == rolesList.documentAdmins || role.type == rolesList.userAdmins">
+        <bw-text
+          [className]="'text-start'"
+          [textName]="'Attendance Report'"
+          [isEnableClick]="true"
+          (onClick)="actionClick($event, 'attendanceReport')"
+        ></bw-text>
+      </div>
+      <div class="dropdown-menu-child-active" *ngIf="role.type == rolesList.administrators || role.type == rolesList.committeeAdmins || 
+        role.type == rolesList.documentAdmins || role.type == rolesList.userAdmins">
+        <bw-text
+          [className]="'text-start'"
+          [textName]="'Copy Meeting'"
+          [isEnableClick]="true"
+          (onClick)="actionClick($event, 'copy')"
+        ></bw-text>
+      </div>
+      <div class="dropdown-menu-child-active" *ngIf="role.type == rolesList.administrators || role.type == rolesList.committeeAdmins || 
+        role.type == rolesList.documentAdmins || role.type == rolesList.userAdmins">
+        <bw-text
+          [className]="'text-start'"
+          [textName]="'Delete Meeting'"
+          [isEnableClick]="true"
+          (onClick)="actionClick($event, 'delete')"
+        ></bw-text>
+        <!-- <div kendoDialogContainer></div> -->
+      </div>
+      <div class="dropdown-menu-child-active" *ngIf="role.type == rolesList.administrators || role.type == rolesList.committeeAdmins || 
+        role.type == rolesList.documentAdmins || role.type == rolesList.userAdmins">
+        <bw-text
+          [className]="'text-start'"
+          [textName]="'Edit Meeting'"
+          [isEnableClick]="true"
+          (onClick)="actionClick($event, 'edit')"
+        ></bw-text>
+      </div>
+      <!-- <div class="dropdown-menu-child-active">
+        <bw-text
+          [className]="'text-start'"
+          [textName]="'Send Email'"
+          [isEnableClick]="true"
+          (onClick)="actionClick($event, 'sendmail')"
+        ></bw-text>
+      </div> -->
+      <bw-divider *ngIf="role.type == rolesList.administrators || role.type == rolesList.committeeAdmins || 
+        role.type == rolesList.documentAdmins || role.type == rolesList.userAdmins"></bw-divider>
+      <bw-text
+        [className]="'text-start px-3 primary-fre-clr-bse bw-font-sec-bold'"
+        [textName]="'MEETING ACTIONS'"
+      >
+      </bw-text>
+      <div class="dropdown-menu-child-active">
+        <bw-text
+          [className]="'text-start'"
+          [textName]="'Add to Calendar'"
+          [isEnableClick]="true"
+          (onClick)="actionClick($event, 'addToCalendar')"
+        ></bw-text>
+      </div>
+      <div class="dropdown-menu-child-active">
+        <bw-text
+          [className]="'text-start'"
+          [textName]="'Download Meeting Book'"
+          [isEnableClick]="true"
+          (onClick)="actionClick($event, 'downloadMeetingBook')"
+        ></bw-text>
+      </div>
+      <div class="dropdown-menu-child-active" *ngIf="role.type == rolesList.administrators || role.type == rolesList.committeeAdmins || 
+        role.type == rolesList.documentAdmins || role.type == rolesList.userAdmins">
+        <bw-text
+          [className]="'text-start'"
+          [textName]="'Send Email'"
+          [isEnableClick]="true"
+          (onClick)="actionClick($event, 'sendmail')"
+        ></bw-text>
+      </div>
+      <div class="dropdown-menu-child-active">
+        <bw-text
+          [className]="'text-start'"
+          [textName]="'Discussions'"
+          [isEnableClick]="true"
+          (onClick)="actionClick($event, 'discussions')"
+        ></bw-text>
+      </div>
+      <!-- <div class="dropdown-menu-child-active">
+        <bw-text
+          [className]="'text-start'"
+          [textName]="'Presentation Mode'"
+          [isEnableClick]="true"
+          (onClick)="actionClick($event, 'presentation')"
+        ></bw-text>
+      </div>
+      <div class="dropdown-menu-child-active">
+        <bw-text
+          [className]="'text-start'"
+          [textName]="'Preview Agenda'"
+          [isEnableClick]="true"
+          (onClick)="actionClick($event, 'preview')"
+        ></bw-text>
+      </div> -->
+    </div>
+  </div>
+</div>
+<div class="row m-2">
+  <div class="form-group col-8 border p-3">
+    <div class="m-1 text-center">
+      <bw-text
+        [textName]="boardName"
+        [className]="'bw-font-prm-medium'"
+      ></bw-text>
+      <bw-text
+        [textName]="meetingTitle"
+        [className]="'bw-font-prm-medium'"
+      ></bw-text>
+      <bw-text
+        [textName]="meetingLocation"
+        [className]="'bw-font-prm-medium'"
+      ></bw-text>
+      <br />
+      <bw-text
+        [textName]="meetingDate"
+        [className]="'bw-font-prm-medium'"
+      ></bw-text>
+      <bw-text
+        [textName]="meetingArea"
+        [className]="'bw-font-prm-medium'"
+      ></bw-text>
+      <br />
+      <div *ngIf="isOnlineMeeting">
+        <bw-link
+          [linkText]="'Meeting URL'"
+          (onClickLink)="clickUrl($event, 'meeting')"
+        ></bw-link>
+      </div>
+      <div *ngIf="mapUrl">
+        <bw-link
+          [linkText]="'Map'"
+          (onClickLink)="clickUrl($event, 'map')"
+        ></bw-link>
+      </div>
+    </div>
+    <div class="col-8">
+      <bw-checkbox
+        *ngIf="isShowSelectAll"
+        [checkBoxses]="selectAllData"
+        [inRow]="true"
+        [inRowInputRows]="12"
+        [classCheckboxLabel]="'col-md-12 col-lg-12'"
+        [control]="slForm.get('selectAllIds')"
+        [classNameControl]="'bw-font-sec-medium m-3'"
+        (getselectedArray)="changeCheckbox($event, 'selectAll')"
+      >
+      </bw-checkbox>
+      <bw-checkbox
+        [checkBoxses]="documentData"
+        [inRow]="true"
+        [inRowInputRows]="12"
+        [classCheckboxLabel]="'col-md-12 col-lg-12'"
+        [control]="meetingDetailsForm.get('documentIds')"
+        [classNameControl]="'bw-font-sec-medium m-3'"
+        (getselectedArray)="changeCheckbox($event, 'items')"
+        (onClickLink)="singleDocumentDownload($event)"
+        [isLabelLink]="true"
+      ></bw-checkbox>
+    </div>
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-9 text-end">
+        <div *ngIf="showLoader">
+          <bw-basic-loader
+            [type]="'pulsing'"
+            [color]="'primary'"
+            [size]="'large'"
+          ></bw-basic-loader>
+        </div>
+        <bw-button
+          className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+          buttonName="DOWNLOAD SELECTED"
+          (onClick)="clickButton('downloadSelected')"
+        >
+        </bw-button>
+        <bw-button
+          className="btn-base btn-containe bw-font-prm-medium secondary-btn-contained btn-sm me-md-4 px-4"
+          buttonName="DOWNLOAD BOARD BOOK"
+          (onClick)="clickButton('downloadBook')"
+        >
+        </bw-button>
+        <!-- <bw-button
+          className="btn-base btn-containe bw-font-prm-medium secondary-btn-contained btn-sm me-md-4 px-4"
+          buttonName="DOWNLOAD"
+          (onClick)="clickButton('download')"
+        >
+        </bw-button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isShowDiscussions && !isShowReplyDiscussions">
+  <bw-meetings-discussion
+    [meetingId]="meetingId"
+    (closeDialog)="closeDialog($event)"
+  >
+  </bw-meetings-discussion>
+</div>
+<div *ngIf="!isShowDiscussions && isShowReplyDiscussions">
+  <bw-reply-discussion
+    [discussionDetails]="discussionDetails"
+    [type]="'reply'"
+    (closeDialog)="closeDialog($event, 'reply')"
+  >
+  </bw-reply-discussion>
+</div>
+
+<div *ngIf="showdeleteMeeting">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'Delete Confirmation'"
+    [isEnableHeader]="true"
+    [isDeleteBody]="true"
+    [isEnableFooter]="true"
+    [isCustomBody]="true"
+    [bodyMessage]="
+      'Deleting this Meeting will remove the Meeting and any activities that has been associated with it from BoardWorks and any linked devices.'
+    "
+    [customMessage]="'Are you sure you want to delete this Alert?'"
+    (onConfirmClick)="linksModalAction('delete')"
+    (onCancelClick)="linksModalAction('cancel')"
+  >
+  </bw-confirm-modal>
+</div>

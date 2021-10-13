@@ -1,0 +1,34 @@
+<p *ngIf="isError" class="text-danger mb-1">
+    <ng-container *ngFor="let msg of errMessage">
+      {{ msg }}
+    </ng-container>
+  </p>
+  <bw-grid
+    [isEnableSelectAll]="false"
+    [isShowCheckbox]="false"
+    [onCellClicked]="onCellClicked"
+    [columnOptions]="columnOptions"
+    [columnsData]="columnsData"
+    [gridData]="gridData"
+    [actions]="actions"
+    (onClickLink)="onClickLink($event)"
+    (onClickAction)="onClickAction($event)"
+    [isEnablePagination]="false"
+  ></bw-grid>
+  <div *ngIf="deleteEvaluation">
+    <bw-confirm-modal
+      [width]="700"
+      [headerTitle]="'Delete Confirmation'"
+      [isEnableHeader]="true"
+      [isDeleteBody]="true"
+      [isEnableFooter]="true"
+      [isCustomBody]="true"
+      [customMessage]="'Are you sure you want to delete this Evaluation?'"
+      (onConfirmClick)="linksModalAction($event)"
+      (onCancelClick)="linksModalAction($event)"
+      [bodyMessage]="
+        'Deleting this evaluation will remove the evaluation and any document that has been associated with it from BoardWorks and any linked devices.'
+      "
+    >
+    </bw-confirm-modal>
+  </div>

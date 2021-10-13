@@ -1,0 +1,26 @@
+
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+@import "~primeicons/primeicons.css";
+@import "~primeng/resources/themes/nova-light/theme.css";
+@import "~primeng/resources/primeng.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../../../common/styles/commonApp.scss";
+
+
+.voagesAdd {
+	position: absolute;
+	z-index: 9999;
+	top: 97%;
+	//top: 14.7vw !important;
+	left: 44px;
+	//left: 30px;
+}
+.managerAssigned {
+	margin-top: -18px !important;
+    margin-bottom: 30px !important;
+}
+.insideDropdown{
+	margin-left: 14px !important;
+	top: -11px !important;
+}

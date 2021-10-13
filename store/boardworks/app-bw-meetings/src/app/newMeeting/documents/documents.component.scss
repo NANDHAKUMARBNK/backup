@@ -1,0 +1,30 @@
+.panelBody{
+    padding: 16px;
+}
+
+.fileList{
+    background-color: var(--bw-extra-light-blue-x) !important;
+    color: black;
+    border: 1px solid var(--bw-dark-aqua-clr-drk) !important;
+    padding: 5px !important;
+    border-radius: 4px;
+
+
+    i {
+        font-size: 22px;
+        position: inherit!important;
+    }
+
+}
+
+::ng-deep.k-upload .k-dropzone{
+display: none;
+}
+.mdi-plus {
+    background: green;
+    color: white;
+    font-size: 16px;
+
+    border-radius: 3px;
+    vertical-align:middle
+}

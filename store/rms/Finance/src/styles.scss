@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+@import "~primeicons/primeicons.css";
+@import "~primeng/resources/themes/nova-light/theme.css";
+@import "~primeng/resources/primeng.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../../../common/styles/commonApp.scss";
+.is-active-finace {
+    border-bottom: 3px solid navy;
+    //text-align: center;
+}
+// .no-border.ag-cell:focus{
+//     border:none !important;
+//     outline: none;
+//   }
+// .no-border.ag-cell:focus{
+//     border:none !important;
+//     outline: none;
+//   }
+.border_finance {
+    border-bottom: 1px solid gray;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 19px;
+    padding-left: 0;
+}
+// .ag-theme-balham .oldestCallOneMonth{
+//     background-color: rgb(242, 244, 96) !important;
+// }
+// .ag-theme-balham .oldestCallTwoMonth{
+//     background-color: rgb(218, 19, 19) !important;
+// }
+::ng-deep.custom-dialog-container.mat-dialog-container {
+    width: 1200px !important;
+};
+
+iframe{
+	border:1px solid #ccc;
+};
+.isCommentColor{
+  color: black!important;
+};
+
+.ag-theme-balham .sick-days-warning {
+  background-color: sandybrown !important;
+}
+.ag-theme-balham .sick-days-breach {
+  background-color: lightcoral !important;
+}
+.my-shaded-effect{
+  background-color: red;
+}

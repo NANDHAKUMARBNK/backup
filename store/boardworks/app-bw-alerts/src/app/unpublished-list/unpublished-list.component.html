@@ -1,0 +1,41 @@
+<p *ngIf="isError" class="text-danger mb-1">
+  <ng-container *ngFor="let msg of errMessage">
+    {{ msg }}
+  </ng-container>
+</p>
+<bw-grid
+  [isEnableSelectAll]="false"
+  [isShowCheckbox]="false"
+  [onCellClicked]="onCellClicked"
+  [columnOptions]="columnOptions"
+  [columnsData]="columnsData"
+  [gridData]="gridData"
+  [actions]="actions"
+  (onClickLink)="onClickLink($event)"
+  (onClickAction)="onClickAction($event)"
+  [isEnablePagination]="true"
+  [pageSize]="20"
+></bw-grid>
+<div *ngIf="showdeleteLink">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'Delete Confirmation'"
+    [isEnableHeader]="true"
+    [isDeleteBody]="true"
+    [isEnableFooter]="true"
+    [isCustomBody]="true"
+    [bodyMessage]="
+      'Deleting this Alert will remove the alert and any document that has been associated with it from BoardWorks and any linked devices.'
+    "
+    [customMessage]="'Are you sure you want to delete this Alert?'"
+    (onConfirmClick)="linksModalAction('save')"
+    (onCancelClick)="linksModalAction('cancel')"
+  >
+    <!-- <bw-text
+      [className]="'fw-500 fs-6'"
+      [textName]="
+        'Deleting this Alert will remove the alert and any document that has been associated with it from BoardWorks and any linked devices.'
+      "
+    ></bw-text> -->
+  </bw-confirm-modal>
+</div>

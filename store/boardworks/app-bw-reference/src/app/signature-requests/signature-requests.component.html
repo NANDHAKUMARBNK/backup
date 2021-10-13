@@ -1,0 +1,69 @@
+<div class="m-1">
+  <p *ngIf="isError" class="text-danger mb-1">
+    <ng-container *ngFor="let msg of errMessage">
+      {{ msg }}
+    </ng-container>
+  </p>
+</div>
+<bw-grid
+  [isEnableSelectAll]="false"
+  [isShowCheckbox]="false"
+  [onCellClicked]="onCellClicked"
+  [columnOptions]="columnOptions"
+  [columnsData]="columnsData"
+  [gridData]="gridData"
+  [actions]="actions"
+  (onClickLink)="onClickLink($event)"
+  (onClickAction)="onClickAction($event)"
+  [isEnablePagination]="true"
+>
+</bw-grid>
+<div *ngIf="showDelete">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'Delete Confirmation'"
+    [isEnableHeader]="true"
+    [isDeleteBody]="true"
+    [isEnableFooter]="true"
+    [isCustomBody]="true"
+    [bodyMessage]="
+      'Deleting this Signature Request will remove the request and any document that has been associated with it from BoardWorks and any linked devices.'
+    "
+    [customMessage]="'Are you sure you want to Delete a Signature Request?'"
+    (onConfirmClick)="linksModalAction('delete')"
+    (onCancelClick)="linksModalAction('cancel')"
+  >
+  </bw-confirm-modal>
+</div>
+<div *ngIf="showTerminate">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'Cancel Confirmation'"
+    [isEnableHeader]="true"
+    [isDeleteBody]="true"
+    [isEnableFooter]="true"
+    [bodyMessage]="
+      'Deleting this Signature Request will remove the request and any document that has been associated with it from BoardWorks and any linked devices.'
+    "
+    [isCustomBody]="true"
+    [customMessage]="'Are you sure you want to cancel this Signature Request?'"
+    (onConfirmClick)="linksModalAction('terminate')"
+    (onCancelClick)="linksModalAction('cancel')"
+  >
+  </bw-confirm-modal>
+</div>
+<div *ngIf="showRemainder">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'Remainder Confirmation'"
+    [isEnableHeader]="true"
+    [isDeleteBody]="true"
+    [isEnableFooter]="true"
+    [isCustomBody]="true"
+    [bodyMessage]="'The reminder will be sent to all users who have not yet signed the request'"
+    [customMessage]="'Are you sure you want to send a remainder?'"
+    (onConfirmClick)="linksModalAction('remainder')"
+    (onCancelClick)="linksModalAction('cancel')"
+  >
+  </bw-confirm-modal>
+</div>

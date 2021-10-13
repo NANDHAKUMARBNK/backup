@@ -1,0 +1,26 @@
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+    border: 2px solid var(--bw-extra-light-blue);
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+    font-size: 15px;
+    &:active,
+    &:focus {
+        border: 2px solid var(--bw-sec-clr-bse);
+        outline: 0;
+    }
+    &:disabled {
+        &:active,
+        &:focus {
+            border: 2px solid var(--bw-extra-light-blue);
+            outline: 0;
+        }
+    }
+    &::placeholder {
+        color: var(--bw-medium-gray);
+        font-size: 14px;
+    }
+}

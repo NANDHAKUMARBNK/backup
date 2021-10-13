@@ -1,0 +1,23 @@
+<div class="row m-2">
+    <div class="form-group col-8 p-3">
+        <div class="m-1">
+            <div class="row" *ngFor="let data of surveyData; index as j">
+                <div class="col-md-12 col-lg-12">
+                    <bw-label [className]="'bw-font-sec-bold'" [labelName]="order(j + 1)"></bw-label>
+                    <bw-label [className]="'bw-font-sec-bold'" [labelName]="data.question"></bw-label>
+                </div>
+                <div *ngFor="let item of data.answers" class="ms-3 mt-3 me-3 row">
+                    <div class="col-md-4 col-lg-4">
+                        <bw-text [className]="'fw-500 fs-6'" [textName]="item.answer"></bw-text>
+                    </div>
+                    <div class="col-md-1 col-lg-1">
+                        <bw-text [className]="'fw-500 fs-6'" [textName]="item.count"></bw-text>
+                    </div>
+                    <div class="col-md-5 col-lg-5">
+                        <bw-bar-chart [width]="item.percentage"></bw-bar-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

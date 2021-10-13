@@ -1,0 +1,88 @@
+<kendo-dialog (close)="onCancelAction()" [width]="700">
+  <kendo-dialog-titlebar *ngIf="isEnableHeader">
+    <bw-text
+      [className]="'primary-fre-clr-bse'"
+      [textName]="headerTitle"
+    ></bw-text>
+  </kendo-dialog-titlebar>
+  <div class="pl-2 mt-3 bodyContent" *ngIf="isEnableBody">
+    <div class="row width-100 m-auto">
+      <div class="col-md-12">
+        <bw-input
+          [label]="'File Title'"
+          [labelClass]="'bw-font-prm-medium fs-6 fw-500'"
+          [control]="newDocumentForm.get('fileTitle')"
+          [placeholder]="'Enter File Title'"
+          (focusout)="seterror('File Title')"
+          [classNameControl]="'bw-font-sec-medium'"
+          [inRow]="true"
+          [inRowLabelRows]="2"
+          [inRowInputRows]="10"
+        >
+        </bw-input>
+        <bw-input-file
+          [label]="'File'"
+          [labelClass]="'bw-font-sec-bold'"
+          [control]="newDocumentForm.get('file')"
+          (focusout)="seterror('file')"
+          [classNameControl]="'bw-font-sec-medium'"
+          [mutiple]="true"
+          [inRow]="true"
+          [inRowLabelRows]="2"
+          [inRowInputRows]="10"
+          (upload)="uploadFile($event)"
+          [isUploadFile]="true"
+        >
+        </bw-input-file>
+        <p *ngIf="isError" class="text-danger mb-1">
+          <ng-container *ngFor="let msg of errMessage">
+            {{ msg }}
+          </ng-container>
+        </p>
+        <div *ngIf="showLoader">
+          <bw-basic-loader
+            [type]="'pulsing'"
+            [color]="'primary'"
+            [size]="'large'"
+          ></bw-basic-loader>
+        </div>
+        <div *ngIf="uploadRequired" class="error-msg">Please Upload File</div>
+        <div
+          class="k-notification-info"
+          *ngFor="let item of fileListData; let i = index"
+          style="margin: 5px"
+        >
+          <div class="alert row align-items-center">
+            <div class="col-9 names">
+              {{ item.fileName }}
+            </div>
+            <div class="col-3 text-end">
+              <i
+                (click)="deleteIcon(i)"
+                aria-hidden="true"
+                class="cursor-pointer mdi mdi-delete icon"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <kendo-dialog-actions *ngIf="isEnableFooter">
+    <bw-button
+      className="btn-base secondary-btn-text  btn-sm "
+      buttonName="Cancel"
+      (onClick)="onCancelAction()"
+    >
+    </bw-button>
+    <div class="text-end">
+      <bw-button
+        className="btn-base btn-contained px-3 secondary-btn-contained btn-sm me-md-5"
+        buttonName="SAVE"
+      (onClick)="uplaodFileClick($event)"
+    >
+    </bw-button>
+    </div>
+    
+  </kendo-dialog-actions>
+</kendo-dialog>

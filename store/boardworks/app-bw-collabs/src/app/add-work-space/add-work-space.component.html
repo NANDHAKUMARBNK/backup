@@ -1,0 +1,108 @@
+<div class="mt-4">
+    <div>
+        <span (click)="backNavigation()"><a class="cursor-pointer"> Collaboration</a> > </span>
+        <span>{{breadCrumb}}</span>
+    </div>
+
+    <div class="col-12 text-end">
+        <bw-button className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular btn-sm  me-md-4 px-4"
+            buttonName="Cancel" (onClick)="cancel($event)">
+        </bw-button>
+        <bw-button className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular btn-sm  me-md-4 px-4"
+            [buttonName]="createAddDocuText" (onClick)="createWorkSpace($event,'document')">
+        </bw-button>
+        <bw-button
+            className="btn-base px-4 bw-font-prm-regular btn-contained  secondary-btn-contained   btn-sm  me-md-4"
+            [buttonName]="CreateBtnText" (onClick)="createWorkSpace($event,'create')">
+        </bw-button>
+
+    </div>
+    <div class="mt-3">
+        <bw-text [className]="'bw-font-sec-bold  primary-fre-clr-bse f-17'" [textName]="'Collaboration'"></bw-text>
+
+    </div>
+
+    <div class="col-9">
+        <div class="border p-3 mt-4">
+            <div>
+                <bw-text [className]="'bw-font-sec-regular  primary-fre-clr-bse'" [textName]="'Folder Settings'">
+                </bw-text>
+
+            </div>
+
+            <div class="form-group addWorkspace mt-4">
+                <bw-input [label]="'Collaboration Folder Name'" [labelClass]="'bw-font-sec-bold'"
+                    [control]="collaborationDataForm.get('collaborationName')" [placeholder]="'Enter Title'"
+                     [classNameControl]="'bw-font-sec-medium'" [inRow]="true"
+                    [inRowLabelRows]="5" [inRowInputRows]="7">
+                </bw-input>
+
+                <bw-radio [radios]="workspaceRadio" [name]="'workSpace'"
+                    [label]="'Is this a Meeting Collaboration WorkSpace?'" [inRow]="true" [inRowLabelRows]="5"
+                    [inRowInputRows]="7" [classRadioLabel]="'col-md-4 col-lg-4 p-0'"
+                    [control]="collaborationDataForm.get('workspace')" [classNameControl]="'bw-font-sec-medium m-3'">
+                </bw-radio>
+
+                <bw-radio *ngIf="enableCommitteFlag" [name]="'metting'" [radios]="MettingRadio"
+                    [label]="'Have you already created the Meeting?'" [inRow]="true" [inRowLabelRows]="5"
+                    [inRowInputRows]="7" [classRadioLabel]="'col-md-4 col-lg-4 p-0'"
+                    [control]="collaborationDataForm.get('meeting')" [classNameControl]="'bw-font-sec-medium m-3'">
+                </bw-radio>
+
+                <bw-select *ngIf="enableCommitteFlag" [labelClass]="'bw-font-sec-bold '"
+                    [control]="collaborationDataForm.get('committee')" [data]="committeeData" [isKey]="true"
+                    [label]="'Select Committee'" [inRow]="true" [inRowInputRows]="7" [inRowLabelRows]="5"
+                    [searchable]="false" [selectName]="'name'" [selectValue]="'committeeId'"
+                    (selectChangeEvent)="onChange($event)">
+                </bw-select>
+
+                <bw-select *ngIf="enableCommitteFlag" [labelClass]="'bw-font-sec-bold '"
+                    [control]="collaborationDataForm.get('meetingId')" [data]="meetingData" [isKey]="true"
+                    [label]="'Select Meeting'" [inRow]="true" [inRowInputRows]="7" [inRowLabelRows]="5"
+                    [searchable]="false" [selectName]="'title'" [selectValue]="'meetingId'"
+                    (selectChangeEvent)="onChange($event)">
+                </bw-select>
+
+                <bw-checkbox [checkBoxses]="emailCheckBox" [inRow]="true" [inRowLabelRows]="5" [inRowInputRows]="7"
+                    [classCheckboxLabel]="'row  m-0'" [control]="collaborationDataForm.get('emailalert')"
+                    [classNameControl]="'bw-font-sec-medium  p-0 '" [label]="'Send Email Alert to all Recipients?'"
+                    (getSelectedValue)="changeCheckbox($event)"
+                    [checkBoxTextClass]="'col-xl-11 col-lg-11 col-md-10 ml-10'"
+                    [spanrowClass]="'row col-1'"
+                    >
+
+                </bw-checkbox>
+            </div>
+            <bw-divider></bw-divider>
+
+            <div class="mt-2">
+                <bw-text [className]="'bw-font-sec-regular  primary-fre-clr-bse'" [textName]="'Access Control'">
+                </bw-text>
+
+                <div class=" mt-3">
+
+                    <bw-grid [isEnableSelectAll]="false" [isShowCheckbox]="false" [onCellClicked]="onCellClicked"
+                        [columnOptions]="columnOptions" [columnsData]="columnsData" [gridData]="gridData"
+                        [isEnableButton]="true" (onClickActionAccordion)="insideAccordion($event)"
+                        (accrodianClick)="accrodianClick($event)" [accesControlFlag]="true"
+                        (readAccessClick)="readAccessClick($event)"
+                        (writeAccessClick)="writeAccessClick($event)" 
+                        (readChildAccessClick)="readChildAccessClick($event)"
+                        (writeChildAccessClick)="writeChildAccessClick($event)"
+                        
+                        >
+                    </bw-grid>
+
+
+                </div>
+            </div>
+        </div>
+
+        <p *ngIf="isError" class="text-danger mb-1">
+            <ng-container *ngFor="let msg of errMessage">
+              {{ msg }}
+            </ng-container>
+          </p>
+    </div>
+
+</div>

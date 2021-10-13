@@ -1,0 +1,32 @@
+a {
+  cursor: pointer;
+}
+.edit {
+  position: relative;
+  left: 20px;
+}
+
+::ng-deep.viewProfile {
+  .edit {
+    position: relative;
+    left: 25px;
+    top: -1px;
+    font-size: 13px;
+  }
+}
+// ::ng-deep.addWorkspace {
+//   .k-checkbox {
+//     width: 16px !important;
+//     height: 16px;
+//   }
+//   .ml-10 {
+//     margin-left: 10px;
+//   }
+// }
+.checkbox-space {
+  margin: 0rem 0rem 0rem 1.5rem !important;
+  white-space: nowrap;
+  position: relative;
+  bottom: 32px;
+  left: 38px;
+}

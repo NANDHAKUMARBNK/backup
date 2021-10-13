@@ -1,0 +1,17 @@
+.k-breadcrumb {
+  background-color: transparent;
+  color: var(--bw-sec-clr-bse);
+  font-weight: bolder;
+  .k-breadcrumb-container li &:last-child {
+    background-color: transparent;
+    color: var(--bw-sec-clr-bse);
+    font-weight: bolder;
+  }
+}
+.editUser {
+  position: relative;
+  left: 6px;
+}
+::ng-deep .k-breadcrumb-link {
+  color: var(--bw-fcs-clr-in) !important;
+}

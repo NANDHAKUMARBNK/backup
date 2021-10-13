@@ -1,0 +1,158 @@
+<div class="row align-items-center my-3">
+  <bw-bread-crumb
+    [defaultItems]="defaultItems"
+    (onClick)="navigateInto($event)"
+  ></bw-bread-crumb>
+  <div class="col-md-2 headerName">
+    <p class="primary-fre-clr-bse bw-font-prm-medium">{{ headerName }}</p>
+  </div>
+  <div class="col-md-10 text-end">
+    <bw-button
+      className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+      buttonName="EXPORT TO CSV"
+      (onClick)="exportToCSV($event)"
+    >
+    </bw-button>
+  </div>
+</div>
+<div *ngIf="isError">
+  <bw-toastr *ngFor="let msg of errMessage" [rowClass]="'8'" [message]="msg">
+  </bw-toastr>
+</div>
+<div class="row m-2">
+  <div class="form-group col-12 border p-3">
+    <div class="m-1">
+      <form [formGroup]="attendanceDateForm">
+        <!-- <kendo-daterange>
+          <div class="row">
+            <label class="col-3">
+              <span class="label">From Date *</span>
+              <kendo-datepicker formControlName="StartDate"></kendo-datepicker>
+            </label>
+            <label class="col-3">
+              <span class="label">To Date *</span>
+              <kendo-datepicker formControlName="EndDate"></kendo-datepicker>
+            </label>
+          </div>
+        </kendo-daterange> -->
+        <div class="row">
+          <div class="col-md-12 d-flex">
+            <bw-date
+              [label]="'From Date'"
+              [labelClass]="'bw-font-sec-bold'"
+              [control]="attendanceDateForm?.get('StartDate')"
+              [classNameControl]="'bw-font-sec-medium'"
+              [timeValue]="startDateTime"
+              [timeControl]="attendanceDateForm?.get('startTime')"
+              [calendarType]="'classic'"
+              [placeholder]="'DD/MM/YYYY'"
+            >
+            </bw-date>
+            &nbsp;&nbsp;
+            <bw-date
+              [minDate]="minDate"
+              [label]="'To Date'"
+              [timeValue]="endDateTime"
+              [timeControl]="attendanceDateForm?.get('endTime')"
+              [labelClass]="'bw-font-sec-bold'"
+              [control]="attendanceDateForm?.get('EndDate')"
+              [classNameControl]="'bw-font-sec-medium'"
+              [calendarType]="'classic'"
+              [placeholder]="'DD/MM/YYYY'"
+            >
+            </bw-date>
+          </div>
+        </div>
+      </form>
+      <div class="row my-3">
+        <div class="col-md-2">
+          <bw-input
+            [label]="'Meeting or Event Title'"
+            [labelClass]="'bw-font-prm-medium fs-6 fw-500'"
+            [control]="attendanceReportsForm.get('title')"
+            [classNameControl]="'bw-font-sec-medium'"
+          >
+          </bw-input>
+        </div>
+        <div class="col-md-2">
+          <bw-input
+            [label]="'Username'"
+            [labelClass]="'bw-font-prm-medium fs-6 fw-500'"
+            [control]="attendanceReportsForm.get('userName')"
+            [classNameControl]="'bw-font-sec-medium'"
+          >
+          </bw-input>
+        </div>
+        <div class="col-md-2">
+          <bw-input
+            [label]="'Committee'"
+            [labelClass]="'bw-font-prm-medium fs-6 fw-500'"
+            [control]="attendanceReportsForm.get('committeeName')"
+            [classNameControl]="'bw-font-sec-medium'"
+          >
+          </bw-input>
+        </div>
+        <div class="col-md-2">
+          <bw-input
+            [label]="'Name (First Part)'"
+            [labelClass]="'bw-font-prm-medium fs-6 fw-500'"
+            [control]="attendanceReportsForm.get('firstName')"
+            [classNameControl]="'bw-font-sec-medium'"
+          >
+          </bw-input>
+        </div>
+        <div class="col-md-2">
+          <bw-select
+            [control]="attendanceReportsForm.get('attendanceType')"
+            [data]="attendanceTypes"
+            [isKey]="true"
+            [label]="'Attendance Type'"
+            [searchable]="false"
+            [selectName]="'attendanceType'"
+            [selectValue]="'attendanceType'"
+            (selectChangeEvent)="changeAttendanceType($event)"
+          ></bw-select>
+          <!--   [defaultItem]="defaultItemAttendanceType" -->
+        </div>
+        <div class="col-md-2">
+          <bw-select
+            [control]="attendanceReportsForm.get('status')"
+            [data]="statusData"
+            [isKey]="true"
+            [label]="'Status'"
+            [searchable]="false"
+            [selectName]="'statusType'"
+            [selectValue]="'statusType'"
+            (selectChangeEvent)="changeStatus($event)"
+          ></bw-select>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-md-2"></div>
+        <div class="col-md-10 text-end">
+          <bw-button
+            className="btn-base btn-containe bw-font-prm-medium secondary-btn-contained btn-sm me-md-4 px-4"
+            buttonName="GENERATE REPORT"
+            (onClick)="generateReport($event)"
+          >
+          </bw-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row m-2" *ngIf="isShowGrid">
+  <div class="col-md-12">
+    <bw-grid
+      [isEnableSelectAll]="isEnableSelectAll"
+      [isShowCheckbox]="isShowCheckbox"
+      [columnOptions]="columnOptions"
+      [columnsData]="columnsData"
+      [gridData]="gridData"
+      [onCellClicked]="onCellClicked"
+      [statusCombo]="statusCombo"
+      (getselectedArray)="attendanceStatusDropdown($event)"
+      (onClick)="updateStatus($event)"
+    ></bw-grid>
+  </div>
+</div>

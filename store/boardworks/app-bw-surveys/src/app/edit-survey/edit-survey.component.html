@@ -1,0 +1,173 @@
+<div class="mt-4">
+  <div>
+    <span (click)="backNavigation()"
+      ><a class="cursor-pointer">Survey</a> >
+    </span>
+    <span>{{ surveyData?.surveyName }}</span>
+  </div>
+
+  <div class="col-12 text-end">
+    <bw-button
+      className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular btn-sm  me-md-4 px-4"
+      buttonName="Delete"
+      (onClick)="buttonClick($event, 'delete')"
+    >
+    </bw-button>
+    <bw-button
+      *ngIf="!templateScreen"
+      className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular  me-md-4 px-4"
+      [buttonName]="buttonName"
+      (onClick)="buttonClick($event, buttonName)"
+    >
+    </bw-button>
+    <bw-button
+      className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular  me-md-4 px-4"
+      [buttonName]="'Settings'"
+      (onClick)="buttonClick($event, 'settings')"
+    >
+    </bw-button>
+  </div>
+
+  <div class="mt-4">
+    <p *ngIf="isError" class="text-danger mb-2">
+      <ng-container *ngFor="let msg of errMessage">
+        {{ msg }}
+      </ng-container>
+    </p>
+    <bw-text
+      [className]="'bw-font-sec-bold  primary-fre-clr-bse f-17'"
+      [textName]="'Surveys'"
+    ></bw-text>
+  </div>
+
+  <div class="mt-3 editEvalutions">
+    <kendo-panelbar
+      [expandMode]="expandMode"
+      [height]="height + 'px'"
+      (stateChange)="onPanelChange($event)"
+      class="bw-accordion"
+    >
+      <kendo-panelbar-item [title]="'Survey Details'" [expanded]="true">
+        <ng-template kendoPanelBarContent let-dataItem>
+          <bw-grid
+            [isEnableSelectAll]="false"
+            [isShowCheckbox]="false"
+            [onCellClicked]="onCellClicked"
+            [columnOptions]="columnOptions"
+            [columnsData]="columnsData"
+            [gridData]="gridData"
+            [actions]="actions"
+            [isEnableButton]="true"
+            [accesControlFlag]="true"
+            (writeAccessClick)="writeAccessClick($event)"
+            (onClickLink)="onClickLink($event)"
+            (ChildLinkClick)="childLinkClick($event)"
+            [evaluationQuestionChildren]="false"
+            (onClickAction)="ationTaken($event)"
+          >
+          </bw-grid>
+          <div *ngIf="unPublishScreen" class="mt-4">
+            <bw-checkbox
+              [checkBoxses]="emailCheckBox"
+              [inRow]="true"
+              [inRowLabelRows]="5"
+              [inRowInputRows]="7"
+              [classCheckboxLabel]="'row  m-0'"
+              [control]="emailAlertControl"
+              [classNameControl]="'bw-font-sec-medium  p-0 '"
+              [label]="''"
+              (getSelectedValue)="changeCheckbox($event)"
+              [checkBoxTextClass]="'col-xl-11 col-lg-11 col-md-10 ml-10'"
+              [spanrowClass]="' col-1'"
+            >
+            </bw-checkbox>
+          </div>
+        </ng-template>
+      </kendo-panelbar-item>
+      <kendo-panelbar-item [title]="'Survey Questions'">
+        <ng-template kendoPanelBarContent let-dataItem>
+          <div class="mt-4">
+            <bw-button
+              className="btn-base btn-containe bw-font-prm-medium secondary-btn-contained btn-sm me-md-4 px-4"
+              buttonName="ADD QUESTION"
+              (onClick)="buttonClick($event, 'newQuestion')"
+            >
+            </bw-button>
+            <bw-button
+              *ngIf="!unPublishScreen && !templateScreen"
+              className="btn-base  secondary-btn-text border-secondary bw-font-prm-regular  me-md-4 px-4"
+              [buttonName]="'Delete Response'"
+              (onClick)="buttonClick($event, 'deleteResponse')"
+            >
+            </bw-button>
+          </div>
+        </ng-template>
+      </kendo-panelbar-item>
+    </kendo-panelbar>
+  </div>
+</div>
+
+<div *ngIf="showDeleteSurvey">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'Delete Confirmation'"
+    [isEnableHeader]="true"
+    [isDeleteBody]="true"
+    [isEnableFooter]="true"
+    [isCustomBody]="true"
+    (onConfirmClick)="deleteSurvey('save')"
+    [customMessage]="'Are you sure you want to delete this Surveys?'"
+    [bodyMessage]="
+      'Deleting this survey will remove all the responses that has been associated with it from BoardWorks and any linked devices.'
+    "
+    (onCancelClick)="deleteSurvey('cancel')"
+  >
+  </bw-confirm-modal>
+</div>
+
+<div *ngIf="showDeleteResponse">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'Delete Confirmation'"
+    [isEnableHeader]="true"
+    [isDeleteBody]="true"
+    [isEnableFooter]="true"
+    [isCustomBody]="true"
+    [customMessage]="'Are you sure you want to delete this Surveys Response?'"
+    [bodyMessage]="
+      'Deleting this survey will remove it from BoardWorks and any linked devices.'
+    "
+    (onConfirmClick)="deleteResponse('save')"
+    (onCancelClick)="deleteResponse('cancel')"
+  >
+  </bw-confirm-modal>
+</div>
+
+<div *ngIf="showEditQuestion">
+  <bw-new-question-surveys
+    [surveyId]="surveyId"
+    [questionId]="questionId"
+    [pageType]="pageType"
+    (onConfirmClick)="hideQuestion($event)"
+    (onCancelClick)="hideQuestion($event)"
+  >
+  </bw-new-question-surveys>
+</div>
+
+<div *ngIf="showDeleteQuestion">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'Delete Confirmation'"
+    [isEnableHeader]="true"
+    [isDeleteBody]="true"
+    [isEnableFooter]="true"
+    [isCustomBody]="true"
+    [customMessage]="'Are you sure you want to delete this Surveys Question?'"
+    [bodyMessage]="
+      'Deleting this survey will remove it from BoardWorks and any linked devices.'
+    "
+    (onConfirmClick)="deleteSurveyQuestion('save')"
+    (onCancelClick)="deleteSurveyQuestion('cancel')"
+  >
+  </bw-confirm-modal>
+</div>

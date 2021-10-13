@@ -1,0 +1,25 @@
+.viewHistory {
+  position: relative;
+  .arrow {
+    color: var(--bw-sec-clr-bse-hvr);
+    position: absolute;
+    // right: 0;
+    // top: 0;
+    left: 75%;
+    bottom: 50%;
+    font-size: 35px;
+  }
+}
+
+.label-margin {
+  margin-bottom: 3%;
+}
+.loginHistoryCheckbox {
+  position: relative;
+  left: 76px;
+  bottom: 15px;
+}
+.title {
+  position: relative;
+  left: 15px;
+}

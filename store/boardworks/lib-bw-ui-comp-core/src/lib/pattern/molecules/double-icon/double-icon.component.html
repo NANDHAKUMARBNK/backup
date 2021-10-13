@@ -1,0 +1,25 @@
+<div class="form-group" [style.width]="width">
+    <div [class]="className">
+        <div [class]="divColClass" *ngFor="let property of iconProperties">
+            <i [class]="property.className" *ngIf="property.showIcon" (click)="onIconClick(property.iconAction)"></i>
+            <!-- <bw-button
+              [className]="property.className"
+              [buttonName]="property.buttonText"
+              [buttonDisabled]="property.isDisable"
+              [withIcon]="property.withIcon"
+              [showButton]="property.showButton"
+              (onClick)="onClickButton(property.buttonAction)"
+            >
+            </bw-button> -->
+          </div>
+        <!-- <div [class]="divColClass">
+            <i [class]="iconClassFirst" (click)="iconFirstClickEvent($event)"></i>
+            <i [class]="iconClassSecond" (click)="iconSecondClickEvent($event)"></i>
+        </div>
+        <div [class]="divColClass">
+            
+        </div> -->
+    </div>
+</div>
+
+<div class="bw-confirm" kendoDialogContainer></div>

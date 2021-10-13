@@ -1,0 +1,65 @@
+<footer class="registerBanner topSpace">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-6">
+        <h1>Send us your feedback</h1>
+        <form id="feedbackForm" class="footerForm pl-2" ngNativeValidate>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <div class="form-row">
+                <label class="footerlabel" for="inputEmail3">Name</label>
+                <input type="text" class="form-control form-control-lg"
+                  (change)="changeName($event)" id="inputEmail3"
+                  placeholder="Full Name" required>
+              </div>
+              <div class="form-row mt-3">
+                <label class="footerlabel" for="inputEmail4">Email Id</label>
+                <input type="email" class="form-control form-control-lg"
+                  (change)="changeEmail($event)" id="inputEmail4"
+                  placeholder="Email Id" required
+                  oninvalid="this.setCustomValidity('Please enter the Email in the following format: example@abc.xyz')"
+                  oninput="setCustomValidity('')">
+              </div>
+            </div>
+            <div class="form-group col-md-4 footerTextarea">
+              <label class="footerlabel" for="inputAddress">Message</label>
+              <textarea class="form-control form-control-lg" rows="5"
+                (change)="changeMessage($event)" id="comment"
+                placeholder="feedback" required></textarea>
+            </div>
+            <div class="form-group col-md-3">
+              <button type="submit" (click)="saveFeedback()" class="btn yellowGrad
+                mb-10 footerButton">Submit</button>
+            </div>
+          </div>   
+        </form>
+      </div>
+    </div>
+        <div class="row pl-3">
+          <p>Follow us on</p>
+          <span class="pl-4 followIcon">
+           <a href="" target="blank"> <img class="mr-4"  [src]="imgSrc" (mouseover)="onMouseOver()" (mouseout)="onMouseOut()"></a>
+           <a href="" target="blank"> <img class="mr-4"  [src]="imgSrc1" (mouseover)="onMouseOver1()" (mouseout)="onMouseOut1()"></a>
+           <a href="" target="blank"> <img class="mr-4"  [src]="imgSrc2" (mouseover)="onMouseOver2()" (mouseout)="onMouseOut2()"></a>
+           <a href="" target="blank"> <img class="mr-4"  [src]="imgSrc3" (mouseover)="onMouseOver3()" (mouseout)="onMouseOut3()"></a>
+           <a href="" target="blank"> <img [src]="imgSrc4" (mouseover)="onMouseOver4()" (mouseout)="onMouseOut4()"></a>
+          </span>
+        </div>
+        </div>
+</footer>
+<div class="registerBanner footerBottom">
+  <div class="container">
+    <div class="row heightFooter">
+      <div class="col-md-8 ">
+        <p>© 2020 All Rights Reserved. Eminentlabs Business Solutions Private
+          Limited </p>
+       </div>
+        <div class="col-md-4 ">
+          <p>
+          <a
+            [routerLink]="['/Privacypolicy']" class="ml-5"> Privacy Policy &
+            Terms Conditions</a></p>
+      </div>
+    </div>
+  </div>
+</div>

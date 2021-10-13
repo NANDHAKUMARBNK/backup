@@ -1,0 +1,326 @@
+{
+  "SiddhaTreatmentDengue": [{
+      "year": "2017",
+      "diseasedPersons": "23294",
+      "deaths": "63"
+    },
+    {
+      "year": "2018",
+      "diseasedPersons": "7554",
+      "deaths": "33"
+    },
+    {
+      "year": "2019",
+      "diseasedPersons": "2329",
+      "deaths": "20"
+    }
+  ],
+  "FunctionalFoods": [{
+      "diseaseConditions": "ACE inhibitory peptides",
+      "Foods": "Dairy products, fish, Soy, Wheat, Egg, Yogurt, Oat, Garlic, Pea, Fig"
+    },
+    {
+      "diseaseConditions": "Leukocyte",
+      "Foods": "Garlic, Papaya leaves, Omega-3 fatty acids, Citrus fruits"
+    },
+    {
+      "diseaseConditions": "Pneumonia",
+      "Foods": "Wholegrains, Nuts, Beans, Green Leafy Vegetables, Citrus fruits, Probiotics, Fenugreek, Turmeric, ginger"
+    }, {
+      "diseaseConditions": "RNAaemia",
+      "Foods": "Spinach, Kidney beans, Soybeans, Pumpkin seeds, Cashews, Sunflower seeds, Pomegranate, Liver, Salmon fish"
+    },
+    {
+      "diseaseConditions": "Acute Cardiac Injury",
+      "Foods": "Fish, Wholegrains, Skimmed Milk, Egg-white, Hibiscus flower"
+    },
+    {
+      "diseaseConditions": "KCV Rice",
+      "Foods": "Equal quantities of Kandankathiri leaves (Solanum Surattense), Chukku (dried ginger), Vilwa oodu (Shell of Aegle Marmelos) are taken and boiled with 2600 ml of water until it reduces to 336 ml. Rice prepared out of this decoction and can be given as diet."
+    }
+  ],
+  "stageOne": [
+    {
+      "medicineName": "Nila Vembu Kudineer",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Nilavembu+Kudineer+Fever",
+      "dosage": "30 - 60 ml",
+      "adjuvent": "-",
+      "daysTime": "3 Days 6 time (2 bd)",
+      "Indications": "Pitha suram, kullir suram (Intermittent fever)"
+    },
+    {
+      "medicineName": "Bramanandha Bairavam",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Nilavembu+Kudineer+Fever",
+      "dosage": "100 mg",
+      "adjuvent": "Honey or Ginger Juice",
+      "daysTime": " 2 times per day",
+      "Indications": "Kaba suram (Fever with cough dyspnea)"
+    },
+    {
+      "medicineName": "Kabusura Kudineer",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Kabasura+Kudineer+Fever",
+      "dosage": "30 - 60 ml",
+      "adjuvent": "Santha Chanthrotha Yam pills - 1",
+      "daysTime": "3 Days 6 time (2 bd)",
+      "Indications": "Kabu suram (Fever with cough dyspnea)"
+    },
+    {
+      "medicineName": "Ginger, garlic, honey",
+      "link":null,
+      "dosage": "15 ml",
+      "adjuvent": "30 ml hot water",
+      "daysTime": "3 times per Day",
+      "Indications": "Prevents throat infections and tonsillitis"
+    },
+    {
+      "medicineName": "Nellikaai Legium",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=Siddha+Nellikaai+legium+Fever&btnG=",
+      "dosage": "5 - 10 gm",
+      "adjuvent": "Milk",
+      "daysTime": "2 times per Day",
+      "Indications": "Immuno booster for bronchitis, fever in the bones"
+    },
+    {
+      "medicineName": "Seenthil Chooranam",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=Siddha+Seenthil+chooranam+Fever&btnG=",
+      "dosage": "1 - 2 gm",
+      "adjuvent": "Honey",
+      "daysTime": "3 times per Day",
+      "Indications": "For fever, cough, sinusitis"
+    },
+    {
+      "medicineName": "Minsaara Thylam (for internal use)",
+      "link": "https://www.sciencedirect.com/science/article/abs/pii/S0378874114001561",
+      "dosage": "2 drops",
+      "adjuvent": "10 ml hot water",
+      "daysTime": "3 times per Day",
+      "Indications": "Prevents upper respiratory tract and throat infection, dyspnea"
+    },
+    {
+      "medicineName": "Minsaara Thylam (for external use - steam)",
+      "link": "https://www.sciencedirect.com/science/article/abs/pii/S0378874114001561",
+      "dosage": "5 drops",
+      "adjuvent": "500 ml water",
+      "daysTime": "2 times per Day",
+      "Indications": "Steam of this electric balm will immediately release the nasal block, sinusitis, dyspnoea."
+    }
+  ],
+  "stageTwo":[
+    {
+      "medicineName": "Thalisathy Chooranam",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Thalisathi+Choornam+Respiratory+Illness",
+      "dosage": "1 - 2 gms",
+      "adjuvent": "Honey",
+      "daysTime": "3 times per day",
+      "Indications": "64 types of fever, cough, thorat infections"
+    },
+    {
+      "medicineName": "Kabha Hara Chooranam",
+      "link": null,
+      "dosage": "1 - 2 gms",
+      "adjuvent": "Honey",
+      "daysTime": "3 times per day",
+      "Indications": "All types of thorat infection, cough, dyspnea"
+    },
+    {
+      "medicineName": "Swasa Kudoori Chooranam",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Swasa+Kudori+Chooranam+Respiratory+Illness",
+      "dosage": "1 - 2 gms",
+      "adjuvent": "Honey, Ginger Juice, Ghee",
+      "daysTime": "3 times per day",
+      "Indications": "Dyspnea, wheezing, bronchitis, cough"
+    },
+    {
+      "medicineName": "Adathoodai Manapagu",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Adathodai+Manapagu+Respiratory+Illness",
+      "dosage": "5 - 10 ml",
+      "adjuvent": "Hot Water",
+      "daysTime": "3 times per day",
+      "Indications": "64 types of fever, cough, dyspnea"
+    },
+    {
+      "medicineName": "Thipili Rashayanam",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Thippili+Rasayanam+Respiratory+Illness",
+      "dosage": "5 - 10 ml",
+      "adjuvent": "Hot Water",
+      "daysTime": "3 times per day",
+      "Indications": "Dyspnea, wheezing, cough, eosinophilia"
+    },
+    {
+      "medicineName": "Kandan Kathiree Legium",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Kandankathiri+Legiyam",
+      "dosage": "5 - 10 ml",
+      "adjuvent": "Phavazha Parpam - 30 mg Kasthoori Karuppu - 30 mg",
+      "daysTime": "3 times per day",
+      "Indications": "Asthma, wheezing, cough, fever"
+    },
+    {
+      "medicineName": "Imbuural Legium",
+      "link": "https://www.hindutamil.in/news/supplements/nalam-vazha/155155-41.html",
+      "dosage": "5 - 10 ml",
+      "adjuvent": "Hot Water",
+      "daysTime": "3 times per day",
+      "Indications": "Cough, Hympotysis, all types of bleeding"
+    },
+    {
+      "medicineName": "Adimathuram Tablets",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0,5&as_vis=1&q=Siddha+Athimathuram+Respiratory+Illness",
+      "dosage": "1 - 2 tablets",
+      "adjuvent": "Hot Water",
+      "daysTime": "3 times per day",
+      "Indications": "All types of cough, Upper respiratory tract infections"
+    },
+    {
+      "medicineName": "Vasantha Kusumaahara Tablets",
+      "link": null,
+      "dosage": "1 - 2 tablets",
+      "adjuvent": "Honey, Ginger Juice, Mother's Milk",
+      "daysTime": "3 times per day",
+      "Indications": "All types of fever, Intermittent fever, All types of cough"
+    },
+    {
+      "medicineName": "Linga Chendooram-1",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=Siddha+Vasntha+Kusumaahara+Respiratory+Illness&btnG=",
+      "dosage": "50 - 10 mgms",
+      "adjuvent": "Thaalisathy Chooranam - 1 gm with honey",
+      "daysTime": "3 times per day",
+      "Indications": "All types of fever and cough"
+    },
+    {
+      "medicineName": "Kasthoori Karuppu",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=Kasthoori+Karuppu&btnG=",
+      "dosage": "60 - 130 gms",
+      "adjuvent": "Honey, Mother's Milk, Ginger Juice",
+      "daysTime": "3 times 2 day",
+      "Indications": "Fever, cough, wheezing, it enhances the strength of vital organs & increases the body temperature when body experiences chillnes"
+    }
+  ],
+  "stageThree":[
+    {
+      "medicineName": "Gowri Chinthamani",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=siddha+Gowri+Chinthamani+Viral+Pneumonia&btnG=",
+      "dosage": "130 mg",
+      "adjuvent": "TKC (OR) TSC – 1 gm with honey",
+      "daysTime": "3 Days 6 time (bd)",
+      "Indications": "64 types of fever (Theeraa suram- incurable fevers), 13 types of delirium, all types of cough, dyspnea, tuberculosis"
+    },
+    {
+      "medicineName": "Vajra Gandi Tablet (Pathanjalli)",
+      "link": null,
+      "dosage": "130 mg",
+      "adjuvent": "Annabaedhi – 30 mg, TKC – 1gm with honey",
+      "daysTime": "3 times per day",
+      "Indications": "64 types of fevers and 13 types of delirium"
+    },
+    {
+      "medicineName": "Thiridhood Tablet",
+      "link": null,
+      "dosage": "60 mg",
+      "adjuvent": "Pepper Decoction",
+      "daysTime": "3 times per day",
+      "Indications": "Vadha, pitha, kabha suram, intermittent fevers"
+    },
+    {
+      "medicineName": "Linga Mezhughu",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=Linga+Mezhughu+viral+pneumonia&btnG=&oq=Linga+Mezhughu+viral+pne",
+      "dosage": "30 mg",
+      "adjuvent": "TKC – 1 gm",
+      "daysTime": "3 times per day",
+      "Indications": "Pneumonia fever, poisonous fever (infectious)"
+    },
+    {
+      "medicineName": "Sarva Jura Kuligai",
+      "link": "https://www.ayurmedinfo.com/2019/11/28/sarva-sura-kudineer-chooranam",
+      "dosage": "65 mg",
+      "adjuvent": "Pepper or Dry Ginger Decoction",
+      "daysTime": "3 days 6 times",
+      "Indications": "All 64 types of fever"
+    },
+    {
+      "medicineName": "Pancha Karpha Chendooram",
+      "link": null,
+      "dosage": "30 mg",
+      "adjuvent": "Cow Milk, Palm Jaggery",
+      "daysTime": "3 days 6 times",
+      "Indications": "All 64 types of fever, 13 types of delirium, All types of poisons (sarva visam), Cough, Dyspnea, Wheezing, Asthma and Tuberculosis"
+    },
+    {
+      "medicineName": "Kasthoori Karuppu",
+      "link": "https://scholar.google.de/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=Kasthoori+Karuppu&btnG=",
+      "dosage": "60 - 130 mg",
+      "adjuvent": "Honey, Mothers’ Milk, Ginger Juice",
+      "daysTime": "3 days 6 times",
+      "Indications": "Fever, cough, Wheezing, it enhances the strength of vital organs & it increases the body temperature when the body becomes chillness"
+    }
+  ],
+  "HealthWelfareDepartment":[
+    {
+     "name":"National Rural Health Mission Tamil Nadu",
+     "url":"http://www.nrhmtn.gov.in/"
+    },
+    {
+      "name":"TamilNadu Health System Project(TNHSP)",
+      "url":"https://tnhsp.org/"
+     },
+     {
+      "name":"Directorate of Medical Education",
+      "url":"http://www.tnhealth.org/dme/medicaleducation.php"
+     },
+     {
+      "name":"Directorate of Medical and Rural Health Services",
+      "url":"http://www.tnhealth.org/dms/mrhs.php"
+     },
+     {
+      "name":"Directorate of Public Health and Preventive Medicine",
+      "url":"http://www.tnhealth.org/dph/dphpm.php"
+     },
+     {
+      "name":"Directorate of Indian Medicine and Homeopathy",
+      "url":"http://www.tnhealth.org/imh/im.htm"
+     },
+     {
+      "name":"Directorate of Family Welfare",
+      "url":"http://www.tnhealth.org/dfw/dfw.php"
+     },
+     {
+      "name":"Directorate of Drugs Control",
+      "url":"http://www.drugscontrol.tn.gov.in/"
+     },
+     {
+      "name":"Tamil Nadu Medical Services Corporation",
+      "url":"http://www.tnmsc.com/tnmsc/new/login.php"
+     },
+     {
+      "name":"Tamil Nadu State Health Transport Department",
+      "url":"http://www.tnhealth.org/healthtransport/tshtd.htm"
+     },
+     {
+      "name":"Tamil Nadu State AIDS Control Society",
+      "url":"http://www.tnsacs.in/"
+     },
+     {
+      "name":"Tamil Nadu State Blindness Control Society",
+      "url":"http://www.tnhealth.org/blindcontrol/tsbcs.htm"
+     },
+     {
+      "name":"DANIDA Health Care Project",
+      "url":"http://www.tnhealth.org/danida/danida.php"
+     },
+     {
+      "name":"Department of Food Safety & Drug Administration (Food Safety Division)",
+      "url":"http://www.tnhealth.org/foodsafety/FoodSafety.htm"
+     },
+     {
+      "name":"Medical Services Recruitment Board (MRB)",
+      "url":"http://www.mrb.tn.gov.in/"
+     },
+     {
+      "name":"Tamil Nadu Network for Organ Sharing",
+      "url":"https://www.tnos.org/default.aspx"
+     },
+     {
+      "name":"Transplant Authority of Tamil Nadu",
+      "url":"http://www.dmrhs.org/tnos/"
+     }
+  ]
+}

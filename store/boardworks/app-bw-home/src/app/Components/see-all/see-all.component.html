@@ -1,0 +1,29 @@
+<div class="row align-items-center my-3">
+  <bw-bread-crumb
+    [defaultItems]="defaultItems"
+    (onClick)="navigateInto($event)"
+  ></bw-bread-crumb>
+  <div class="recentUpdates">
+    <div *ngFor="let item of data">
+      <div class="row">
+        <div class="col-md-10">
+          <p>
+            {{ item.moduleName }}
+            <bw-link
+              (onClickLink)="onClickUpdates(item)"
+              [linkText]="item.bodyName"
+              [className]="'bw-font-sec-bold'"
+            ></bw-link>
+            {{ item.text }}
+          </p>
+        </div>
+        <div class="col-md-2">
+          <div *ngIf="item.showFlag" class="flag">
+            <bw-avatar [src]="flagIcon" [title]="'Important'"></bw-avatar>
+          </div>
+        </div>
+        <bw-divider></bw-divider>
+      </div>
+    </div>
+  </div>
+</div>

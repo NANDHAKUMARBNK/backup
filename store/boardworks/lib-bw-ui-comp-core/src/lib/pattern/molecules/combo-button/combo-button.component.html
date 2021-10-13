@@ -1,0 +1,13 @@
+<div class="row" [style.width]="width">
+  <div class="col-md-{{ property?.btnCol || buttonColClass }} col-lg-{{ property?.btnCol || buttonColClass }}" *ngFor="let property of buttonProperties">
+    <bw-button
+      [className]="property.className"
+      [buttonName]="property.buttonText"
+      [buttonDisabled]="property.isDisable"
+      [withIcon]="property.withIcon"
+      [showButton]="property.showButton"
+      (onClick)="onClickButton(property.buttonAction)"
+    >
+    </bw-button>
+  </div>
+</div>

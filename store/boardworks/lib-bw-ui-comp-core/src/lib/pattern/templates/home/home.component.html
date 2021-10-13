@@ -1,0 +1,42 @@
+<div class="row mt-3">
+  <bw-text
+    [className]="'primary-fre-clr-bse fw-bolder bw-font-sec-regular'"
+    [textName]="'Dashboard'"
+  ></bw-text>
+  <div class="col-md-8 mt-5">
+    <bw-card-table
+      [cards]="cardData"
+      [columnOptions]="columnOptions"
+      [columnsData]="columnsData"
+      [gridData]="gridData"
+      [actions]="actions"
+      (onClickAction)="onClickAction($event)"
+      (onClickLink)="onClickLink($event)"
+      [cardBodyClassName]="'--bw-sec-clr-bse row m-3 cursor-pointer'"
+    ></bw-card-table>
+  </div>
+  <div class="col-md-4 mt-5">
+    <bw-card
+      [cards]="cardDataRecentUpdates"
+      [isEnableIcons]="true"
+      [className]="'recentUpdates card-border card-border-radius'"
+      [classBorderName]="' '"
+      [classfooterName]="' '"
+      [classheaderName]="' '"
+      [cardClass]="'card-border card-border-radius'"
+      [padding]="'0'"
+      [isRecentUpdates]="true"
+      (cardFooterClick)="seeAll($event)"
+      (clickRecentUpdates)="recentupdateClick($event)"
+    >
+    </bw-card>
+  </div>
+</div>
+<div *ngIf="deleteUpcomingME">
+  <bw-confirm-modal [width]="700" [headerTitle]="'Delete Confirmation'" [isEnableHeader]="true" [isDeleteBody]="true"
+      [isEnableFooter]="true" [isCustomBody]="true"
+      [customMessage]="'Are you sure you want to delete?'" (onConfirmClick)="linksModalAction($event)"
+      (onCancelClick)="linksModalAction($event)"
+      [bodyMessage]="deleteMsg">
+  </bw-confirm-modal>
+</div>

@@ -1,0 +1,68 @@
+.alphabets-search{
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    li{
+        list-style: none;
+        display: inline-block;
+        margin: 0 7px 0 0;
+        span{
+            color: var(--bw-fcs-clr-in);
+            font-size: 14px;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+        }
+        .active{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--bw-sec-clr-bse);
+            color: var(--bw-clr-white);
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            padding: 1px 5px;
+            text-align: center;
+        }
+        .activeAll{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--bw-sec-clr-bse);
+            color: var(--bw-clr-white);
+            font-size: 10px;
+            cursor: pointer;
+            display: block;
+            padding: 1px 5px;
+            text-align: center;
+        }
+    }
+
+    .allactive{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--bw-sec-clr-bse);
+        color: var(--bw-clr-white);
+        font-size: 13px;
+        cursor: pointer;
+        display: block;
+        padding: 1px 5px;
+        text-align: center;
+        margin: 0 7px 0 0;
+
+    }
+    .all{
+    color: var(--bw-extra-light-gray-xxx);
+    font-size: 10px;
+    cursor: pointer;
+    }
+}
+
+.all-font {
+    font-size: 11px !important;
+    padding: 2px 1px !important;
+}

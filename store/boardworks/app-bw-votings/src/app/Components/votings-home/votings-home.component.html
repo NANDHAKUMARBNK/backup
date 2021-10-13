@@ -1,0 +1,57 @@
+<div class="row align-items-center">
+  <div class="col-3">
+    <bw-text
+      [className]="'bw-font-sec-bold  primary-fre-clr-bse f-17'"
+      [textName]="'Votings'"
+    ></bw-text>
+  </div>
+  <div class="col-9 text-end pr-0">
+    <bw-button
+      *ngIf="createVotings"
+      className="btn-base px-4 bw-font-prm-regular btn-contained  secondary-btn-contained   btn-sm  me-md-4"
+      [buttonName]="'New Votings'"
+      (onClick)="newVoting($event)"
+    >
+    </bw-button>
+  </div>
+</div>
+<p *ngIf="isError" class="text-danger mb-1">
+  <ng-container *ngFor="let msg of errMessage">
+    {{ msg }}
+  </ng-container>
+</p>
+<div class="m-3">
+  <bw-tab [tabs]="tabsData" (tabChange)="tabChange($event)">
+    <div class="mt-2">
+      <bw-grid
+        [isEnableSelectAll]="false"
+        [isShowCheckbox]="false"
+        [onCellClicked]="onCellClicked"
+        [columnOptions]="columnOptions"
+        [columnsData]="columnsData"
+        [gridData]="gridData"
+        [actions]="actions"
+        (onClickLink)="onClickLink($event)"
+        (onClickAction)="onClickAction($event)"
+        [isEnablePagination]="false"
+      ></bw-grid>
+    </div>
+  </bw-tab>
+</div>
+<div *ngIf="deleteVotings">
+  <bw-confirm-modal
+    [width]="700"
+    [headerTitle]="'Delete Confirmation'"
+    [isEnableHeader]="true"
+    [isDeleteBody]="true"
+    [isEnableFooter]="true"
+    [isCustomBody]="true"
+    [customMessage]="'Are you sure you want to delete this Votings?'"
+    (onConfirmClick)="linksModalAction($event,'save')"
+    (onCancelClick)="linksModalAction($event,'cancel')"
+    [bodyMessage]="
+      'Deleting this voting will remove the voting and any document that has been associated with it from BoardWorks and any linked devices.'
+    "
+  >
+  </bw-confirm-modal>
+</div>

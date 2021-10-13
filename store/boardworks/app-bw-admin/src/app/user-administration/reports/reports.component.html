@@ -1,0 +1,134 @@
+<div class="row align-items-center">
+  <div class="col-md-8">
+    <bw-bread-crumb
+      [defaultItems]="defaultItems"
+      (onClick)="navigateInto($event)"
+    ></bw-bread-crumb>
+    <bw-text
+      [className]="'primary-fre-clr-bse'"
+      [textName]="'Administration Reports'"
+    >
+    </bw-text>
+  </div>
+  <div class="col-md-4 text-end">
+    <bw-button
+      [className]="
+        'k-button btn-base btn-contained secondary-btn-outlined btn-sm bw-font-sec-bold m-2 '
+      "
+      (onClick)="exportToPDF()"
+      [buttonName]="'EXPORT PDF'"
+      [withIcon]="true"
+    >
+      <i class="mdi mdi-file-pdf-outline"></i>EXPORT PDF
+    </bw-button>
+    <bw-button
+      [className]="
+        'btn-base btn-contained secondary-btn-outlined btn-sm bw-font-sec-bold'
+      "
+      [buttonName]="'EXPORT EXCEL'"
+      (onClick)="excelexport.save()"
+      [withIcon]="true"
+    >
+      <i class="mdi mdi-file-pdf-outline"></i>EXPORT EXCEL
+    </bw-button>
+  </div>
+</div>
+<div class="col-md-9 links">
+  <p *ngIf="isError" class="text-danger mb-1">
+    <ng-container *ngFor="let msg of errMessage">
+      {{ msg }}
+    </ng-container>
+  </p>
+  <div class="mt-2">
+    <div class="mt-4 profiledropdown">
+      <bw-label-select-button
+        [labelName]="'Report'"
+        [buttonName]="'Run Report'"
+        [defaultItem]="defaultItem"
+        [selectField]="selectField"
+        [data]="reports"
+        [selectName]="'reportName'"
+        [selectValue]="'reportName'"
+        (selectChangeEvent)="changeReport($event)"
+        [buttonClassName]="
+          'btn-base btn-contained secondary-btn-contained btn-sm me-md-4'
+        "
+        (onClick)="clickButton($event)"
+      ></bw-label-select-button>
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <bw-grid
+    [isEnableSelectAll]="isEnableSelectAll"
+    [isShowCheckbox]="isShowCheckbox"
+    [columnOptions]="columnOptions"
+    [columnsData]="excelColumnData"
+    [gridData]="isActiveGrid ? gridData : gridDataRolesAndCommittees"
+    [onCellClicked]="onCellClickedActiveGrid"
+    [isEnablePagination]="isEnablePagination"
+    [isExportPdf]="true"
+    [savePdfFlag]="savePdfFlag"
+    [counter]="counter"
+    [isEnableExpand]="isEnableExpand"
+  ></bw-grid>
+
+  <!-- <kendo-grid
+    #grid="kendoGrid"
+    [kendoGridBinding]="isActiveGrid ? gridData : gridDataRolesAndCommittees"
+    [height]="350"
+  >
+    <kendo-grid-column
+      *ngFor="let col of excelColumnData"
+      [field]="col.field"
+      [title]="col.title"
+      [width]="120"
+    >
+    </kendo-grid-column>
+    <kendo-grid-pdf
+      fileName="reports.pdf"
+      [allPages]="true"
+      paperSize="A4"
+      [repeatHeaders]="true"
+      [landscape]="true"
+    >
+    </kendo-grid-pdf>
+  </kendo-grid> -->
+  <!-- <bw-grid
+    *ngIf="isActiveGrid"
+    [isEnableSelectAll]="isEnableSelectAll"
+    [isShowCheckbox]="isShowCheckbox"
+    [columnOptions]="columnOptions"
+    [columnsData]="columnsData"
+    [gridData]="gridData"
+    [onCellClicked]="onCellClickedActiveGrid"
+    [isEnablePagination]="isEnablePagination"
+  >
+  </bw-grid>
+  <bw-grid
+    *ngIf="!isActiveGrid"
+    [isEnableSelectAll]="isEnableSelectAll"
+    [isShowCheckbox]="isShowCheckbox"
+    [columnOptions]="columnOptions"
+    [columnsData]="columnsDataRolesAndCommittees"
+    [gridData]="gridDataRolesAndCommittees"
+    [onCellClicked]="onCellClickedNonActiveGrid"
+    [isEnablePagination]="isEnablePagination"
+  >
+  </bw-grid> -->
+  <!--  export  -->
+  <kendo-excelexport
+    fileName="table.xlsx"
+    #excelexport
+    [data]="data"
+    [collapsible]="true"
+  >
+    <kendo-excelexport-column
+      *ngFor="let col of excelColumnData"
+      [field]="col.field"
+      [title]="col.title"
+      [width]="350"
+    >
+    </kendo-excelexport-column>
+  </kendo-excelexport>
+</div>

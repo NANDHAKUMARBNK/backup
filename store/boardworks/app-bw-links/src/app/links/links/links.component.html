@@ -1,0 +1,19 @@
+
+<!-- <router-outlet></router-outlet> -->
+
+<bw-grid  [isEnableSelectAll]="false" [isShowCheckbox]="false" [onCellClicked]="onCellClicked"
+                    [columnOptions]="columnOptions" [columnsData]="columnsData" [gridData]="gridData"
+                    [actions]="actions" 
+                    (onClickLink)="onClickLink($event)"
+                    (onClickAction)="onClickAction($event)"></bw-grid>
+<!-- //<bw-card-table> </bw-card-table> -->
+
+
+<div *ngIf="showdeleteLink">
+    <bw-confirm-modal [width]="700" [headerTitle]="'Delete Confirmation'" [isEnableHeader]="true" [isDeleteBody]="false"
+        [isEnableFooter]="true" [isCustomBody]="true" (onConfirmClick)="linksModalAction('save')"
+        (onCancelClick)="linksModalAction('cancel')">
+        <bw-text [className]="'fw-500 fs-6'" [textName]="'Are you sure you want to delete this link?'"></bw-text>
+
+    </bw-confirm-modal>
+</div>

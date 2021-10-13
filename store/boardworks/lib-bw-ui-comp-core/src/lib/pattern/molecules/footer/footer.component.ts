@@ -1,0 +1,13 @@
+import { Component, OnInit } from "@angular/core";
+
+@Component({
+  selector: "bw-footer",
+  templateUrl: "./footer.component.html",
+  styleUrls: ["./footer.component.scss"],
+})
+export class FooterComponent implements OnInit {
+  footerUrl: any = "assets/images/footer.gif";
+  constructor() {}
+
+  ngOnInit(): void {}
+}

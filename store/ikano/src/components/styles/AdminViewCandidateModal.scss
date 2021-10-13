@@ -1,0 +1,199 @@
+.appstatus {
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 14px !important;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 17px;
+}
+.personalInfo {
+  color: #ec0801 !important;
+  font-family: "Ikano Sans";
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 22px;
+}
+.value {
+  .head {
+    color: #4a4946 !important;
+    font-family: "Ikano Sans";
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 17px;
+    margin: 0;
+    margin-bottom: 3px;
+  }
+}
+.foot {
+  color: #4a4946 !important;
+  font-family: "Ikano Sans" !important;
+  font-size: 16px !important;
+  letter-spacing: 0 !important;
+  line-height: 20px !important;
+  font-weight: normal !important;
+}
+.skillCard {
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 22px;
+  background-color: #f8f7f5;
+  border-radius: 0;
+  box-shadow: none;
+}
+.question {
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 22px;
+}
+.answer {
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+.form-control {
+  box-sizing: border-box;
+  height: 36px;
+  width: 196px;
+  border: 1px solid #cdc8be;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+.dialogBox {
+  padding: 35px !important;
+  border-radius: 8px;
+}
+.downloadCVButton button {
+  position: relative;
+  width: 27%;
+  padding: 12px;
+  font-family: "Ikano Sans";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 20px;
+  background-color: #ec0f00;
+  border: none;
+  border-radius: 0;
+  color: #ffffff;
+}
+.downloadCVButton img {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 10%;
+  .print {
+    width: 100% !important;
+  }
+}
+
+.downloadCVButton  {
+  width: 100%;
+  text-align: center;
+}
+.downloadCVButton button:hover {
+  background-color: #ec0f00;
+}
+.form-control:focus {
+  // border: 1px solid black;
+  // box-shadow: 0 0 3px black;
+  // outline-offset: 0px;
+  // outline: none;
+  border-color: none !important;
+  box-shadow: none !important;
+}
+select {
+  // -webkit-appearance: auto;
+  color: #4a4946 !important;
+}
+.closeButton {
+  border: none;
+  background: transparent;
+  margin-top: -12px;
+}
+
+/* Hidden select default on ie */
+select::-ms-expand {
+  display: none;
+}
+
+/* Style for wrap select arrow */
+.wrap-select-arrow {
+  position: relative;
+  select {
+    width: 100%;
+    height: 35px;
+    padding: 6px 45px 6px 15px;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: "";
+    border: 2px solid #cdc8be;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: black !important;
+    // font-family: "Ikano Sans";
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 17px;
+    .selectOption {
+      height: 17px;
+      width: 78px;
+      color: #4a4946;
+      // font-family: "Ikano Sans";
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: 17px;
+    }
+  }
+  /* Style for arrow */
+  .select-arrow {
+    position: absolute;
+    top: -3px;
+    right: 0;
+    padding: 15px;
+    pointer-events: none;
+    /* Arrow up */
+    .arrow-up {
+      width: 21px;
+      height: 12px;
+      background: url("../../assets/Images/downarrow.png") no-repeat scroll 0 0
+        transparent;
+      background-size: 16px;
+    }
+  }
+}
+.wrap-select-arrow select:focus {
+  outline: none;
+}
+.ikanovalue {
+  img {
+    width: 50px;
+    height: 50px;
+  }
+  p {
+    height: 29px;
+    width: 886px;
+    color: #4a4946;
+    // font-family: "Ikano Sans";
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 22px;
+    font-weight: normal;
+    padding: 10px;
+  }
+  padding: 10px;
+  border-bottom: 1px solid #dbd7d0;
+  &:last-child {
+    border-bottom: none;
+  }
+}

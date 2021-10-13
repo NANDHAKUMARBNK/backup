@@ -1,0 +1,54 @@
+<div class="row  align-items-center ">
+    <!-- <bw-bread-crumb
+    [defaultItems]="defaultItems"
+    (onClick)="navigateInto($event)"
+  ></bw-bread-crumb> -->
+    <div>
+        <span (click)="backNavigation()"><a class="cursor-pointer"> Links</a> > </span> <span>{{breadCrumb}}</span>
+    </div>
+    <div class="col-md-2 ">
+        <p class="primary-fre-clr-bse bw-font-prm-medium"> {{headerName}}</p>
+    </div>
+    <div class="col-md-10 text-end">
+
+        <bw-button className=" btn-base  secondary-btn-text border-secondary bw-font-prm-medium btn-sm  me-md-4 px-4 "
+            buttonName="CANCEL" (onClick)="cancelLink($event)">
+        </bw-button>
+        <bw-button
+            className=" pl-35 pr-35 btn-base btn-containe bw-font-prm-medium  secondary-btn-contained btn-sm me-md-4"
+            buttonName="SAVE" (onClick)="saveLink($event)">
+        </bw-button>
+
+    </div>
+</div>
+<div class="row m-0 mt-3">
+    <div class="col-9  border p-3">
+        <div class="row label-bg">
+            <div class="margin">
+                <bw-label [className]="'bw-font-sec-bold label'" [labelName]="labelText"></bw-label>
+            </div>
+        </div>
+        <div class="form-group  h-240 mt-3 col-9">
+            <bw-input [label]="'Title'" [labelClass]="'bw-font-prm-medium fs-6 fw-500'"
+                [control]="linkDataForm.get('title')" [placeholder]="'Enter Title'" (focusout)="seterror('Title')"
+                [classNameControl]="'bw-font-sec-medium'" [inRow]="true" [inRowLabelRows]="2" [inRowInputRows]="10">
+            </bw-input>
+            <bw-textarea [label]="'Description'" [labelClass]="'bw-font-prm-medium fs-6 fw-500'"
+                [control]="linkDataForm.get('description')" [inRow]="true" [inRowLabelRows]="2" [inRowInputRows]="10"
+                [rows]="3" [placeholder]="'Enter Description'" (focusout)="seterror('description')"
+                [className]="'bw-font-sec-medium'">
+            </bw-textarea>
+            <bw-input [customErrorPattern]="'The URL must be a valid website address. (ie. http://www.microsoft.com)'" [label]="'Url'" [labelClass]="'bw-font-prm-medium fs-6 fw-500'"
+                [control]="linkDataForm.get('url')" [placeholder]="'Enter Url'" (focusout)="seterror('Url')"
+                (keypress)="keypress($event)" [classNameControl]="'bw-font-sec-medium'" [inRow]="true"
+                [inRowLabelRows]="2" [inRowInputRows]="10">
+            </bw-input>
+            <div class="row">
+                <div class="col-md-2"> </div>
+                <div *ngIf="Urlpattern" class="error-msg col-md-10">
+                    The URL must be a valid website address. (ie. http://www.microsoft.com)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

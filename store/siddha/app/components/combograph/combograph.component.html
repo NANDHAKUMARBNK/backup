@@ -1,0 +1,16 @@
+<div class="graphcontent">
+
+  <canvas #barChart id="myChart" class="chart1" width="330" height="1050"></canvas>
+
+
+  <div class="secongGraph">
+    <canvas #barChart id="myChart2" class="chart2" width="220" height="1050"></canvas>
+
+  </div>
+</div>
+<div *ngIf="loaderGraph" class="loader-backdrop">
+  <img src="../../../assets/images/loader.gif" alt="loader.gif">
+</div>
+<div class="refreshContainer" *ngIf="refreshApi">
+  <button class="btn btn-primary" (click)="ServerSideData()">Refresh</button>
+</div>

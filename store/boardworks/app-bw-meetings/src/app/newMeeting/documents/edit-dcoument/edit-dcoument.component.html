@@ -1,0 +1,38 @@
+<div>
+    <bw-input [label]="'Titile'" [labelClass]="'bw-font-sec-bold'" [control]="agendTitle" [placeholder]="'Enter Title'"
+        [classNameControl]="'bw-font-sec-medium'" [inRow]="true" [inRowLabelRows]="3" [inRowInputRows]="7">
+    </bw-input>
+
+    <div class="mt-4">
+        <bw-text [className]="'bw-font-sec-bold  primary-fre-clr-bse f-17'"
+            [textName]="'Attendee Access & Permissions'"></bw-text>
+    </div>
+    <div class="mt-4">
+
+    
+
+    <bw-checkbox [checkBoxses]="security" [inRow]="true" [inRowLabelRows]="3" [inRowInputRows]="7"
+        [classCheckboxLabel]="'row  align-items-center  m-0'" [control]="securityControl"
+        [classNameControl]="'bw-font-sec-medium  p-0 '" [label]="'All Day Event'"
+        [checkBoxTextClass]="'col-xl-11 col-lg-11 col-md-10 ml-10'" [spanrowClass]="'row col-1'"
+        (getselectedArray)="changeAllDayCheckbox($event)">
+
+    </bw-checkbox>
+</div>
+
+    <bw-grid
+    [isEnableSelectAll]="false"
+    [isShowCheckbox]="false"
+    [onCellClicked]="onCellClicked"
+    [columnOptions]="columnOptions"
+    [columnsData]="columnsData"
+    [gridData]="gridData"
+    [isEnableButton]="true"
+    (onClickActionAccordion)="insideAccordion($event)"
+    (accrodianClick)="accrodianClick($event)"
+    [accesControlFlagForAlerts]="true"
+    (writeAccessClick)="writeAccessClick($event)"
+    (writeChildAccessClick)="writeChildAccessClick($event)"
+  >
+  </bw-grid>
+</div>

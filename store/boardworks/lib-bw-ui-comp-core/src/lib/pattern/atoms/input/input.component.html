@@ -1,0 +1,65 @@
+<div class="form-group {{ class }}" *ngIf="!inRow">
+    <label *ngIf="label" for="" class="">
+        <bw-label [labelName]="label" [className]="labelClass"></bw-label>
+        <span class="text-danger" *ngIf="validator(control) && isStar">*</span>
+        <bw-tooltip [className]="toolTipClass" *ngIf="toolTip" [title]="toolTip" [iconClass]="toolTipIconClass"></bw-tooltip>
+    </label>
+    <ng-container>
+        <div class="form-group m-input-group {{ prefix ? 'prefix' : '' }}">
+            <div class="input-group-prepend" [style.height]="height" *ngIf="prefix">
+                <em class="{{prefix}}">{{ prefix }}</em>
+            </div>
+            <input [style.height]="height" *ngIf="type !== 'number'" [disabled]="!control?.disabled"
+                (focusout)="inputValue(control.value)" class="form-control {{ classNameControl }}" [type]="type"
+                [formControl]="control" placeholder="{{ placeholder }}" [maxlength]="maxlength" [minlength]="minlength"
+                (change)="inputChange(control.value)" />
+            <input [style.height]="height" *ngIf="type === 'number'" (keypress)="keyPress($event)"
+                (focusout)="inputValue(control.value)" [disabled]="!control?.disabled"
+                class="form-control {{ classNameControl }}" [type]="type" [formControl]="control"
+                placeholder="{{ placeholder }}" [maxlength]="maxlength" [minlength]="minlength"
+                (change)="inputChange(control.value)" />
+        </div>
+        <small id="textHelp" class="form-text text-muted bb-font-info" *ngIf="helpText">{{ helpText }}</small>
+    </ng-container>
+    <bw-control-error-message [control]="control" 
+         [customErrorMinLength]="customErrorMinLength"
+         [customErrorReq]="customErrorReq" 
+         [customErrorPattern]="customErrorPattern"
+         [customErrormax]="customErrormax"
+         [customErrormin]="customErrormin"
+        [fieldName]="errorMessageName ? errorMessageName : label || optionalLabel">
+    </bw-control-error-message>
+</div>
+
+<div class="form-group row {{ class }}" *ngIf="inRow">
+    <label *ngIf="label" for="" class="col-xl-{{ inRowLabelRows }} col-lg-{{inRowLabelRows}} {{labelPositionClass}}">
+        <bw-label [labelName]="label" [className]="labelClass"></bw-label>
+        <span class="text-danger" *ngIf="validator(control) && isStar">*</span>
+        <bw-tooltip *ngIf="toolTip" [title]="toolTip" [iconClass]="toolTipClass"></bw-tooltip>
+    </label>
+    <div class="col-xl-{{ inRowInputRows }} col-lg-{{ inRowInputRows }}">
+        <div class="input-group m-input-group {{ prefix ? 'prefix' : '' }}">
+            <div class="input-group-prepend" [style.height]="height" *ngIf="prefix">
+                <span class="input-group-text textColor">{{ prefix }}</span>
+            </div>
+            <input [style.height]="height" *ngIf="type !== 'number'" [disabled]="!control?.disabled"
+                (focusout)="inputValue(control.value)" class="form-control {{ classNameControl }}" [type]="type"
+                [formControl]="control" placeholder="{{ placeholder }}" [maxlength]="maxlength" [minlength]="minlength"
+                (change)="inputChange(control.value)" />
+            <input [style.height]="height" *ngIf="type === 'number'" (keypress)="keyPress($event)"
+                (focusout)="inputValue(control.value)" [disabled]="!control?.disabled"
+                class="form-control {{ classNameControl }}" [type]="type" [formControl]="control"
+                placeholder="{{ placeholder }}" [maxlength]="maxlength" [minlength]="minlength"
+                (change)="inputChange(control.value)" />
+        </div>
+        <small id="textHelp" class="form-text text-muted bb-font-info" *ngIf="helpText">{{ helpText }}</small>
+        <bw-control-error-message [control]="control"
+             [customErrorMinLength]="customErrorMinLength"
+             [customErrorReq]="customErrorReq" 
+             [customErrorPattern]="customErrorPattern"
+             [customErrormax]="customErrormax"
+             [customErrormin]="customErrormin"
+            [fieldName]="errorMessageName ? errorMessageName : label || optionalLabel">
+        </bw-control-error-message>
+    </div>
+</div>

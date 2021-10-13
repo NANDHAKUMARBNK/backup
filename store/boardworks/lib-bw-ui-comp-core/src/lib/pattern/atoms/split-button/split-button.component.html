@@ -1,0 +1,16 @@
+<div class="dropdown">
+  <bw-button
+    [className]="className"
+    [buttonName]="buttonName"
+    (onClick)="clickToggle($event)"
+  ></bw-button>
+  <div class="dropdown-menu" *ngIf="isShowToggle">
+    <a
+      href="javascript:;"
+      *ngFor="let action of actions"
+      (click)="onClickActionEvent(action)"
+      >{{ action }}</a
+    >
+  </div>
+  <div kendoDialogContainer></div>
+</div>

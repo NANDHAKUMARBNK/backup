@@ -1,0 +1,134 @@
+<div class="form-group {{ divClass }}" *ngIf="!inRow">
+  <label *ngIf="label" for="" class="">
+    <bw-label [labelName]="label" [className]="labelClass"></bw-label>
+    <span class="text-danger" *ngIf="validator(control)">*</span>
+    <bw-tooltip
+      *ngIf="toolTip"
+      [title]="toolTip"
+      [className]="'tooltip-top'"
+      [iconClass]="toolTipClass"
+    ></bw-tooltip>
+  </label>
+  <div *ngIf="checkboxForm && checkboxForm.controls">
+    <label
+      class="{{ classCheckboxLabel }}"
+      *ngFor="let c of checkboxForm.controls.checkBoxes.controls; let i = index"
+      (change)="getSelectedcheckBox(i, c.value)"
+    >
+      <input
+        type="checkbox"
+        [value]="c.value"
+        class="{{ classNameControl }}"
+        kendoCheckBox
+        [formControl]="c"
+        [attr.disabled]="c.isenable"
+      />
+      <p *ngIf="!isLabelLink">{{ checkBoxses[i].name }}</p>
+      <bw-link
+        *ngIf="isLabelLink"
+        [linkText]="checkBoxses[i].name"
+        (onClickLink)="onClickHandler(checkBoxses[i])"
+        [isEnableIcons]="false"
+      >
+      </bw-link>
+    </label>
+    <small
+      id="textHelp"
+      class="form-text text-muted bb-font-info"
+      *ngIf="helpText"
+      >{{ helpText }}</small
+    >
+  </div>
+  <bw-control-error-message
+    [control]="control"
+    [fieldName]="errorMessageName ? errorMessageName : label || optionalLabel"
+  >
+  </bw-control-error-message>
+</div>
+
+<div
+  class="form-group row {{ divClass }}"
+  *ngIf="inRow && checkboxForm && checkboxForm.controls"
+>
+  <label
+    *ngIf="label"
+    for=""
+    class="col-xl-{{ inRowLabelRows }} col-lg-{{ inRowLabelRows }}"
+  >
+    <bw-label [labelName]="label" [className]="labelClass"></bw-label>
+    <span class="text-danger" *ngIf="validator(control)">*</span>
+    <bw-tooltip
+      *ngIf="toolTip"
+      [title]="toolTip"
+      [className]="'tooltip-top'"
+      [iconClass]="toolTipClass"
+    ></bw-tooltip>
+  </label>
+  <!-- <div class="col-xl-{{ inRowInputRows }} col-lg-{{ inRowInputRows }} row">
+    <label
+      class="{{ classCheckboxLabel }}"
+      *ngFor="let c of checkboxForm.controls.checkBoxes.controls; let i = index"
+      (change)="getSelectedcheckBox(i, c.value)"
+    >
+      <input
+        type="checkbox"
+        [value]="c.value"
+        class="{{ classNameControl }}"
+        kendoCheckBox
+        [formControl]="c"
+      />
+      {{ checkBoxses[i].name }}
+    </label> -->
+  <div class="col-xl-{{ inRowInputRows }} col-lg-{{ inRowInputRows }} row">
+    <label
+      class="{{ classCheckboxLabel }} row"
+      *ngFor="let c of checkboxForm.controls.checkBoxes.controls; let i = index"
+      (change)="getSelectedcheckBox(i, c.value)"
+    >
+      <span [class]="spanrowClass">
+        <input
+          type="checkbox"
+          [value]="c.value"
+          class="{{ classNameControl }}"
+          kendoCheckBox
+          [formControl]="c"
+          [attr.disabled]="c.isenable"
+        />
+        <!-- {{ checkBoxses[i].name }} -->
+      </span>
+      <span *ngIf="!isLabelLink" [class]="checkBoxTextClass">
+        {{ checkBoxses[i].name }}</span
+      >
+      <span>
+        <bw-link
+          *ngIf="isLabelLink"
+          [linkText]="checkBoxses[i].name"
+          (onClickLink)="onClickHandler(checkBoxses[i])"
+          [isEnableIcons]="false"
+          [className]="checkBoxTextClass"
+        >
+        </bw-link>
+      </span>
+    </label>
+    <span class="col-2">
+      <bw-tooltip
+        *ngIf="toolTipInput"
+        [title]="toolTipInput"
+        [className]="'tooltip-top col-6'"
+        [iconClass]="toolTipClass"
+      ></bw-tooltip>
+    </span>
+    <small
+      id="textHelp"
+      class="form-text text-muted bb-font-info"
+      *ngIf="helpText"
+      >{{ helpText }}</small
+    >
+    <bw-control-error-message
+      [control]="control"
+      [fieldName]="errorMessageName ? errorMessageName : label || optionalLabel"
+    >
+    </bw-control-error-message>
+  </div>
+  <!-- </div> -->
+</div>

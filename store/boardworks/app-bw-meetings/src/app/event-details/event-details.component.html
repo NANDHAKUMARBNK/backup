@@ -1,0 +1,65 @@
+<div class="row align-items-center my-3">
+    <bw-bread-crumb [defaultItems]="defaultItems" (onClick)="navigateInto($event)"></bw-bread-crumb>
+    <div class="col-md-2 headerName">
+        <p class="primary-fre-clr-bse bw-font-prm-medium">{{ headerName }}</p>
+    </div>
+    <div class="col-md-7">
+        <p *ngIf="isError" class="text-danger mb-1">
+            <ng-container *ngFor="let msg of errMessage">
+                {{ msg }}
+            </ng-container>
+        </p>
+    </div>
+    <div class="col-md-3 text-end dropdown">
+        <bw-button [className]="
+          'btn-base  secondary-btn-text border-secondary bw-font-prm-medium btn-sm  me-md-4 px-4'
+        " [buttonName]="'Event Actions'" (onClick)="eventActions($event)" [withIcon]="true">
+            Event Actions<i class="mdi mdi-menu-down arrow"></i>
+        </bw-button>
+        <div class="dropdown-menu" *ngIf="isShowToggle">
+            <div *ngIf="isAdminPermission"><bw-text [className]="'text-start px-3 primary-fre-clr-bse bw-font-sec-bold'" [textName]="'ADMINISTRATION'">
+            </bw-text>
+            <div class="dropdown-menu-child-active">
+                <bw-text [className]="'text-start'" [textName]="'Copy Event'" [isEnableClick]="true"
+                    (onClick)="actionClick($event, 'copy')"></bw-text>
+            </div>
+            <div class="dropdown-menu-child-active">
+                <bw-text [className]="'text-start'" [textName]="'Edit Event'" [isEnableClick]="true"
+                    (onClick)="actionClick($event, 'edit')"></bw-text>
+            </div>
+            <div class="dropdown-menu-child-active">
+                <bw-text [className]="'text-start'" [textName]="'Delete Event'" [isEnableClick]="true"
+                    (onClick)="actionClick($event, 'delete')"></bw-text>
+            </div>
+        </div>
+            <bw-divider></bw-divider>
+            <div>
+            <bw-text [className]="'text-start px-3 primary-fre-clr-bse bw-font-sec-bold'"
+                [textName]="'MEETING ACTIONS'"></bw-text>
+            <div class="dropdown-menu-child-active">
+                <bw-text [className]="'text-start'" [textName]="'Add to Calendar'" [isEnableClick]="true"
+                    (onClick)="actionClick($event, 'addToCalendar')"></bw-text>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="row m-2">
+    <div class="form-group col-8 border p-3">
+        <div class="m-1 text-center">
+            <bw-text [textName]="boardName" [className]="'bw-font-prm-medium'"></bw-text>
+            <bw-text [textName]="eventTitle" [className]="'bw-font-prm-medium'"></bw-text>
+            <bw-text [textName]="eventLocation" [className]="'bw-font-prm-medium'"></bw-text>
+            <br />
+            <bw-text [textName]="eventDate" [className]="'bw-font-prm-medium'"></bw-text>
+            <bw-text [textName]="eventArea" [className]="'bw-font-prm-medium'"></bw-text>
+            <br />
+        </div>
+        <div class="m-3">
+            <bw-grid [isEnableSelectAll]="false" [isShowCheckbox]="false" [onCellClicked]="onCellClicked"
+                [columnOptions]="columnOptions" [columnsData]="columnsData" [gridData]="gridData" [actions]="actions"
+                (onClickLink)="onClickLink($event)" (onClickAction)="onClickAction($event)" [isEnablePagination]="true">
+            </bw-grid>
+        </div>
+    </div>
+</div>

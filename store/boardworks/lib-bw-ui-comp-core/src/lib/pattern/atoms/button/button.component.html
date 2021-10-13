@@ -1,0 +1,19 @@
+<button
+  [class]="className"
+  (click)="onClickHandler($event)"
+  [disabled]="buttonDisabled"
+  *ngIf="!withIcon && showButton"
+  [style.width]="width"
+>
+  {{ buttonName }}
+</button>
+<button
+  [class]="className"
+  (click)="onClickHandler($event)"
+  [disabled]="buttonDisabled"
+  *ngIf="withIcon && showButton"
+  [style.width]="width"
+>
+  <ng-content></ng-content>
+</button>
+<!-- <div class="bw-confirm"  kendoDialogContainer></div> -->

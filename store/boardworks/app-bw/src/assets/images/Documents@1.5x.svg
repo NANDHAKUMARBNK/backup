@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Documents@1.5x</title>
+    <g id="Documents" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="mdi:file-document-outline" transform="translate(2.000000, 2.000000)">
+            <rect id="ViewBox" x="0" y="0" width="36" height="36"></rect>
+            <path d="M9,3 C7.34314575,3 6,4.34314575 6,6 L6,30 C6,31.6568542 7.34314575,33 9,33 L27,33 C28.6568542,33 30,31.6568542 30,30 L30,12 L21,3 L9,3 M9,6 L19.5,6 L19.5,13.5 L27,13.5 L27,30 L9,30 L9,6 M12,18 L12,21 L24,21 L24,18 L12,18 M12,24 L12,27 L19.5,27 L19.5,24 L12,24 Z" id="Shape" fill="#D2D2D2" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

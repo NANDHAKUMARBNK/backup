@@ -1,0 +1,279 @@
+<div class="row">
+  <div class="col-10">
+    <div *ngIf="viewType == '1month'">
+      <div class="row p-0">
+        <div class="scheduler-header">
+      
+          <span class="col-10 scheduler-header-text m-3 ml-5 text-center"> 
+            <span class="arrow-navs arrow-fb" (click)="onChange1MonthDateBy(-3)"> <<</span>
+            <span class="arrow-navs arrow-b" (click)="onChange1MonthDateBy(-1)"> < </span>
+            {{
+            selectedDate | date: "MMMM YYYY"
+          }}
+          <span class="arrow-navs arrow-f" (click)="onChange1MonthDateBy(1)"> > </span>
+          <span class="arrow-navs arrow-ff" (click)="onChange1MonthDateBy(3)"> >> </span>
+        </span>
+   
+
+          <span class="col-2 m-3">
+            <div class="row example-wrapper">
+              <div class="col-6">
+                <bw-icon-text
+                  [isLink]="true"
+                  [colClass]="'2'"
+                  (onIconClick)="onClickLink($event, 'calendar')"
+                  (onClickLink)="onClickLink($event, 'calendar')"
+                  [iconClassName]="'calendar-month icon-sm cursor-pointer'"
+                  [className]="
+                    'bw-font-sec-bold bw-font-prm-medium edit cursor-pointer'
+                  "
+                  [linkTextName]="'Go To'"
+                >
+                </bw-icon-text>
+                <kendo-calendar
+                  bottomView="year"
+                  topView="decade"
+                  (valueChange)="onChange1MonthDate($event)"
+                  class="calender-select-months"
+                  *ngIf="openCalendar"
+                  type="classic"
+                ></kendo-calendar>
+              </div>
+              <div class="col-6">
+                <bw-link
+                  [linkText]="'Today'"
+                  (onClickLink)="get1MonthDetails()"
+                  [className]="
+                    'bw-font-sec-bold bw-font-prm-medium edit cursor-pointer'
+                  "
+                >
+                </bw-link>
+              </div>
+            </div>
+          </span>
+        </div>
+      </div>
+      <kendo-scheduler
+        [kendoSchedulerBinding]="monthlyEvents"
+        [selectedDate]="selectedDate"
+        scrollTime="09:00"
+        [class]="'scheduler_size'"
+        class="custom-month toolbar-d-none"
+      >
+        <ng-template kendoSchedulerEventTemplate let-event="event">
+          <!-- TODO for making horizantal event toast along grid  --add conditions -->
+          <div class="event-holder">
+            <span
+              *ngIf="mapEventStatus(event.id) == 'Published'"
+              class="dot dot-small dot-success"
+            ></span>
+            <span
+              *ngIf="mapEventStatus(event.id) == 'Unpublished'"
+              class="dot dot-small dot-warning"
+            ></span>
+            <span
+              *ngIf="mapEventStatus(event.id) == 'Archieved'"
+              class="dot dot-small dot-achieved"
+            ></span>
+            <span
+              *ngIf="mapEventType(event.id) == 'Event'"
+              class="success k-icon k-i-calendar"
+            ></span>
+
+            <span (click)="onClickMELink(event)"> {{ event.title }}</span>
+          </div>
+
+          <!-- <div class="popover__wrapper">
+            <span> {{ event.title }}</span>
+            <div class="popover__content">
+              <div class="popover_holder">
+              <span
+                class="popover__message primary-fre-clr-bse bw-font-prm-medium"
+                >{{ event.start | date: "dd MMMM YYYY" }}</span
+              >
+              <div  *ngFor="let event of mapEvent(event.start)">
+                <bw-divider></bw-divider>
+                <div class="event-holder row fs-10">
+                  <div class="col-6">
+                    <span
+                      *ngIf="event.status == 'Published'"
+                      class="dot dot-small dot-success"
+                    ></span>
+                    <span
+                      *ngIf="event.status == 'Unpublished'"
+                      class="dot dot-small dot-warning"
+                    ></span>
+                    <span
+                      *ngIf="event.status == 'Archieved'"
+                      class="dot dot-small dot-achieved"
+                    ></span>
+                    <span
+                      *ngIf="event.type == 'Event'"
+                      class="success k-icon k-i-calendar"
+                    ></span>
+
+                    <span (click)="onClickMELink(event)" class="cursor-pointer">
+                      {{ event.title }}</span
+                    >
+                  </div>
+                  <div class="col-6" *ngIf="event.startTime && event.endTime">
+                    {{ event.startTime | date: "hh:mm:ss" }} -
+                    {{ event.endTime | date: "hh:mm:ss" }}
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div> -->
+        </ng-template>
+        <kendo-scheduler-month-view></kendo-scheduler-month-view>
+        <kendo-scheduler-day-view></kendo-scheduler-day-view>
+        <kendo-scheduler-week-view></kendo-scheduler-week-view>
+      </kendo-scheduler>
+    </div>
+
+    <div *ngIf="viewType == '4months'">
+      <div class="row p-0">
+        <div class="scheduler-header">
+          <span
+            class="col-10 scheduler-header-text m-3 ml-5 text-center"
+            *ngIf="list?.length === 4"
+            >
+            <span class="arrow-navs arrow-fb" (click)="onChange4MonthsDateBy(-3)"> <<</span>
+            <span class="arrow-navs arrow-b" (click)="onChange4MonthsDateBy(-1)"> < </span>
+            {{ displayedMonths[0] }} {{ getYear(list[0].selectedDate) }} -
+            {{ displayedMonths[3] }} {{ getYear(list[3].selectedDate) }}
+            <span class="arrow-navs arrow-f" (click)="onChange4MonthsDateBy(1)"> > </span>
+            <span class="arrow-navs arrow-ff" (click)="onChange4MonthsDateBy(3)"> >> </span>
+            </span
+          >
+          <span class="col-2 m-3">
+            <div class="row example-wrapper">
+              <div class="col-6">
+                <bw-icon-text
+                  [isLink]="true"
+                  [colClass]="'2'"
+                  (onIconClick)="onClickLink($event, 'calendar')"
+                  (onClickLink)="onClickLink($event, 'calendar')"
+                  [iconClassName]="'calendar-month icon-sm cursor-pointer'"
+                  [className]="
+                    'bw-font-sec-bold bw-font-prm-medium edit cursor-pointer'
+                  "
+                  [linkTextName]="'Go To'"
+                >
+                </bw-icon-text>
+                <kendo-calendar
+                  bottomView="year"
+                  topView="decade"
+                  (valueChange)="onChange4MonthsDate($event)"
+                  class="calender-select-months"
+                  *ngIf="openCalendar"
+                  type="classic"
+                ></kendo-calendar>
+              </div>
+              <div class="col-6">
+                <bw-link
+                  [linkText]="'Today'"
+                  (onClickLink)="get4MonthsDetails()"
+                  [className]="
+                    'bw-font-sec-bold bw-font-prm-medium edit cursor-pointer'
+                  "
+                >
+                </bw-link>
+              </div>
+            </div>
+          </span>
+        </div>
+
+        <div class="col-6 mb-3" *ngFor="let month of list; let i = index">
+          <kendo-scheduler
+            [kendoSchedulerBinding]="events"
+            [selectedDate]="month.selectedDate"
+            scrollTime="09:00"
+            [class]="'scheduler_size_4month custom-sch'"
+          >
+            <ng-template kendoSchedulerToolbarTemplate>
+              <p class="m-0 month-name">
+                {{ displayedMonths[i] }} {{ getYear(month.selectedDate) }}
+              </p>
+
+              <ng-template kendoSchedulerEventTemplate let-event="event">
+                <div class="popover__wrapper">
+                  <!-- <a href="#"> -->
+                  <span>
+                    {{ event.title }}</span
+                  >
+                  <!-- </a> -->
+
+                  <div class="popover__content">
+                    <div class="popover_holder">
+
+                    <p
+                      class="
+                        popover__message
+                        primary-fre-clr-bse
+                        bw-font-prm-medium
+                      "
+                    >
+                      {{ event.start | date: "dd MMMM YYYY" }}
+                    </p>
+                    <div *ngFor="let event of mapEvent(event.start)">
+                      <bw-divider></bw-divider>
+
+                      <div class="event-holder row fs-10">
+                        <div class="col-6">
+                          <span
+                            *ngIf="event.status == 'Published'"
+                            class="dot dot-small dot-success"
+                          ></span>
+                          <span
+                            *ngIf="event.status == 'Unpublished'"
+                            class="dot dot-small dot-warning"
+                          ></span>
+                          <span
+                            *ngIf="event.status == 'Archieved'"
+                            class="dot dot-small dot-achieved"
+                          ></span>
+                          <span
+                            *ngIf="event.status == 'Event'"
+                            class="success k-icon k-i-calendar"
+                          ></span>
+
+                          <span (click)="onClickMELink(event)">
+                            {{ event.title }}</span
+                          >
+                        </div>
+                        <div
+                          class="col-6"
+                          *ngIf="event.startDateTime && event.endDateTime"
+                        >
+                        {{ event.startDateTime | date: "hh:mm:ss" }} -
+                        {{ event.endDateTime | date: "hh:mm:ss" }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </ng-template>
+            </ng-template>
+            <kendo-scheduler-month-view></kendo-scheduler-month-view>
+          </kendo-scheduler>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="event-holder">
+      <p class="legend-holder">
+        <span class="dot dot-small dot-success"></span>Published
+      </p>
+      <p class="legend-holder">
+        <span class="dot dot-small dot-warning"></span>Unpublished
+      </p>
+      <p class="legend-holder">
+        <span class="dot dot-small dot-achieved"></span>Archieved
+      </p>
+    </div>
+  </div>
+</div>

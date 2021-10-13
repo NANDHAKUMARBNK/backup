@@ -1,0 +1,86 @@
+<div class="mt-3">
+    <div>
+        <span (click)="backNavigation()"><a class="cursor-pointer"> {{fromPage == 'home' ? 'Home' : 'Meetings & Events'}}</a> > </span>
+        <span *ngIf="Pagetype !='edit'">New Meeting - {{breadCrumb}}</span>
+        <span *ngIf="Pagetype =='edit'">{{meetingData?.title}} - {{breadCrumb}}</span>
+
+    </div>
+
+    <div class=" text-end dropdown">
+        <bw-button [className]="
+            'btn-base  secondary-btn-text border-secondary bw-font-prm-medium btn-sm  me-md-4 px-4'
+          " [buttonName]="'Change Status'" (onClick)="action($event)" [withIcon]="true">
+            Change Status<i class="mdi mdi-menu-down arrow"></i>
+        </bw-button>
+        <div class="dropdown-menu" *ngIf="isShowToggleAction">
+            <div class="dropdown-menu-child-active" *ngIf="isArchived">
+                <bw-text [className]="'text-start'" [textName]="'Archive'" [isEnableClick]="true"
+                    (onClick)="clickActions('Archive')"></bw-text>
+            </div>
+            <div class="dropdown-menu-child-active" *ngIf="isUnArchived">
+                <bw-text [className]="'text-start'" [textName]="'UnArchive'" [isEnableClick]="true"
+                    (onClick)="clickActions('UnArchive')"></bw-text>
+            </div>
+            <div class="dropdown-menu-child-active" *ngIf="isUnPublished">
+                <bw-text [className]="'text-start'" [textName]="'UnPublish'" [isEnableClick]="true"
+                    (onClick)="clickActions('UnPublish')"></bw-text>
+            </div>
+            <div class="dropdown-menu-child-active" *ngIf="isPublished">
+                <bw-text [className]="'text-start'" [textName]="'Publish'" [isEnableClick]="true"
+                    (onClick)="clickActions('Publish')"></bw-text>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="mt-4">
+        <bw-text *ngIf="Pagetype !='edit'" [className]="'bw-font-sec-bold  primary-fre-clr-bse f-17'"
+            [textName]="'New Meeting'"></bw-text>
+        <span *ngIf="Pagetype =='edit'">
+            <span class="bw-font-sec-bold  primary-fre-clr-bse f-17">
+                {{meetingData?.title}}
+            </span>
+            <span class=" f-17 ml-3">
+               [ {{meetingData?.status}} ]
+            </span>
+        </span>
+
+
+    </div>
+
+    <div class="row steeper m-0 mt-5">
+        <div class="col-md-4 text-center pr" (click)="naviagtion('info')">
+
+            <span class="round" *ngIf="!meetingId "> 1 </span>
+            <img *ngIf="meetingId " src="assets/images/tick.png" alt="">
+            <span class="label-text bw-font-prm-regular" [ngClass]="{'active': pageSelection =='info'}">
+                Meeting Information
+            </span>
+            <hr>
+        </div>
+        <!-- <span class="divider"></span> -->
+
+        <div class="col-md-4 text-center pr" (click)="naviagtion('attendes')">
+            <span class="round" *ngIf="Pagetype !='attendesSucess' "> 2 </span>
+            <img *ngIf="Pagetype == 'attendesSucess' " src="assets/images/tick.png" alt="">
+
+            <span class="label-text  bw-font-prm-regular" [ngClass]="{'active': pageSelection =='attendee'}">
+                Attendees
+            </span>
+            <hr>
+
+        </div>
+
+        <div class="col-md-4 text-center" (click)="naviagtion('doc')">
+            <span class="round"> 3 </span>
+            <span class="label-text bw-font-prm-regular" [ngClass]="{'active': pageSelection =='doc'}">
+                Documents
+            </span>
+        </div>
+
+    </div>
+    <div class="mt-3">
+        <router-outlet> </router-outlet>
+    </div>
+</div>

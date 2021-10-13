@@ -1,0 +1,39 @@
+<div class="width-50 m-auto">
+  <bw-avatar
+    [className]="'logo lg center mt-5'"
+    [src]="bwUrl"
+    [alt]="'logo'"
+    [title]="'logo'"
+  >
+  </bw-avatar>
+  <p class="primary-fre-clr-bse bw-font-sec-bold text-center">Select board</p>
+
+  <div class="row width-100 m-auto">
+    <div class="col-lg-6" *ngFor="let board of boards">
+      <div
+        class="card cursor-pointer m-2"
+        (click)="selectBoardsClick(board.clientBoardId)"
+      >
+        <div class="card-body">
+          <div class="d-flex h-100">
+            <bw-avatar
+              *ngIf="board.logoUrl"
+              [className]="'logo'"
+              [src]="appBaseUrl + board.logoUrl"
+              [alt]="'logo'"
+              [title]="'logo'"
+            >
+            </bw-avatar>
+            <p class="my-auto ml-2">{{ board.companyName }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p *ngIf="isError" class="text-danger mb-1">
+      <ng-container *ngFor="let msg of errMessage">
+        {{ msg }}
+      </ng-container>
+    </p>
+  </div>
+  <bw-footer></bw-footer>
+</div>

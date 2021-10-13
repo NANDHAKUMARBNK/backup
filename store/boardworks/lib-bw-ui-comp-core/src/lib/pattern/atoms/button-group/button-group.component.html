@@ -1,0 +1,6 @@
+<kendo-buttongroup kendo-buttongroup width="100%" selection="single">
+    <button *ngFor="let button of buttons" kendoButton [toggleable]="true" [(selected)]="!button.selected" class="py-2"
+        (click)="buttonClicked($event, button)">
+        {{button.text}}
+    </button>
+</kendo-buttongroup>

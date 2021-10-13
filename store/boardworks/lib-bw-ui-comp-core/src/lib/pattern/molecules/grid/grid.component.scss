@@ -1,0 +1,309 @@
+.customer-photo {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-size: 32px 35px;
+  background-position: center center;
+  vertical-align: middle;
+  line-height: 32px;
+  box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-left: 5px;
+}
+.customer-name {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 32px;
+  padding-left: 10px;
+}
+.red {
+  color: #d9534f;
+}
+.text-bold {
+  font-weight: 600;
+}
+.k-grid .k-indicator-container:last-child {
+  display: none;
+}
+
+::ng-deep .k-grid-header .k-header {
+  text-transform: uppercase;
+}
+
+::ng-deep .k-grid-header .k-i-sort-asc-sm,
+.k-grid-header .k-i-sort-desc-sm,
+.k-grid-header .k-sort-order {
+  color: gray !important;
+}
+
+::ng-deep .k-grid-header .k-i-sort-desc-sm,
+.k-grid-header .k-sort-order {
+  color: gray !important;
+}
+
+::ng-deep {
+  .k-alt,
+  .k-pivot-toolbar,
+  .k-pivot-layout > tbody > tr:first-child > td:first-child {
+    background-color: transparent !important;
+  }
+}
+::ng-deep {
+  .k-grid-header th.k-header,
+  .k-grid tr td {
+    color: gray !important;
+  }
+}
+
+::ng-deep .k-grid {
+  border-radius: 8px;
+  position: inherit !important;
+}
+
+::ng-deep.inside-grid {
+  
+  .k-grid {
+    border: none !important;
+  }
+  .k-grid .k-detail-row .k-detail-cell {
+    padding: 0 !important;
+  }
+  .k-grid-header {
+    display: none;
+  }
+
+  .k-grid-norecords {
+    display: none;
+  }
+
+  .k-grid th,
+  .k-grid td {
+    padding: 8px 12px !important;
+  }
+  .k-grid td {
+    // width: 190px;
+  }
+  .k-grid th,
+  .k-grid td {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: inherit !important;
+  }
+
+  .k-grid-header th.k-header,
+  .k-grid tr td {
+    border-bottom: 0px !important;
+  }
+  .dropdown .dropdown-menu{
+    position: relative !important;
+  }
+}
+
+// ::ng-deep {
+//   .k-grid .k-grid-filter,
+//   .k-grid .k-header-column-menu,
+//   .k-grid .k-hierarchy-cell .k-icon {
+//     display: none;
+//   }
+// }
+
+::ng-deep .k-grid .k-hierarchy-cell {
+  width: 0;
+}
+
+::ng-deep .k-grid .k-header.k-hierarchy-cell {
+  border: none;
+}
+
+::ng-deep .k-grid .k-hierarchy-cell .k-icon {
+  display: none;
+}
+
+::ng-deep .k-grid .k-hierarchy-col {
+  width: 1px;
+}
+::ng-deep.k-grid .k-grid-aria-root {
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #fff;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(168, 159, 159);
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(168, 159, 159);
+  }
+}
+::ng-deep .k-grid td,
+.k-grid th {
+  white-space: normal;
+}
+::ng-deep .k-grid-header-wrap {
+  border-right-style: hidden !important;
+}
+::ng-deep .forward a:last-child {
+  display: none !important;
+}
+::ng-deep .backward a:first-child {
+  display: none !important;
+}
+::ng-deep .forward a:first-child {
+  background-color: transparent !important;
+  border: 1px solid var(--bw-extra-light-gray-xxx) !important;
+  color: var(--bw-sec-clr-drk) !important;
+  border-radius: 5px !important;
+}
+::ng-deep .backward a:last-child {
+  background-color: transparent !important;
+  border: 1px solid var(--bw-extra-light-gray-xxx) !important;
+  color: var(--bw-sec-clr-drk) !important;
+  border-radius: 5px !important;
+}
+::ng-deep .k-pager-numbers .k-link.k-state-selected {
+  background-color: transparent !important;
+  border: 2px solid var(--bw-extra-light-gray-xxx) !important;
+  color: var(--bw-sec-clr-drk) !important;
+  border-radius: 5px !important;
+}
+::ng-deep .k-pager-numbers .k-link:hover,
+.k-pager-numbers .k-link.k-state-hover {
+  background-color: transparent !important;
+  border: 2px solid var(--bw-extra-light-gray-xxx) !important;
+  color: var(--bw-sec-clr-drk) !important;
+  border-radius: 5px !important;
+}
+::ng-deep .numeric .k-dropdown .k-link,
+::ng-deep .numeric ul li a {
+  background-color: transparent !important;
+  border: 1px solid var(--bw-extra-light-gray-xxxx) !important;
+  color: var(--bw-cloudy-grey-clr-drk) !important;
+  border-radius: 5px !important;
+  margin: 2px !important;
+}
+::ng-deep .k-pager-numbers .k-link:focus,
+.k-pager-numbers .k-link.k-state-focus {
+  background-color: transparent !important;
+  box-shadow: inset 0 0 0 2px var(--bw-sec-clr-bse) !important;
+}
+::ng-deep .k-pager-wrap {
+  background: transparent !important;
+}
+.info {
+  color: var(--bw-extra-light-gray-xxx);
+}
+
+.icon-color {
+  color: var(--bw-extra-light-gray);
+}
+::ng-deep .k-grid .k-detail-row .k-detail-cell {
+  padding: 0;
+}
+
+::ng-deep.arr-down::after {
+  outline: 0;
+  font-size: 16px;
+  font-family: "WebComponentsIcons";
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  speak: none;
+  text-transform: none;
+  text-decoration: none;
+  flex-shrink: 0;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: var(--bw-sec-clr-bse) !important;
+  content: "\e006" !important;
+}
+::ng-deep.k-grid-content {
+  min-height: auto !important;
+}
+
+::ng-deep .editEvalutions {
+.k-grid-content {
+  min-height: 0px !important;
+
+}
+}
+::ng-deep.k-i-sort-asc-sm::before {
+  content: "\e004" !important;
+}
+::ng-deep.k-i-sort-desc-sm::before {
+  content: "\e006" !important;
+}
+.evaluationQuestionChildren {
+  .k-grid {
+    padding: 0 25px;
+  }
+}
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 10px solid var(--bw-medium-gray-x);
+  border-left: 10px solid transparent;
+  position: absolute;
+  right: 10px;
+  top: -10px;
+  // background-color: #444;
+  &.success {
+    border-top: 10px solid var(--bw-scs-clr-bse);
+  }
+  &.warning {
+    border-top: 10px solid var(--bw-wrn-clr-bse);
+  }
+  &.archived {
+    border-top: 10px solid var(--bw-medium-gray-x);
+  }
+}
+::ng-deep .subfolder{
+&.mcl-1 {
+  line-height: 0;  margin-left: 16px !important;
+}
+&.mcl-2 {
+  margin-left: 32px !important;
+}
+&.mcl-3 {
+  margin-left: 48px !important;
+}
+&.mcl-4 {
+  margin-left: 64px !important;
+}
+&.mcl-5 {
+  margin-left: 80 !important;
+}
+&.mcl-6 {
+  margin-left: 96px !important;
+}
+&.mcl-7 {
+  margin-left: 112px !important;
+}
+&.mcl-8 {
+  margin-left: 128px !important;
+}
+&.mcl-9 {
+  margin-left: 144px !important;
+}
+&.mcl-10 {
+  margin-left: 160px !important;
+}
+}
+
+.fw-220{
+  width:220px !important;
+}

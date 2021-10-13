@@ -1,0 +1,8 @@
+<div [class]="className">
+  <img
+    [src]="src ? src : 'assets/images/no-image.png'"
+    [alt]="alt"
+    [title]="title"
+    (click)="onClickAvatar(title)"
+  />
+</div>

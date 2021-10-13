@@ -1,0 +1,76 @@
+.card {
+  background-color: var(--bw-clr-white);
+  .card-header {
+    border-bottom: 1px solid var(--bw-extra-light-gray-xx);
+    // border-top-left-radius: 6px;
+    // border-top-right-radius: 6px;
+    // border-top: 1px solid var(--bw-extra-light-gray-xx);
+    // border-right: 1px solid var(--bw-extra-light-gray-xx);
+    // border-left: 1px solid var(--bw-extra-light-gray-xx);
+    padding: 15px;
+    .card-title {
+      font-size: 16px;
+      color: var(--bw-prm-clr-bse);
+    }
+    .icon {
+      color: var(--bw-sec-clr-bse);
+    }
+  }
+  .card-header-recent {
+    border-bottom: 1px solid var(--bw-extra-light-gray-xx);
+    padding: 15px 15px 11px 15px;
+    .card-title {
+      font-size: 16px;
+      color: var(--bw-prm-clr-bse);
+    }
+    .icon {
+      color: var(--bw-sec-clr-bse);
+      padding-left: 8%;
+    }
+  }
+  .card-body {
+    // padding: 15px;
+    // border: 1px solid var(--bw-extra-light-gray-xx);
+    .recentUpdates {
+      position: relative;
+      p {
+        padding-left: 17px;
+      }
+      .flag {
+        color: var(--bw-burnt-orange-clr-drk);
+        position: absolute;
+        right: 30px;
+        top: 20px;
+      }
+    }
+  }
+  .card-footer {
+    padding: 15px;
+    // border-bottom: 1px solid var(--bw-extra-light-gray-xx);
+    // border-right: 1px solid var(--bw-extra-light-gray-xx);
+    // border-left: 1px solid var(--bw-extra-light-gray-xx);
+    // border-bottom-left-radius: 6px;
+    // border-bottom-right-radius: 6px;
+    color: var(--bw-sec-clr-bse);
+  }
+}
+.card-border {
+  border: 1px solid var(--bw-extra-light-gray-xx);
+}
+.forHeader {
+  border-top: 1px solid var(--bw-extra-light-gray-xx);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-right: 1px solid var(--bw-extra-light-gray-xx);
+  border-left: 1px solid var(--bw-extra-light-gray-xx);
+}
+.forFooter {
+  border-bottom: 1px solid var(--bw-extra-light-gray-xx);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-right: 1px solid var(--bw-extra-light-gray-xx);
+  border-left: 1px solid var(--bw-extra-light-gray-xx);
+}
+.card-border-radius {
+  border-radius: 6px;
+}

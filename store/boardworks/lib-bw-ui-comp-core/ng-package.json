@@ -1,0 +1,11 @@
+{
+  "$schema": "../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../dist/lib-bw-ui-comp-core",
+  "assets": [
+    "assets/"
+  ],
+  "lib": {
+    "entryFile": "src/public-api.ts"
+    
+  }
+}

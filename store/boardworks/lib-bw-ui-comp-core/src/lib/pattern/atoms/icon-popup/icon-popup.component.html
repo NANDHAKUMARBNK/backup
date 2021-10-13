@@ -1,0 +1,8 @@
+<div class="example-config">
+    <i #anchor (click)="onClickIcon()" [class]="iconClass"></i>
+</div>
+<kendo-popup [anchor]="$any(anchor)" (anchorViewportLeave)="showIcon = false" *ngIf="showIcon">
+    <div class="content">
+        <ng-content></ng-content>
+    </div>
+</kendo-popup>

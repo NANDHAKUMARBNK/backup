@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-3">
+    <bw-label [labelName]="labelName"></bw-label>
+  </div>
+  <div class="col-md-6">
+    <bw-select
+      [defaultItem]="defaultItem"
+      [control]="selectField"
+      [data]="data"
+      [isKey]="true"
+      [searchable]="false"
+      [selectName]="selectName"
+      [selectValue]="selectValue"
+      (selectChangeEvent)="changeHandler($event)"
+    >
+    </bw-select>
+  </div>
+  <div class="col-md-3">
+    <bw-button
+      [buttonName]="buttonName"
+      (onClick)="buttonClick($event)"
+      [className]="buttonClassName"
+    ></bw-button>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.login-bg {
+  height: auto;
+  background: url('./../../../../../app-bw/src/assets/images/BoardWorks_Login_bg.png') no-repeat center;
+  background-size: 100% 100%;
+}
+
+.login-panel {
+  float: none !important;
+  margin: 0 auto !important;
+  background-color: rgba(255, 255, 255, .7);
+  line-height: 2;
+}

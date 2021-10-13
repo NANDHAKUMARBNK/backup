@@ -1,0 +1,37 @@
+<kendo-dialog (close)="onAction('no')" [width]="1000">
+  <kendo-dialog-titlebar>
+    <bw-text
+      [className]="'primary-fre-clr-bse'"
+      [textName]="headerTitle"
+    ></bw-text>
+  </kendo-dialog-titlebar>
+  <div class="pl-2 mb-3 bodyContent">
+    <bw-grid
+      [isEnableSelectAll]="false"
+      [isShowCheckbox]="false"
+      [onCellClicked]="onCellClicked"
+      [columnOptions]="columnOptions"
+      [columnsData]="columnsData"
+      [gridData]="gridData"
+      [isEnableButton]="true"
+      [accesControlFlag]="true"
+      (followClick)="followClick($event)"
+      (flagImportantClick)="flagImportantClick($event)"
+    >
+    </bw-grid>
+  </div>
+  <kendo-dialog-actions>
+    <bw-button
+      className="btn-base secondary-btn-text  btn-sm "
+      buttonName="Cancel"
+      (onClick)="onAction('no')"
+    >
+    </bw-button>
+    <bw-button
+      className="btn-base btn-contained px-3 secondary-btn-contained btn-sm me-md-4 float-sm-end"
+      [buttonName]="'Save'"
+      (onClick)="onAction('yes')"
+    >
+    </bw-button>
+  </kendo-dialog-actions>
+</kendo-dialog>

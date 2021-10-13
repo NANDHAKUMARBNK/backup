@@ -1,0 +1,90 @@
+<div class="border p-3">
+    <div class=" col-md-12 text-end">
+        <bw-button className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+            buttonName="Cancel" (onClick)="clickButton('cancel')">
+        </bw-button>
+        <bw-button className="btn-base secondary-btn-text border-secondary bw-font-prm-medium btn-sm me-md-4 px-4"
+            buttonName="Save" (onClick)="clickButton('save')">
+        </bw-button>
+        <bw-button className="btn-base btn-containe bw-font-prm-medium secondary-btn-contained btn-sm me-md-4 px-4"
+            buttonName="Add Attendees" (onClick)="clickButton('add')">
+        </bw-button>
+    </div>
+
+    <div class="form-group addWorkspace mt-4">
+        <form [formGroup]="eventInfoForm" class="row">
+            <div class="col-8">
+                <bw-select [labelClass]="'bw-font-sec-bold '" [control]="eventInfoForm?.get('committeeId')"
+                    [data]="committeeData" [isKey]="true" [label]="'Select Committee'" [inRow]="true"
+                    [inRowInputRows]="7" [inRowLabelRows]="3" [searchable]="false" [selectName]="'name'"
+                    [selectValue]="'committeeId'">
+                </bw-select>
+
+                <bw-input [label]="'Title'" [labelClass]="'bw-font-sec-bold'" [control]="eventInfoForm?.get('eventTitle')"
+                    [placeholder]="'Enter Title'" [classNameControl]="'bw-font-sec-medium'" [inRow]="true"
+                    [inRowLabelRows]="3" [inRowInputRows]="7">
+                </bw-input>
+
+                <bw-input [label]="'Location'" [labelClass]="'bw-font-sec-bold'"
+                    [control]="eventInfoForm?.get('location')" [placeholder]="'Enter Location'"
+                    [classNameControl]="'bw-font-sec-medium'" [inRow]="true" [inRowLabelRows]="3" [inRowInputRows]="7">
+                </bw-input>
+
+                <bw-input [label]="'Map Url'" [labelClass]="'bw-font-sec-bold'" [control]="eventInfoForm?.get('mapUrl')"
+                    [placeholder]="'Enter Map Url'" [classNameControl]="'bw-font-sec-medium'" [inRow]="true"
+                    [inRowLabelRows]="3" [inRowInputRows]="7">
+                </bw-input>
+
+                <div class="row">
+                    <div class="col-9">
+                        <bw-date [minDate]="minDate" [maxDate]="maxDate" [timePicker]="timePicker" [label]="'Start'" [labelClass]="'bw-font-sec-bold'"
+                            [control]="eventInfoForm?.get('startDate')" [classNameControl]="'bw-font-sec-medium'"
+                            [inRow]="true" [inRowLabelRows]="4" [inRowInputRows]="6" [timeValue]="startDateTime"
+                            [timeControl]="eventInfoForm?.get('startTime')" [calendarType]="'classic'"
+                            [placeholder]="'DD/MM/YYYY'">
+                        </bw-date>
+                    </div>
+                    <div class="col-3">
+                        <bw-checkbox [checkBoxses]="allDayCheckBox" [inRow]="true" [inRowInputRows]="12"
+                            [classCheckboxLabel]="'row m-0 align-items-center'" [control]="eventInfoForm?.get('allDayEvent')"
+                            [classNameControl]="'bw-font-sec-medium p-0'"
+                            [checkBoxTextClass]="'col-xl-9 col-lg-9 col-md-8 ml-8'" [spanrowClass]="'row col-3'"
+                            (getselectedArray)="changeCheckbox($event, 'allDay')">
+                        </bw-checkbox>
+                    </div>
+                </div>
+
+                <bw-date [minDate]="minDate" [maxDate]="maxDate" [timePicker]="timePicker" [label]="'End'" [timeValue]="endDateTime"
+                    [timeControl]="eventInfoForm?.get('endTime')" [labelClass]="'bw-font-sec-bold'"
+                    [control]="eventInfoForm?.get('endDate')" [classNameControl]="'bw-font-sec-medium'" [inRow]="true"
+                    [inRowLabelRows]="3" [inRowInputRows]="7" [calendarType]="'classic'" [placeholder]="'DD/MM/YYYY'">
+                </bw-date>
+
+                <bw-select [labelClass]="'bw-font-sec-bold '" [defaultItem]="timeZonePlaceholder" [label]="'TimeZone'"
+                    [inRow]="true" [control]="eventInfoForm?.get('timeZone')" [data]="timezones" [inRowLabelRows]="3"
+                    [isKey]="true" [inRowInputRows]="7" [searchable]="false" [selectName]="'displayName'"
+                    [selectValue]="'id'">
+                </bw-select>
+
+                <bw-textarea [label]="'Description'" [control]="eventInfoForm?.get('description')" [inRow]="true"
+                    [inRowLabelRows]="3" [inRowInputRows]="7" [rows]="3" [placeholder]="'Enter Description'"
+                    (focusout)="seterror('description')" [className]="'bw-font-sec-medium'">
+                </bw-textarea>
+            </div>
+            <div class="col-3 m-3">
+                <bw-checkbox [checkBoxses]="allUserCheckBox" [inRow]="true" [inRowInputRows]="12"
+                    [classCheckboxLabel]="'row m-0 align-items-center'" [control]="eventInfoForm?.get('allUsers')"
+                    [classNameControl]="'bw-font-sec-medium p-0'"
+                    [checkBoxTextClass]="'col-xl-9 col-lg-9 col-md-8 ml-8'" [spanrowClass]="'row col-3'"
+                    (getselectedArray)="changeCheckbox($event, 'allUsers')">
+                </bw-checkbox>
+            </div>
+        </form>
+
+        <p *ngIf="isError" class="text-danger mb-1">
+            <ng-container *ngFor="let msg of errMessage">
+                {{ msg }}
+            </ng-container>
+        </p>
+
+    </div>

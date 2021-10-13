@@ -1,0 +1,21 @@
+<p *ngIf="isError" class="text-danger mb-1">
+    <ng-container *ngFor="let msg of errMessage">
+        {{ msg }}
+    </ng-container>
+</p>
+<div class="col-md-8 col-lg-8 col-sm-8">
+    <bw-grid [isEnableSelectAll]="false" [isShowCheckbox]="false" [onCellClicked]="onCellClicked"
+        [columnOptions]="columnOptions" [columnsData]="columnsData" [gridData]="gridData" [actions]="actions"
+        (onClickLink)="onClickLink($event)" (onClickAction)="onClickAction($event)" [isEnablePagination]="true"
+        [sortingField]="'recipientName'">
+    </bw-grid>
+</div>
+<div *ngIf="canDeleteSummary">
+    <bw-confirm-modal [width]="700" [headerTitle]="'Delete Confirmation'" [isEnableHeader]="true" [isDeleteBody]="true"
+        [isEnableFooter]="true" [isCustomBody]="true"
+        [customMessage]="'Are you sure you want to delete this Survey Response?'"
+        (onConfirmClick)="linksModalAction($event)" (onCancelClick)="linksModalAction($event)"
+        [bodyMessage]="
+        'Deleting this survey response will remove all the responses that has been associated with it from BoardWorks and any linked devices.'">
+    </bw-confirm-modal>
+</div>

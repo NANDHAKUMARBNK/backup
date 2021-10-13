@@ -1,0 +1,17 @@
+// kendo-tabstrip p {
+//   margin: 0;
+//   padding: 8px;
+// }
+
+::ng-deep{
+    .links {
+        .k-tabstrip > .k-content{
+            background: none;
+        }
+    }
+}
+
+
+::ng-deep.k-tabstrip-content, .k-tabstrip > .k-content {
+    overflow: unset!important;
+}

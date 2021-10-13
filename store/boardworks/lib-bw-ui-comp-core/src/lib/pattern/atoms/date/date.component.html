@@ -1,0 +1,90 @@
+<div class="form-group {{ class }}" *ngIf="!inRow">
+  <label *ngIf="label" for="" class="">
+    <bw-label [labelName]="label" [className]="labelClass"></bw-label>
+    <span class="text-danger" *ngIf="validator(control) && isStar">*</span>
+  </label>
+  <ng-container>
+    <div class="form-group m-input-group {{ prefix ? 'prefix' : '' }} {{ classNameControl }}">
+      <div class="input-group-prepend" [style.height]="height" *ngIf="prefix">
+        <em class="{{ prefix }}">{{ prefix }}</em>
+      </div>
+      <kendo-datepicker
+        [calendarType]="calendarType"
+        [formControl]="control"
+        [value]="dateValue"
+        [min]="minDate"
+        [max]="maxDate"
+        (change)="inputChange(control.value)"
+        (focusout)="inputOut(control.value)"
+      ></kendo-datepicker>
+    </div>
+    <small
+      id="textHelp"
+      class="form-text text-muted bb-font-info"
+      *ngIf="helpText"
+      >{{ helpText }}</small
+    >
+  </ng-container>
+  <bw-control-error-message
+    [control]="control"
+    [customErrorMinLength]="customErrorMinLength"
+    [customErrorReq]="customErrorReq"
+    [customErrorPattern]="customErrorPattern"
+    [customErrormax]="customErrormax"
+    [customErrormin]="customErrormin"
+    [fieldName]="errorMessageName ? errorMessageName : label || optionalLabel"
+  >
+  </bw-control-error-message>
+</div>
+
+<div class="form-group row {{ class }}" *ngIf="inRow">
+  <label
+    *ngIf="label"
+    for=""
+    class="col-xl-{{ inRowLabelRows }} col-lg-{{ inRowLabelRows }}"
+  >
+    <bw-label [labelName]="label" [className]="labelClass"></bw-label>
+    <span class="text-danger" *ngIf="validator(control) && isStar">*</span>
+  </label>
+  <div class="col-xl-{{ inRowInputRows }} col-lg-{{ inRowInputRows }}">
+    <div class="input-group m-input-group {{ prefix ? 'prefix' : '' }} {{ classNameControl }}">
+      <div class="input-group-prepend" [style.height]="height" *ngIf="prefix">
+        <span class="input-group-text textColor">{{ prefix }}</span>
+      </div>
+      <kendo-datepicker
+        [format]="format"
+        [placeholder]="placeholder"
+        [calendarType]="calendarType"
+        [formControl]="control"
+        [value]="dateValue"
+        [min]="minDate"
+        [max]="maxDate"
+        (change)="inputChange(control.value)"
+        (focusout)="inputOut(control.value)"
+      ></kendo-datepicker>
+
+      <kendo-timepicker
+        [formControl]="timeControl"
+        *ngIf="timePicker"
+        [value]="timeValue"
+      >
+      </kendo-timepicker>
+    </div>
+    <small
+      id="textHelp"
+      class="form-text text-muted bb-font-info"
+      *ngIf="helpText"
+      >{{ helpText }}</small
+    >
+    <bw-control-error-message
+      [control]="control"
+      [customErrorMinLength]="customErrorMinLength"
+      [customErrorReq]="customErrorReq"
+      [customErrorPattern]="customErrorPattern"
+      [customErrormax]="customErrormax"
+      [customErrormin]="customErrormin"
+      [fieldName]="errorMessageName ? errorMessageName : label || optionalLabel"
+    >
+    </bw-control-error-message>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+.dropdown {
+  margin: 0;
+  padding: 0;
+  .dropdown-menu {
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--bw-extra-light-gray-xx);
+    border-radius: 3px;
+    min-width: 10rem;
+    position: absolute;
+    box-shadow: rgb(100 100 111 / 13%) 0px 7px 15px 0px;
+    background: var(--bw-clr-white);
+    z-index: 9;
+    a {
+      padding: 6px 10px;
+      color: var(--bw-extra-dark-gray);
+      font-size: 15px;
+      text-decoration: none;
+      display: block;
+      &:hover {
+        text-decoration: none;
+        background-color: rgba(247, 247, 247, 1) !important;
+      }
+    }
+  }
+}

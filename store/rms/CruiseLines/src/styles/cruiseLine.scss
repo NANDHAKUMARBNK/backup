@@ -1,0 +1,14 @@
+
+::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+	background: #929B3D;
+}
+
+::ng-deep.customMatFormFieldFlex {
+	.mat-form-field-flex{
+		height: 46px;
+	}
+	.mat-form-field-infix{
+		margin-top:-7px
+	}
+
+}

@@ -1,0 +1,23 @@
+<div class="form-group col-md-9 col-lg-9 p-3">
+    <div class="row">
+        <div class="col-3">
+            <bw-input [label]="'Search Boardworks for'" [labelClass]="'bw-font-sec-bold'"
+                [control]="searchForm.get('name')" [placeholder]="'Board of Directors'" (focusout)="seterror('name')"
+                [classNameControl]="'bw-font-prm-medium fs-6'" [inRow]="false" [inRowLabelRows]="3"
+                [inRowInputRows]="7">
+            </bw-input>
+        </div>
+        <div class="col-3">
+            <bw-select [labelClass]="'bw-font-sec-bold fs-6'" [control]="searchForm.get('area')" [data]="areas"
+                [isKey]="true" [label]="'Area'" [inRow]="false" [inRowLabelRows]="3" [searchable]="false"
+                [selectName]="'displayName'" [selectValue]="'id'" (selectChangeEvent)="onChange($event)">
+            </bw-select>
+        </div>
+        <div class="col-3">
+            <bw-button
+                className="btn-base bw-font-prm-regular btn-contained secondary-btn-contained btn-md me-md-4 px-4 m-3"
+                buttonName="Search" (onClick)="search($event)">
+            </bw-button>
+        </div>
+    </div>
+</div>

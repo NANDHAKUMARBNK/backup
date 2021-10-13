@@ -1,0 +1,34 @@
+<div class="col-md-12">
+    <bw-bread-crumb [defaultItems]="defaultNavs" (onClick)="navigateInto($event)"></bw-bread-crumb>
+</div>
+<div class="m-4">
+    <div class="row align-items-center">
+        <div class="col-3">
+            <bw-text [className]="'bw-font-sec-bold primary-fre-clr-bse f-17'" [textName]="title"></bw-text>
+        </div>
+        <div class="col-9 text-end pr-0">
+            <bw-button className="btn-base secondary-btn-text border-secondary bw-font-prm-regular btn-sm me-md-4 px-4"
+                buttonName="Export Summary" (onClick)="export($event, 'summary')">
+            </bw-button>
+
+            <bw-button
+                className="btn-base px-4 bw-font-prm-regular btn-contained secondary-btn-contained btn-sm  me-md-4"
+                [buttonName]="'Export Responses'" (onClick)="export($event, 'responses')">
+            </bw-button>
+        </div>
+    </div>
+</div>
+<div class="row m-2">
+    <div class="form-group col-8 p-3">
+        <div class="m-1">
+            <div class="row">
+                <div class="col-md-12">
+                    <div *ngFor="let data of evaluationData; let i = index">
+                        <bw-label [className]="'bw-font-sec-bold'" [labelName]="data.question"></bw-label>
+                        <li class="m-2">{{ data.answer }}</li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

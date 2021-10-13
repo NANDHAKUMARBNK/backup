@@ -1,0 +1,33 @@
+.icon-lg {
+  color: var(--bw-extra-light-gray);
+  font-size: 1.7em;
+}
+
+.icon-sm {
+  color: var(--bw-sec-clr-bse);
+}
+.icon-md {
+  color: var(--bw-extra-light-gray);
+  font-size: 1.5em;
+}
+
+.icon-lgt {
+  color: var(--bw-extra-light-gray);
+  font-size: 2em;
+}
+
+.icon-lg-size {
+  font-size: 2em;
+}
+.icon-md-size {
+  font-size: 1.5em;
+}
+.icon-clr-eggplant {
+  color: var(--bw-fresh-eggplant-clr-bse);
+}
+
+::ng-deep.viewProfile{
+  .form-group{
+    margin-bottom: 0px!important;
+  }
+}

@@ -1,0 +1,24 @@
+<p
+  *ngIf="!isText && !isEllipse"
+  [class]="className"
+  (click)="isEnableClick && onClickText($event)"
+  [ngStyle]="{
+    cursor: isEnableClick ? 'pointer' : ''
+  }"
+>
+  {{ textName }}
+</p>
+<p *ngIf="isText" [class]="className">
+  <ng-content></ng-content>
+</p>
+<p
+  *ngIf="!isText && isEllipse"
+  [class]="className"
+  (click)="isEnableClick && onClickTextEllipse($event)"
+  [ngStyle]="{
+    cursor: isEnableClick ? 'pointer' : ''
+  }"
+>
+  {{ ellipse }}
+</p>
+<div kendoDialogContainer></div>

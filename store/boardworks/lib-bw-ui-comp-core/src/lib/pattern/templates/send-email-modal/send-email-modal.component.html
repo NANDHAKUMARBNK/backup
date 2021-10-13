@@ -1,0 +1,78 @@
+<kendo-dialog (close)="onCancelAction()" [width]="900" [height]="600">
+  <kendo-dialog-titlebar *ngIf="isEnableHeader">
+    <bw-text
+      [className]="'primary-fre-clr-bse bw-font-sec-bold'"
+      [textName]="headerTitle"
+    ></bw-text>
+  </kendo-dialog-titlebar>
+  <div class="m-2 bodyContent" *ngIf="isEnableBody">
+    <div class="row width-100 m-auto">
+      <div class="col-md-12">
+        <bw-input
+          [label]="'Email Subject'"
+          [labelClass]="'bw-font-prm-medium fs-6 bw-font-sec-bold'"
+          [control]="emailForm.get('subject')"
+          (focusout)="seterror('Email Subject')"
+          [classNameControl]="'bw-font-sec-medium'"
+          [inRow]="true"
+          [inRowLabelRows]="4"
+          [inRowInputRows]="8"
+          [labelPositionClass]="'text-start'"
+        >
+        </bw-input>
+        <bw-textarea
+          [label]="'Email Body'"
+          [labelClass]="'bw-font-prm-medium fs-6 bw-font-sec-bold'"
+          [control]="emailForm.get('body')"
+          (focusout)="seterror('Email Body')"
+          [inRow]="true"
+          [inRowLabelRows]="4"
+          [inRowInputRows]="8"
+          [rows]="12"
+          [labelPositionClass]="'text-start'"
+          [classNameControl]="'bw-font-sec-medium'"
+          [className]="'bw-font-sec-medium fs-6'"
+        >
+        </bw-textarea>
+        <bw-horizontal-label
+          [labelClassName]="'bw-font-prm-medium fs-6 bw-font-sec-bold'"
+          [labelName]="'Recepients'"
+          [textClassName]="'bw-font-sec-medium text-start'"
+          [textName]="recepients"
+          [isHorizontal]="true"
+          [isVertical]="false"
+          [colClass]="4"
+          [textClass]="8"
+          [labelPositionClass]="'text-start'"
+        >
+        </bw-horizontal-label>
+        <p *ngIf="isError" class="text-danger mb-1">
+          <ng-container *ngFor="let msg of errMessage">
+            {{ msg }}
+          </ng-container>
+        </p>
+        <div *ngIf="showLoader">
+          <bw-basic-loader
+            [type]="'pulsing'"
+            [color]="'primary'"
+            [size]="'large'"
+          ></bw-basic-loader>
+        </div>
+      </div>
+    </div>
+  </div>
+  <kendo-dialog-actions *ngIf="isEnableFooter">
+    <div>
+      <bw-button
+      className="btn-base secondary-btn-text float-sm-start btn-sm"
+      buttonName="CANCEL"
+      (onClick)="onCancelAction()">
+      </bw-button>
+      <bw-button
+        className="btn-base btn-contained px-3 secondary-btn-contained btn-sm me-md-4 float-sm-end"
+        buttonName="SEND"
+        (onClick)="send($event)">
+      </bw-button>
+    </div>
+  </kendo-dialog-actions>
+</kendo-dialog>

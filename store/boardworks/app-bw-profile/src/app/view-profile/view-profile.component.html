@@ -1,0 +1,129 @@
+<form class="mt-3">
+  <div>
+    <span (click)="backNavigation()"><a class="cursor-pointer"> Profile</a> > </span>
+    <span>{{ProfileDataForm.value.name}}</span>
+
+  </div>
+  <div class="row  align-items-center  mt-4">
+    <div class="col-4">
+      <bw-label [width]="'10%'" [className]="'primary-fre-clr-bse bw-font-prm-medium'"
+        [labelName]="ProfileDataForm.value.name">
+      </bw-label>
+    </div>
+    <div class="col-6 viewProfile" *ngIf="editProfileIcon">
+      <bw-icon-text [width]="'30%'" [isLink]="true" [colClass]="'2'" (onIconClick)="onclick($event)"
+        (onClickLink)="onclick($event)" [iconClassName]="'square-edit-outline icon-sm cursor-pointer'"
+        [className]="'bw-font-prm-medium edit cursor-pointer'" [linkTextName]="'EDIT'">
+      </bw-icon-text>
+    </div>
+  </div>
+  <div class="row m-0 mt-4">
+    <div class="col-7 border ">
+      <bw-avatar [className]="'profile-picture lg'" [src]="image" [alt]="'profile'" [title]="'Profile Pic'"></bw-avatar>
+      <div class="m-3">
+        <bw-horizontal-label *ngIf="ProfileDataForm.value.status" [labelClassName]="'bw-font-prm-medium fs-6'"
+          [labelName]="'Status'" [textClassName]="'bw-font-sec-medium'" [textName]="ProfileDataForm.value.status"
+          [isHorizontal]="true" [isVertical]="false" [colClass]="4" [textClass]="8">
+        </bw-horizontal-label>
+        <bw-horizontal-label *ngIf="ProfileDataForm.value.bio" [labelClassName]="'bw-font-prm-medium fs-6'"
+          [labelName]="'Bio'" [textClassName]="'bw-font-sec-medium'" [textName]="ProfileDataForm.value.bio"
+          [isHorizontal]="true" [isVertical]="false" [colClass]="4" [textClass]="8">
+        </bw-horizontal-label>
+        <bw-horizontal-label *ngIf="ProfileDataForm.value.companyTitle" [labelClassName]="'bw-font-prm-medium fs-6'"
+          [labelName]="'Title'" [textClassName]="'bw-font-sec-medium'" [textName]="ProfileDataForm.value.companyTitle"
+          [isHorizontal]="true" [isVertical]="false" [colClass]="4" [textClass]="8">
+        </bw-horizontal-label>
+        <bw-horizontal-label *ngIf="ProfileDataForm.value.company" [labelClassName]="'bw-font-prm-medium fs-6'"
+          [labelName]="'Company'" [textClassName]="'bw-font-sec-medium'" [textName]="ProfileDataForm.value.company"
+          [isHorizontal]="true" [isVertical]="false" [colClass]="4" [textClass]="8">
+        </bw-horizontal-label>
+        <div class="mt-2">
+
+          <bw-icon-text *ngIf="ProfileDataForm.value.email" (onClickLink)="mailLink($event)" [isLink]="true"
+            [colClass]="4" [textClass]="8" [iconClassName]="'email-open-outline icon-md'"
+            [className]="'bw-font-sec-medium'" [linkTextName]="ProfileDataForm.value.email">
+          </bw-icon-text>
+        </div>
+        <div class="mt-2">
+
+          <bw-icon-text *ngIf="ProfileDataForm.value.mobilePhone" [iconClassName]="'cellphone icon-md'"
+            [className]="'bw-font-sec-medium'" [textName]="ProfileDataForm.value.mobilePhone" [colClass]="4"
+            [textClass]="8">
+          </bw-icon-text>
+        </div>
+        <div class="mt-2">
+          <bw-icon-text *ngIf="ProfileDataForm.value.workPhone" [iconClassName]="'phone icon-md'"
+            [className]="'bw-font-sec-medium'" [textName]="ProfileDataForm.value.workPhone" [colClass]="4"
+            [textClass]="8">
+          </bw-icon-text>
+        </div>
+        <div class="mt-3">
+          <bw-horizontal-label *ngIf="ProfileDataForm.value.country" [labelClassName]="'bw-font-prm-medium fs-6 '"
+            [labelName]="'Home Country'" [textClassName]="'bw-font-sec-medium'"
+            [textName]="ProfileDataForm.value.country" [isHorizontal]="true" [isVertical]="false" [colClass]="4"
+            [textClass]="8">
+          </bw-horizontal-label>
+        </div>
+        <bw-horizontal-label *ngIf="ProfileDataForm.value.timeZone" [labelClassName]="'bw-font-prm-medium fs-6'"
+          [labelName]="'Timezone'" [textClassName]="'bw-font-sec-medium'" [textName]="ProfileDataForm.value.timeZone"
+          [isHorizontal]="true" [isVertical]="false" [colClass]="4" [textClass]="8">
+        </bw-horizontal-label>
+
+
+        <bw-horizontal-label *ngIf="ProfileDataForm.value.username" [labelClassName]="'bw-font-prm-medium fs-6'"
+          [labelName]="'Username'" [textClassName]="'bw-font-sec-medium'" [textName]="ProfileDataForm.value.username"
+          [isHorizontal]="true" [isVertical]="false" [colClass]="4" [textClass]="8">
+        </bw-horizontal-label>
+
+        <bw-horizontal-label *ngIf="ProfileDataForm.value.assistantName" [labelClassName]="'bw-font-prm-medium fs-6'"
+          [labelName]="'Assistant Name'" [textClassName]="'bw-font-sec-medium'"
+          [textName]="ProfileDataForm.value.assistantName" [isHorizontal]="true" [isVertical]="false" [colClass]="4"
+          [textClass]="8">
+        </bw-horizontal-label>
+        <bw-horizontal-label *ngIf="ProfileDataForm.value.assistantPhone" [labelClassName]="'bw-font-prm-medium fs-6'"
+          [labelName]="'Assistant Phone'" [textClassName]="'bw-font-sec-medium'"
+          [textName]="ProfileDataForm.value.assistantPhone" [isHorizontal]="true" [isVertical]="false" [colClass]="4"
+          [textClass]="8">
+        </bw-horizontal-label>
+        <bw-horizontal-label *ngIf="ProfileDataForm.value.assistantEmail" [labelClassName]="'bw-font-prm-medium fs-6'"
+          [labelName]="'Assistant Email'" [textClassName]="'bw-font-sec-medium'"
+          [textName]="ProfileDataForm.value.assistantEmail" [isHorizontal]="true" [isVertical]="false" [colClass]="4"
+          [textClass]="8">
+        </bw-horizontal-label>
+
+        <bw-horizontal-label *ngIf="ProfileDataForm.value.otherInfo" [labelClassName]="'bw-font-prm-medium fs-6'"
+          [labelName]="'Other Information'" [textClassName]="'bw-font-sec-medium'"
+          [textName]="ProfileDataForm.value.otherInfo" [isHorizontal]="true" [isVertical]="false" [colClass]="4"
+          [textClass]="8">
+        </bw-horizontal-label>
+        <bw-horizontal-label *ngIf="ProfileDataForm.value.description" [labelClassName]="'bw-font-prm-medium fs-6'"
+          [labelName]="'Description'" [textClassName]="'bw-font-sec-medium'"
+          [textName]="ProfileDataForm.value.description" [isHorizontal]="true" [isVertical]="false" [colClass]="4"
+          [textClass]="8">
+        </bw-horizontal-label>
+        <bw-horizontal-label *ngIf="ProfileDataForm.value.linkedin" [labelClassName]="'bw-font-prm-medium fs-6'"
+          [labelName]="'LinkedIn'" [textClassName]="'bw-font-sec-medium'" [textName]="ProfileDataForm.value.linkedin"
+          [isHorizontal]="true" [isVertical]="false" [colClass]="4" [textClass]="8">
+        </bw-horizontal-label>
+        <bw-horizontal-label *ngIf="ProfileDataForm.value.twitter" [labelClassName]="'bw-font-prm-medium fs-6'"
+          [labelName]="'Twitter'" [textClassName]="'bw-font-sec-medium'" [textName]="ProfileDataForm.value.twitter"
+          [isHorizontal]="true" [isVertical]="false" [colClass]="4" [textClass]="8">
+        </bw-horizontal-label>
+
+
+      </div>
+    </div>
+    <div class="col-4 ">
+
+      <bw-card (onClickCard)="onClickCard($event)" [cardBodyClassName]="'--bw-sec-clr-bse mt-3 cursor-pointer'"
+        [cards]="cardData">
+
+      </bw-card>
+
+      <!-- <bw-grid [isEnableSelectAll]="isEnableSelectAll" [isShowCheckbox]="isShowCheckbox" [onCellClicked]="onCellClicked"
+        [columnOptions]="columnOptions" [columnsData]="columnsData" [gridData]="gridData"
+        [isCommitteeGrid]="isCommitteeGrid">
+      </bw-grid> -->
+    </div>
+  </div>
+</form>

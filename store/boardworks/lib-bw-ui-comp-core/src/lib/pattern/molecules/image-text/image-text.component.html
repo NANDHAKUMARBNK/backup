@@ -1,0 +1,17 @@
+<div class="row align-items-center">
+
+  <div class="col-md-1">
+    <bw-avatar
+    [className]="classNameImg"
+    [src]="src"
+    [alt]="alt"
+    [title]="title"
+    (clickAvatar)="click($event)"
+  ></bw-avatar>
+  </div>
+  <div class="col-md-11">
+    <bw-text   [textName]="textName" [className]="classNameText"></bw-text>
+
+  </div>
+</div>
+

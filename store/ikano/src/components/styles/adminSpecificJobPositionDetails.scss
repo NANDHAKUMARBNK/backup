@@ -1,0 +1,18 @@
+@import "./adminAgGrid.scss";
+.adminJobPosition {
+  p {
+    color: #4a4946;
+    font-family: "Ikano Sans";
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 30px;
+  }
+}
+.adminJobPosition__pagination {
+  color: #4a4946;
+  font-family: "Ikano Sans";
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+}

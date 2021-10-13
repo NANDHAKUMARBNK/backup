@@ -1,0 +1,62 @@
+<form [formGroup]="resetUsername" class="width-30 m-auto">
+  <bw-avatar
+    [className]="'logo lg center mt-5'"
+    [src]="'../assets/images/logo-new.png'"
+    [alt]="'logo'"
+    [title]="'logo'"
+  >
+  </bw-avatar>
+  <p class="primary-fre-clr-bse bw-font-sec-bold text-center">
+    Forgotten Username
+  </p>
+  <bw-input
+    [isStar]="false"
+    [label]="'Email Address'"
+    [control]="resetUsername.get('email')"
+    [placeholder]="''"
+    [classNameControl]="'bw-font-sec-medium'"
+  >
+  </bw-input>
+  <bw-input
+    [isStar]="false"
+    [label]="'Last Name'"
+    [control]="resetUsername.get('lastName')"
+    [placeholder]="''"
+    [classNameControl]="'bw-font-sec-medium'"
+  >
+  </bw-input>
+  <bw-captcha
+    [id]="'resetUsername'"
+    [control]="resetUsername.get('captcha')"
+    [customErrorReq]="'Captcha is required'"
+  ></bw-captcha>
+
+  <p *ngIf="successUsername">
+    Your email and last name match! An email has been sent to you with your
+    username.
+  </p>
+  <p *ngIf="isError" class="text-danger mb-1">
+    <ng-container *ngFor="let msg of errMessage">
+      {{ msg }}
+    </ng-container>
+  </p>
+  <bw-button
+    className="btn-base btn-contained secondary-btn-contained btn-lg bw-font-sec-bold width-100"
+    buttonName="Request Username"
+    (onClick)="resetUsernameFunc()"
+  >
+  </bw-button>
+  <p
+    class="
+      secondary-fre-clr-bse
+      text-center
+      cursor-pointer
+      mt-4
+      focus-outline-none
+    "
+    routerLink="/login"
+  >
+    Return Home
+  </p>
+  <bw-footer></bw-footer>
+</form>

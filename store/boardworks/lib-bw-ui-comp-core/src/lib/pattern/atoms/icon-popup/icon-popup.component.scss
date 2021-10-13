@@ -1,0 +1,21 @@
+.content {
+  padding: 10px 20px;
+  color: #787878;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+a {
+  cursor: pointer;
+}
+.icon {
+  color: var(--bw-sec-clr-bse);
+}
+.icon-lg {
+  font-size: 1.7em;
+}
+
+.icon-md {
+  font-size: 1.5em;
+}
+.icon-fade {
+  color: var(--bw-extra-light-gray);
+}

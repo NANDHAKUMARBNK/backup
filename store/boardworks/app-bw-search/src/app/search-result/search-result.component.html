@@ -1,0 +1,37 @@
+<div class="form-group col-md-9 col-lg-9 p-3">
+    <div class="row">
+        <div class="col-7">
+            <bw-input [label]="'Search Boardworks for'" [labelClass]="'bw-font-sec-bold m-3'"
+                [control]="searchForm.get('name')" [placeholder]="'Board of Directors'" (focusout)="seterror('name')"
+                [classNameControl]="'bw-font-prm-medium fs-6'" [inRow]="true" [inRowLabelRows]="4" [inRowInputRows]="7">
+            </bw-input>
+        </div>
+
+        <div class="col-3">
+            <bw-button
+                className="btn-base bw-font-prm-regular btn-contained secondary-btn-contained btn-md me-md-4 px-4"
+                buttonName="Search" (onClick)="search($event)">
+            </bw-button>
+        </div>
+    </div>
+    <div class="row profiledropdown ms-2 mt-3">
+        <div class="col-3">
+            <bw-date [labelClass]="'bw-font-sec-bold'" [control]="searchForm.get('startDate')"
+                [classNameControl]="'bw-font-sec-medium'" [inRow]="true" [inRowLabelRows]="3" [inRowInputRows]="7"
+                [calendarType]="'classic'" [placeholder]="'Select Start Date'">
+            </bw-date>
+        </div>
+        <div class="col-3 ">
+            <bw-date [labelClass]="'bw-font-sec-bold'" [control]="searchForm?.get('endDate')"
+                [classNameControl]="'bw-font-sec-medium'" [inRow]="true" [inRowLabelRows]="3" [inRowInputRows]="7"
+                [calendarType]="'classic'" [placeholder]="'Select End Date'">
+            </bw-date>
+        </div>
+    </div>
+    <div class="m-3">
+        <bw-grid [isEnableSelectAll]="isEnableSelectAll" [isShowCheckbox]="isShowCheckbox"
+            [onCellClicked]="onCellClicked" [columnOptions]="columnOptions" [columnsData]="columnsData"
+            [gridData]="gridData" (onClickLink)="onClickLink($event)" [isEnablePagination]="true" [pageSize]="10">
+        </bw-grid>
+    </div>
+</div>

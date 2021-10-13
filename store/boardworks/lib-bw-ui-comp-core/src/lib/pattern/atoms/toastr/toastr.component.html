@@ -1,0 +1,38 @@
+<!-- <div class="bw-toastr">
+    <ng-template #template>{{ message || type.toUpperCase() }}</ng-template>
+    <button *ngIf="showToastrOnClick" class="k-button" [value]="type" (click)="showToastr(type)" [style]="position">{{ buttonText }}</button>
+</div> -->
+
+<div class="col-xl-{{ rowClass }} col-lg-{{ rowClass }} col-md-{{ rowClass }}" [style.width]="width">
+  <div class="k-notification-info">
+    <div class="row">
+      <div class="{{ alert }} row align-items-center">
+        <i
+          aria-hidden="true"
+          *ngIf="isIcon"
+          class="mdi mdi-information icon col-lg-{{ iconColClass }} col-md-{{
+            iconColClass
+          }}"
+        ></i>
+        <span
+          *ngIf="!isLinkText && !isListOrder"
+          class="col-lg-{{ textColClass }} col-md-{{ textColClass }}"
+        >
+          {{ message }}</span
+        >
+        <span
+          *ngIf="isLinkText && !isListOrder"
+          class="col-lg-{{ textColClass }} col-md-{{ textColClass }}"
+        >
+          <ng-content></ng-content>
+        </span>
+        <ul
+          *ngIf="isListOrder"
+          class="col-lg-{{ textColClass }} col-md-{{ textColClass }}"
+        >
+          <li class="text-wrap" *ngFor="let list of lists">{{ list }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

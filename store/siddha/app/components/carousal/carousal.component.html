@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="row banner videoIframe">
+
+    <div class="col-md-8 col-sm-12 videoLeft">
+      <div  *ngIf="iframeLoaderOfficial" class="loader-backdrop">
+        <img src="../../../assets/images/loader.gif" alt="loader.gif">
+      </div>
+      <div class="refreshContainer" *ngIf="refreshApi">
+        <button class="btn btn-primary" (click)="getCatagoryVideos()">Refresh</button>
+      </div>
+      <iframe style="position: relative; top: 0; left: 0;"  id="officalFrame" width="100%" height="100%"
+        frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen (load)="iframeloadedOfficial()"></iframe>
+    </div>
+
+    <div class="col-md-4 col-sm-12">
+      <div class="row videoHight">
+        <div class="col-md-12 col-sm-12 borderColor">
+          <div *ngIf="iframeLoaderCelebrity" class="loader-backdropleft">
+            <img src="../../../assets/images/loader.gif" alt="loader.gif">
+          </div>
+          <div class="refreshContainer" *ngIf="refreshApi">
+            <button class="btn btn-primary" (click)="getCatagoryVideos()">Refresh</button>
+          </div>
+          <iframe style="position: absolute; top: 0; left: 0;" id="celebrityFrame" width="100%" height="100%"
+            frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen (load)="iframeloadedCelebrity()"></iframe>
+        </div>
+      </div>
+
+      <div class="row videoHight">
+        <div class="col-md-12 col-sm-12" >
+          <div *ngIf="iframeLoaderPublic" class="loader-backdropleft">
+            <img src="../../../assets/images/loader.gif" alt="loader.gif">
+          </div>
+          <div class="refreshContainer" *ngIf="refreshApi">
+            <button class="btn btn-primary" (click)="getCatagoryVideos()">Refresh</button>
+          </div>
+          <iframe style="position: absolute; top: 0; left: 0;" id="publicFrame" width="100%" height="100%"
+            frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen (load)="iframeloadedPublic()"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

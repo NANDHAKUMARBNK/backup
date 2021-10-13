@@ -1,0 +1,47 @@
+/* Provide sufficient contrast against white background */
+@font-face {
+  font-family: "Ikano Sans";
+  src: url("../src/assets/Fonts/IkanoSans-Bold.eot");
+  src: url("../src/assets/Fonts/IkanoSans-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("../src/assets/Fonts/IkanoSans-Bold.woff2") format("woff2"),
+    url("../src/assets/Fonts/IkanoSans-Bold.woff") format("woff"),
+    url("../src/assets/Fonts/IkanoSans-Bold.ttf") format("truetype"),
+    url("../src/assets/Fonts/IkanoSans-Bold.svg#IkanoSans-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Ikano Sans";
+  src: url("../src/assets/Fonts/IkanoSans-Regular.eot");
+  src: url("../src/assets/Fonts/IkanoSans-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../src/assets/Fonts/IkanoSans-Regular.woff2") format("woff2"),
+    url("../src/assets/Fonts/IkanoSans-Regular.woff") format("woff"),
+    url("../src/assets/Fonts/IkanoSans-Regular.ttf") format("truetype"),
+    url("../src/assets/Fonts/IkanoSans-Regular.svg#IkanoSans-Regular")
+      format("svg");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+body {
+  font-family: "Ikano Sans";
+  font-weight: 300;
+  font-style: normal;
+  background-color: #f8f7f5 !important;
+}

@@ -1,0 +1,50 @@
+<div class="form-group addWorkspace ">
+    <bw-text
+    [className]="'text-start primary-fre-clr-bse bw-font-sec-bold f-17 mb-5'"
+    [textName]="'Collaboration Workspace'"
+  >
+</bw-text>
+</div>
+<div class="mt-2 addWorkspace">
+      <bw-input [label]="'Collaboration Folder Name'" [labelClass]="'bw-font-sec-bold'"
+        [control]="collaborationDataForm.get('collaborationName')" [placeholder]="'Enter Title'"
+        [classNameControl]="'bw-font-sec-medium'" [inRow]="true" [inRowLabelRows]="5" [inRowInputRows]="7">
+    </bw-input>
+
+</div>
+
+<div class="mt-2 addWorkspace">
+    <bw-text [className]="'bw-font-sec-regular  primary-fre-clr-bse'" [textName]="'Access Control'">
+    </bw-text>
+
+    <div class=" mt-3 mb-4 ">
+
+        <bw-grid [isEnableSelectAll]="false" [isShowCheckbox]="false" [onCellClicked]="onCellClicked"
+            [columnOptions]="columnOptions" [columnsData]="columnsData" [gridData]="gridData" [isEnableButton]="true"
+            (onClickActionAccordion)="insideAccordion($event)" (accrodianClick)="accrodianClick($event)"
+            [accesControlFlag]="true" (readAccessClick)="readAccessClick($event)"
+            (writeAccessClick)="writeAccessClick($event)" (readChildAccessClick)="readChildAccessClick($event)"
+            (writeChildAccessClick)="writeChildAccessClick($event)">
+        </bw-grid>
+    </div>
+
+
+    <!-- <bw-checkbox [checkBoxses]="emailCheckBox" [inRow]="true" [inRowLabelRows]="5" [inRowInputRows]="7"
+        [classCheckboxLabel]="'row  m-0'" [control]="collaborationDataForm.get('emailalert')"
+        [classNameControl]="'bw-font-sec-medium  p-0 '" [label]="'Send Email to all selected users'"
+        (getSelectedValue)="changeCheckbox($event)" [checkBoxTextClass]="'col-xl-11 col-lg-11 col-md-10 ml-10'"
+        [spanrowClass]="'row col-1'">
+
+    </bw-checkbox> -->
+    <bw-checkbox
+    [checkBoxses]="emailCheckBox"
+    [inRow]="true"
+    [inRowLabelRows]="3"
+    [inRowInputRows]="5"
+    [classCheckboxLabel]="'col-md-6 col-lg-6'"
+    [control]="collaborationDataForm.get('emailalert')"
+    [classNameControl]="'bw-font-sec-medium m-2'"
+    (getselectedArray)="changeCheckbox($event)"
+  >
+  </bw-checkbox>
+</div>

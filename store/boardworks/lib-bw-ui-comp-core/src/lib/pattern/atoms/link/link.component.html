@@ -1,0 +1,18 @@
+<a
+  *ngIf="!isEnableIcons"
+  [class]="className"
+  [target]="target"
+  (click)="onClick($event)"
+  (click)="onClickHandler()"
+  >{{ linkText }}</a
+>
+<a
+  *ngIf="isEnableIcons"
+  [class]="className"
+  [target]="target"
+  (click)="onClick($event)"
+
+  (click)="onClickHandler()"
+>
+  <ng-content></ng-content>
+</a>

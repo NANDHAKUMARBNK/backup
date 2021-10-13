@@ -1,0 +1,63 @@
+<kendo-dialog (close)="onCancelAction()" [width]="width" [height]="height">
+  <kendo-dialog-titlebar *ngIf="isEnableHeader">
+    <bw-text
+      [className]="'primary-fre-clr-bse'"
+      [textName]="headerTitle"
+    ></bw-text>
+  </kendo-dialog-titlebar>
+  <div class="pl-2 mt-3 bodyContent" *ngIf="isEnableBody">
+    <!-- <div class="boards" *ngFor="let data of bodyMessage" (click)="clickOnBoards(data)">
+      <img [src]="data.logoUrl" [alt]="data.companyName" />
+      <p>{{ data.title }}</p>
+    </div> -->
+    <div class="row width-100 m-auto">
+      <div class="col-lg-6" *ngFor="let board of bodyMessage">
+        <div class="card cursor-pointer m-3" (click)="clickOnBoards(board)">
+          <div class="card-body">
+            <div class="d-flex h-100">
+              <bw-avatar
+                *ngIf="board.logoUrl"
+                [className]="'logo'"
+                [src]="appBaseUrl + board.logoUrl"
+                [alt]="'logo'"
+                [title]="'logo'">
+              </bw-avatar>
+              <p class="my-auto ml-2">{{ board.companyName }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pl-2 mb-3 bodyContent" *ngIf="isCustomBody">
+    <ng-content></ng-content>
+    <p class="my-auto ml-2 bw-font-sec-bold text-start" *ngIf="customMessage">
+      {{ customMessage }}
+    </p>
+  </div>
+  <div class="pl-2 mt-3 bodyContent" *ngIf="isDeleteBody">
+    <!-- <ng-content></ng-content> -->
+    <bw-text
+      [className]="'fw-500 fs-6'"
+      *ngIf="bodyMessage"
+      [textName]="bodyMessage"
+    ></bw-text>
+    <!-- <bw-text  *ngIf="bodyMessage" [textName]="bodyMessage"></bw-text> -->
+  </div>
+  <kendo-dialog-actions *ngIf="isEnableFooter">
+    <!-- <button kendoButton (click)="onCancelAction()">Cancel</button>
+    <button kendoButton (click)="onConfirmAction()">Submit</button> -->
+    <bw-button
+      className="btn-base secondary-btn-text  btn-sm "
+      buttonName="Cancel"
+      (onClick)="onCancelAction()"
+    >
+    </bw-button>
+    <bw-button
+      className="btn-base btn-contained px-3 secondary-btn-contained btn-sm me-md-4 float-sm-end"
+      [buttonName]="actionButtonName"
+      (onClick)="onConfirmAction()"
+    >
+    </bw-button>
+  </kendo-dialog-actions>
+</kendo-dialog>

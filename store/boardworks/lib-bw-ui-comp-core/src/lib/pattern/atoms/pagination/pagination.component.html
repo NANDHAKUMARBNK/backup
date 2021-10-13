@@ -1,0 +1,20 @@
+<kendo-grid
+  [data]="gridView"
+  [pageSize]="pageSize"
+  [skip]="skip"
+  [pageable]="{
+    previousNext: previousNext,
+    buttonCount: buttonCount,
+    pageSizes: pageSizes
+  }"
+  [height]="height"
+  (pageChange)="pageChange($event)"
+>
+  <!-- <kendo-grid-column field="Id" title="ID">
+    </kendo-grid-column>
+    <kendo-grid-column field="CompanyName" title="Company name">
+    </kendo-grid-column>
+    <kendo-grid-column field="ContactName" title="Contact name">
+    </kendo-grid-column> -->
+  <ng-container></ng-container>
+</kendo-grid>

@@ -1,0 +1,81 @@
+// ***** Theme Fonts *****
+
+@mixin bw-theme-fonts {
+  --bw-font-prm: Roboto;
+  --bw-font-sec: Open Sans;
+}
+// ***** Theme Colors *****
+
+@mixin bw-theme-colors {
+  // Color Type
+  --bw-prm-clr-lgt: #d7a2c6;
+  --bw-prm-clr-bse: #93186c;
+  --bw-prm-clr-drk: #53284f;
+  --bw-sec-clr-lgt: #79a78d;
+  --bw-sec-clr-bse: #03787c;
+  --bw-sec-clr-drk: #16666f;
+  --bw-inf-clr-lgt: #a3c4d4;
+  --bw-inf-clr-bse: #186c93;
+  --bw-scs-clr-lgt: #a3d4b2;
+  --bw-scs-clr-bse: #18933f;
+  --bw-wrn-clr-lgt: #f9e49d;
+  --bw-wrn-clr-bse: #f0ab00;
+  --bw-err-clr-lgt: #f3adad;
+  --bw-err-clr-bse: #e03131;
+  --bw-bar-clr-bse: #6b00b3;
+
+  //hover
+  --bw-prm-clr-bse-hvr: #66104b;
+  --bw-sec-clr-bse-hvr: #0f474d;
+
+  // themes
+  --bw-light-orchid-clr-lgt: #d7a2c6;
+  --bw-fresh-eggplant-clr-bse: #93186c;
+  --bw-plum-purple-clr-drk: #53284f;
+  --bw-bay-leaf-clr-lgt: #79a78d;
+  --bw-deep-aqua-clr-bse: #03787c;
+  --bw-dark-aqua-clr-drk: #16666f;
+  --bw-cashmere-clr-lgt: #dbc2ac;
+  --bw-copper-rose-clr-bse: #9a656c;
+  --bw-pancy-purple-clr-drk: #6d2244;
+  --bw-hampton-clr-lgt: #eed0ad;
+  --bw-dark-peach-clr-bse: #e4834e;
+  --bw-flame-pea-clr-drk: #6d2244;
+  --bw-sandwisp-clr-lgt: #f9e49d;
+  --bw-chrome-yellow-clr-bse: #f0ab00;
+  --bw-burnt-orange-clr-drk: #c84e00;
+  --bw-harp-clr-lgt: #eceded;
+  --bw-silver-chalice-clr-bse: #afafaf;
+  --bw-cloudy-grey-clr-drk: #696969;
+  --bw-hampton-clr-lgt: #cddead;
+  --bw-murky-green-clr-bse: #5e7b00;
+  --bw-dark-spring-green-clr-drk: #1e7040;
+  --bw-edgewater-clr-lgt: #cae2d6;
+  --bw-bay-leaf-clr-bse: #79a78d;
+  --bw-dark-aqua-clr-drk: #16666f;
+  --bw-pale-aqua-clr-lgt: #c3d3df;
+  --bw-medium-teal-blue-clr-bse: #005bbb;
+  --bw-prussian-blue-clr-drk: #003150;
+  --bw-bay-leaf-clr-ext-lgt: #d1f0fe;
+
+  //Accessability
+  --bw-fcs-clr-in: #000000;
+  --bw-fcs-clr-out: #ffd337;
+
+  // Basic
+  --bw-clr-white: #ffffff;
+
+  // Others
+  --bw-extra-light-gray: #ced4da;
+  --bw-extra-light-gray-x: #ced4da;
+  --bw-extra-light-gray-xx: #eaeaea;
+  --bw-extra-light-gray-xxx: #6d6a6a;
+  --bw-extra-light-gray-xxxx: #d9d9d9;
+  --bw-extra-light-gray-xxxxx: #f7f7f7;
+  --bw-extra-dark-gray: #333333;
+  --bw-medium-gray-x: #8a8a8a;
+  --bw-medium-gray: #999;
+  --bw-extra-light-blue: #adb5bd;
+
+  --bw-extra-light-blue-x: #cbdde5;
+}
